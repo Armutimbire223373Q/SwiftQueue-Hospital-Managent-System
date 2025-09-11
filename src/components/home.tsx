@@ -1,302 +1,302 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import QueueJoinForm from "./QueueJoinForm";
-import { ArrowRight, BarChart3, Clock, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Monitor, 
+  Users, 
+  Settings, 
+  Clock, 
+  Brain, 
+  Smartphone,
+  BarChart3,
+  CheckCircle,
+  Heart,
+  Stethoscope,
+  Activity,
+  Shield,
+  AlertTriangle
+} from "lucide-react";
 
-const Home = () => {
+export default function Home() {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b bg-white">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-2">
-            <Clock className="h-6 w-6 text-primary" />
-            <h1 className="text-xl font-bold">SwiftQueue</h1>
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center mb-4">
+            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+              <Stethoscope className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-4xl font-bold text-gray-900">SwiftQueue Hospital</h1>
           </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sm font-medium">
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="text-sm font-medium text-muted-foreground"
-            >
-              About
-            </Link>
-            <Link
-              to="/services"
-              className="text-sm font-medium text-muted-foreground"
-            >
-              Services
-            </Link>
-            <Link
-              to="/contact"
-              className="text-sm font-medium text-muted-foreground"
-            >
-              Contact
-            </Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link to="/admin">
-              <Button variant="outline">Admin Login</Button>
-            </Link>
-          </div>
+          <p className="text-xl text-gray-600 mb-2">AI-Powered Hospital Queue Management System</p>
+          <p className="text-gray-500">Optimize patient flow and reduce waiting times with intelligent healthcare management</p>
         </div>
-      </header>
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-b from-white to-gray-50 py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            Skip the Wait with SwiftQueue
-          </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-            AI-powered queue management system that reduces waiting times and
-            improves service efficiency.
-          </p>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="gap-2">
-              Join Queue Now <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button size="lg" variant="outline">
-              Learn More
-            </Button>
-          </div>
+        {/* Key Features */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Brain className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="font-semibold mb-2">AI Patient Flow</h3>
+              <p className="text-sm text-gray-600">Smart patient routing and treatment time predictions</p>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Smartphone className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Smart Notifications</h3>
+              <p className="text-sm text-gray-600">Automated patient alerts and appointment reminders</p>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Monitor className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Real-time Monitoring</h3>
+              <p className="text-sm text-gray-600">Live patient queue and department status tracking</p>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BarChart3 className="h-6 w-6 text-orange-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Healthcare Analytics</h3>
+              <p className="text-sm text-gray-600">Patient flow insights and resource optimization</p>
+            </CardContent>
+          </Card>
         </div>
-      </section>
 
-      {/* Main Content */}
-      <section className="py-16 container mx-auto px-4">
-        <Tabs defaultValue="join" className="max-w-4xl mx-auto">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="join">Join Queue</TabsTrigger>
-            <TabsTrigger value="status">Queue Status</TabsTrigger>
-          </TabsList>
-          <TabsContent value="join" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Join a Queue</CardTitle>
-                <CardDescription>
-                  Select a service and provide your contact information to join
-                  the queue.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <QueueJoinForm />
-              </CardContent>
-            </Card>
-          </TabsContent>
-          <TabsContent value="status" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Current Queue Status</CardTitle>
-                <CardDescription>
-                  Check the current status of all service queues.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <Card>
-                      <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          General Services
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">12</div>
-                        <p className="text-xs text-muted-foreground">
-                          People waiting
-                        </p>
-                        <div className="mt-2 text-sm">~25 min wait</div>
-                      </CardContent>
-                    </Card>
-                    <Card>
-                      <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Premium Services
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">5</div>
-                        <p className="text-xs text-muted-foreground">
-                          People waiting
-                        </p>
-                        <div className="mt-2 text-sm">~10 min wait</div>
-                      </CardContent>
-                    </Card>
-                    <Card>
-                      <CardHeader className="pb-2">
-                        <CardTitle className="text-sm font-medium">
-                          Express Services
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <div className="text-2xl font-bold">3</div>
-                        <p className="text-xs text-muted-foreground">
-                          People waiting
-                        </p>
-                        <div className="mt-2 text-sm">~5 min wait</div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                  <div className="flex justify-center mt-6">
-                    <Link to="/queue-dashboard">
-                      <Button variant="outline">
-                        View Detailed Queue Dashboard
-                      </Button>
-                    </Link>
-                  </div>
+        {/* Main Navigation */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          {/* Patient Registration */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center space-x-2">
+                  <Users className="h-5 w-5 text-blue-600" />
+                  <span>Patient Registration</span>
+                </CardTitle>
+                <Badge variant="secondary">Patients</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-600">Register for medical services and join digital queues</p>
+              <div className="space-y-2">
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  Select medical department
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
-      </section>
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  AI-powered wait time prediction
+                </div>
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  Smart appointment notifications
+                </div>
+              </div>
+              <Link to="/queue">
+                <Button className="w-full">
+                  Register for Service
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
 
-      {/* Features Section */}
-      <section className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="bg-white">
-              <CardHeader>
-                <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Clock className="h-6 w-6 text-primary" />
+          {/* Hospital Dashboard */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center space-x-2">
+                  <Monitor className="h-5 w-5 text-green-600" />
+                  <span>Hospital Dashboard</span>
+                </CardTitle>
+                <Badge variant="outline">Medical Staff</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-600">Monitor patient flow and department operations</p>
+              <div className="space-y-2">
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  Real-time patient queues
                 </div>
-                <CardTitle>Real-time Updates</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Get real-time updates on queue status and receive
-                  notifications when your turn is approaching.
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  AI treatment time predictions
+                </div>
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  Department status monitoring
+                </div>
+              </div>
+              <Link to="/dashboard">
+                <Button variant="outline" className="w-full">
+                  View Dashboard
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+
+          {/* Admin Control */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader>
+              <div className="flex items-center justify-between">
+                <CardTitle className="flex items-center space-x-2">
+                  <Settings className="h-5 w-5 text-purple-600" />
+                  <span>Admin Control</span>
+                </CardTitle>
+                <Badge variant="destructive">Administrators</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <p className="text-gray-600">Manage hospital resources and AI optimization</p>
+              <div className="space-y-2">
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  Medical staff management
+                </div>
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  Service area configuration
+                </div>
+                <div className="flex items-center text-sm text-gray-500">
+                  <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                  AI analytics and insights
+                </div>
+              </div>
+              <Link to="/admin">
+                <Button variant="secondary" className="w-full">
+                  Admin Panel
+                </Button>
+              </Link>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Hospital Departments */}
+        <Card className="mb-8">
+          <CardHeader>
+            <CardTitle>Available Departments</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+              <div className="text-center p-3 bg-red-50 rounded-lg">
+                <AlertTriangle className="h-6 w-6 text-red-600 mx-auto mb-2" />
+                <p className="text-sm font-medium">Emergency</p>
+                <p className="text-xs text-gray-600">24/7 Care</p>
+              </div>
+              <div className="text-center p-3 bg-blue-50 rounded-lg">
+                <Heart className="h-6 w-6 text-blue-600 mx-auto mb-2" />
+                <p className="text-sm font-medium">Cardiology</p>
+                <p className="text-xs text-gray-600">Heart Care</p>
+              </div>
+              <div className="text-center p-3 bg-green-50 rounded-lg">
+                <Stethoscope className="h-6 w-6 text-green-600 mx-auto mb-2" />
+                <p className="text-sm font-medium">General</p>
+                <p className="text-xs text-gray-600">Primary Care</p>
+              </div>
+              <div className="text-center p-3 bg-purple-50 rounded-lg">
+                <Activity className="h-6 w-6 text-purple-600 mx-auto mb-2" />
+                <p className="text-sm font-medium">Laboratory</p>
+                <p className="text-xs text-gray-600">Diagnostics</p>
+              </div>
+              <div className="text-center p-3 bg-orange-50 rounded-lg">
+                <Monitor className="h-6 w-6 text-orange-600 mx-auto mb-2" />
+                <p className="text-sm font-medium">Radiology</p>
+                <p className="text-xs text-gray-600">Imaging</p>
+              </div>
+              <div className="text-center p-3 bg-pink-50 rounded-lg">
+                <Users className="h-6 w-6 text-pink-600 mx-auto mb-2" />
+                <p className="text-sm font-medium">Pediatrics</p>
+                <p className="text-xs text-gray-600">Child Care</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Current Status */}
+        <Card className="bg-white/80 backdrop-blur-sm mb-8">
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Brain className="h-5 w-5 text-blue-600" />
+              <span>AI-Powered Hospital Status</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-blue-600">12</div>
+                <div className="text-sm text-gray-600">Patients Waiting</div>
+                <div className="text-xs text-blue-500">AI Optimized</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-green-600">6</div>
+                <div className="text-sm text-gray-600">Active Departments</div>
+                <div className="text-xs text-green-500">Fully Operational</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-purple-600">18m</div>
+                <div className="text-sm text-gray-600">Avg Wait Time</div>
+                <div className="text-xs text-purple-500">AI Predicted</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-orange-600">92%</div>
+                <div className="text-sm text-gray-600">Efficiency Score</div>
+                <div className="text-xs text-orange-500">AI Optimized</div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* AI Features Highlight */}
+        <Card className="bg-gradient-to-r from-blue-50 to-purple-50">
+          <CardContent className="p-6">
+            <div className="flex items-center space-x-4 mb-4">
+              <div className="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center">
+                <Brain className="h-6 w-6 text-white" />
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Advanced AI Integration</h3>
+                <p className="text-sm text-gray-600">
+                  Our AI system continuously learns from patient patterns to optimize healthcare delivery
                 </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white">
-              <CardHeader>
-                <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <BarChart3 className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>AI-powered Analytics</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Our AI predicts waiting times, identifies peak hours, and
-                  optimizes resource allocation.
-                </p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white">
-              <CardHeader>
-                <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  <Users className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle>Smart Staff Management</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  Efficiently assign staff to service counters based on
-                  real-time demand and customer needs.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+              <div className="bg-white p-3 rounded-lg">
+                <h4 className="font-medium text-blue-900 mb-1">Predictive Analytics</h4>
+                <p className="text-blue-700">Forecasts patient flow and resource needs</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg">
+                <h4 className="font-medium text-purple-900 mb-1">Smart Scheduling</h4>
+                <p className="text-purple-700">Optimizes appointments and reduces wait times</p>
+              </div>
+              <div className="bg-white p-3 rounded-lg">
+                <h4 className="font-medium text-green-900 mb-1">Resource Optimization</h4>
+                <p className="text-green-700">Balances staff workload and equipment usage</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-300 py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-white font-bold mb-4 flex items-center gap-2">
-                <Clock className="h-5 w-5" />
-                SwiftQueue
-              </h3>
-              <p className="text-sm">
-                AI-powered queue management system for modern businesses.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-white font-medium mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link to="/" className="hover:text-white">
-                    Home
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/about" className="hover:text-white">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/services" className="hover:text-white">
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/contact" className="hover:text-white">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-medium mb-4">Resources</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <Link to="/faq" className="hover:text-white">
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/support" className="hover:text-white">
-                    Support
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/privacy" className="hover:text-white">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/terms" className="hover:text-white">
-                    Terms of Service
-                  </Link>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-medium mb-4">Contact Us</h4>
-              <address className="text-sm not-italic">
-                <p>123 Queue Street</p>
-                <p>Service City, SC 12345</p>
-                <p className="mt-2">Email: info@swiftqueue.com</p>
-                <p>Phone: (123) 456-7890</p>
-              </address>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-            <p>
-              &copy; {new Date().getFullYear()} SwiftQueue. All rights reserved.
-            </p>
-          </div>
+        {/* Footer */}
+        <div className="text-center mt-12 text-gray-500">
+          <p className="text-sm">SwiftQueue Hospital - AI-Powered Healthcare Management System</p>
+          <p className="text-xs mt-1">Improving patient care through intelligent queue management</p>
         </div>
-      </footer>
+      </div>
     </div>
   );
-};
-
-export default Home;
+}
