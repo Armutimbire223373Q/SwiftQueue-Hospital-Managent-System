@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +7,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Clock, Users, Phone, Mail, CheckCircle, Heart, Brain, Stethoscope, Activity, AlertCircle } from "lucide-react";
+import { ServiceType, queueService, PatientDetails } from "@/services/queueService";
+import { servicesService } from "@/services/servicesService";
 
 interface ServiceType {
   id: string;
@@ -22,7 +24,7 @@ interface ServiceType {
 export default function CustomerQueue() {
   const [step, setStep] = useState<"select" | "details" | "confirmation">("select");
   const [selectedService, setSelectedService] = useState<ServiceType | null>(null);
-  const [patientDetails, setPatientDetails] = useState({
+  const [patientDetails, setPatientDetails] = useState<PatientDetails>({
     name: "",
     phone: "",
     email: "",
@@ -31,23 +33,26 @@ export default function CustomerQueue() {
     priority: "medium"
   });
   const [queueNumber, setQueueNumber] = useState<number | null>(null);
+  const [services, setServices] = useState<ServiceType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const serviceTypes: ServiceType[] = [
-    {
-      id: "general",
-      name: "General Consultation",
-      description: "Routine check-ups, general health concerns",
-      department: "Internal Medicine",
-      estimatedTime: 20,
-      currentWaitTime: 15,
-      queueLength: 4,
-      aiPredictedWait: 12
-    },
-    {
-      id: "cardiology",
-      name: "Cardiology",
-      description: "Heart-related conditions and consultations",
-      department: "Cardiology",
+  useEffect(() => {
+    loadServices();
+  }, []);
+
+  const loadServices = async () => {
+    try {
+      setLoading(true);
+      const servicesData = await servicesService.getAllServices();
+      setServices(servicesData);
+    } catch (err) {
+      setError("Failed to load services. Please try again later.");
+      console.error("Error loading services:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
       estimatedTime: 30,
       currentWaitTime: 25,
       queueLength: 3,
@@ -100,11 +105,23 @@ export default function CustomerQueue() {
     setStep("details");
   };
 
-  const handleJoinQueue = () => {
-    // Simulate AI-powered queue number assignment
-    const newQueueNumber = Math.floor(Math.random() * 100) + 1;
-    setQueueNumber(newQueueNumber);
-    setStep("confirmation");
+  const handleJoinQueue = async () => {
+    if (!selectedService || !patientDetails.name || !patientDetails.phone || !patientDetails.email || !patientDetails.dateOfBirth) {
+      setError("Please fill in all required fields");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const result = await queueService.joinQueue(Number(selectedService.id), patientDetails);
+      setQueueNumber(result.queueNumber);
+      setStep("confirmation");
+    } catch (err) {
+      setError("Failed to join queue. Please try again.");
+      console.error("Error joining queue:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const getWaitTimeColor = (waitTime: number) => {
