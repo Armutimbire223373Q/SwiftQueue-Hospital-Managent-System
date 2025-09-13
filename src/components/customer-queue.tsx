@@ -53,11 +53,15 @@ export default function CustomerQueue() {
       setLoading(false);
     }
   };
-      estimatedTime: 30,
-      currentWaitTime: 25,
-      queueLength: 3,
-      aiPredictedWait: 18
-    },
+
+  const queueStats = {
+    estimatedTime: 30,
+    currentWaitTime: 25,
+    queueLength: 3,
+    aiPredictedWait: 18
+  };
+
+  const availableServices = [
     {
       id: "laboratory",
       name: "Laboratory Services",
@@ -364,7 +368,7 @@ export default function CustomerQueue() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {serviceTypes.map((service) => (
+          {services.map((service) => (
             <Card 
               key={service.id} 
               className="cursor-pointer hover:shadow-lg transition-shadow border-2 hover:border-blue-200"

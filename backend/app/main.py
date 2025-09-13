@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import queue, users, services, analytics
 from app.database import create_tables
+from app import ws
 
 app = FastAPI(title="Queue Management System API")
 
@@ -19,6 +20,7 @@ app.include_router(queue.router, prefix="/api/queue", tags=["queue"])
 app.include_router(users.router, prefix="/api/users", tags=["users"])
 app.include_router(services.router, prefix="/api/services", tags=["services"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
+app.include_router(ws.router)  # WebSocket router
 
 @app.on_event("startup")
 async def startup_event():

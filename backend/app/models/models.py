@@ -48,14 +48,21 @@ class ServiceCounter(Base):
     is_active = Column(Integer, default=1)  # SQLite doesn't have boolean
     current_queue_entry_id = Column(Integer, ForeignKey("queue_entries.id"), nullable=True)
     staff_member = Column(String, nullable=True)
-
+    
 class Analytics(Base):
     __tablename__ = "analytics"
-
+    
     id = Column(Integer, primary_key=True, index=True)
-    date = Column(DateTime, default=datetime.utcnow)
+    timestamp = Column(DateTime, default=datetime.utcnow)
     service_id = Column(Integer, ForeignKey("services.id"))
+    queue_length = Column(Integer)
     avg_wait_time = Column(Float)
-    peak_hour = Column(Integer)
+    avg_service_time = Column(Float)
+    efficiency_score = Column(Float)  # 0-1 score based on performance metrics
+    peak_hour = Column(Integer)  # Hour of day (0-23)
+    peak_load = Column(Integer)  # Number of patients during peak hour
+    staff_utilization = Column(Float)  # 0-1 score
+    patient_satisfaction = Column(Float)  # 0-1 score based on feedback
     patients_served = Column(Integer)
-    efficiency_score = Column(Float)
+
+    service = relationship("Service")

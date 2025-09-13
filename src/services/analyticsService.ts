@@ -16,41 +16,48 @@ export interface ServiceDistribution {
 }
 
 export interface AIRecommendation {
-    title: string;
-    description: string;
+    type: 'critical' | 'warning' | 'info' | 'improvement';
+    message: string;
+    action: string;
 }
 
-export const analyticsService = {
-    async getWaitTimes(): Promise<WaitTimeAnalytics[]> {
+class AnalyticsService {
+    public async getWaitTimes(): Promise<WaitTimeAnalytics[]> {
         const response = await fetch(`${API_BASE_URL}/analytics/wait-times`);
-        
         if (!response.ok) {
             throw new Error('Failed to fetch wait time analytics');
         }
+        return await response.json();
+    }
 
-        return response.json();
-    },
-
-    async getPeakHours(): Promise<PeakHourAnalytics[]> {
+    public async getPeakHours(): Promise<PeakHourAnalytics[]> {
         const response = await fetch(`${API_BASE_URL}/analytics/peak-hours`);
-        
         if (!response.ok) {
             throw new Error('Failed to fetch peak hours');
         }
+        return await response.json();
+    }
 
-        return response.json();
-    },
-
-    async getServiceDistribution(): Promise<ServiceDistribution[]> {
+    public async getServiceDistribution(): Promise<ServiceDistribution[]> {
         const response = await fetch(`${API_BASE_URL}/analytics/service-distribution`);
-        
         if (!response.ok) {
             throw new Error('Failed to fetch service distribution');
         }
+        return await response.json();
+    }
 
-        return response.json();
-    },
+    public async getAIRecommendations(): Promise<AIRecommendation[]> {
+        const response = await fetch(`${API_BASE_URL}/analytics/recommendations`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch AI recommendations');
+        }
+        return await response.json();
+    }
+}
 
+export const analyticsService = new AnalyticsService();
+
+class AIRecommendationService {
     async getAIRecommendations(): Promise<AIRecommendation[]> {
         const response = await fetch(`${API_BASE_URL}/analytics/recommendations`);
         

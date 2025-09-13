@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Clock, Users, AlertCircle, CheckCircle, Heart, Brain, Activity, Stethoscope } from "lucide-react";
+import { wsService } from "@/services/wsService";
+import { servicesService, ServiceCounter } from "@/services/servicesService";
+import { queueService } from "@/services/queueService";
 
 interface QueueItem {
   id: string;
@@ -28,108 +31,81 @@ interface ServiceCounter {
 }
 
 export default function QueueDashboard() {
-  const [queues, setQueues] = useState<QueueItem[]>([
-    {
-      id: "1",
-      patientName: "John Smith",
-      serviceType: "General Consultation",
-      queueNumber: 1,
-      estimatedWaitTime: 15,
-      status: "serving",
-      priority: "medium",
-      joinedAt: new Date(Date.now() - 10 * 60 * 1000),
-      aiPredictedTime: 12
-    },
-    {
-      id: "2",
-      patientName: "Maria Garcia",
-      serviceType: "Cardiology",
-      queueNumber: 2,
-      estimatedWaitTime: 25,
-      status: "waiting",
-      priority: "high",
-      joinedAt: new Date(Date.now() - 5 * 60 * 1000),
-      aiPredictedTime: 18
-    },
-    {
-      id: "3",
-      patientName: "Robert Johnson",
-      serviceType: "Laboratory",
-      queueNumber: 3,
-      estimatedWaitTime: 8,
-      status: "waiting",
-      priority: "low",
-      joinedAt: new Date(Date.now() - 2 * 60 * 1000),
-      aiPredictedTime: 10
-    },
-    {
-      id: "4",
-      patientName: "Sarah Wilson",
-      serviceType: "Emergency",
-      queueNumber: 4,
-      estimatedWaitTime: 5,
-      status: "called",
-      priority: "urgent",
-      joinedAt: new Date(Date.now() - 1 * 60 * 1000),
-      aiPredictedTime: 3
-    }
-  ]);
+  const [queues, setQueues] = useState<QueueItem[]>([]);
+  const [serviceCounters, setServiceCounters] = useState<ServiceCounter[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const [serviceCounters, setServiceCounters] = useState<ServiceCounter[]>([
-    {
-      id: "counter1",
-      name: "Room 101",
-      serviceType: "General Consultation",
-      department: "Internal Medicine",
-      isActive: true,
-      staffMember: "Dr. Alice Johnson",
-      currentPatient: queues.find(q => q.status === "serving")
-    },
-    {
-      id: "counter2",
-      name: "Room 205",
-      serviceType: "Cardiology",
-      department: "Cardiology",
-      isActive: true,
-      staffMember: "Dr. Bob Smith"
-    },
-    {
-      id: "counter3",
-      name: "Lab Station 1",
-      serviceType: "Laboratory",
-      department: "Laboratory",
-      isActive: false
-    },
-    {
-      id: "counter4",
-      name: "Emergency Bay 1",
-      serviceType: "Emergency",
-      department: "Emergency",
-      isActive: true,
-      staffMember: "Dr. Carol Davis"
-    }
-  ]);
+  // Stats
+  const [totalWaiting, setTotalWaiting] = useState(0);
+  const [totalServing, setTotalServing] = useState(0);
+  const [averageWaitTime, setAverageWaitTime] = useState(0);
+  const [urgentCases, setUrgentCases] = useState(0);
+  const [completedToday, setCompletedToday] = useState(0);
 
-  const getPriorityColor = (priority: string) => {
-    switch (priority) {
-      case "urgent": return "bg-red-500";
-      case "high": return "bg-orange-500";
-      case "medium": return "bg-yellow-500";
-      case "low": return "bg-green-500";
-      default: return "bg-gray-500";
+  useEffect(() => {
+    loadInitialData();
+    const unsubscribe = wsService.subscribe(handleQueueUpdate);
+    return () => unsubscribe();
+  }, []);
+
+  const loadInitialData = async () => {
+    try {
+      setLoading(true);
+      // Load all active queues
+      const services = await servicesService.getAllServices();
+      let allCounters: ServiceCounter[] = [];
+      
+      // Load counters for each service
+      for (const service of services) {
+        const counters = await servicesService.getServiceCounters(service.id);
+        allCounters = [...allCounters, ...counters.map(counter => ({
+          id: counter.id.toString(),
+          name: counter.name,
+          serviceType: service.id.toString(),
+          department: service.department || 'General',
+          isActive: counter.isActive,
+          staffMember: counter.staffMember,
+          currentPatient: undefined
+        }))];
+      }
+      
+      setServiceCounters(allCounters);
+      updateStats();
+    } catch (err) {
+      setError("Failed to load queue data");
+      console.error("Error loading queue data:", err);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const getPriorityIcon = (priority: string) => {
-    switch (priority) {
-      case "urgent": return <AlertCircle className="h-4 w-4" />;
-      case "high": return <Heart className="h-4 w-4" />;
-      case "medium": return <Activity className="h-4 w-4" />;
-      case "low": return <CheckCircle className="h-4 w-4" />;
-      default: return <Clock className="h-4 w-4" />;
+  const handleQueueUpdate = (data: any) => {
+    // Handle real-time updates from WebSocket
+    if (data.type === "STATUS_UPDATE") {
+      setQueues(current => 
+        current.map(queue => 
+          queue.id === data.queue_entry_id 
+            ? { ...queue, status: data.new_status }
+            : queue
+        )
+      );
+    } else if (data.type === "NEW_ENTRY") {
+      loadInitialData(); // Reload all data for new entries
     }
+    updateStats();
   };
 
+  const updateStats = () => {
+    setTotalWaiting(queues.filter(q => q.status === "waiting").length);
+    setTotalServing(queues.filter(q => q.status === "serving").length);
+    setUrgentCases(queues.filter(q => q.priority === "urgent").length);
+    setCompletedToday(queues.filter(q => q.status === "completed").length);
+    
+    const waitingQueues = queues.filter(q => q.status === "waiting");
+    const avgWait = waitingQueues.reduce((sum, q) => sum + q.aiPredictedTime!, 0) / (waitingQueues.length || 1);
+    setAverageWaitTime(Math.round(avgWait));
+  };
   const getStatusColor = (status: string) => {
     switch (status) {
       case "waiting": return "bg-yellow-500";
@@ -144,16 +120,60 @@ export default function QueueDashboard() {
     switch (status) {
       case "waiting": return <Clock className="h-4 w-4" />;
       case "called": return <AlertCircle className="h-4 w-4" />;
-      case "serving": return <Stethoscope className="h-4 w-4" />;
+      case "serving": return <Activity className="h-4 w-4" />;
       case "completed": return <CheckCircle className="h-4 w-4" />;
       default: return <Clock className="h-4 w-4" />;
     }
   };
 
-  const totalWaiting = queues.filter(q => q.status === "waiting").length;
-  const totalServing = queues.filter(q => q.status === "serving").length;
-  const urgentCases = queues.filter(q => q.priority === "urgent").length;
-  const averageWaitTime = Math.round(queues.reduce((acc, q) => acc + (q.aiPredictedTime || q.estimatedWaitTime), 0) / queues.length);
+  const getPriorityIcon = (priority: string) => {
+    switch (priority) {
+      case "urgent": return <AlertCircle className="h-4 w-4 text-red-500" />;
+      case "high": return <Activity className="h-4 w-4 text-orange-500" />;
+      case "medium": return <Clock className="h-4 w-4 text-yellow-500" />;
+      case "low": return <CheckCircle className="h-4 w-4 text-green-500" />;
+      default: return <Clock className="h-4 w-4" />;
+    }
+  };
+  if (loading) {
+    return (
+      <div className="p-8">
+        <div className="flex justify-center items-center h-32">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-8">
+        <Card>
+          <CardContent className="pt-6">
+            <div className="text-center text-red-600">
+              <AlertCircle className="h-8 w-8 mx-auto mb-2" />
+              <p>{error}</p>
+              <Button onClick={loadInitialData} className="mt-4">
+                Try Again
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  };
+
+  const getPriorityColor = (priority: string) => {
+    switch (priority) {
+      case "urgent": return "bg-red-500";
+      case "high": return "bg-orange-500";
+      case "medium": return "bg-yellow-500";
+      case "low": return "bg-green-500";
+      default: return "bg-gray-500";
+    }
+  };
+
+  // State and stats are managed by useState hooks above
 
   return (
     <div className="bg-white min-h-screen p-6">
@@ -351,3 +371,4 @@ export default function QueueDashboard() {
     </div>
   );
 }
+
