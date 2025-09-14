@@ -22,6 +22,7 @@ class QueueEntry(Base):
     status = Column(Enum("waiting", "called", "serving", "completed", name="queue_status"))
     priority = Column(Enum("low", "medium", "high", "urgent", name="priority_level"))
     created_at = Column(DateTime, default=datetime.utcnow)
+    completed_at = Column(DateTime, nullable=True)
     estimated_wait_time = Column(Integer)
     ai_predicted_wait = Column(Integer)
 
@@ -34,7 +35,9 @@ class Service(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     description = Column(String)
-    department = Column(String)
+    staff_count = Column(Integer, default=1)  # Number of staff assigned
+    service_rate = Column(Float, default=1.0)  # Average patients served per hour
+    department = Column(String, default="General")
     estimated_time = Column(Integer)
     current_wait_time = Column(Integer)
     queue_length = Column(Integer, default=0)

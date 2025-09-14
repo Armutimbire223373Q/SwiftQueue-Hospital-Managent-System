@@ -1,0 +1,10 @@
+# Frontend dependencies (if using Python for build tools)
+# This file is for any Python-based build tools or scripts
+
+# Backend dependencies are in backend/requirements.txt
+# Frontend dependencies are managed by package.json
+
+# If you need Python tools for the frontend, add them here
+# For example:
+# requests>=2.25.1
+# beautifulsoup4>=4.9.3

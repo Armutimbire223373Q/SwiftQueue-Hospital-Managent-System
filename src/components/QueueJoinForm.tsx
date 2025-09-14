@@ -1,214 +1,249 @@
 import React, { useState } from "react";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
-import { AlertCircle, Clock, Ticket } from "lucide-react";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { Clock, Users, Brain, AlertCircle, Heart, Stethoscope, Activity } from "lucide-react";
+import { queueService, PatientDetails } from "@/services/queueService";
+import { servicesService } from "@/services/servicesService";
+
+interface ServiceType {
+  id: number;
+  name: string;
+  description: string;
+  department: string;
+  estimated_time: number;
+  current_wait_time: number;
+  queue_length: number;
+}
 
 interface QueueJoinFormProps {
-  onSubmit?: (formData: QueueFormData) => void;
+  onSuccess?: (queueNumber: number) => void;
+  onCancel?: () => void;
 }
 
-export interface QueueFormData {
-  name: string;
-  phone: string;
-  email: string;
-  serviceType: string;
-}
-
-const QueueJoinForm = ({ onSubmit = () => {} }: QueueJoinFormProps) => {
-  const [formData, setFormData] = useState<QueueFormData>({
+export default function QueueJoinForm({ onSuccess, onCancel }: QueueJoinFormProps) {
+  const [selectedService, setSelectedService] = useState<ServiceType | null>(null);
+  const [patientDetails, setPatientDetails] = useState<PatientDetails>({
     name: "",
     phone: "",
     email: "",
-    serviceType: "",
+    dateOfBirth: "",
+    symptoms: "",
+    priority: "medium"
   });
+  const [services, setServices] = useState<ServiceType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const [submitted, setSubmitted] = useState(false);
-  const [queueNumber, setQueueNumber] = useState<string>("");
-  const [estimatedWaitTime, setEstimatedWaitTime] = useState<number>(0);
+  React.useEffect(() => {
+    loadServices();
+  }, []);
 
-  const handleChange = (field: keyof QueueFormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
+  const loadServices = async () => {
+    try {
+      setLoading(true);
+      const servicesData = await servicesService.getAllServices();
+      setServices(servicesData);
+    } catch (err) {
+      setError("Failed to load services. Please try again later.");
+      console.error("Error loading services:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleJoinQueue = async () => {
+    if (!selectedService || !patientDetails.name || !patientDetails.phone || !patientDetails.email || !patientDetails.dateOfBirth) {
+      setError("Please fill in all required fields");
+      return;
+    }
 
-    // In a real app, this would call an API to join the queue
-    // and get back a queue number and estimated wait time
-    const mockQueueNumber = `A${Math.floor(Math.random() * 100)}`;
-    const mockWaitTime = Math.floor(Math.random() * 30) + 10; // 10-40 minutes
-
-    setQueueNumber(mockQueueNumber);
-    setEstimatedWaitTime(mockWaitTime);
-    setSubmitted(true);
-    onSubmit(formData);
+    try {
+      setLoading(true);
+      const result = await queueService.joinQueue(selectedService.id, patientDetails);
+      onSuccess?.(result.queue_number);
+    } catch (err) {
+      setError("Failed to join queue. Please try again.");
+      console.error("Error joining queue:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const serviceTypes = [
-    { value: "general", label: "General Inquiry" },
-    { value: "account", label: "Account Services" },
-    { value: "technical", label: "Technical Support" },
-    { value: "payments", label: "Payments & Billing" },
-  ];
+  const getDepartmentIcon = (department: string) => {
+    switch (department) {
+      case "Cardiology": return <Heart className="h-4 w-4" />;
+      case "Emergency": return <AlertCircle className="h-4 w-4" />;
+      case "Laboratory": return <Activity className="h-4 w-4" />;
+      default: return <Stethoscope className="h-4 w-4" />;
+    }
+  };
+
+  if (loading && services.length === 0) {
+    return (
+      <div className="flex items-center justify-center h-32">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-white shadow-lg">
-      <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">
-          Join the Queue
-        </CardTitle>
-        <CardDescription className="text-center">
-          Fill out the form below to get your place in line
-        </CardDescription>
-      </CardHeader>
+    <div className="max-w-2xl mx-auto space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>Join Hospital Queue</CardTitle>
+          <p className="text-gray-600">Select a service and provide your details</p>
+        </CardHeader>
+        <CardContent className="space-y-6">
+          {/* Service Selection */}
+          <div>
+            <Label htmlFor="service">Select Service *</Label>
+            <Select onValueChange={(value) => {
+              const service = services.find(s => s.id.toString() === value);
+              setSelectedService(service || null);
+            }}>
+              <SelectTrigger className="mt-1">
+                <SelectValue placeholder="Choose a medical service" />
+              </SelectTrigger>
+              <SelectContent>
+                {services.map((service) => (
+                  <SelectItem key={service.id} value={service.id.toString()}>
+                    <div className="flex items-center space-x-2">
+                      {getDepartmentIcon(service.department)}
+                      <span>{service.name}</span>
+                      <Badge variant="outline" className="ml-2">
+                        {service.queue_length} in queue
+                      </Badge>
+                    </div>
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
-      <CardContent>
-        {!submitted ? (
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="serviceType">Service Type</Label>
-              <Select
-                value={formData.serviceType}
-                onValueChange={(value) => handleChange("serviceType", value)}
-                required
-              >
-                <SelectTrigger id="serviceType">
-                  <SelectValue placeholder="Select a service" />
-                </SelectTrigger>
-                <SelectContent>
-                  {serviceTypes.map((service) => (
-                    <SelectItem key={service.value} value={service.value}>
-                      {service.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+          {selectedService && (
+            <div className="bg-blue-50 p-4 rounded-lg">
+              <h3 className="font-medium text-blue-900 mb-1 flex items-center">
+                {getDepartmentIcon(selectedService.department)}
+                <span className="ml-2">{selectedService.name}</span>
+              </h3>
+              <p className="text-blue-700">{selectedService.description}</p>
+              <div className="flex items-center space-x-4 mt-2 text-sm">
+                <div className="flex items-center space-x-1">
+                  <Brain className="h-3 w-3 text-blue-500" />
+                  <span className="text-blue-600">AI Predicted: {selectedService.current_wait_time}m</span>
+                </div>
+                <div className="flex items-center space-x-1">
+                  <Users className="h-3 w-3 text-purple-500" />
+                  <span className="text-purple-600">{selectedService.queue_length} ahead</span>
+                </div>
+              </div>
             </div>
+          )}
 
-            <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
+          {/* Patient Details */}
+          <div className="space-y-4">
+            <div>
+              <Label htmlFor="name">Full Name *</Label>
               <Input
                 id="name"
-                value={formData.name}
-                onChange={(e) => handleChange("name", e.target.value)}
-                placeholder="John Doe"
-                required
+                value={patientDetails.name}
+                onChange={(e) => setPatientDetails({...patientDetails, name: e.target.value})}
+                placeholder="Enter your full name"
+                className="mt-1"
               />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="phone">Phone Number</Label>
-              <Input
-                id="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => handleChange("phone", e.target.value)}
-                placeholder="+1 (555) 123-4567"
-                required
-              />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="phone">Phone Number *</Label>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={patientDetails.phone}
+                  onChange={(e) => setPatientDetails({...patientDetails, phone: e.target.value})}
+                  placeholder="+1 (555) 123-4567"
+                  className="mt-1"
+                />
+              </div>
+              <div>
+                <Label htmlFor="dob">Date of Birth *</Label>
+                <Input
+                  id="dob"
+                  type="date"
+                  value={patientDetails.dateOfBirth}
+                  onChange={(e) => setPatientDetails({...patientDetails, dateOfBirth: e.target.value})}
+                  className="mt-1"
+                />
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Email Address</Label>
+            <div>
+              <Label htmlFor="email">Email Address *</Label>
               <Input
                 id="email"
                 type="email"
-                value={formData.email}
-                onChange={(e) => handleChange("email", e.target.value)}
-                placeholder="john.doe@example.com"
-                required
+                value={patientDetails.email}
+                onChange={(e) => setPatientDetails({...patientDetails, email: e.target.value})}
+                placeholder="your.email@example.com"
+                className="mt-1"
               />
             </div>
 
-            <Alert className="bg-blue-50 border-blue-200">
-              <AlertCircle className="h-4 w-4 text-blue-600" />
-              <AlertDescription className="text-blue-700 text-sm">
-                You'll receive notifications when your turn is approaching.
-              </AlertDescription>
-            </Alert>
-
-            <Button type="submit" className="w-full">
-              Join Queue
-            </Button>
-          </form>
-        ) : (
-          <div className="space-y-6">
-            <div className="flex flex-col items-center justify-center space-y-4 py-6">
-              <div className="h-24 w-24 rounded-full bg-green-100 flex items-center justify-center">
-                <Ticket className="h-12 w-12 text-green-600" />
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold">Queue Number</h3>
-                <p className="text-3xl font-bold text-green-600">
-                  {queueNumber}
-                </p>
-              </div>
+            <div>
+              <Label htmlFor="symptoms">Symptoms / Reason for Visit</Label>
+              <Textarea
+                id="symptoms"
+                value={patientDetails.symptoms}
+                onChange={(e) => setPatientDetails({...patientDetails, symptoms: e.target.value})}
+                placeholder="Briefly describe your symptoms or reason for visit (optional)"
+                className="mt-1"
+                rows={3}
+              />
             </div>
 
-            <Separator />
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Clock className="h-5 w-5 mr-2 text-amber-500" />
-                <span className="text-sm font-medium">
-                  Estimated Wait Time:
-                </span>
-              </div>
-              <span className="font-bold">{estimatedWaitTime} minutes</span>
+            <div>
+              <Label htmlFor="priority">Priority Level</Label>
+              <Select value={patientDetails.priority} onValueChange={(value) => setPatientDetails({...patientDetails, priority: value as any})}>
+                <SelectTrigger className="mt-1">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="low">Low - Routine care</SelectItem>
+                  <SelectItem value="medium">Medium - Standard care</SelectItem>
+                  <SelectItem value="high">High - Needs attention soon</SelectItem>
+                  <SelectItem value="urgent">Urgent - Immediate care needed</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
+          </div>
 
-            <Alert className="bg-green-50 border-green-200">
-              <AlertCircle className="h-4 w-4 text-green-600" />
-              <AlertDescription className="text-green-700 text-sm">
-                We'll notify you when your turn is approaching. You can leave
-                and come back when it's almost your turn.
-              </AlertDescription>
-            </Alert>
+          {error && (
+            <div className="bg-red-50 p-3 rounded-lg text-red-700 text-sm">
+              {error}
+            </div>
+          )}
 
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={() => {
-                setSubmitted(false);
-                setFormData({
-                  name: "",
-                  phone: "",
-                  email: "",
-                  serviceType: "",
-                });
-              }}
+          <div className="flex space-x-3">
+            {onCancel && (
+              <Button variant="outline" onClick={onCancel} className="flex-1">
+                Cancel
+              </Button>
+            )}
+            <Button 
+              onClick={handleJoinQueue}
+              disabled={!selectedService || !patientDetails.name || !patientDetails.phone || !patientDetails.email || !patientDetails.dateOfBirth || loading}
+              className="flex-1"
             >
-              Join Another Queue
+              {loading ? "Joining Queue..." : "Join Queue"}
             </Button>
           </div>
-        )}
-      </CardContent>
-
-      <CardFooter className="flex justify-center border-t pt-4">
-        <p className="text-xs text-gray-500">
-          Powered by SwiftQueue AI - Smart Queue Management
-        </p>
-      </CardFooter>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
-};
-
-export default QueueJoinForm;
+}
