@@ -25,6 +25,68 @@ export interface StaffOptimizationResponse {
   total_adjustments_needed: number;
 }
 
+export interface AITriageRequest {
+  symptoms: string;
+  age_group: string;
+  insurance_type: string;
+  department?: string;
+  arrival_time?: string;
+  medical_history?: string;
+  additional_context?: string;
+}
+
+export interface AITriageResponse {
+  success: boolean;
+  triage_result: {
+    triage_score: number;
+    category: string;
+    priority_level: number;
+    estimated_wait_time: number;
+    resource_requirements: any;
+    recommended_department: string;
+    ai_analysis: {
+      emergency_level: string;
+      confidence: number;
+      reasoning: string;
+      recommended_actions: string[];
+      risk_factors: string[];
+    };
+    factors: any;
+    analysis_method: string;
+  };
+  recommendations: string[];
+}
+
+export interface SymptomAnalysisRequest {
+  symptoms: string;
+  patient_age?: string;
+  medical_history?: string;
+  additional_context?: string;
+}
+
+export interface SymptomAnalysisResponse {
+  success: boolean;
+  analysis: {
+    emergency_level: string;
+    confidence: number;
+    triage_category: string;
+    estimated_wait_time: number;
+    department_recommendation: string;
+    recommended_actions: string[];
+    risk_factors: string[];
+    ai_reasoning: string;
+    timestamp: string;
+  };
+  recommendations: string[];
+}
+
+export interface BatchSymptomAnalysisResponse {
+  success: boolean;
+  batch_results: SymptomAnalysisResponse['analysis'][];
+  total_analyzed: number;
+  successful_analyses: number;
+}
+
 class AIService {
   /**
    * Train or retrain AI models with current data
@@ -225,6 +287,74 @@ class AIService {
         expected_impact: '40% increase in throughput'
       }
     ];
+  }
+
+  /**
+   * Get AI-enhanced triage analysis using OpenRouter
+   */
+  async getAITriageAnalysis(request: AITriageRequest): Promise<AITriageResponse> {
+    return apiService.post('/enhanced-ai/triage/ai-enhanced', request);
+  }
+
+  /**
+   * Analyze patient symptoms using OpenRouter AI
+   */
+  async analyzeSymptomsWithAI(request: SymptomAnalysisRequest): Promise<SymptomAnalysisResponse> {
+    return apiService.post('/enhanced-ai/symptoms/analyze', request);
+  }
+
+  /**
+   * Batch analyze multiple symptoms using OpenRouter AI
+   */
+  async batchAnalyzeSymptoms(requests: SymptomAnalysisRequest[]): Promise<BatchSymptomAnalysisResponse> {
+    return apiService.post('/enhanced-ai/symptoms/batch-analyze', requests);
+  }
+
+  /**
+   * Get comprehensive symptom analysis with emergency level determination
+   */
+  async getComprehensiveSymptomAnalysis(
+    symptoms: string,
+    patientAge?: string,
+    medicalHistory?: string,
+    additionalContext?: string
+  ): Promise<{
+    analysis: SymptomAnalysisResponse;
+    triage: AITriageResponse;
+    combinedRecommendations: string[];
+  }> {
+    try {
+      const [analysis, triage] = await Promise.all([
+        this.analyzeSymptomsWithAI({
+          symptoms,
+          patient_age: patientAge,
+          medical_history: medicalHistory,
+          additional_context: additionalContext
+        }),
+        this.getAITriageAnalysis({
+          symptoms,
+          age_group: patientAge || 'adult',
+          insurance_type: 'private', // Default, should be provided by user
+          medical_history: medicalHistory,
+          additional_context: additionalContext
+        })
+      ]);
+
+      // Combine recommendations from both analyses
+      const combinedRecommendations = [
+        ...analysis.recommendations,
+        ...triage.recommendations
+      ].filter((rec, index, arr) => arr.indexOf(rec) === index); // Remove duplicates
+
+      return {
+        analysis,
+        triage,
+        combinedRecommendations
+      };
+    } catch (error) {
+      console.error('Error in comprehensive symptom analysis:', error);
+      throw error;
+    }
   }
 }
 
