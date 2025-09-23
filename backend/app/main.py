@@ -8,7 +8,7 @@ from starlette.middleware.gzip import GZipMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
 
-from app.routes import queue, users, services, analytics, ai
+from app.routes import queue, users, services, analytics, ai, enhanced_ai
 from app.database import create_tables
 from app import ws
 
@@ -20,7 +20,7 @@ IS_PROD = ENV == "production"
 # e.g., "http://localhost:5173,http://127.0.0.1:5173,https://app.example.com"
 ALLOWED_ORIGINS = os.getenv(
     "ALLOWED_ORIGINS",
-    "http://localhost:5173,http://127.0.0.1:5173",
+    "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174",
 ).split(",")
 
 
@@ -76,6 +76,7 @@ app.include_router(users.router, prefix="/api/users", tags=["users"])
 app.include_router(services.router, prefix="/api/services", tags=["services"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
 app.include_router(ai.router, prefix="/api/ai", tags=["ai"])  # AI features router
+app.include_router(enhanced_ai.router, prefix="/api/enhanced-ai", tags=["enhanced-ai"])  # Enhanced AI routes
 app.include_router(ws.router)  # WebSocket router
 
 

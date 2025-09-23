@@ -290,24 +290,95 @@ class AIService {
   }
 
   /**
-   * Get AI-enhanced triage analysis using OpenRouter
+   * Get AI-enhanced triage analysis using basic AI
    */
   async getAITriageAnalysis(request: AITriageRequest): Promise<AITriageResponse> {
-    return apiService.post('/enhanced-ai/triage/ai-enhanced', request);
+    // Use basic AI service suggestion for triage analysis
+    const suggestion = await this.getServiceSuggestion(request.symptoms);
+    
+    // Convert service suggestion to triage response format
+    const emergencyLevel = suggestion.urgency === 'high' ? 'critical' : 
+                         suggestion.urgency === 'medium' ? 'high' : 'moderate';
+    
+    return {
+      success: true,
+      triage_result: {
+        triage_score: suggestion.confidence * 10,
+        category: suggestion.urgency === 'high' ? 'Emergency' : 
+                 suggestion.urgency === 'medium' ? 'Urgent' : 'Semi-urgent',
+        priority_level: suggestion.urgency === 'high' ? 5 : 
+                       suggestion.urgency === 'medium' ? 4 : 3,
+        estimated_wait_time: suggestion.estimated_wait || 30,
+        resource_requirements: {},
+        recommended_department: suggestion.service || 'General Medicine',
+        ai_analysis: {
+          emergency_level: emergencyLevel,
+          confidence: suggestion.confidence,
+          reasoning: suggestion.reasoning,
+          recommended_actions: [`Seek ${suggestion.service} care`],
+          risk_factors: suggestion.urgency === 'high' ? ['Potential emergency'] : []
+        },
+        factors: {},
+        analysis_method: 'basic_ai'
+      },
+      recommendations: [`Recommended service: ${suggestion.service}`]
+    };
   }
 
   /**
-   * Analyze patient symptoms using OpenRouter AI
+   * Analyze patient symptoms using basic AI
    */
   async analyzeSymptomsWithAI(request: SymptomAnalysisRequest): Promise<SymptomAnalysisResponse> {
-    return apiService.post('/enhanced-ai/symptoms/analyze', request);
+    // Use basic AI service suggestion for symptom analysis
+    const suggestion = await this.getServiceSuggestion(request.symptoms);
+    
+    const emergencyLevel = suggestion.urgency === 'high' ? 'critical' : 
+                         suggestion.urgency === 'medium' ? 'high' : 'moderate';
+    
+    return {
+      success: true,
+      analysis: {
+        emergency_level: emergencyLevel,
+        confidence: suggestion.confidence,
+        triage_category: suggestion.urgency === 'high' ? 'Emergency' : 
+                        suggestion.urgency === 'medium' ? 'Urgent' : 'Semi-urgent',
+        estimated_wait_time: suggestion.estimated_wait || 30,
+        department_recommendation: suggestion.service || 'General Medicine',
+        recommended_actions: [`Seek ${suggestion.service} care`],
+        risk_factors: suggestion.urgency === 'high' ? ['Potential emergency'] : [],
+        ai_reasoning: suggestion.reasoning,
+        timestamp: new Date().toISOString()
+      },
+      recommendations: [`Recommended service: ${suggestion.service}`]
+    };
   }
 
   /**
-   * Batch analyze multiple symptoms using OpenRouter AI
+   * Batch analyze multiple symptoms using basic AI
    */
   async batchAnalyzeSymptoms(requests: SymptomAnalysisRequest[]): Promise<BatchSymptomAnalysisResponse> {
-    return apiService.post('/enhanced-ai/symptoms/batch-analyze', requests);
+    try {
+      const batchResults = await Promise.all(
+        requests.map(request => this.analyzeSymptomsWithAI(request))
+      );
+      
+      const successfulAnalyses = batchResults.filter(result => result.success);
+      
+      return {
+        success: true,
+        batch_results: successfulAnalyses.map(result => result.analysis),
+        total_analyzed: requests.length,
+        successful_analyses: successfulAnalyses.length
+      };
+    } catch (error) {
+      console.error('Batch analysis failed:', error);
+      return {
+        success: false,
+        batch_results: [],
+        total_analyzed: requests.length,
+        successful_analyses: 0
+      };
+    }
   }
 
   /**
