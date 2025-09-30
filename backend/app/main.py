@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import queue, users, services, analytics
+from app.routes import queue, users, services, analytics, auth
 from app.database import create_tables
 from app import ws
 
@@ -16,6 +16,7 @@ app.add_middleware(
 )
 
 # Include routers
+app.include_router(auth.router, prefix="/api/auth", tags=["authentication"])
 app.include_router(queue.router, prefix="/api/queue", tags=["queue"])
 app.include_router(users.router, prefix="/api/users", tags=["users"])
 app.include_router(services.router, prefix="/api/services", tags=["services"])

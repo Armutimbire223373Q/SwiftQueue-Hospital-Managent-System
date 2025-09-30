@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Enum, ForeignKey, Float
+from sqlalchemy import Column, Integer, String, DateTime, Enum, ForeignKey, Float, Boolean
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from app.database import Base
@@ -11,6 +11,12 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     phone = Column(String)
     date_of_birth = Column(DateTime)
+    password_hash = Column(String, nullable=False)
+    role = Column(Enum("admin", "staff", "patient", name="user_role"), default="patient")
+    is_active = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    last_login = Column(DateTime, nullable=True)
 
 class QueueEntry(Base):
     __tablename__ = "queue_entries"
