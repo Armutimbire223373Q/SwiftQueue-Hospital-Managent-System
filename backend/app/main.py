@@ -1,85 +1,47 @@
-import os
-import asyncio
-from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.middleware.gzip import GZipMiddleware
-from starlette.middleware.trustedhost import TrustedHostMiddleware
-from starlette.middleware.httpsredirect import HTTPSRedirectMiddleware
-
-from app.routes import queue, users, services, analytics, ai, enhanced_ai
+from fastapi.staticfiles import StaticFiles
+from app.routes import queue, users, services, analytics, auth, ai, appointments, notifications, checkin, scheduling, navigation
 from app.database import create_tables
 from app import ws
+import os
 
-# Environment configuration
-ENV = os.getenv("ENV", "development").lower()
-IS_PROD = ENV == "production"
+app = FastAPI(title="Queue Management System API")
 
-# Comma-separated list of allowed origins for CORS
-# e.g., "http://localhost:5173,http://127.0.0.1:5173,https://app.example.com"
-ALLOWED_ORIGINS = os.getenv(
-    "ALLOWED_ORIGINS",
-    "http://localhost:5173,http://127.0.0.1:5173,http://localhost:5174,http://127.0.0.1:5174",
-).split(",")
+# Mount static files for the frontend (before API routes for precedence)
+dist_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "dist")
+app.mount("/", StaticFiles(directory=dist_path, html=True), name="static")
 
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    """Application lifespan context.
-
-    - Runs blocking DB table creation in a thread to avoid blocking the event loop.
-    - Add teardown logic if/when needed.
-    """
-    try:
-        loop = asyncio.get_running_loop()
-        await loop.run_in_executor(None, create_tables)
-    except Exception as exc:
-        # Replace with proper structured logging if available
-        print(f"[startup] Database initialization failed: {exc}")
-        raise
-    yield
-    # Teardown logic could go here
-
-
-app = FastAPI(
-    title="Queue Management System API",
-    docs_url=None if IS_PROD else "/docs",
-    redoc_url=None if IS_PROD else "/redoc",
-    lifespan=lifespan,
-)
-
-# Compression middleware to reduce payload sizes
-app.add_middleware(GZipMiddleware, minimum_size=1000)
-
-# Production hardening: enforce trusted hosts and HTTPS
-if IS_PROD:
-    allowed_hosts_env = os.getenv("ALLOWED_HOSTS", "").split(",")
-    allowed_hosts = [h.strip() for h in allowed_hosts_env if h.strip()]
-    if allowed_hosts:
-        app.add_middleware(TrustedHostMiddleware, allowed_hosts=allowed_hosts)
-    app.add_middleware(HTTPSRedirectMiddleware)
-
-# CORS configuration (environment-driven)
+# Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[o.strip() for o in ALLOWED_ORIGINS if o.strip()],
+    allow_origins=[
+        "http://localhost:5173",  # React dev server default
+        "http://localhost:5174",  # React dev server alternate
+        "http://localhost:3000",  # Alternative React port
+        "http://127.0.0.1:5173",
+        "http://127.0.0.1:5174",
+        "http://127.0.0.1:3000",
+    ],
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type"],
-    max_age=86400,  # cache preflight for 24h
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Include routers
+app.include_router(auth.router, prefix="/api/auth", tags=["authentication"])
 app.include_router(queue.router, prefix="/api/queue", tags=["queue"])
 app.include_router(users.router, prefix="/api/users", tags=["users"])
 app.include_router(services.router, prefix="/api/services", tags=["services"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["analytics"])
-app.include_router(ai.router, prefix="/api/ai", tags=["ai"])  # AI features router
-app.include_router(enhanced_ai.router, prefix="/api/enhanced-ai", tags=["enhanced-ai"])  # Enhanced AI routes
+app.include_router(ai.router, prefix="/api/ai", tags=["ai"])
+app.include_router(appointments.router, prefix="/api/appointments", tags=["appointments"])
+app.include_router(notifications.router, prefix="/api/notifications", tags=["notifications"])
+app.include_router(checkin.router, prefix="/api/checkin", tags=["checkin"])
+app.include_router(scheduling.router, prefix="/api/scheduling", tags=["scheduling"])
+app.include_router(navigation.router, prefix="/api/navigation", tags=["navigation"])
 app.include_router(ws.router)  # WebSocket router
 
-
-@app.get("/", tags=["health"])
-async def root() -> dict:
-    return {"message": "Queue Management System API"}
+@app.on_event("startup")
+async def startup_event():
+    create_tables()

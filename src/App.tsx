@@ -1,47 +1,128 @@
-
-import { Suspense, useState, useEffect } from "react";
-import { useRoutes } from "react-router-dom";
+import { Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/home";
+import QueueDashboard from "./components/queue-dashboard";
+import CustomerQueue from "./components/customer-queue";
+import AdminPanel from "./components/admin-panel";
+import QueueAnalytics from "./components/QueueAnalyticsNew";
+import LoginForm from "./components/auth/LoginForm";
+import RegisterForm from "./components/auth/RegisterForm";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AppointmentBooking from "./components/appointment-booking";
+import AppointmentManagement from "./components/appointment-management";
+import PatientCheckin from "./components/patient-checkin";
+import NotificationCenter from "./components/notification-center";
+import HospitalNavigation from "./components/hospital-navigation";
 import { Toaster } from "./components/ui/toaster";
-import ErrorBoundary from "./components/ErrorBoundary";
-import LoadingSpinner from "./components/LoadingSpinner";
-import SplashScreen from "./components/SplashScreen";
-import Navigation from "./components/Navigation";
-import { routes } from "./routes";
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
-  const routeElement = useRoutes(routes);
-
-  useEffect(() => {
-    // Show splash screen for 3 seconds
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (showSplash) {
-    return (
-      <SplashScreen 
-        onComplete={() => setShowSplash(false)}
-        duration={3000}
-      />
-    );
-  }
-
   return (
-    <ErrorBoundary>
-      <div className="min-h-screen bg-gray-50">
-        <Navigation />
-        <Suspense fallback={<LoadingSpinner size="xl" text="Loading application..." fullScreen />}>
-          <>
-            {routeElement}
-            <Toaster />
-          </>
-        </Suspense>
+    <Suspense fallback={
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-primary"></div>
       </div>
-    </ErrorBoundary>
+    }>
+      <>
+        <Routes>
+          {/* Public routes */}
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/login"
+            element={
+              <ProtectedRoute requireAuth={false}>
+                <LoginForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <ProtectedRoute requireAuth={false}>
+                <RegisterForm />
+              </ProtectedRoute>
+            }
+          />
+          
+          {/* Guest/Emergency access route */}
+          <Route path="/join-queue" element={<CustomerQueue />} />
+
+          {/* Protected routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <QueueDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/queue"
+            element={
+              <ProtectedRoute>
+                <CustomerQueue />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute requiredRole="admin">
+                <AdminPanel />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/analytics"
+            element={
+              <ProtectedRoute>
+                <QueueAnalytics />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/appointments"
+            element={
+              <ProtectedRoute>
+                <AppointmentManagement />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/book-appointment"
+            element={
+              <ProtectedRoute>
+                <AppointmentBooking />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/checkin"
+            element={
+              <ProtectedRoute>
+                <PatientCheckin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute>
+                <NotificationCenter />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/navigation"
+            element={
+              <ProtectedRoute>
+                <HospitalNavigation />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+        <Toaster />
+      </>
+    </Suspense>
   );
 }
 

@@ -1,61 +1,4 @@
-/**
- * AI Service for Queue Management System
- * Handles AI-powered features like predictions, recommendations, and optimizations
- */
-
-import { apiService, AIServiceSuggestion, AIEfficiencyMetrics, AIStaffOptimization, AIRecommendation } from './apiService';
-
-export interface WaitTimePrediction {
-  service_id: number;
-  service_name: string;
-  predicted_wait_minutes: number;
-}
-
-export interface AnomalyDetection {
-  anomalies_detected: number;
-  anomalies: Array<{
-    service_id: number;
-    metrics: Record<string, number>;
-    severity: 'low' | 'medium' | 'high';
-  }>;
-}
-
-export interface StaffOptimizationResponse {
-  recommendations: AIStaffOptimization[];
-  total_adjustments_needed: number;
-}
-
-export interface AITriageRequest {
-  symptoms: string;
-  age_group: string;
-  insurance_type: string;
-  department?: string;
-  arrival_time?: string;
-  medical_history?: string;
-  additional_context?: string;
-}
-
-export interface AITriageResponse {
-  success: boolean;
-  triage_result: {
-    triage_score: number;
-    category: string;
-    priority_level: number;
-    estimated_wait_time: number;
-    resource_requirements: any;
-    recommended_department: string;
-    ai_analysis: {
-      emergency_level: string;
-      confidence: number;
-      reasoning: string;
-      recommended_actions: string[];
-      risk_factors: string[];
-    };
-    factors: any;
-    analysis_method: string;
-  };
-  recommendations: string[];
-}
+const API_BASE_URL = 'http://localhost:8000/api';
 
 export interface SymptomAnalysisRequest {
   symptoms: string;
@@ -80,351 +23,236 @@ export interface SymptomAnalysisResponse {
   recommendations: string[];
 }
 
-export interface BatchSymptomAnalysisResponse {
+export interface TriageAnalysisRequest {
+  symptoms: string;
+  age_group?: string;
+  insurance_type?: string;
+  department?: string;
+  medical_history?: string;
+  additional_context?: string;
+}
+
+export interface TriageAnalysisResponse {
   success: boolean;
-  batch_results: SymptomAnalysisResponse['analysis'][];
-  total_analyzed: number;
-  successful_analyses: number;
+  triage_result: {
+    triage_score: number;
+    category: string;
+    priority_level: number;
+    estimated_wait_time: number;
+    resource_requirements: any;
+    recommended_department: string;
+    ai_analysis: {
+      emergency_level: string;
+      confidence: number;
+      reasoning: string;
+      recommended_actions: string[];
+      risk_factors: string[];
+    };
+  };
+  recommendations: string[];
+}
+
+export interface AIHealthStatus {
+  status: string;
+  models_available: boolean;
+  model_in_use?: string;
+  error?: string;
 }
 
 class AIService {
   /**
-   * Train or retrain AI models with current data
-   */
-  async trainModels(): Promise<{ message: string }> {
-    return apiService.post('/ai/train');
-  }
-
-  /**
-   * Get AI-predicted wait time for a specific service
-   */
-  async predictWaitTime(serviceId: number): Promise<WaitTimePrediction> {
-    return apiService.get(`/ai/wait-prediction/${serviceId}`);
-  }
-
-  /**
-   * Detect anomalies in the current system state
-   */
-  async detectAnomalies(): Promise<AnomalyDetection> {
-    return apiService.get('/ai/anomalies');
-  }
-
-  /**
-   * Get AI-powered service suggestion based on symptoms
-   */
-  async getServiceSuggestion(symptoms: string): Promise<AIServiceSuggestion> {
-    return apiService.post('/ai/service-suggestion', { symptoms });
-  }
-
-  /**
-   * Get AI-analyzed efficiency metrics for a service
-   */
-  async getServiceEfficiency(serviceId: number): Promise<{
-    service_id: number;
-    service_name: string;
-    metrics: AIEfficiencyMetrics;
-  }> {
-    return apiService.get(`/ai/efficiency/${serviceId}`);
-  }
-
-  /**
-   * Get AI recommendations for staff optimization
-   */
-  async getStaffOptimization(): Promise<StaffOptimizationResponse> {
-    return apiService.get('/ai/optimize-staff');
-  }
-
-  /**
-   * Get general AI recommendations for the system
-   */
-  async getRecommendations(): Promise<AIRecommendation[]> {
-    return apiService.get('/analytics/recommendations');
-  }
-
-  /**
-   * Predict peak times for all services
-   */
-  async predictPeakTimes(): Promise<Array<{
-    service_id: number;
-    service_name: string;
-    peak_hours: Array<{ hour: number; avg_load: number }>;
-    next_predicted_peak: { hour: number; expected_load: number };
-    current_trend: 'increasing' | 'stable' | 'decreasing';
-  }>> {
-    // This would be implemented as a separate endpoint in the backend
-    // For now, return mock data
-    return [
-      {
-        service_id: 1,
-        service_name: "Emergency Care",
-        peak_hours: [
-          { hour: 14, avg_load: 15 },
-          { hour: 16, avg_load: 12 },
-          { hour: 10, avg_load: 10 }
-        ],
-        next_predicted_peak: { hour: 16, expected_load: 12 },
-        current_trend: "increasing"
-      }
-    ];
-  }
-
-  /**
-   * Get AI insights for dashboard
-   */
-  async getDashboardInsights(): Promise<{
-    total_patients_today: number;
-    avg_wait_time: number;
-    efficiency_score: number;
-    peak_department: string;
-    anomalies_count: number;
-    recommendations_count: number;
-    ai_accuracy: number;
-    system_health: 'excellent' | 'good' | 'fair' | 'poor';
-  }> {
-    try {
-      // Combine multiple AI endpoints to create dashboard insights
-      const [anomalies, recommendations] = await Promise.all([
-        this.detectAnomalies(),
-        this.getRecommendations()
-      ]);
-
-      // Calculate system health based on anomalies and efficiency
-      let systemHealth: 'excellent' | 'good' | 'fair' | 'poor' = 'good';
-      if (anomalies.anomalies_detected === 0) {
-        systemHealth = 'excellent';
-      } else if (anomalies.anomalies_detected <= 2) {
-        systemHealth = 'good';
-      } else if (anomalies.anomalies_detected <= 5) {
-        systemHealth = 'fair';
-      } else {
-        systemHealth = 'poor';
-      }
-
-      return {
-        total_patients_today: 73, // This would come from analytics
-        avg_wait_time: 18.5,
-        efficiency_score: 0.92,
-        peak_department: "Emergency",
-        anomalies_count: anomalies.anomalies_detected,
-        recommendations_count: recommendations.length,
-        ai_accuracy: 0.89, // This would be calculated from prediction accuracy
-        system_health: systemHealth
-      };
-    } catch (error) {
-      console.error('Failed to get dashboard insights:', error);
-      // Return default values on error
-      return {
-        total_patients_today: 0,
-        avg_wait_time: 0,
-        efficiency_score: 0,
-        peak_department: "Unknown",
-        anomalies_count: 0,
-        recommendations_count: 0,
-        ai_accuracy: 0,
-        system_health: 'poor'
-      };
-    }
-  }
-
-  /**
-   * Get AI-powered patient flow predictions
-   */
-  async getPatientFlowPredictions(): Promise<{
-    next_hour_prediction: number;
-    next_4_hours: Array<{ hour: number; predicted_patients: number }>;
-    confidence: number;
-    factors: string[];
-  }> {
-    // This would be a separate endpoint in a full implementation
-    const currentHour = new Date().getHours();
-    
-    return {
-      next_hour_prediction: Math.floor(Math.random() * 15) + 5,
-      next_4_hours: Array.from({ length: 4 }, (_, i) => ({
-        hour: (currentHour + i + 1) % 24,
-        predicted_patients: Math.floor(Math.random() * 20) + 5
-      })),
-      confidence: 0.85,
-      factors: [
-        "Historical patterns",
-        "Day of week trends",
-        "Seasonal variations",
-        "Current queue state"
-      ]
-    };
-  }
-
-  /**
-   * Get AI recommendations for resource allocation
-   */
-  async getResourceAllocationRecommendations(): Promise<Array<{
-    resource_type: 'staff' | 'equipment' | 'space';
-    department: string;
-    current_allocation: number;
-    recommended_allocation: number;
-    priority: 'low' | 'medium' | 'high' | 'critical';
-    reasoning: string;
-    expected_impact: string;
-  }>> {
-    // This would be implemented as a backend endpoint
-    return [
-      {
-        resource_type: 'staff',
-        department: 'Emergency',
-        current_allocation: 3,
-        recommended_allocation: 4,
-        priority: 'high',
-        reasoning: 'Expected patient surge in next 2 hours based on historical patterns',
-        expected_impact: '25% reduction in wait times'
-      },
-      {
-        resource_type: 'equipment',
-        department: 'Radiology',
-        current_allocation: 1,
-        recommended_allocation: 2,
-        priority: 'medium',
-        reasoning: 'High utilization rate and growing queue',
-        expected_impact: '40% increase in throughput'
-      }
-    ];
-  }
-
-  /**
-   * Get AI-enhanced triage analysis using basic AI
-   */
-  async getAITriageAnalysis(request: AITriageRequest): Promise<AITriageResponse> {
-    // Use basic AI service suggestion for triage analysis
-    const suggestion = await this.getServiceSuggestion(request.symptoms);
-    
-    // Convert service suggestion to triage response format
-    const emergencyLevel = suggestion.urgency === 'high' ? 'critical' : 
-                         suggestion.urgency === 'medium' ? 'high' : 'moderate';
-    
-    return {
-      success: true,
-      triage_result: {
-        triage_score: suggestion.confidence * 10,
-        category: suggestion.urgency === 'high' ? 'Emergency' : 
-                 suggestion.urgency === 'medium' ? 'Urgent' : 'Semi-urgent',
-        priority_level: suggestion.urgency === 'high' ? 5 : 
-                       suggestion.urgency === 'medium' ? 4 : 3,
-        estimated_wait_time: suggestion.estimated_wait || 30,
-        resource_requirements: {},
-        recommended_department: suggestion.service || 'General Medicine',
-        ai_analysis: {
-          emergency_level: emergencyLevel,
-          confidence: suggestion.confidence,
-          reasoning: suggestion.reasoning,
-          recommended_actions: [`Seek ${suggestion.service} care`],
-          risk_factors: suggestion.urgency === 'high' ? ['Potential emergency'] : []
-        },
-        factors: {},
-        analysis_method: 'basic_ai'
-      },
-      recommendations: [`Recommended service: ${suggestion.service}`]
-    };
-  }
-
-  /**
-   * Analyze patient symptoms using basic AI
+   * Analyze patient symptoms using AI to determine priority and emergency level
    */
   async analyzeSymptomsWithAI(request: SymptomAnalysisRequest): Promise<SymptomAnalysisResponse> {
-    // Use basic AI service suggestion for symptom analysis
-    const suggestion = await this.getServiceSuggestion(request.symptoms);
-    
-    const emergencyLevel = suggestion.urgency === 'high' ? 'critical' : 
-                         suggestion.urgency === 'medium' ? 'high' : 'moderate';
-    
-    return {
-      success: true,
-      analysis: {
-        emergency_level: emergencyLevel,
-        confidence: suggestion.confidence,
-        triage_category: suggestion.urgency === 'high' ? 'Emergency' : 
-                        suggestion.urgency === 'medium' ? 'Urgent' : 'Semi-urgent',
-        estimated_wait_time: suggestion.estimated_wait || 30,
-        department_recommendation: suggestion.service || 'General Medicine',
-        recommended_actions: [`Seek ${suggestion.service} care`],
-        risk_factors: suggestion.urgency === 'high' ? ['Potential emergency'] : [],
-        ai_reasoning: suggestion.reasoning,
-        timestamp: new Date().toISOString()
-      },
-      recommendations: [`Recommended service: ${suggestion.service}`]
-    };
-  }
-
-  /**
-   * Batch analyze multiple symptoms using basic AI
-   */
-  async batchAnalyzeSymptoms(requests: SymptomAnalysisRequest[]): Promise<BatchSymptomAnalysisResponse> {
     try {
-      const batchResults = await Promise.all(
-        requests.map(request => this.analyzeSymptomsWithAI(request))
-      );
+      const response = await fetch(`${API_BASE_URL}/ai/analyze-symptoms`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('AI symptom analysis failed:', error);
       
-      const successfulAnalyses = batchResults.filter(result => result.success);
+      // Fallback analysis based on keyword detection
+      const fallbackAnalysis = this.fallbackSymptomAnalysis(request.symptoms);
       
       return {
         success: true,
-        batch_results: successfulAnalyses.map(result => result.analysis),
-        total_analyzed: requests.length,
-        successful_analyses: successfulAnalyses.length
-      };
-    } catch (error) {
-      console.error('Batch analysis failed:', error);
-      return {
-        success: false,
-        batch_results: [],
-        total_analyzed: requests.length,
-        successful_analyses: 0
+        analysis: fallbackAnalysis,
+        recommendations: fallbackAnalysis.recommended_actions
       };
     }
   }
 
   /**
-   * Get comprehensive symptom analysis with emergency level determination
+   * Perform comprehensive AI triage analysis
    */
-  async getComprehensiveSymptomAnalysis(
-    symptoms: string,
-    patientAge?: string,
-    medicalHistory?: string,
-    additionalContext?: string
-  ): Promise<{
-    analysis: SymptomAnalysisResponse;
-    triage: AITriageResponse;
-    combinedRecommendations: string[];
-  }> {
+  async performTriageAnalysis(request: TriageAnalysisRequest): Promise<TriageAnalysisResponse> {
     try {
-      const [analysis, triage] = await Promise.all([
-        this.analyzeSymptomsWithAI({
-          symptoms,
-          patient_age: patientAge,
-          medical_history: medicalHistory,
-          additional_context: additionalContext
-        }),
-        this.getAITriageAnalysis({
-          symptoms,
-          age_group: patientAge || 'adult',
-          insurance_type: 'private', // Default, should be provided by user
-          medical_history: medicalHistory,
-          additional_context: additionalContext
-        })
-      ]);
+      const response = await fetch(`${API_BASE_URL}/ai/triage`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(request),
+      });
 
-      // Combine recommendations from both analyses
-      const combinedRecommendations = [
-        ...analysis.recommendations,
-        ...triage.recommendations
-      ].filter((rec, index, arr) => arr.indexOf(rec) === index); // Remove duplicates
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-      return {
-        analysis,
-        triage,
-        combinedRecommendations
-      };
+      return await response.json();
     } catch (error) {
-      console.error('Error in comprehensive symptom analysis:', error);
+      console.error('AI triage analysis failed:', error);
       throw error;
+    }
+  }
+
+  /**
+   * Check AI service health and availability
+   */
+  async checkAIHealth(): Promise<AIHealthStatus> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ai/health`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('AI health check failed:', error);
+      return {
+        status: 'unhealthy',
+        models_available: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      };
+    }
+  }
+
+  /**
+   * Get available AI models
+   */
+  async getAvailableModels(): Promise<any> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/ai/models`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Failed to get AI models:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Fallback symptom analysis using keyword matching
+   */
+  private fallbackSymptomAnalysis(symptoms: string): any {
+    const symptomsLower = symptoms.toLowerCase();
+    
+    // Critical symptoms
+    const criticalKeywords = [
+      'chest pain', 'difficulty breathing', 'unconscious', 'severe bleeding',
+      'stroke', 'heart attack', 'anaphylaxis', 'cardiac arrest', 'emergency'
+    ];
+    
+    // High priority symptoms  
+    const highKeywords = [
+      'severe pain', 'high fever', 'broken bone', 'mental crisis',
+      'dehydration', 'urgent', 'severe'
+    ];
+    
+    // Moderate symptoms
+    const moderateKeywords = [
+      'pain', 'fever', 'nausea', 'headache', 'infection'
+    ];
+
+    let emergency_level = 'low';
+    let confidence = 0.6;
+    let triage_category = 'Non-urgent';
+    let estimated_wait_time = 120;
+    let department_recommendation = 'General Medicine';
+    let recommended_actions = ['Schedule regular appointment'];
+
+    if (criticalKeywords.some(keyword => symptomsLower.includes(keyword))) {
+      emergency_level = 'critical';
+      confidence = 0.85;
+      triage_category = 'Emergency';
+      estimated_wait_time = 0;
+      department_recommendation = 'Emergency';
+      recommended_actions = ['Seek immediate emergency care', 'Call 911 if severe'];
+    } else if (highKeywords.some(keyword => symptomsLower.includes(keyword))) {
+      emergency_level = 'high';
+      confidence = 0.75;
+      triage_category = 'Urgent';
+      estimated_wait_time = 30;
+      department_recommendation = 'Urgent Care';
+      recommended_actions = ['Seek prompt medical attention', 'Consider urgent care'];
+    } else if (moderateKeywords.some(keyword => symptomsLower.includes(keyword))) {
+      emergency_level = 'moderate';
+      confidence = 0.65;
+      triage_category = 'Semi-urgent';
+      estimated_wait_time = 90;
+      department_recommendation = 'General Medicine';
+      recommended_actions = ['Schedule appointment within 24 hours'];
+    }
+
+    return {
+      emergency_level,
+      confidence,
+      triage_category,
+      estimated_wait_time,
+      department_recommendation,
+      recommended_actions,
+      risk_factors: emergency_level === 'critical' ? ['High risk condition detected'] : [],
+      ai_reasoning: `Fallback analysis based on symptom keywords. Emergency level: ${emergency_level}`,
+      timestamp: new Date().toISOString()
+    };
+  }
+
+  /**
+   * Convert emergency level to priority for queue management
+   */
+  emergencyLevelToPriority(emergencyLevel: string): 'low' | 'medium' | 'high' | 'urgent' {
+    switch (emergencyLevel) {
+      case 'critical':
+        return 'urgent';
+      case 'high':
+        return 'high';
+      case 'moderate':
+        return 'medium';
+      case 'low':
+      default:
+        return 'low';
+    }
+  }
+
+  /**
+   * Get priority badge styling based on emergency level
+   */
+  getPriorityBadgeClass(emergencyLevel: string): string {
+    switch (emergencyLevel) {
+      case 'critical':
+        return 'bg-red-500 text-white';
+      case 'high':
+        return 'bg-orange-500 text-white';
+      case 'moderate':
+        return 'bg-yellow-500 text-black';
+      case 'low':
+      default:
+        return 'bg-green-500 text-white';
     }
   }
 }

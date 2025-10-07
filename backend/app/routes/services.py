@@ -7,6 +7,7 @@ from app.models.models import Service, ServiceCounter
 router = APIRouter()
 
 @router.get("/")
+@router.get("")  # Handle both /api/services and /api/services/
 async def get_services(db: Session = Depends(get_db)):
     services = db.query(Service).all()
     return services
