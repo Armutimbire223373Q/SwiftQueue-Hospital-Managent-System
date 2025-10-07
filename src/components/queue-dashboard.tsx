@@ -7,6 +7,7 @@ import { Clock, Users, AlertCircle, CheckCircle, Heart, Brain, Activity, Stethos
 import { wsService } from "@/services/wsService";
 import { servicesService, ServiceCounter } from "@/services/servicesService";
 import { queueService } from "@/services/queueService";
+import { LoadingSpinner, LoadingOverlay } from "@/components/ui/loading-spinner";
 
 interface QueueItem {
   id: string;
@@ -20,19 +21,15 @@ interface QueueItem {
   aiPredictedTime?: number;
 }
 
-interface ServiceCounter {
-  id: string;
-  name: string;
+interface ExtendedServiceCounter extends ServiceCounter {
   serviceType: string;
-  isActive: boolean;
-  currentPatient?: QueueItem;
-  staffMember?: string;
   department: string;
+  currentPatient?: QueueItem;
 }
 
 export default function QueueDashboard() {
   const [queues, setQueues] = useState<QueueItem[]>([]);
-  const [serviceCounters, setServiceCounters] = useState<ServiceCounter[]>([]);
+  const [serviceCounters, setServiceCounters] = useState<ExtendedServiceCounter[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -60,17 +57,14 @@ export default function QueueDashboard() {
       for (const service of services) {
         const counters = await servicesService.getServiceCounters(service.id);
         allCounters = [...allCounters, ...counters.map(counter => ({
-          id: counter.id.toString(),
-          name: counter.name,
-          serviceType: service.id.toString(),
+          ...counter,
+          serviceType: service.name,
           department: service.department || 'General',
-          isActive: counter.isActive,
-          staffMember: counter.staffMember,
           currentPatient: undefined
-        }))];
+        } as ExtendedServiceCounter))];
       }
       
-      setServiceCounters(allCounters);
+      setServiceCounters(allCounters as ExtendedServiceCounter[]);
       updateStats();
     } catch (err) {
       setError("Failed to load queue data");
@@ -137,9 +131,15 @@ export default function QueueDashboard() {
   };
   if (loading) {
     return (
-      <div className="p-8">
-        <div className="flex justify-center items-center h-32">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+      <div className="min-h-screen bg-white p-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Hospital Queue Management</h1>
+            <p className="text-gray-600">AI-powered patient flow monitoring and optimization</p>
+          </div>
+          <div className="flex justify-center items-center h-64">
+            <LoadingSpinner size="lg" text="Loading queue data..." />
+          </div>
         </div>
       </div>
     );

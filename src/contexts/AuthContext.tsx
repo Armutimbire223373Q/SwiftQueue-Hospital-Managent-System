@@ -34,15 +34,39 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const initializeAuth = async () => {
       const token = authService.getToken();
       const storedUser = authService.getCurrentUserFromStorage();
+      const isGuestSession = localStorage.getItem('isGuestSession') === 'true';
 
-      if (token && storedUser) {
+      if (isGuestSession && storedUser) {
+        // Handle guest session
+        setUser(storedUser);
+      } else if (token && storedUser) {
         try {
-          // Verify token is still valid by fetching current user
-          const currentUser = await authService.getCurrentUser();
-          setUser(currentUser);
+          // Check if token is expired or expiring soon
+          if (authService.isTokenExpired()) {
+            // Try to refresh token
+            try {
+              await authService.refreshToken();
+              const currentUser = await authService.getCurrentUser();
+              setUser(currentUser);
+            } catch (refreshError) {
+              // Refresh failed, logout
+              authService.logout();
+            }
+          } else {
+            // Token is valid, verify with server
+            const currentUser = await authService.getCurrentUser();
+            setUser(currentUser);
+          }
         } catch (error) {
-          // Token is invalid, clear storage
-          authService.logout();
+          // Token verification failed, try refresh
+          try {
+            await authService.refreshToken();
+            const currentUser = await authService.getCurrentUser();
+            setUser(currentUser);
+          } catch (refreshError) {
+            // Both verification and refresh failed, logout
+            authService.logout();
+          }
         }
       }
       setIsLoading(false);
@@ -71,6 +95,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
   const logout = () => {
     authService.logout();
+    localStorage.removeItem('isGuestSession');
     setUser(null);
   };
 

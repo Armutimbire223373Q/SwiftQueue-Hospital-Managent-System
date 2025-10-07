@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { 
   Monitor, 
   Users, 
@@ -15,13 +16,33 @@ import {
   Stethoscope,
   Activity,
   Shield,
-  AlertTriangle
+  AlertTriangle,
+  UserCheck
 } from "lucide-react";
 
 export default function Home() {
+  const isGuestSession = localStorage.getItem('isGuestSession') === 'true';
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  
   return (
     <div className="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
       <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Guest Session Alert */}
+        {isGuestSession && (
+          <Alert className="mb-6 border-blue-200 bg-blue-50">
+            <UserCheck className="h-4 w-4" />
+            <AlertDescription>
+              <strong>Guest Mode:</strong> You're browsing as a guest user. 
+              {user?.name === 'Emergency Patient' && (
+                <span className="text-red-600 font-semibold"> Emergency access enabled.</span>
+              )}
+              <Link to="/register" className="ml-2 text-blue-600 hover:underline">
+                Create an account for full features
+              </Link>
+            </AlertDescription>
+          </Alert>
+        )}
+
         {/* Header */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
@@ -290,6 +311,61 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Access Points for Different User Types */}
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Patient Access</h3>
+              <p className="text-sm text-gray-600 mb-4">Join queue, check status, emergency access</p>
+              <div className="space-y-2">
+                <Link to="/register">
+                  <Button className="w-full">Register as Patient</Button>
+                </Link>
+                <Link to="/login">
+                  <Button variant="outline" className="w-full">Patient Login</Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Stethoscope className="h-6 w-6 text-blue-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Medical Staff</h3>
+              <p className="text-sm text-gray-600 mb-4">Manage queues, patient flow, triage</p>
+              <div className="space-y-2">
+                <Link to="/login?role=staff">
+                  <Button variant="outline" className="w-full bg-blue-50 hover:bg-blue-100">
+                    Staff Login
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardContent className="pt-6">
+              <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Settings className="h-6 w-6 text-purple-600" />
+              </div>
+              <h3 className="font-semibold mb-2">Administration</h3>
+              <p className="text-sm text-gray-600 mb-4">System management, analytics, reports</p>
+              <div className="space-y-2">
+                <Link to="/login?role=admin">
+                  <Button variant="outline" className="w-full bg-purple-50 hover:bg-purple-100">
+                    Admin Login
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
         {/* Footer */}
         <div className="text-center mt-12 text-gray-500">

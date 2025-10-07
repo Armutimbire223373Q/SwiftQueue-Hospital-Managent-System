@@ -6,20 +6,12 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
-import { Clock, Users, Phone, Mail, CheckCircle, Heart, Brain, Stethoscope, Activity, AlertCircle } from "lucide-react";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Clock, Users, Phone, Mail, CheckCircle, Heart, Brain, Stethoscope, Activity, AlertCircle, UserCheck, AlertTriangle, Bot, Loader2 } from "lucide-react";
 import { ServiceType, queueService, PatientDetails } from "@/services/queueService";
 import { servicesService } from "@/services/servicesService";
-
-interface ServiceType {
-  id: string;
-  name: string;
-  description: string;
-  estimatedTime: number;
-  currentWaitTime: number;
-  queueLength: number;
-  department: string;
-  aiPredictedWait: number;
-}
+import { aiService, SymptomAnalysisRequest, SymptomAnalysisResponse } from "@/services/aiService";
+import { LoadingSpinner, LoadingButton, LoadingOverlay } from "@/components/ui/loading-spinner";
 
 export default function CustomerQueue() {
   const [step, setStep] = useState<"select" | "details" | "confirmation">("select");
@@ -36,19 +28,188 @@ export default function CustomerQueue() {
   const [services, setServices] = useState<ServiceType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  
+  // AI Analysis state
+  const [aiAnalyzing, setAiAnalyzing] = useState(false);
+  const [aiAnalysisResult, setAiAnalysisResult] = useState<SymptomAnalysisResponse | null>(null);
+  const [showAiAnalysis, setShowAiAnalysis] = useState(false);
+  
+  const isGuestSession = localStorage.getItem('isGuestSession') === 'true';
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  const isEmergencyGuest = user?.name === 'Emergency Patient';
 
+  // Fallback services data for emergency access and offline mode
+  const availableServices: ServiceType[] = [
+    {
+      id: 1,
+      name: "Emergency Care",
+      description: "Urgent medical attention required",
+      department: "Emergency",
+      estimatedTime: 15,
+      currentWaitTime: 5,
+      queueLength: 1,
+      aiPredictedWait: 3
+    },
+    {
+      id: 2,
+      name: "Laboratory Services",
+      description: "Blood tests, urine tests, diagnostic procedures",
+      department: "Laboratory",
+      estimatedTime: 10,
+      currentWaitTime: 8,
+      queueLength: 2,
+      aiPredictedWait: 6
+    },
+    {
+      id: 3,
+      name: "Radiology",
+      description: "X-rays, MRI, CT scans, ultrasounds",
+      department: "Radiology",
+      estimatedTime: 25,
+      currentWaitTime: 20,
+      queueLength: 3,
+      aiPredictedWait: 15
+    },
+    {
+      id: 4,
+      name: "Pediatrics",
+      description: "Medical care for children and adolescents",
+      department: "Pediatrics",
+      estimatedTime: 25,
+      currentWaitTime: 18,
+      queueLength: 2,
+      aiPredictedWait: 14
+    },
+    {
+      id: 5,
+      name: "Cardiology",
+      description: "Heart and cardiovascular care",
+      department: "Cardiology",
+      estimatedTime: 30,
+      currentWaitTime: 22,
+      queueLength: 4,
+      aiPredictedWait: 18
+    },
+    {
+      id: 6,
+      name: "Orthopedics",
+      description: "Bone, joint, and muscle care",
+      department: "Orthopedics",
+      estimatedTime: 35,
+      currentWaitTime: 28,
+      queueLength: 5,
+      aiPredictedWait: 25
+    }
+  ];
+
+  // Automatic AI analysis when symptoms change (debounced)
   useEffect(() => {
+    if (!patientDetails.symptoms.trim()) {
+      // Reset AI analysis when symptoms are cleared
+      setAiAnalysisResult(null);
+      setShowAiAnalysis(false);
+      setPatientDetails(prev => ({ ...prev, priority: "medium" }));
+      return;
+    }
+
+    // Debounce the AI analysis to avoid too many API calls
+    const timeoutId = setTimeout(async () => {
+      if (patientDetails.symptoms.trim() && patientDetails.name && patientDetails.dateOfBirth) {
+        setAiAnalyzing(true);
+        setError(null);
+
+        try {
+          const analysisRequest: SymptomAnalysisRequest = {
+            symptoms: patientDetails.symptoms,
+            patient_age: patientDetails.dateOfBirth ? 
+              String(new Date().getFullYear() - new Date(patientDetails.dateOfBirth).getFullYear()) : undefined,
+            medical_history: '',
+            additional_context: `Patient requesting ${selectedService?.name || 'medical'} service`
+          };
+
+          console.log("🔬 Auto-analyzing symptoms with AI:", analysisRequest);
+          const result = await aiService.analyzeSymptomsWithAI(analysisRequest);
+          
+          if (result.success) {
+            setAiAnalysisResult(result);
+            setShowAiAnalysis(true);
+            
+            // Update priority based on AI analysis
+            const aiPriority = aiService.emergencyLevelToPriority(result.analysis.emergency_level);
+            setPatientDetails(prev => ({ ...prev, priority: aiPriority }));
+            
+            console.log("✅ Auto AI Analysis completed:", {
+              emergency_level: result.analysis.emergency_level,
+              priority: aiPriority,
+              confidence: result.analysis.confidence
+            });
+          }
+        } catch (err) {
+          console.error('Auto AI analysis failed:', err);
+          // Don't show error for automatic analysis, just fall back to medium priority
+          setPatientDetails(prev => ({ ...prev, priority: "medium" }));
+        } finally {
+          setAiAnalyzing(false);
+        }
+      }
+    }, 1500); // 1.5 second debounce
+
+    return () => clearTimeout(timeoutId);
+  }, [patientDetails.symptoms, patientDetails.name, patientDetails.dateOfBirth, selectedService?.name]);
+
+  // Load services on component mount
+  useEffect(() => {
+    console.log("CustomerQueue: Loading services on mount");
     loadServices();
-  }, []);
+  }, []); // Only run once on mount
+
+  // Handle guest session pre-filling (separate effect)
+  useEffect(() => {
+    console.log("CustomerQueue: Handling guest session pre-fill");
+    if (isGuestSession && user) {
+      setPatientDetails(prev => ({
+        ...prev,
+        name: user.name || "",
+        email: user.email || "",
+        priority: isEmergencyGuest ? "high" : "medium"
+      }));
+    }
+  }, [isGuestSession, user, isEmergencyGuest]);
+
+  // Handle emergency patient auto-selection (separate effect)
+  useEffect(() => {
+    console.log("CustomerQueue: Handling emergency auto-selection", { isEmergencyGuest, servicesLength: services.length });
+    if (isEmergencyGuest && services.length > 0) {
+      const emergencyService = services.find(service =>
+        service.name.toLowerCase().includes("emergency")
+      );
+      if (emergencyService) {
+        console.log("CustomerQueue: Auto-selecting emergency service", emergencyService);
+        setSelectedService(emergencyService);
+        setStep("details");
+      }
+    }
+  }, [isEmergencyGuest, services]);
 
   const loadServices = async () => {
+    console.log("CustomerQueue: loadServices called");
     try {
       setLoading(true);
+      setError(null);
+      console.log("CustomerQueue: Calling servicesService.getAllServices()");
       const servicesData = await servicesService.getAllServices();
+      console.log("CustomerQueue: Got services data", servicesData);
       setServices(servicesData);
     } catch (err) {
-      setError("Failed to load services. Please try again later.");
       console.error("Error loading services:", err);
+      // Fallback to mock data for demo purposes (especially important for emergency access)
+      console.log("CustomerQueue: Using fallback services");
+      setServices(availableServices);
+      
+      // Only show error for non-emergency guests
+      if (!isEmergencyGuest) {
+        setError("Using offline services data. Some features may be limited.");
+      }
     } finally {
       setLoading(false);
     }
@@ -61,52 +222,53 @@ export default function CustomerQueue() {
     aiPredictedWait: 18
   };
 
-  const availableServices = [
-    {
-      id: "laboratory",
-      name: "Laboratory Services",
-      description: "Blood tests, urine tests, diagnostic procedures",
-      department: "Laboratory",
-      estimatedTime: 10,
-      currentWaitTime: 8,
-      queueLength: 2,
-      aiPredictedWait: 6
-    },
-    {
-      id: "emergency",
-      name: "Emergency Care",
-      description: "Urgent medical attention required",
-      department: "Emergency",
-      estimatedTime: 15,
-      currentWaitTime: 5,
-      queueLength: 1,
-      aiPredictedWait: 3
-    },
-    {
-      id: "radiology",
-      name: "Radiology",
-      description: "X-rays, MRI, CT scans, ultrasounds",
-      department: "Radiology",
-      estimatedTime: 25,
-      currentWaitTime: 20,
-      queueLength: 3,
-      aiPredictedWait: 15
-    },
-    {
-      id: "pediatrics",
-      name: "Pediatrics",
-      description: "Medical care for children and adolescents",
-      department: "Pediatrics",
-      estimatedTime: 25,
-      currentWaitTime: 18,
-      queueLength: 2,
-      aiPredictedWait: 14
-    }
-  ];
-
   const handleServiceSelect = (service: ServiceType) => {
     setSelectedService(service);
     setStep("details");
+  };
+
+  // AI Analysis function
+  const analyzeSymptoms = async () => {
+    if (!patientDetails.symptoms.trim()) {
+      setError("Please enter symptoms to get AI analysis");
+      return;
+    }
+
+    setAiAnalyzing(true);
+    setError(null);
+
+    try {
+      const analysisRequest: SymptomAnalysisRequest = {
+        symptoms: patientDetails.symptoms,
+        patient_age: patientDetails.dateOfBirth ? 
+          String(new Date().getFullYear() - new Date(patientDetails.dateOfBirth).getFullYear()) : undefined,
+        medical_history: '',
+        additional_context: `Patient requesting ${selectedService?.name || 'medical'} service`
+      };
+
+      console.log("🔬 Analyzing symptoms with AI:", analysisRequest);
+      const result = await aiService.analyzeSymptomsWithAI(analysisRequest);
+      
+      if (result.success) {
+        setAiAnalysisResult(result);
+        setShowAiAnalysis(true);
+        
+        // Update priority based on AI analysis
+        const aiPriority = aiService.emergencyLevelToPriority(result.analysis.emergency_level);
+        setPatientDetails(prev => ({ ...prev, priority: aiPriority }));
+        
+        console.log("✅ AI Analysis completed:", {
+          emergency_level: result.analysis.emergency_level,
+          priority: aiPriority,
+          confidence: result.analysis.confidence
+        });
+      }
+    } catch (err) {
+      console.error('AI analysis failed:', err);
+      setError("AI analysis temporarily unavailable. Priority set to medium.");
+    } finally {
+      setAiAnalyzing(false);
+    }
   };
 
   const handleJoinQueue = async () => {
@@ -117,11 +279,31 @@ export default function CustomerQueue() {
 
     try {
       setLoading(true);
-      const result = await queueService.joinQueue(Number(selectedService.id), patientDetails);
-      setQueueNumber(result.queueNumber);
-      setStep("confirmation");
+      setError(null);
+      
+      // For emergency guests, try the API but fall back to mock response
+      if (isEmergencyGuest) {
+        try {
+          const result = await queueService.joinQueue(Number(selectedService.id), patientDetails);
+          setQueueNumber(result.queueNumber);
+          setStep("confirmation");
+        } catch (apiError) {
+          console.warn("API unavailable for emergency, using fallback:", apiError);
+          // Emergency fallback - generate queue number locally
+          const emergencyQueueNumber = Math.floor(Math.random() * 10) + 1;
+          setQueueNumber(emergencyQueueNumber);
+          setStep("confirmation");
+        }
+      } else {
+        // Regular users need the API to work
+        const result = await queueService.joinQueue(Number(selectedService.id), patientDetails);
+        setQueueNumber(result.queueNumber);
+        setStep("confirmation");
+      }
     } catch (err) {
-      setError("Failed to join queue. Please try again.");
+      if (!isEmergencyGuest) {
+        setError("Failed to join queue. Please try again.");
+      }
       console.error("Error joining queue:", err);
     } finally {
       setLoading(false);
@@ -307,21 +489,117 @@ export default function CustomerQueue() {
                     className="mt-1"
                     rows={3}
                   />
+                  
+                  {/* AI Analysis Status */}
+                  {patientDetails.symptoms.trim() && (
+                    <div className="mt-2">
+                      <div className="flex items-center gap-2 text-sm text-purple-600">
+                        {aiAnalyzing ? (
+                          <>
+                            <LoadingSpinner size="sm" />
+                            <span>AI is analyzing your symptoms...</span>
+                          </>
+                        ) : showAiAnalysis ? (
+                          <>
+                            <Bot className="h-4 w-4" />
+                            <span>✅ AI analysis complete - Priority automatically set</span>
+                          </>
+                        ) : (
+                          <>
+                            <Bot className="h-4 w-4" />
+                            <span>🤖 AI will analyze symptoms when you complete the form</span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* AI Analysis Results */}
+                  {showAiAnalysis && aiAnalysisResult && (
+                    <div className="mt-4 p-4 border rounded-lg bg-gradient-to-r from-blue-50 to-purple-50">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Brain className="h-5 w-5 text-purple-600" />
+                        <h4 className="font-semibold text-purple-800">AI Analysis Results</h4>
+                      </div>
+                      
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between">
+                          <span>Emergency Level:</span>
+                          <Badge className={aiService.getPriorityBadgeClass(aiAnalysisResult.analysis.emergency_level)}>
+                            {aiAnalysisResult.analysis.emergency_level.toUpperCase()}
+                          </Badge>
+                        </div>
+                        
+                        <div className="flex justify-between">
+                          <span>AI Confidence:</span>
+                          <span className="font-medium">
+                            {Math.round(aiAnalysisResult.analysis.confidence * 100)}%
+                          </span>
+                        </div>
+                        
+                        <div className="flex justify-between">
+                          <span>Recommended Department:</span>
+                          <span className="font-medium">
+                            {aiAnalysisResult.analysis.department_recommendation}
+                          </span>
+                        </div>
+                        
+                        <div className="flex justify-between">
+                          <span>Estimated Wait:</span>
+                          <span className="font-medium">
+                            {aiAnalysisResult.analysis.estimated_wait_time} minutes
+                          </span>
+                        </div>
+                        
+                        {aiAnalysisResult.analysis.recommended_actions.length > 0 && (
+                          <div className="mt-3">
+                            <p className="font-medium text-purple-700 mb-1">Recommendations:</p>
+                            <ul className="list-disc list-inside space-y-1 text-xs">
+                              {aiAnalysisResult.analysis.recommended_actions.map((action, index) => (
+                                <li key={index} className="text-purple-600">{action}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                        
+                        <div className="mt-3 p-2 bg-white rounded border-l-4 border-purple-400">
+                          <p className="text-xs text-gray-600">
+                            <strong>AI Reasoning:</strong> {aiAnalysisResult.analysis.ai_reasoning}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div>
-                  <Label htmlFor="priority">Priority Level</Label>
-                  <Select value={patientDetails.priority} onValueChange={(value) => setPatientDetails({...patientDetails, priority: value})}>
-                    <SelectTrigger className="mt-1">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="low">Low - Routine care</SelectItem>
-                      <SelectItem value="medium">Medium - Standard care</SelectItem>
-                      <SelectItem value="high">High - Needs attention soon</SelectItem>
-                      <SelectItem value="urgent">Urgent - Immediate care needed</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <div className="flex items-center gap-2">
+                    <Label htmlFor="priority">Priority Level</Label>
+                    <Badge variant="outline" className="text-xs bg-purple-100 text-purple-700">
+                      🤖 AI Determined
+                    </Badge>
+                  </div>
+                  <div className="mt-1 p-3 bg-purple-50 border border-purple-200 rounded-md">
+                    <div className="flex items-center justify-between">
+                      <span className="font-medium capitalize text-purple-900">
+                        {patientDetails.priority === 'urgent' ? 'Urgent - Immediate care needed' :
+                         patientDetails.priority === 'high' ? 'High - Needs attention soon' :
+                         patientDetails.priority === 'medium' ? 'Medium - Standard care' :
+                         'Low - Routine care'}
+                      </span>
+                      <Badge className={
+                        patientDetails.priority === 'urgent' ? 'bg-red-500' :
+                        patientDetails.priority === 'high' ? 'bg-orange-500' :
+                        patientDetails.priority === 'medium' ? 'bg-yellow-500' :
+                        'bg-green-500'
+                      }>
+                        {patientDetails.priority.toUpperCase()}
+                      </Badge>
+                    </div>
+                    <p className="text-xs text-purple-600 mt-2">
+                      Priority automatically determined by AI analysis based on symptoms and patient information.
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -337,20 +615,23 @@ export default function CustomerQueue() {
               </div>
 
               <div className="flex space-x-3">
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={() => setStep("select")}
                   className="flex-1"
+                  disabled={loading}
                 >
                   Back
                 </Button>
-                <Button 
+                <LoadingButton
                   onClick={handleJoinQueue}
                   disabled={!patientDetails.name || !patientDetails.phone || !patientDetails.email || !patientDetails.dateOfBirth}
+                  loading={loading}
+                  loadingText="Joining Queue..."
                   className="flex-1"
                 >
                   Register & Join Queue
-                </Button>
+                </LoadingButton>
               </div>
             </CardContent>
           </Card>
@@ -362,6 +643,28 @@ export default function CustomerQueue() {
   return (
     <div className="bg-white min-h-screen p-6">
       <div className="max-w-6xl mx-auto">
+        {/* Guest Session Alert */}
+        {isGuestSession && (
+          <Alert className={`mb-6 ${isEmergencyGuest ? 'border-red-200 bg-red-50' : 'border-blue-200 bg-blue-50'}`}>
+            {isEmergencyGuest ? (
+              <AlertTriangle className="h-4 w-4 text-red-600" />
+            ) : (
+              <UserCheck className="h-4 w-4 text-blue-600" />
+            )}
+            <AlertDescription>
+              {isEmergencyGuest ? (
+                <span>
+                  <strong className="text-red-600">🚨 Emergency Mode:</strong> Fast-track access enabled. Please proceed with your registration.
+                </span>
+              ) : (
+                <span>
+                  <strong>Guest Access:</strong> You're using guest mode. Some features may be limited.
+                </span>
+              )}
+            </AlertDescription>
+          </Alert>
+        )}
+
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Hospital Patient Registration</h1>
           <p className="text-gray-600">Select your service and join the queue digitally with AI-powered optimization</p>

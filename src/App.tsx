@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { useRoutes, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./components/home";
 import QueueDashboard from "./components/queue-dashboard";
 import CustomerQueue from "./components/customer-queue";
@@ -8,8 +8,12 @@ import QueueAnalytics from "./components/QueueAnalyticsNew";
 import LoginForm from "./components/auth/LoginForm";
 import RegisterForm from "./components/auth/RegisterForm";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import AppointmentBooking from "./components/appointment-booking";
+import AppointmentManagement from "./components/appointment-management";
+import PatientCheckin from "./components/patient-checkin";
+import NotificationCenter from "./components/notification-center";
+import HospitalNavigation from "./components/hospital-navigation";
 import { Toaster } from "./components/ui/toaster";
-import routes from "tempo-routes";
 
 function App() {
   return (
@@ -38,6 +42,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+          
+          {/* Guest/Emergency access route */}
+          <Route path="/join-queue" element={<CustomerQueue />} />
 
           {/* Protected routes */}
           <Route
@@ -72,9 +79,48 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/appointments"
+            element={
+              <ProtectedRoute>
+                <AppointmentManagement />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/book-appointment"
+            element={
+              <ProtectedRoute>
+                <AppointmentBooking />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/checkin"
+            element={
+              <ProtectedRoute>
+                <PatientCheckin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <ProtectedRoute>
+                <NotificationCenter />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/navigation"
+            element={
+              <ProtectedRoute>
+                <HospitalNavigation />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         <Toaster />
-        {import.meta.env.VITE_TEMPO === "true" && useRoutes(routes)}
       </>
     </Suspense>
   );

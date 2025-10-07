@@ -52,3 +52,8 @@ openai==1.3.8
 httpx==0.25.2
 pydantic-settings==2.1.0
 python-dotenv==1.0.0
+
+# Email functionality
+fastapi-mail==1.4.1
+aiosmtplib==3.0.1
+jinja2==3.1.3

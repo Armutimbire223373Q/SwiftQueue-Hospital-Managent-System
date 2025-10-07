@@ -16,6 +16,7 @@ export default function ProtectedRoute({
 }: ProtectedRouteProps) {
   const { user, isAuthenticated, isLoading } = useAuth();
   const location = useLocation();
+  const isGuestSession = localStorage.getItem('isGuestSession') === 'true';
 
   // Show loading spinner while checking authentication
   if (isLoading) {
@@ -29,14 +30,17 @@ export default function ProtectedRoute({
     );
   }
 
-  // If authentication is required but user is not authenticated
-  if (requireAuth && !isAuthenticated) {
+  // If authentication is required but user is not authenticated and not a guest
+  if (requireAuth && !isAuthenticated && !isGuestSession) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   // If user is authenticated but trying to access auth pages (login/register)
-  if (!requireAuth && isAuthenticated) {
-    // Redirect based on role
+  if (!requireAuth && (isAuthenticated || isGuestSession)) {
+    // Redirect based on role or guest status
+    if (isGuestSession) {
+      return <Navigate to="/" replace />;
+    }
     switch (user?.role) {
       case 'admin':
         return <Navigate to="/admin" replace />;
@@ -47,8 +51,8 @@ export default function ProtectedRoute({
     }
   }
 
-  // Check role-based access
-  if (requiredRole && user?.role !== requiredRole && user?.role !== 'admin') {
+  // Check role-based access (guests can't access admin/staff areas)
+  if (requiredRole && !isGuestSession && user?.role !== requiredRole && user?.role !== 'admin') {
     // Redirect to appropriate dashboard based on user role
     switch (user?.role) {
       case 'staff':
@@ -56,6 +60,11 @@ export default function ProtectedRoute({
       default:
         return <Navigate to="/" replace />;
     }
+  }
+
+  // Block guest access to admin/staff areas
+  if (isGuestSession && (requiredRole === 'admin' || requiredRole === 'staff')) {
+    return <Navigate to="/" replace />;
   }
 
   return <>{children}</>;

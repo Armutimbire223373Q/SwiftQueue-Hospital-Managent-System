@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:8000/api';
+import apiClient from './apiClient';
 
 interface LoginCredentials {
   email: string;
@@ -18,6 +16,8 @@ interface RegisterData {
 interface AuthResponse {
   access_token: string;
   token_type: string;
+  refresh_token?: string;
+  expires_in?: number;
 }
 
 interface User {
@@ -30,68 +30,94 @@ interface User {
 }
 
 class AuthService {
-  private getAuthHeaders() {
-    const token = localStorage.getItem('token');
-    return token ? { Authorization: `Bearer ${token}` } : {};
-  }
 
   async login(email: string, password: string): Promise<AuthResponse> {
     const formData = new FormData();
     formData.append('username', email);
     formData.append('password', password);
 
-    const response = await axios.post(`${API_BASE_URL}/auth/login`, formData, {
+    const response = await apiClient.post('/auth/login', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
 
-    return response.data;
+    const authData = response.data;
+
+    // Store refresh token if provided
+    if (authData.refresh_token) {
+      localStorage.setItem('refresh_token', authData.refresh_token);
+    }
+
+    // Store token expiration time
+    if (authData.expires_in) {
+      const expirationTime = Date.now() + (authData.expires_in * 1000);
+      localStorage.setItem('token_expires_at', expirationTime.toString());
+    }
+
+    return authData;
   }
 
   async register(userData: RegisterData): Promise<User> {
-    const response = await axios.post(`${API_BASE_URL}/auth/register`, userData);
+    const response = await apiClient.post('/auth/register', userData);
     return response.data;
   }
 
   async getCurrentUser(): Promise<User> {
-    const response = await axios.get(`${API_BASE_URL}/auth/me`, {
-      headers: this.getAuthHeaders(),
-    });
+    const response = await apiClient.get('/auth/me');
     return response.data;
   }
 
   async updateProfile(updates: { name?: string; phone?: string }): Promise<void> {
-    await axios.put(`${API_BASE_URL}/auth/me`, updates, {
-      headers: this.getAuthHeaders(),
-    });
+    await apiClient.put('/auth/me', updates);
   }
 
   async getAllUsers(): Promise<User[]> {
-    const response = await axios.get(`${API_BASE_URL}/auth/users`, {
-      headers: this.getAuthHeaders(),
-    });
+    const response = await apiClient.get('/auth/users');
     return response.data;
   }
 
   async updateUserRole(userId: number, role: string): Promise<void> {
-    await axios.put(
-      `${API_BASE_URL}/auth/users/${userId}/role`,
-      { role },
-      { headers: this.getAuthHeaders() }
-    );
+    await apiClient.put(`/auth/users/${userId}/role`, { role });
   }
 
   async updateUserStatus(userId: number, isActive: boolean): Promise<void> {
-    await axios.put(
-      `${API_BASE_URL}/auth/users/${userId}/status`,
-      { is_active: isActive },
-      { headers: this.getAuthHeaders() }
-    );
+    await apiClient.put(`/auth/users/${userId}/status`, { is_active: isActive });
+  }
+
+  async refreshToken(): Promise<AuthResponse> {
+    const refreshToken = localStorage.getItem('refresh_token');
+    if (!refreshToken) {
+      throw new Error('No refresh token available');
+    }
+
+    const response = await apiClient.post('/auth/refresh', {
+      refresh_token: refreshToken,
+    });
+
+    const authData = response.data;
+
+    // Update stored tokens
+    if (authData.access_token) {
+      localStorage.setItem('token', authData.access_token);
+    }
+
+    if (authData.refresh_token) {
+      localStorage.setItem('refresh_token', authData.refresh_token);
+    }
+
+    if (authData.expires_in) {
+      const expirationTime = Date.now() + (authData.expires_in * 1000);
+      localStorage.setItem('token_expires_at', expirationTime.toString());
+    }
+
+    return authData;
   }
 
   logout(): void {
     localStorage.removeItem('token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('token_expires_at');
     localStorage.removeItem('user');
   }
 
@@ -106,6 +132,26 @@ class AuthService {
 
   getToken(): string | null {
     return localStorage.getItem('token');
+  }
+
+  getRefreshToken(): string | null {
+    return localStorage.getItem('refresh_token');
+  }
+
+  isTokenExpired(): boolean {
+    const expirationTime = localStorage.getItem('token_expires_at');
+    if (!expirationTime) return false;
+
+    return Date.now() >= parseInt(expirationTime);
+  }
+
+  isTokenExpiringSoon(): boolean {
+    const expirationTime = localStorage.getItem('token_expires_at');
+    if (!expirationTime) return false;
+
+    // Consider token expiring soon if it expires within 5 minutes
+    const fiveMinutesFromNow = Date.now() + (5 * 60 * 1000);
+    return parseInt(expirationTime) <= fiveMinutesFromNow;
   }
 }
 

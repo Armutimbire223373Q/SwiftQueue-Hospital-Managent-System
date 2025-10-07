@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:8000/api';
+import apiClient from './apiClient';
 
 export interface ServiceType {
     id: number;
@@ -28,22 +28,12 @@ export interface PatientDetails {
 
 export const queueService = {
     async joinQueue(serviceId: number, patientDetails: PatientDetails): Promise<QueueEntry> {
-        const response = await fetch(`${API_BASE_URL}/queue/join`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                service_id: serviceId,
-                patient_details: patientDetails,
-            }),
+        const response = await apiClient.post('/queue/join', {
+            service_id: serviceId,
+            patient_details: patientDetails,
         });
 
-        if (!response.ok) {
-            throw new Error('Failed to join queue');
-        }
-
-        return response.json();
+        return response.data;
     },
 
     async getQueueStatus(queueNumber: number): Promise<{
@@ -51,12 +41,8 @@ export const queueService = {
         position: number;
         estimatedWait: number;
     }> {
-        const response = await fetch(`${API_BASE_URL}/queue/status/${queueNumber}`);
-        
-        if (!response.ok) {
-            throw new Error('Failed to get queue status');
-        }
+        const response = await apiClient.get(`/queue/status/${queueNumber}`);
 
-        return response.json();
+        return response.data;
     }
 };

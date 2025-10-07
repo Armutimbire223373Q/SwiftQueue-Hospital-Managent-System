@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime, Enum, ForeignKey, Float, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, Enum, ForeignKey, Float, Boolean, Text
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from app.database import Base
@@ -18,6 +18,10 @@ class User(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     last_login = Column(DateTime, nullable=True)
 
+    # Password reset fields
+    reset_token = Column(String, nullable=True)
+    reset_token_expires = Column(DateTime, nullable=True)
+
 class QueueEntry(Base):
     __tablename__ = "queue_entries"
 
@@ -33,6 +37,49 @@ class QueueEntry(Base):
 
     patient = relationship("User")
     service = relationship("Service")
+
+class Appointment(Base):
+    __tablename__ = "appointments"
+
+    id = Column(Integer, primary_key=True, index=True)
+    patient_id = Column(Integer, ForeignKey("users.id"))
+    service_id = Column(Integer, ForeignKey("services.id"))
+    staff_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    appointment_date = Column(DateTime)
+    duration = Column(Integer)  # in minutes
+    status = Column(Enum("scheduled", "confirmed", "in_progress", "completed", "cancelled", name="appointment_status"))
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    patient = relationship("User", foreign_keys=[patient_id])
+    service = relationship("Service")
+    staff = relationship("User", foreign_keys=[staff_id])
+
+class Notification(Base):
+    __tablename__ = "notifications"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"))
+    title = Column(String)
+    message = Column(Text)
+    type = Column(Enum("info", "warning", "success", "error", name="notification_type"))
+    is_read = Column(Boolean, default=False)
+    created_at = Column(DateTime, default=datetime.utcnow)
+
+    user = relationship("User")
+
+class Checkin(Base):
+    __tablename__ = "checkins"
+
+    id = Column(Integer, primary_key=True, index=True)
+    appointment_id = Column(Integer, ForeignKey("appointments.id"))
+    patient_id = Column(Integer, ForeignKey("users.id"))
+    checkin_time = Column(DateTime, default=datetime.utcnow)
+    status = Column(Enum("checked_in", "no_show", "cancelled", name="checkin_status"))
+
+    appointment = relationship("Appointment")
+    patient = relationship("User")
 
 class Service(Base):
     __tablename__ = "services"
