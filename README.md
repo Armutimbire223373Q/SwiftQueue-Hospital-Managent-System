@@ -103,6 +103,20 @@ The API is automatically documented at `http://localhost:8000/docs` when the bac
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
+### Developer quick commands (PowerShell)
+
+- Start backend dev server (sets PYTHONPATH so `app` package resolves):
+
+```powershell
+$env:PYTHONPATH='backend'; uvicorn backend.app.main:app --reload --port 8000
+```
+
+- Run the test suite (tests use a temporary sqlite DB automatically):
+
+```powershell
+py -3 -m pytest -q
+```
+
 ### Project Structure
 ```
 ├── backend/
