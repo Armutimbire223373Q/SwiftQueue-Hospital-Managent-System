@@ -173,7 +173,7 @@ def init_sample_users(db):
     for user_data in sample_users:
         existing = db.query(User).filter(User.email == user_data["email"]).first()
         if not existing:
-            user = User(**user_data)
+            user = User(**user_data, password_hash="dummy_hash")
             db.add(user)
             print(f"Created user: {user_data['name']}")
 

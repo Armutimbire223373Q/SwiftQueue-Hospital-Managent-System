@@ -48,7 +48,15 @@ export default function CustomerQueue() {
       estimatedTime: 15,
       currentWaitTime: 5,
       queueLength: 1,
-      aiPredictedWait: 3
+      aiPredictedWait: 3,
+      staffCount: 8,
+      serviceRate: 1.2,
+      estimated_time: 15,
+      current_wait_time: 5,
+      queue_length: 1,
+      ai_predicted_wait: 3,
+      staff_count: 8,
+      service_rate: 1.2
     },
     {
       id: 2,
@@ -58,7 +66,15 @@ export default function CustomerQueue() {
       estimatedTime: 10,
       currentWaitTime: 8,
       queueLength: 2,
-      aiPredictedWait: 6
+      aiPredictedWait: 6,
+      staffCount: 4,
+      serviceRate: 1.0,
+      estimated_time: 10,
+      current_wait_time: 8,
+      queue_length: 2,
+      ai_predicted_wait: 6,
+      staff_count: 4,
+      service_rate: 1.0
     },
     {
       id: 3,
@@ -68,7 +84,15 @@ export default function CustomerQueue() {
       estimatedTime: 25,
       currentWaitTime: 20,
       queueLength: 3,
-      aiPredictedWait: 15
+      aiPredictedWait: 15,
+      staffCount: 3,
+      serviceRate: 0.9,
+      estimated_time: 25,
+      current_wait_time: 20,
+      queue_length: 3,
+      ai_predicted_wait: 15,
+      staff_count: 3,
+      service_rate: 0.9
     },
     {
       id: 4,
@@ -78,7 +102,15 @@ export default function CustomerQueue() {
       estimatedTime: 25,
       currentWaitTime: 18,
       queueLength: 2,
-      aiPredictedWait: 14
+      aiPredictedWait: 14,
+      staffCount: 5,
+      serviceRate: 1.0,
+      estimated_time: 25,
+      current_wait_time: 18,
+      queue_length: 2,
+      ai_predicted_wait: 14,
+      staff_count: 5,
+      service_rate: 1.0
     },
     {
       id: 5,
@@ -88,7 +120,15 @@ export default function CustomerQueue() {
       estimatedTime: 30,
       currentWaitTime: 22,
       queueLength: 4,
-      aiPredictedWait: 18
+      aiPredictedWait: 18,
+      staffCount: 6,
+      serviceRate: 1.1,
+      estimated_time: 30,
+      current_wait_time: 22,
+      queue_length: 4,
+      ai_predicted_wait: 18,
+      staff_count: 6,
+      service_rate: 1.1
     },
     {
       id: 6,
@@ -98,7 +138,15 @@ export default function CustomerQueue() {
       estimatedTime: 35,
       currentWaitTime: 28,
       queueLength: 5,
-      aiPredictedWait: 25
+      aiPredictedWait: 25,
+      staffCount: 4,
+      serviceRate: 0.95,
+      estimated_time: 35,
+      current_wait_time: 28,
+      queue_length: 5,
+      ai_predicted_wait: 25,
+      staff_count: 4,
+      service_rate: 0.95
     }
   ];
 

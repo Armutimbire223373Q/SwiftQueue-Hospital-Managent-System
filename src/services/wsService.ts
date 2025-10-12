@@ -1,4 +1,4 @@
-const WS_BASE_URL = 'ws://localhost:8000/ws';
+const WS_BASE_URL = 'ws://localhost:8001/ws';
 
 type QueueUpdateCallback = (data: any) => void;
 

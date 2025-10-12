@@ -26,6 +26,11 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
     phone: Optional[str] = None
+    street_address: Optional[str] = None
+    city: Optional[str] = None
+    state: Optional[str] = None
+    zip_code: Optional[str] = None
+    country: Optional[str] = None
     role: str = "patient"
 
 class UserResponse(BaseModel):
@@ -33,6 +38,11 @@ class UserResponse(BaseModel):
     name: str
     email: str
     phone: Optional[str]
+    street_address: Optional[str]
+    city: Optional[str]
+    state: Optional[str]
+    zip_code: Optional[str]
+    country: Optional[str]
     role: str
     is_active: bool
 
@@ -89,7 +99,12 @@ async def register_user(user: UserCreate, db: Session = Depends(get_db)):
             email=user.email,
             password=user.password,
             role=user.role,
-            phone=user.phone
+            phone=user.phone,
+            street_address=user.street_address,
+            city=user.city,
+            state=user.state,
+            zip_code=user.zip_code,
+            country=user.country
         )
         return new_user
     except Exception as e:
@@ -128,6 +143,11 @@ async def read_users_me(current_user: User = Depends(get_current_active_user)):
 async def update_user_profile(
     name: Optional[str] = None,
     phone: Optional[str] = None,
+    street_address: Optional[str] = None,
+    city: Optional[str] = None,
+    state: Optional[str] = None,
+    zip_code: Optional[str] = None,
+    country: Optional[str] = None,
     current_user: User = Depends(get_current_active_user),
     db: Session = Depends(get_db)
 ):
@@ -136,6 +156,16 @@ async def update_user_profile(
         current_user.name = name
     if phone:
         current_user.phone = phone
+    if street_address is not None:
+        current_user.street_address = street_address
+    if city is not None:
+        current_user.city = city
+    if state is not None:
+        current_user.state = state
+    if zip_code is not None:
+        current_user.zip_code = zip_code
+    if country is not None:
+        current_user.country = country
 
     current_user.updated_at = datetime.utcnow()
     db.commit()

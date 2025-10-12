@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List
 from app.database import get_db
 from app.models.models import Appointment, User
-from app.auth import get_current_user
+from app.routes.auth import get_current_user
 from pydantic import BaseModel
 from datetime import datetime
 

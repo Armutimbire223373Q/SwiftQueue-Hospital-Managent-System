@@ -181,4 +181,28 @@ export interface AIStaffOptimization {
   reasoning: string;
 }
 
+export interface EmergencyDispatch {
+  id: number;
+  patient_id: number;
+  emergency_details: string;
+  dispatch_address: string;
+  dispatch_status: 'pending' | 'dispatched' | 'en_route' | 'arrived' | 'completed' | 'cancelled';
+  dispatched_at?: string;
+  response_time?: number;
+  ambulance_id?: string;
+  notes?: string;
+  created_at: string;
+  patient_name?: string;
+  patient?: User;
+}
+
+export interface DispatchRequest {
+  patient_id: number;
+  emergency_details: string;
+}
+
+export interface DispatchStatusResponse extends EmergencyDispatch {
+  patient_name?: string;
+}
+
 export default apiService;

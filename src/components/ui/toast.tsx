@@ -7,6 +7,8 @@ interface Toast {
   title: string;
   message: string;
   duration?: number;
+  // optional variant field used by some components
+  variant?: string;
 }
 
 interface ToastContextType {
@@ -14,6 +16,20 @@ interface ToastContextType {
   addToast: (toast: Omit<Toast, 'id'>) => void;
   removeToast: (id: string) => void;
 }
+
+// Types exported for compatibility with use-toast.ts
+export type ToastActionElement = React.ReactNode;
+
+export type ToastProps = {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  intent?: 'success' | 'error' | 'warning' | 'info';
+  duration?: number;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
+  action?: ToastActionElement;
+  variant?: string;
+};
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 

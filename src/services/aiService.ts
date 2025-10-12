@@ -5,22 +5,16 @@ export interface SymptomAnalysisRequest {
   patient_age?: string;
   medical_history?: string;
   additional_context?: string;
+  patient_id?: number;
 }
 
 export interface SymptomAnalysisResponse {
   success: boolean;
-  analysis: {
-    emergency_level: string;
-    confidence: number;
-    triage_category: string;
-    estimated_wait_time: number;
-    department_recommendation: string;
-    recommended_actions: string[];
-    risk_factors: string[];
-    ai_reasoning: string;
-    timestamp: string;
-  };
-  recommendations: string[];
+  // Allow flexible shapes: components expect either a flat analysis or nested { analysis: {...} }
+  analysis: any;
+  triage?: any;
+  recommendations?: string[];
+  combinedRecommendations?: any;
 }
 
 export interface TriageAnalysisRequest {
@@ -59,38 +53,157 @@ export interface AIHealthStatus {
   error?: string;
 }
 
+// Compatibility alias expected by some components
+export type AITriageRequest = TriageAnalysisRequest;
+
 class AIService {
   /**
    * Analyze patient symptoms using AI to determine priority and emergency level
    */
   async analyzeSymptomsWithAI(request: SymptomAnalysisRequest): Promise<SymptomAnalysisResponse> {
+    // If patient_id is provided, try to fetch their historical data to enrich the analysis
+    let enrichedRequest = { ...request } as SymptomAnalysisRequest;
+    if (request.patient_id) {
+      try {
+        const histResp = await fetch(`${API_BASE_URL}/patient-history/${request.patient_id}`);
+        if (histResp.ok) {
+          const history = await histResp.json();
+          // Summarize history: collect diagnoses, chronic_conditions, allergies, prescribed_medication, remarks
+          const recent = Array.isArray(history) ? history.slice(-5) : [];
+          const diagnoses = recent.map((r: any) => r.diagnosis).filter(Boolean);
+          const chronic = recent.map((r: any) => r.chronic_conditions).filter(Boolean);
+          const meds = recent.map((r: any) => r.prescribed_medication).filter(Boolean);
+          const allergies = recent.map((r: any) => r.allergies).filter(Boolean);
+          const remarks = recent.map((r: any) => r.remarks).filter(Boolean);
+
+          const summaryParts = [] as string[];
+          if (diagnoses.length) summaryParts.push(`Past diagnoses: ${[...new Set(diagnoses)].join('; ')}`);
+          if (chronic.length) summaryParts.push(`Chronic conditions: ${[...new Set(chronic)].join('; ')}`);
+          if (meds.length) summaryParts.push(`Medications: ${[...new Set(meds)].join('; ')}`);
+          if (allergies.length) summaryParts.push(`Allergies: ${[...new Set(allergies)].join('; ')}`);
+          if (remarks.length) summaryParts.push(`Recent notes: ${remarks.join(' | ')}`);
+
+          const summary = summaryParts.join('. ');
+          if (summary) {
+            enrichedRequest.medical_history = (enrichedRequest.medical_history ? enrichedRequest.medical_history + '. ' : '') + summary;
+            enrichedRequest.additional_context = (enrichedRequest.additional_context ? enrichedRequest.additional_context + '. ' : '') + `Patient history summary: ${summary}`;
+          }
+        }
+      } catch (err) {
+        // Non-fatal: proceed without history enrichment
+        console.warn('Failed to fetch patient history for enrichment:', err);
+      }
+    }
+
     try {
       const response = await fetch(`${API_BASE_URL}/ai/analyze-symptoms`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(request),
+        body: JSON.stringify(enrichedRequest),
       });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return await response.json();
+      const json = await response.json();
+      // Normalize shapes to include both flat and nested analysis forms
+      return this.normalizeSymptomResponse(json);
     } catch (error) {
       console.error('AI symptom analysis failed:', error);
       
       // Fallback analysis based on keyword detection
       const fallbackAnalysis = this.fallbackSymptomAnalysis(request.symptoms);
-      
-      return {
+
+      // If we have enrichedRequest.medical_history include a short note
+      if (enrichedRequest.medical_history) {
+        fallbackAnalysis.previous_history = enrichedRequest.medical_history;
+        fallbackAnalysis.ai_reasoning += ` Previous history considered: ${enrichedRequest.medical_history}`;
+      }
+
+      // Build a response that contains both flat and nested analysis for compatibility
+      const resp: any = {
         success: true,
-        analysis: fallbackAnalysis,
-        recommendations: fallbackAnalysis.recommended_actions
+        // analysis contains flat fields and also a nested `analysis` pointing to same object
+        analysis: {
+          ...fallbackAnalysis,
+          analysis: fallbackAnalysis
+        },
+        triage: {
+          triage_result: {
+            ai_analysis: {
+              emergency_level: fallbackAnalysis.emergency_level,
+              confidence: fallbackAnalysis.confidence,
+              reasoning: fallbackAnalysis.ai_reasoning,
+              recommended_actions: fallbackAnalysis.recommended_actions,
+              risk_factors: fallbackAnalysis.risk_factors
+            },
+            // include some of the summary triage fields for convenience
+            triage_score: 0,
+            category: fallbackAnalysis.triage_category,
+            priority_level: 0,
+            estimated_wait_time: fallbackAnalysis.estimated_wait_time,
+            recommended_department: fallbackAnalysis.department_recommendation
+          }
+        },
+        recommendations: fallbackAnalysis.recommended_actions,
+        combinedRecommendations: fallbackAnalysis.recommended_actions
       };
+
+      return this.normalizeSymptomResponse(resp as any);
     }
   }
+
+      /**
+       * Normalize SymptomAnalysisResponse shapes so callers can safely access
+       * both `result.analysis` (flat) and `result.analysis.analysis` (nested)
+       */
+      private normalizeSymptomResponse(response: any): SymptomAnalysisResponse {
+        const res: any = { ...(response || {}) };
+
+        // Normalize analysis
+        if (res.analysis) {
+          // If nested form exists, use it as canonical and also expose flat fields
+          if (res.analysis.analysis) {
+            const nested = res.analysis.analysis;
+            res.analysis = { ...nested, analysis: nested };
+          } else {
+            // Flat analysis provided; expose nested copy under `analysis.analysis`
+            const flat = res.analysis;
+            res.analysis = { ...flat, analysis: flat };
+          }
+        } else if (res.analysis === undefined && res.analysis === null) {
+          // nothing
+        }
+
+        // Normalize triage.ai_analysis if present
+        if (res.triage && res.triage.triage_result) {
+          const tri = res.triage.triage_result;
+          if (tri.ai_analysis && !tri.ai_analysis.emergency_level && res.analysis && res.analysis.analysis) {
+            tri.ai_analysis.emergency_level = res.analysis.analysis.emergency_level;
+          }
+          // ensure a0 fields exist
+          if (!tri.ai_analysis) {
+            tri.ai_analysis = {
+              emergency_level: res.analysis?.analysis?.emergency_level ?? 'low',
+              confidence: res.analysis?.analysis?.confidence ?? 0,
+              reasoning: res.analysis?.analysis?.ai_reasoning ?? '',
+              recommended_actions: res.recommendations ?? [],
+              risk_factors: res.analysis?.analysis?.risk_factors ?? []
+            };
+          }
+          res.triage.triage_result = { ...tri };
+        }
+
+        // Ensure combinedRecommendations exist
+        if (!res.combinedRecommendations) {
+          res.combinedRecommendations = res.recommendations ?? (res.analysis?.analysis?.recommended_actions ?? []);
+        }
+
+        return res as SymptomAnalysisResponse;
+      }
 
   /**
    * Perform comprehensive AI triage analysis
@@ -114,6 +227,52 @@ class AIService {
       console.error('AI triage analysis failed:', error);
       throw error;
     }
+  }
+
+  // Compatibility alias: components call getAITriageAnalysis
+  async getAITriageAnalysis(request: TriageAnalysisRequest): Promise<TriageAnalysisResponse> {
+    return this.performTriageAnalysis(request);
+  }
+
+  // Compatibility alias for comprehensive analysis
+  async getComprehensiveSymptomAnalysis(request: SymptomAnalysisRequest): Promise<SymptomAnalysisResponse>;
+  async getComprehensiveSymptomAnalysis(symptoms: string, patient_age?: string, medical_history?: string, additional_context?: string): Promise<SymptomAnalysisResponse>;
+  async getComprehensiveSymptomAnalysis(arg1: any, arg2?: any, arg3?: any, arg4?: any): Promise<SymptomAnalysisResponse> {
+    // Support two call signatures: object request or positional args
+    let request: SymptomAnalysisRequest;
+    if (typeof arg1 === 'string') {
+      request = {
+        symptoms: arg1,
+        patient_age: arg2,
+        medical_history: arg3,
+        additional_context: arg4
+      };
+    } else {
+      request = arg1;
+    }
+
+    const result = await this.analyzeSymptomsWithAI(request);
+    // If the remote service returned top-level analysis without nested wrappers,
+    // normalize it so components expecting result.analysis.analysis or result.triage.triage_result work.
+    if ((result as any).analysis && !(result as any).analysis.analysis) {
+      (result as any).analysis = { analysis: (result as any).analysis };
+    }
+    if (!(result as any).triage && (result as any).analysis && (result as any).analysis.analysis) {
+      // create a minimal triage wrapper if not present
+      (result as any).triage = { triage_result: { ai_analysis: { emergency_level: (result as any).analysis.analysis.emergency_level ?? 'low', confidence: (result as any).analysis.analysis.confidence ?? 0 } } };
+    }
+
+    return result as SymptomAnalysisResponse;
+  }
+
+  // Simple service suggestion helper (components expect this)
+  async getServiceSuggestion(symptoms: string): Promise<{ suggestedService?: string }> {
+    // Basic keyword-based mapping as fallback
+    const s = symptoms.toLowerCase();
+    if (s.includes('heart') || s.includes('chest')) return { suggestedService: 'Cardiology' };
+    if (s.includes('bone') || s.includes('fracture')) return { suggestedService: 'Orthopedics' };
+    if (s.includes('preg') || s.includes('pregnancy')) return { suggestedService: 'Obstetrics' };
+    return { suggestedService: 'General Medicine' };
   }
 
   /**
@@ -193,6 +352,11 @@ class AIService {
       estimated_wait_time = 0;
       department_recommendation = 'Emergency';
       recommended_actions = ['Seek immediate emergency care', 'Call 911 if severe'];
+
+      // Log critical emergency detection - dispatch will be handled by backend if patient_id provided
+      console.warn('🚨 CRITICAL EMERGENCY DETECTED: Ambulance dispatch will be attempted if patient_id provided');
+      console.warn('Patient symptoms:', symptoms);
+      console.warn('Emergency level:', emergency_level);
     } else if (highKeywords.some(keyword => symptomsLower.includes(keyword))) {
       emergency_level = 'high';
       confidence = 0.75;
@@ -218,7 +382,8 @@ class AIService {
       recommended_actions,
       risk_factors: emergency_level === 'critical' ? ['High risk condition detected'] : [],
       ai_reasoning: `Fallback analysis based on symptom keywords. Emergency level: ${emergency_level}`,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      ambulance_dispatch: emergency_level === 'critical' ? { status: 'pending_backend_dispatch' } : undefined
     };
   }
 
@@ -254,6 +419,22 @@ class AIService {
       default:
         return 'bg-green-500 text-white';
     }
+  }
+
+  /**
+   * Get dashboard insights from AI service
+   */
+  async getDashboardInsights(): Promise<any> {
+    // For now, return mock data since backend doesn't have this endpoint
+    return {
+      efficiency_score: 0.89,
+      patient_satisfaction: 0.92,
+      peak_hours: ['10:00 AM', '2:00 PM'],
+      recommendations: [
+        'Optimize staff scheduling during peak hours',
+        'Implement AI triage for faster patient routing'
+      ]
+    };
   }
 }
 

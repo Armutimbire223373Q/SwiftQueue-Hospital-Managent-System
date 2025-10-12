@@ -50,7 +50,7 @@ def get_user_by_id(db: Session, user_id: int):
     """Get a user by ID."""
     return db.query(User).filter(User.id == user_id).first()
 
-def create_user(db: Session, name: str, email: str, password: str, role: str = "patient", phone: str = None, date_of_birth: datetime = None):
+def create_user(db: Session, name: str, email: str, password: str, role: str = "patient", phone: str = None, date_of_birth: datetime = None, street_address: str = None, city: str = None, state: str = None, zip_code: str = None, country: str = None):
     """Create a new user."""
     hashed_password = get_password_hash(password)
     db_user = User(
@@ -59,7 +59,12 @@ def create_user(db: Session, name: str, email: str, password: str, role: str = "
         password_hash=hashed_password,
         role=role,
         phone=phone,
-        date_of_birth=date_of_birth
+        date_of_birth=date_of_birth,
+        street_address=street_address,
+        city=city,
+        state=state,
+        zip_code=zip_code,
+        country=country
     )
     db.add(db_user)
     db.commit()

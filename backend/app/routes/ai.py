@@ -1,8 +1,11 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from typing import Optional
 from pydantic import BaseModel
 import re
 import logging
+from sqlalchemy.orm import Session
+from app.database import get_db
+from app.services.emergency_service import dispatch_ambulance, EmergencyServiceError
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -12,25 +15,27 @@ class SymptomAnalysisRequest(BaseModel):
     patient_age: Optional[str] = None
     medical_history: Optional[str] = None
     additional_context: Optional[str] = None
+    patient_id: Optional[int] = None
 
 @router.post("/analyze-symptoms")
-async def analyze_symptoms(request: SymptomAnalysisRequest):
+async def analyze_symptoms(request: SymptomAnalysisRequest, db: Session = Depends(get_db)):
     """
     Analyze patient symptoms to determine emergency level and priority
     Uses rule-based analysis until Ollama integration is set up
+    Automatically dispatches ambulance for critical emergencies
     """
     try:
         logger.info(f"Analyzing symptoms: {request.symptoms[:50]}...")
-        
+
         # Rule-based analysis (fallback until Ollama is integrated)
-        analysis = _analyze_symptoms_rule_based(request.symptoms, request.patient_age)
-        
+        analysis = _analyze_symptoms_rule_based(request.symptoms, request.patient_age, request.patient_id, db)
+
         return {
             "success": True,
             "analysis": analysis,
             "recommendations": analysis["recommended_actions"]
         }
-        
+
     except Exception as e:
         logger.error(f"Error in symptom analysis: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -47,7 +52,7 @@ async def ai_health_check():
         "note": "Using rule-based analysis. Ollama integration pending."
     }
 
-def _analyze_symptoms_rule_based(symptoms: str, age: Optional[str] = None) -> dict:
+def _analyze_symptoms_rule_based(symptoms: str, age: Optional[str] = None, patient_id: Optional[int] = None, db: Optional[Session] = None) -> dict:
     """
     Rule-based symptom analysis for priority determination
     """
@@ -91,6 +96,47 @@ def _analyze_symptoms_rule_based(symptoms: str, age: Optional[str] = None) -> di
     
     # Check for critical symptoms
     if any(keyword in symptoms_lower for keyword in critical_keywords):
+        logger.warning("🚨 CRITICAL EMERGENCY DETECTED")
+
+        # Initialize dispatch information
+        dispatch_info = None
+
+        # Attempt ambulance dispatch if patient_id and db are available
+        if patient_id and db:
+            try:
+                logger.info(f"Attempting ambulance dispatch for patient {patient_id}")
+                dispatch = dispatch_ambulance(
+                    db=db,
+                    patient_id=patient_id,
+                    emergency_details=f"Critical symptoms detected: {symptoms}"
+                )
+                dispatch_info = {
+                    "dispatch_id": dispatch.id,
+                    "ambulance_id": dispatch.ambulance_id,
+                    "status": dispatch.dispatch_status,
+                    "estimated_response_time": dispatch.response_time,
+                    "dispatched_at": dispatch.dispatched_at.isoformat() if dispatch.dispatched_at else None
+                }
+                logger.info(f"🚨 Ambulance dispatched successfully: {dispatch_info}")
+            except EmergencyServiceError as e:
+                logger.error(f"Ambulance dispatch failed: {e}")
+                dispatch_info = {
+                    "error": str(e),
+                    "status": "failed"
+                }
+            except Exception as e:
+                logger.error(f"Unexpected error during ambulance dispatch: {e}")
+                dispatch_info = {
+                    "error": f"Unexpected dispatch error: {str(e)}",
+                    "status": "failed"
+                }
+        else:
+            logger.warning("Cannot dispatch ambulance: missing patient_id or database session")
+            if not patient_id:
+                logger.warning("Patient ID not provided in request")
+            if not db:
+                logger.warning("Database session not available")
+
         return {
             "emergency_level": "critical",
             "confidence": min(0.95, 0.85 + age_risk * 0.1),
@@ -104,7 +150,8 @@ def _analyze_symptoms_rule_based(symptoms: str, age: Optional[str] = None) -> di
             ],
             "risk_factors": ["High-risk condition detected", "Immediate medical attention required"],
             "ai_reasoning": "Critical symptoms detected requiring immediate emergency care",
-            "timestamp": "2024-01-01T00:00:00Z"
+            "timestamp": "2024-01-01T00:00:00Z",
+            "ambulance_dispatch": dispatch_info
         }
     
     # Check for high priority symptoms

@@ -14,17 +14,27 @@ def fix_database():
     cursor = conn.cursor()
     
     try:
-        # Check if staff_count column exists
+        # Check if staff_count column exists in services table
         cursor.execute("PRAGMA table_info(services)")
         columns = [column[1] for column in cursor.fetchall()]
-        
+
         if 'staff_count' not in columns:
             print("Adding staff_count column...")
             cursor.execute("ALTER TABLE services ADD COLUMN staff_count INTEGER DEFAULT 1")
-        
+
         if 'service_rate' not in columns:
             print("Adding service_rate column...")
             cursor.execute("ALTER TABLE services ADD COLUMN service_rate REAL DEFAULT 1.0")
+
+        # Check if address columns exist in users table
+        cursor.execute("PRAGMA table_info(users)")
+        user_columns = [column[1] for column in cursor.fetchall()]
+
+        address_columns = ['street_address', 'city', 'state', 'zip_code', 'country']
+        for col in address_columns:
+            if col not in user_columns:
+                print(f"Adding {col} column to users table...")
+                cursor.execute(f"ALTER TABLE users ADD COLUMN {col} TEXT")
         
         # Commit changes
         conn.commit()

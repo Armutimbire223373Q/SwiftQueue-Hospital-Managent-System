@@ -1,0 +1,3 @@
+patient_id,name,dob,diagnosis
+P-9001,Valid Person,1990-01-01,Cold
+,MissingID,1980-01-02,Flu

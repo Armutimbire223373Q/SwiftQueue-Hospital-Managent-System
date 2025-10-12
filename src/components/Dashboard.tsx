@@ -107,10 +107,13 @@ const Dashboard: React.FC = () => {
 
   const loadInitialData = async () => {
     try {
+      console.log('Dashboard: Starting to load initial data');
       setLoading(true);
-      
+
       // Load services
+      console.log('Dashboard: Loading services...');
       const servicesData = await servicesService.getAllServices();
+      console.log('Dashboard: Services loaded:', servicesData);
       const formattedServices = servicesData.map(service => ({
         id: service.id,
         name: service.name,
@@ -120,14 +123,16 @@ const Dashboard: React.FC = () => {
         staffCount: service.staff_count,
         serviceRate: service.service_rate,
         efficiency: Math.round(Math.random() * 30 + 70),
-        status: service.queue_length > 10 ? 'critical' : 
-                service.queue_length > 5 ? 'high' : 
-                service.queue_length > 2 ? 'medium' : 'low'
+        status: (service.queue_length > 10 ? 'critical' :
+                service.queue_length > 5 ? 'high' :
+                service.queue_length > 2 ? 'medium' : 'low') as 'low' | 'medium' | 'high' | 'critical'
       }));
       setServices(formattedServices);
 
       // Load queue data
-      const queueData = await queueService.getQueueStatus();
+      console.log('Dashboard: Loading queue data...');
+      const queueData = await queueService.getAllQueues();
+      console.log('Dashboard: Queue data loaded:', queueData);
       const formattedQueues = queueData.map((item, index) => ({
         id: item.id,
         patientName: item.patient?.name || `Patient ${item.queue_number}`,
@@ -140,7 +145,7 @@ const Dashboard: React.FC = () => {
         aiPredictedTime: item.ai_predicted_wait,
         position: index + 1
       }));
-      setQueues(formattedQueues);
+  setQueues(formattedQueues as any);
 
       // Calculate stats
       const waiting = formattedQueues.filter(q => q.status === 'waiting').length;

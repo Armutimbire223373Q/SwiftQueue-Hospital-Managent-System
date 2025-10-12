@@ -11,6 +11,7 @@ from app.database import get_db
 from app.ai.triage_system import triage_system
 from app.ai.predictions import prediction_service
 from app.ai.openrouter_service import openrouter_service
+from app.services.openrouter_fallback_service import openrouter_fallback_service
 from app.models.workflow_models import PatientVisit, WorkflowStage, Department
 from datetime import datetime, timedelta
 import logging
@@ -59,6 +60,14 @@ class PatientWorkflowRequest(BaseModel):
 class ResourceOptimizationRequest(BaseModel):
     current_patients: List[Dict]
     available_resources: Dict
+
+class EmergencyFirstAidRequest(BaseModel):
+    emergency_type: str
+    symptoms: str
+    patient_age: Optional[str] = None
+    available_resources: Optional[List[str]] = None
+    location: Optional[str] = None
+    use_network_ai: Optional[bool] = True  # Use OpenRouter when network is good
 
 @router.post("/triage/calculate")
 async def calculate_triage_score(request: TriageRequest):
@@ -362,6 +371,35 @@ async def get_active_patients(db: Session = Depends(get_db)):
         logger.error(f"Error getting active patients: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.post("/emergency/first-aid")
+async def get_emergency_first_aid(request: EmergencyFirstAidRequest):
+    """Provide AI-powered first aid recommendations for emergency situations"""
+    try:
+        first_aid_recommendations = await _generate_emergency_first_aid(
+            emergency_type=request.emergency_type,
+            symptoms=request.symptoms,
+            patient_age=request.patient_age,
+            available_resources=request.available_resources,
+            location=request.location,
+            use_network_fallback=request.use_network_ai
+        )
+
+        return {
+            "success": True,
+            "emergency_type": request.emergency_type,
+            "first_aid_procedures": first_aid_recommendations,
+            "disclaimer": "These are AI-generated recommendations. Always call emergency services (911/112) immediately and follow professional medical advice.",
+            "emergency_contacts": {
+                "general_emergency": "911",
+                "ambulance": "112",
+                "poison_control": "1-800-222-1222"
+            }
+        }
+
+    except Exception as e:
+        logger.error(f"Error generating emergency first aid: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 @router.post("/optimization/resource-allocation")
 async def optimize_resource_allocation(request: ResourceOptimizationRequest):
     """Optimize resource allocation based on current patient load"""
@@ -370,13 +408,13 @@ async def optimize_resource_allocation(request: ResourceOptimizationRequest):
             current_patients=request.current_patients,
             available_resources=request.available_resources
         )
-        
+
         return {
             "success": True,
             "optimization_result": optimization_result,
             "recommendations": _generate_optimization_recommendations(optimization_result)
         }
-        
+
     except Exception as e:
         logger.error(f"Error optimizing resource allocation: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -634,16 +672,244 @@ def _generate_bottleneck_recommendations(bottlenecks: List) -> List[str]:
 def _generate_department_recommendations(performance_data: List[Dict]) -> List[str]:
     """Generate department recommendations"""
     recommendations = []
-    
+
     if performance_data:
         # Find slowest department
         slowest = max(performance_data, key=lambda x: x['avg_total_time'])
         recommendations.append(f"🐌 Slowest department: {slowest['department']} ({slowest['avg_total_time']:.1f} min avg)")
-        
+
         # Find most efficient department
         most_efficient = max(performance_data, key=lambda x: x['efficiency_score'])
         recommendations.append(f"⚡ Most efficient: {most_efficient['department']} (score: {most_efficient['efficiency_score']:.2f})")
-        
+
         recommendations.append("📈 Consider sharing best practices between departments")
-    
+
     return recommendations
+
+async def _generate_emergency_first_aid(
+    emergency_type: str,
+    symptoms: str,
+    patient_age: Optional[str] = None,
+    available_resources: Optional[List[str]] = None,
+    location: Optional[str] = None,
+    use_network_fallback: bool = True
+) -> Dict:
+    """Generate emergency first aid recommendations using AI with network fallback"""
+    try:
+        # Try OpenRouter first if network fallback is enabled (better for real-time emergencies)
+        if use_network_fallback:
+            try:
+                logger.info("Using OpenRouter fallback for emergency first aid")
+                openrouter_result = await openrouter_fallback_service.analyze_emergency_first_aid(
+                    emergency_type=emergency_type,
+                    symptoms=symptoms,
+                    patient_age=patient_age,
+                    available_resources=available_resources,
+                    location=location
+                )
+
+                if openrouter_result.get("success"):
+                    openrouter_result["service_used"] = "openrouter"
+                    return openrouter_result
+
+            except Exception as e:
+                logger.warning(f"OpenRouter fallback failed: {e}")
+
+        # Fallback to local knowledge base
+        logger.info("Using local knowledge base for emergency first aid")
+        # First aid knowledge base
+        first_aid_procedures = {
+            "cardiac_arrest": {
+                "immediate_actions": [
+                    "Call emergency services immediately (911/112)",
+                    "Start CPR if trained - 30 chest compressions followed by 2 rescue breaths",
+                    "Use AED if available - follow voice prompts",
+                    "Continue CPR until help arrives or person shows signs of life"
+                ],
+                "do_not": [
+                    "Do not leave the person alone",
+                    "Do not give mouth-to-mouth if not trained",
+                    "Do not stop CPR except when AED is analyzing"
+                ],
+                "resources_needed": ["AED", "CPR training", "Phone"],
+                "severity": "critical",
+                "estimated_response_time": "2-5 minutes"
+            },
+            "heart_attack": {
+                "immediate_actions": [
+                    "Call emergency services immediately",
+                    "Help person sit or lie down comfortably",
+                    "Loosen tight clothing",
+                    "If conscious, have them chew aspirin (325mg) if not allergic",
+                    "Monitor breathing and consciousness"
+                ],
+                "do_not": [
+                    "Do not give anything to eat or drink",
+                    "Do not leave person alone",
+                    "Do not ignore symptoms thinking it's indigestion"
+                ],
+                "resources_needed": ["Aspirin", "Phone", "Comfortable place to rest"],
+                "severity": "high",
+                "estimated_response_time": "5-10 minutes"
+            },
+            "stroke": {
+                "immediate_actions": [
+                    "Call emergency services immediately",
+                    "Note the time symptoms started (for tPA eligibility)",
+                    "Help person lie down with head slightly elevated",
+                    "Loosen tight clothing",
+                    "Do not give food, drink, or medication"
+                ],
+                "do_not": [
+                    "Do not give aspirin (may worsen bleeding)",
+                    "Do not try to drive to hospital yourself",
+                    "Do not ignore symptoms thinking they'll go away"
+                ],
+                "resources_needed": ["Phone", "Clock/watch", "Comfortable place"],
+                "severity": "high",
+                "estimated_response_time": "5-10 minutes"
+            },
+            "severe_bleeding": {
+                "immediate_actions": [
+                    "Call emergency services immediately",
+                    "Apply direct pressure to wound with clean cloth",
+                    "Elevate injured area above heart level if possible",
+                    "Maintain pressure until bleeding stops",
+                    "If bleeding through cloth, add more cloths on top"
+                ],
+                "do_not": [
+                    "Do not remove cloth if blood soaks through - add more",
+                    "Do not use tourniquet unless trained and bleeding can't be stopped",
+                    "Do not give food or drink"
+                ],
+                "resources_needed": ["Clean cloths/bandages", "Phone", "Gloves if available"],
+                "severity": "high",
+                "estimated_response_time": "5-10 minutes"
+            },
+            "choking": {
+                "immediate_actions": [
+                    "Call emergency services immediately",
+                    "If person can cough, encourage them to keep coughing",
+                    "If person cannot breathe, perform Heimlich maneuver (abdominal thrusts)",
+                    "For children: 5 back blows followed by 5 chest thrusts",
+                    "Continue until object is expelled or person becomes unconscious"
+                ],
+                "do_not": [
+                    "Do not perform Heimlich if person can breathe or cough effectively",
+                    "Do not leave unconscious person alone",
+                    "Do not give water or encourage drinking"
+                ],
+                "resources_needed": ["Phone", "Clear space", "Training in Heimlich"],
+                "severity": "high",
+                "estimated_response_time": "2-5 minutes"
+            },
+            "burns": {
+                "immediate_actions": [
+                    "Call emergency services for severe burns",
+                    "Cool burn with cool (not cold) running water for 10-20 minutes",
+                    "Remove jewelry, belts, tight clothing near burn",
+                    "Cover burn loosely with clean cloth or bandage",
+                    "For chemical burns, flush with water for 20 minutes"
+                ],
+                "do_not": [
+                    "Do not apply ice, butter, or ointments",
+                    "Do not break blisters",
+                    "Do not remove clothing stuck to burn"
+                ],
+                "resources_needed": ["Cool water", "Clean cloth", "Phone"],
+                "severity": "moderate",
+                "estimated_response_time": "10-15 minutes"
+            },
+            "fractures": {
+                "immediate_actions": [
+                    "Call emergency services immediately",
+                    "Immobilize injured area - do not try to realign bone",
+                    "Apply ice packs wrapped in cloth to reduce swelling",
+                    "Keep person comfortable and warm",
+                    "Monitor for shock symptoms (pale, clammy, rapid pulse)"
+                ],
+                "do_not": [
+                    "Do not move person unless absolutely necessary",
+                    "Do not give food or drink if surgery might be needed",
+                    "Do not attempt to straighten broken bones"
+                ],
+                "resources_needed": ["Ice packs", "Blankets", "Splints if available"],
+                "severity": "moderate",
+                "estimated_response_time": "10-15 minutes"
+            }
+        }
+
+        # Try to match emergency type or use AI analysis
+        procedure = first_aid_procedures.get(emergency_type.lower().replace(" ", "_"))
+
+        if not procedure:
+            # Use AI to analyze and provide general recommendations
+            ai_analysis = await openrouter_service.analyze_symptoms(
+                symptoms=f"Emergency: {emergency_type} - {symptoms}",
+                patient_age=patient_age,
+                additional_context=f"Location: {location or 'Unknown'}. Available resources: {', '.join(available_resources or [])}"
+            )
+
+            procedure = {
+                "immediate_actions": [
+                    "Call emergency services immediately (911/112)",
+                    "Ensure person's safety and your own safety",
+                    "Keep person comfortable and monitor vital signs",
+                    "Do not give food, drink, or medication unless directed by professional"
+                ],
+                "do_not": [
+                    "Do not attempt complex medical procedures",
+                    "Do not move injured person unless necessary",
+                    "Do not leave person alone if seriously injured"
+                ],
+                "resources_needed": ["Phone", "First aid kit if available"],
+                "severity": "unknown",
+                "estimated_response_time": "5-15 minutes",
+                "ai_generated": True,
+                "ai_notes": ai_analysis.get("analysis", "AI analysis suggests immediate professional medical attention")
+            }
+
+        # Customize based on available resources
+        if available_resources:
+            procedure["adapted_for_resources"] = []
+            if "aed" in [r.lower() for r in available_resources]:
+                procedure["adapted_for_resources"].append("AED available - use immediately for cardiac emergencies")
+            if "first_aid_kit" in [r.lower() for r in available_resources]:
+                procedure["adapted_for_resources"].append("First aid supplies available - use appropriate bandages/dressings")
+            if "phone" in [r.lower() for r in available_resources]:
+                procedure["adapted_for_resources"].append("Phone available - call emergency services immediately")
+
+        # Age-specific considerations
+        if patient_age:
+            age_considerations = []
+            if "child" in patient_age.lower() or "infant" in patient_age.lower():
+                age_considerations.append("For children: Use gentler pressure, smaller hand positions for CPR")
+            elif "elderly" in patient_age.lower():
+                age_considerations.append("For elderly: Be extra gentle, watch for additional health complications")
+
+            if age_considerations:
+                procedure["age_considerations"] = age_considerations
+
+        procedure["service_used"] = "local_knowledge_base"
+        return procedure
+
+    except Exception as e:
+        logger.error(f"Error generating emergency first aid: {e}")
+        # Return basic emergency response
+        return {
+            "immediate_actions": [
+                "Call emergency services immediately (911/112)",
+                "Ensure safety of person and bystanders",
+                "Provide basic comfort and reassurance",
+                "Monitor breathing and consciousness"
+            ],
+            "do_not": [
+                "Do not attempt complex medical procedures",
+                "Do not give food, drink, or medication",
+                "Do not leave seriously injured person alone"
+            ],
+            "resources_needed": ["Phone"],
+            "severity": "unknown",
+            "estimated_response_time": "5-15 minutes",
+            "error": "AI analysis failed, using basic emergency protocol"
+        }

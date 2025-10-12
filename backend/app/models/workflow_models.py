@@ -33,10 +33,11 @@ class PatientVisit(Base):
     visit_id = Column(String, unique=True, index=True)  # V100000 format
     
     # Visit Information
+    department_id = Column(Integer, ForeignKey("departments.id"), nullable=True)
     department = Column(Enum("Emergency", "Cardiology", "Orthopedics", "Neurology", "Oncology", 
-                           "Pediatrics", "Internal Medicine", "General Surgery", "Radiology", 
+                           "Pediatrics", "General", "Internal Medicine", "General Surgery", "Radiology", 
                            "Obstetrics", name="department"))
-    appointment_type = Column(Enum("New Patient", "Specialist Referral", "Urgent Care", "Follow-up", name="appointment_type"))
+    appointment_type = Column(Enum("New Patient", "Specialist Referral", "Urgent Care", "Follow-up", "Walk-in", name="appointment_type"))
     booking_type = Column(Enum("Online", "Walk-in", "Phone", name="booking_type"))
     is_online_booking = Column(Boolean, default=False)
     
@@ -128,7 +129,7 @@ class Department(Base):
     rooms_count = Column(Integer, default=1)
     
     # Relationships
-    visits = relationship("PatientVisit")
+    visits = relationship("PatientVisit", primaryjoin="Department.id==PatientVisit.department_id", foreign_keys='PatientVisit.department_id')
 
 class Provider(Base):
     """Provider/Doctor information"""

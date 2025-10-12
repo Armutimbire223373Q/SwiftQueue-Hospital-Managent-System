@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models.models import Checkin, Appointment, User
-from app.auth import get_current_user
+from app.routes.auth import get_current_user
 from pydantic import BaseModel
 from datetime import datetime
 

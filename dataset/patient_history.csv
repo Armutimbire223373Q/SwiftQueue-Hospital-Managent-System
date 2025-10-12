@@ -1,0 +1,1001 @@
+patient_id,full_name,gender,age,contact_number,department,check_in_time,queue_number,attending_doctor,diagnosis,prescribed_medication,chronic_conditions,allergies,check_out_time,waiting_duration_minutes,remarks
+17121513R47,Lerato Mavhunga,Male,87,+263 73 112 947,Outpatient,2025-10-01 19:50:29,GW-770,Dr. Amber Gumbo,Bronchitis,Cotrimoxazole,Heart Disease,Penicillin,2025-10-01 21:26:29,96,Follow-up in 2 weeks
+17421061H66,Brighton Chauke,Female,4,+263 75 346 514,Outpatient,2025-07-16 09:45:39,SG-014,Dr. Jesse Moyo,Tonsillitis,Augmentin,Hypertension,Pollen,2025-07-16 10:41:39,56,Admitted
+17589037J79,Takudzwa Mapuranga,Male,5,+263 75 347 598,Maternity,2025-09-11 07:10:53,MT-111,Dr. Andrew Dube,Labor Pains,Ibuprofen,None,None,2025-09-11 11:09:53,239,Referred to specialist
+17950856Y33,Memory Madzinga,Male,34,+263 75 162 648,Emergency,2025-07-31 18:20:54,PD-817,Dr. Amanda Ncube,Diabetes,Metronidazole,None,Peanuts,2025-07-31 20:33:54,133,Recovered
+17138040G34,Brighton Ncube,Female,75,+263 77 377 549,General Ward,2025-08-11 13:40:46,OP-890,Dr. Amber Gumbo,Typhoid,Insulin,None,None,2025-08-11 15:00:46,80,Recovered
+17892810C34,Gerald Dube,Female,8,+263 78 712 884,Pediatrics,2025-08-13 18:08:57,PD-111,Dr. Travis Gumbo,Hepatitis B,Augmentin,Asthma,Penicillin,2025-08-13 20:30:57,142,Recovered
+17840908C31,Lindiwe Mugari,Female,51,+263 76 484 558,Surgical,2025-07-18 11:49:11,EM-714,Dr. Matthew Ncube,Arthritis,Multivitamins,None,Penicillin,2025-07-18 14:38:11,169,Follow-up in 2 weeks
+17850286Y86,Rudo Matanga,Male,44,+263 79 662 987,Emergency,2025-09-07 09:46:14,OP-904,Dr. Linda Mutasa,Tuberculosis,Multivitamins,None,None,2025-09-07 10:13:14,27,Admitted
+17525413V11,Nigel Chikonde,Female,58,+263 75 818 157,Pediatrics,2025-08-28 05:09:26,OP-643,Dr. Melissa Dube,Asthma,Ciprofloxacin,Asthma,Pollen,2025-08-28 06:09:26,60,Admitted
+17287695V73,Anesu Matsika,Female,34,+263 79 382 119,Maternity,2025-08-16 08:44:44,PD-669,Dr. Christopher Ncube,Malnutrition,Paracetamol,Heart Disease,None,2025-08-16 10:09:44,85,Recovered
+17017090V98,Kudzai Chiweshe,Male,46,+263 78 450 414,Emergency,2025-09-29 14:59:51,GW-501,Dr. Amber Gumbo,Seizures,Losartan,Diabetes,Peanuts,2025-09-29 18:09:51,190,Recovered
+17967196R52,Ropafadzo Mawere,Male,65,+263 72 967 918,Pediatrics,2025-07-25 04:29:02,MT-790,Dr. Linda Mutasa,Kidney Stones,Omeprazole,Diabetes,Peanuts,2025-07-25 05:46:02,77,Recovered
+17511863J83,Lindiwe Sibanda,Female,32,+263 76 401 118,Pediatrics,2025-09-23 20:08:05,OP-618,Dr. Jesse Moyo,Stroke,Zinc Tablets,Heart Disease,Peanuts,2025-09-23 23:07:05,179,Recovered
+17946055C31,Faith Nyathi,Male,72,+263 79 242 422,Outpatient,2025-07-31 03:27:26,GW-163,Dr. Travis Gumbo,Common Cold,Antacid Suspension,Asthma,Peanuts,2025-07-31 05:47:26,140,Follow-up in 2 weeks
+17548768O92,Tendai Mupfumi,Female,1,+263 76 231 145,Surgical,2025-07-15 00:16:09,GW-065,Dr. Sharon Chirwa,Tuberculosis,Hydrocortisone,Hypertension,Peanuts,2025-07-15 03:47:09,211,Referred to specialist
+17440287E56,Takudzwa Madzinga,Female,5,+263 79 802 979,Maternity,2025-09-30 09:54:07,SG-150,Dr. Claudia Ncube,Skin Rash,Amoxiclav,None,Pollen,2025-09-30 10:55:07,61,Admitted
+17576134D32,Takudzwa Matanga,Female,56,+263 74 529 281,Outpatient,2025-07-13 04:32:22,PD-971,Dr. Andrew Dube,UTI,Prednisone,Asthma,Pollen,2025-07-13 07:34:22,182,Stable
+17834963A92,Patience Maregere,Female,86,+263 77 634 300,Dental,2025-08-11 20:47:45,GW-745,Dr. Amber Gumbo,Arthritis,Clotrimazole,None,Pollen,2025-08-12 00:21:45,214,Admitted
+17645974Y30,Brighton Chikonde,Female,55,+263 71 132 493,Maternity,2025-08-03 17:50:53,GW-662,Dr. Debra Moyo,STI - Chlamydia,Aspirin,Heart Disease,Peanuts,2025-08-03 20:48:53,178,Admitted
+17316107C20,Blessing Nyamazana,Female,3,+263 71 966 754,Emergency,2025-10-10 16:20:18,SG-551,Dr. John Mutasa,Kidney Stones,Ibuprofen,Heart Disease,Peanuts,2025-10-10 20:15:18,235,Referred to specialist
+17960787V62,Dumisani Gwenzi,Female,18,+263 73 277 130,Pediatrics,2025-07-20 07:52:41,SG-837,Dr. Debra Moyo,Anxiety,Amoxiclav,Asthma,Pollen,2025-07-20 10:05:41,133,Admitted
+17594599O49,Loveness Chikafu,Female,60,+263 77 588 548,General Ward,2025-08-11 07:08:59,SG-789,Dr. Christopher Ncube,Seizures,Aspirin,Hypertension,Penicillin,2025-08-11 10:34:59,206,Stable
+17653190L93,Lindiwe Chikonde,Male,13,+263 76 427 117,General Ward,2025-08-25 15:06:29,PD-794,Dr. Christopher Ncube,Dental Extraction,Tenofovir,Diabetes,None,2025-08-25 18:17:29,191,Referred to specialist
+17589892O43,Anesu Gwenzi,Male,8,+263 71 443 553,Pediatrics,2025-08-01 02:21:40,GW-813,Dr. Catherine Dube,STI - Herpes,Vitamin C,Heart Disease,Pollen,2025-08-01 05:48:40,207,Stable
+17776940F87,Tinashe Chinhoyi,Male,49,+263 71 959 725,Maternity,2025-09-10 16:07:34,EM-391,Dr. John Mutasa,Pregnancy Checkup,Augmentin,Asthma,Penicillin,2025-09-10 17:29:34,82,Recovered
+17971961K19,Kundai Mutasa,Female,52,+263 78 737 349,Physiotherapy,2025-08-08 20:19:10,SG-289,Dr. Jesse Moyo,STI - Syphilis,Amoxicillin,Diabetes,Penicillin,2025-08-08 22:52:10,153,Stable
+17565989L41,Ropafadzo Mawadza,Female,82,+263 74 685 299,Maternity,2025-08-08 03:46:26,MT-020,Dr. Hannah Chirwa,Burns,Lamivudine,Hypertension,Pollen,2025-08-08 06:38:26,172,Recovered
+17960741V18,Nokuthula Mpofu,Male,38,+263 73 301 394,Mental Health,2025-08-16 05:12:54,GW-296,Dr. Catherine Dube,STI - Chlamydia,Amoxiclav,Hypertension,None,2025-08-16 05:30:54,18,Referred to specialist
+17764843L84,Tanaka Sithole,Male,29,+263 78 616 119,Surgical,2025-07-31 11:27:19,GW-893,Dr. Sharon Chirwa,Chest Pain,Aspirin,Heart Disease,None,2025-07-31 13:26:19,119,Referred to specialist
+17230677Z16,Nomsa Matsika,Male,80,+263 79 994 416,Outpatient,2025-09-17 10:30:31,EM-239,Dr. Linda Mutasa,STI - Trichomoniasis,Cotrimoxazole,Heart Disease,Pollen,2025-09-17 12:21:31,111,Stable
+17251635S63,Godknows Sibanda,Female,15,+263 75 287 763,Outpatient,2025-08-14 04:27:45,PD-410,Dr. Jeanette Chirwa,STI - Syphilis,Fluconazole,Diabetes,Peanuts,2025-08-14 04:52:45,25,Recovered
+17348795M35,Nyasha Chinhoyi,Male,29,+263 71 320 590,Physiotherapy,2025-09-04 22:34:45,MT-422,Dr. Linda Mutasa,Ulcers,Fluconazole,None,Peanuts,2025-09-05 00:38:45,124,Follow-up in 2 weeks
+17733492B73,Obvious Muropa,Female,45,+263 76 628 615,Maternity,2025-10-04 23:49:50,GW-116,Dr. Nicholas Ncube,Typhoid,Salbutamol,Hypertension,None,2025-10-05 00:30:50,41,Stable
+17878658X90,Tariro Matsika,Female,73,+263 74 422 577,Dental,2025-08-02 00:53:23,EM-401,Dr. Jesse Moyo,STI - Syphilis,Efavirenz,Heart Disease,None,2025-08-02 03:24:23,151,Referred to specialist
+17373361C44,Nyasha Chikonde,Male,8,+263 71 619 146,Maternity,2025-09-29 16:23:22,GW-538,Dr. Jocelyn Gumbo,COVID-19,Ciprofloxacin,Diabetes,Pollen,2025-09-29 18:27:22,124,Referred to specialist
+17431047J81,Kudzai Mabika,Female,20,+263 75 329 855,Mental Health,2025-09-14 13:16:07,SG-898,Dr. Claudia Ncube,Malaria,Naproxen,Asthma,Peanuts,2025-09-14 15:21:07,125,Referred to specialist
+17046523Q82,Lesley Madzorera,Female,8,+263 73 706 150,Maternity,2025-09-04 05:41:01,EM-946,Dr. Sharon Chirwa,Allergic Reaction,ORS,Hypertension,None,2025-09-04 08:26:01,165,Stable
+17923617O11,Lesley Gwenzi,Female,1,+263 71 753 699,Maternity,2025-08-09 16:50:07,EM-978,Dr. Travis Gumbo,Sinusitis,Aspirin,Hypertension,Pollen,2025-08-09 17:16:07,26,Referred to specialist
+17862310C87,Lesley Mabika,Female,10,+263 72 309 155,General Ward,2025-07-19 06:04:27,OP-373,Dr. Sharon Chirwa,Malnutrition,Ciprofloxacin,Diabetes,Penicillin,2025-07-19 07:22:27,78,Admitted
+17575414G38,Tafadzwa Mugabe,Male,20,+263 73 785 564,Dental,2025-10-02 19:55:53,OP-409,Dr. Andrew Dube,STI - Herpes,Hydrocortisone,None,Peanuts,2025-10-02 23:53:53,238,Referred to specialist
+17833016C61,Panashe Nyamazana,Male,71,+263 79 412 112,Emergency,2025-08-01 13:54:53,PD-770,Dr. Linda Mutasa,Diabetes,Folic Acid,Heart Disease,Penicillin,2025-08-01 14:16:53,22,Recovered
+17122182F88,Tendai Chinhoyi,Female,34,+263 74 557 531,Outpatient,2025-07-27 22:24:37,PD-810,Dr. Debra Moyo,STI - Syphilis,Naproxen,Diabetes,Pollen,2025-07-28 01:00:37,156,Referred to specialist
+17836548L36,Thabani Moyo,Male,56,+263 72 579 514,Dental,2025-09-17 22:50:26,GW-257,Dr. Amanda Ncube,Burns,Paracetamol,Asthma,None,2025-09-18 00:43:26,113,Referred to specialist
+17020422H26,Nkosilathi Mupfumi,Female,30,+263 79 439 222,Physiotherapy,2025-10-02 20:56:42,GW-066,Dr. Amber Gumbo,Hepatitis B,Vitamin C,Heart Disease,Peanuts,2025-10-02 21:39:42,43,Admitted
+17304945K46,Precious Matanga,Male,44,+263 75 796 974,Emergency,2025-07-26 16:44:53,PD-937,Dr. Matthew Ncube,Malnutrition,Fluconazole,None,None,2025-07-26 17:22:53,38,Referred to specialist
+17890160P44,Moreblessing Mapuranga,Male,1,+263 78 932 927,Maternity,2025-07-23 17:15:41,GW-892,Dr. Linda Mutasa,Hepatitis B,Efavirenz,Hypertension,Pollen,2025-07-23 19:05:41,110,Admitted
+17324853X32,Dumisani Mutambirwa,Female,6,+263 79 556 855,Pediatrics,2025-08-15 07:02:29,EM-468,Dr. Travis Gumbo,Stroke,Tenofovir,Diabetes,Penicillin,2025-08-15 07:27:29,25,Admitted
+17304340T71,Fungai Chauke,Female,71,+263 77 114 521,Dental,2025-10-02 11:51:41,GW-283,Dr. Hannah Chirwa,STI - Chlamydia,ORS,Diabetes,Peanuts,2025-10-02 14:37:41,166,Stable
+17600436U30,Shamiso Mutenha,Female,58,+263 76 110 733,General Ward,2025-07-18 16:44:46,PD-504,Dr. Amber Gumbo,Burns,Clotrimazole,Diabetes,Peanuts,2025-07-18 17:13:46,29,Referred to specialist
+17245916V35,Clever Muchechetere,Female,81,+263 79 958 991,Emergency,2025-09-01 03:46:12,GW-478,Dr. Melissa Dube,Ulcers,Salbutamol,Hypertension,Peanuts,2025-09-01 05:02:12,76,Follow-up in 2 weeks
+17542190G84,Tobias Mutenha,Female,40,+263 75 715 185,Dental,2025-09-17 19:31:55,SG-610,Dr. Jesse Moyo,UTI,Augmentin,None,Peanuts,2025-09-17 22:06:55,155,Stable
+17464817L92,Fungai Ncube,Male,51,+263 73 342 745,Pediatrics,2025-08-11 18:47:29,PD-930,Dr. Amanda Ncube,Fracture,Multivitamins,Hypertension,None,2025-08-11 19:08:29,21,Admitted
+17563399B90,Cynthia Chikonde,Female,68,+263 74 351 110,Emergency,2025-07-29 03:52:03,PD-019,Dr. Jesse Moyo,HIV/AIDS,Multivitamins,None,Pollen,2025-07-29 05:23:03,91,Follow-up in 2 weeks
+17043633J74,Precious Nyamupaguma,Female,43,+263 79 725 429,Maternity,2025-08-11 08:03:41,PD-352,Dr. Andrew Dube,Skin Rash,Amoxicillin,Asthma,Pollen,2025-08-11 09:25:41,82,Stable
+17777149F76,Patience Matanga,Female,63,+263 79 871 238,General Ward,2025-09-10 11:56:29,PD-837,Dr. Jennifer Ncube,Chest Pain,Augmentin,Heart Disease,None,2025-09-10 14:35:29,159,Follow-up in 2 weeks
+17247242F87,Nyasha Sithole,Male,33,+263 78 905 708,Outpatient,2025-09-01 03:35:09,MT-518,Dr. Christopher Ncube,Migraine,Prednisone,Heart Disease,Penicillin,2025-09-01 07:25:09,230,Admitted
+17553902V19,Rudo Nyathi,Male,74,+263 75 666 188,Physiotherapy,2025-09-18 16:17:50,MT-347,Dr. Andrew Dube,Arthritis,Ibuprofen,Heart Disease,Penicillin,2025-09-18 17:04:50,47,Recovered
+17042120K85,Simbarashe Mushore,Male,11,+263 75 787 952,Pediatrics,2025-07-22 22:26:54,MT-461,Dr. John Mutasa,COVID-19,Efavirenz,Heart Disease,Peanuts,2025-07-23 00:38:54,132,Follow-up in 2 weeks
+17326635T82,Kundai Nyathi,Female,16,+263 74 264 714,Physiotherapy,2025-07-16 14:50:54,SG-717,Dr. Claudia Ncube,Ear Infection,Folic Acid,Diabetes,Peanuts,2025-07-16 17:38:54,168,Stable
+17546422M65,Obvious Makoni,Male,59,+263 73 530 201,Emergency,2025-08-04 07:02:37,MT-226,Dr. Melissa Dube,Skin Rash,Vitamin B Complex,None,Pollen,2025-08-04 07:26:37,24,Stable
+17574265U72,Simbarashe Chirume,Female,87,+263 74 193 268,Maternity,2025-08-18 16:54:28,OP-235,Dr. Catherine Dube,Tonsillitis,Augmentin,Asthma,Pollen,2025-08-18 18:29:28,95,Stable
+17583841Q16,Simbarashe Manyika,Female,49,+263 71 616 831,Surgical,2025-09-18 01:20:10,SG-689,Dr. Sharon Chirwa,Ulcers,Amoxiclav,Diabetes,None,2025-09-18 04:40:10,200,Referred to specialist
+17991085B59,Takudzwa Chikonde,Male,5,+263 74 818 878,Mental Health,2025-08-29 10:32:47,OP-182,Dr. Jocelyn Gumbo,Chest Pain,Fluconazole,Diabetes,Peanuts,2025-08-29 12:09:47,97,Recovered
+17545000U71,Blessing Sithole,Male,9,+263 72 935 437,Physiotherapy,2025-10-01 22:21:49,PD-006,Dr. Hannah Chirwa,Dental Extraction,Doxycycline,Asthma,Penicillin,2025-10-02 01:11:49,170,Follow-up in 2 weeks
+17606120O32,Shamiso Chasakara,Female,90,+263 72 311 150,General Ward,2025-09-28 18:55:17,SG-387,Dr. Melissa Dube,Sinusitis,Multivitamins,Diabetes,Peanuts,2025-09-28 20:30:17,95,Follow-up in 2 weeks
+17145026X84,Panashe Sibanda,Male,31,+263 71 539 746,General Ward,2025-07-13 07:09:09,PD-897,Dr. Jennifer Ncube,Typhoid,Naproxen,Asthma,Pollen,2025-07-13 09:46:09,157,Admitted
+17587074D17,Tonderai Chiweshe,Male,34,+263 74 914 652,General Ward,2025-08-27 17:54:37,SG-364,Dr. Jocelyn Gumbo,Labor Pains,Ibuprofen,Hypertension,Pollen,2025-08-27 21:43:37,229,Follow-up in 2 weeks
+17062134O13,Tonderai Nyamazana,Male,19,+263 74 112 264,Emergency,2025-08-22 07:13:10,MT-920,Dr. John Mutasa,Gastritis,Antacid Suspension,None,None,2025-08-22 08:22:10,69,Follow-up in 2 weeks
+17919107U35,Munashe Makoni,Male,57,+263 77 628 472,Emergency,2025-10-02 03:45:55,GW-154,Dr. John Mutasa,Dental Extraction,Lamivudine,None,None,2025-10-02 06:45:55,180,Referred to specialist
+17050753J22,Kundai Gwenzi,Male,67,+263 78 378 990,Pediatrics,2025-09-30 02:03:05,OP-140,Dr. Matthew Ncube,HIV/AIDS,Cotrimoxazole,Hypertension,Penicillin,2025-09-30 02:55:05,52,Admitted
+17204001G41,Bongani Matanga,Male,24,+263 73 951 862,Dental,2025-09-20 11:32:12,SG-378,Dr. Jeanette Chirwa,HIV/AIDS,Ciprofloxacin,Asthma,Pollen,2025-09-20 14:12:12,160,Admitted
+17019572A60,Rudo Mutenha,Female,79,+263 77 934 595,Physiotherapy,2025-09-13 04:04:46,SG-160,Dr. Melissa Dube,Gout,Efavirenz,Asthma,Peanuts,2025-09-13 04:19:46,15,Referred to specialist
+17689266F73,Rumbidzai Marecha,Female,4,+263 74 298 633,Physiotherapy,2025-09-10 18:07:00,MT-859,Dr. Linda Mutasa,Diabetes,Tenofovir,Asthma,None,2025-09-10 18:38:00,31,Follow-up in 2 weeks
+17984909L69,Bongani Manyika,Male,9,+263 76 915 598,Pediatrics,2025-07-28 13:42:36,GW-705,Dr. Debra Moyo,Allergic Reaction,Vitamin C,Hypertension,Pollen,2025-07-28 15:10:36,88,Referred to specialist
+17259457A33,Fortunate Manyika,Male,59,+263 73 758 931,Maternity,2025-09-02 19:51:33,GW-555,Dr. Linda Mutasa,Injury,Ciprofloxacin,Hypertension,None,2025-09-02 20:46:33,55,Referred to specialist
+17913821Y73,Fortunate Gumbo,Male,78,+263 71 558 811,Outpatient,2025-07-21 23:46:23,GW-341,Dr. Jennifer Ncube,Skin Rash,Paracetamol,Hypertension,Peanuts,2025-07-22 03:05:23,199,Admitted
+17375165G97,Nomsa Matanga,Female,16,+263 75 244 876,Maternity,2025-07-28 14:12:34,SG-234,Dr. Catherine Dube,Asthma,Ciprofloxacin,Hypertension,Penicillin,2025-07-28 15:18:34,66,Stable
+17342679V58,Dumisani Chiweshe,Male,54,+263 74 364 579,Mental Health,2025-07-13 20:02:38,OP-786,Dr. Jesse Moyo,Malnutrition,ORS,None,Penicillin,2025-07-13 22:00:38,118,Admitted
+17265168K59,Anesu Mpofu,Female,72,+263 79 372 839,Emergency,2025-09-11 23:11:47,PD-288,Dr. Christopher Ncube,COVID-19,Folic Acid,None,Penicillin,2025-09-12 00:34:47,83,Stable
+17238414X23,Cynthia Sibanda,Male,45,+263 78 917 729,Emergency,2025-08-30 19:04:28,PD-705,Dr. Claudia Ncube,Pneumonia,Ciprofloxacin,Diabetes,None,2025-08-30 20:19:28,75,Stable
+17565343V11,Nyarai Chikonde,Female,55,+263 77 194 679,Maternity,2025-09-19 11:07:50,SG-122,Dr. Linda Mutasa,Injury,Multivitamins,Diabetes,None,2025-09-19 14:43:50,216,Follow-up in 2 weeks
+17739692T34,Godknows Gwenzi,Female,62,+263 75 993 958,Maternity,2025-10-09 02:26:52,MT-212,Dr. Amanda Ncube,STI - Chlamydia,Vitamin C,Diabetes,Penicillin,2025-10-09 06:25:52,239,Admitted
+17976760Z88,Tinashe Gumbo,Female,9,+263 77 709 447,Mental Health,2025-09-08 22:21:57,EM-952,Dr. Jennifer Ncube,Diabetes,Clotrimazole,Heart Disease,None,2025-09-09 02:10:57,229,Referred to specialist
+17290463Z76,Admire Mugabe,Female,65,+263 76 725 612,Emergency,2025-09-07 10:52:07,GW-206,Dr. Linda Mutasa,UTI,Metronidazole,Diabetes,Penicillin,2025-09-07 13:58:07,186,Follow-up in 2 weeks
+17236604Q32,Wellington Gwenzi,Male,89,+263 73 642 505,Emergency,2025-09-14 16:11:00,OP-689,Dr. Nicholas Ncube,Chest Pain,Amoxiclav,Heart Disease,None,2025-09-14 18:15:00,124,Referred to specialist
+17481143E19,Godknows Nyathi,Female,57,+263 73 162 884,Dental,2025-09-23 23:08:15,PD-523,Dr. John Mutasa,Heart Disease,Prednisone,Asthma,Peanuts,2025-09-24 02:49:15,221,Recovered
+17452167S69,Precious Katsande,Female,73,+263 72 191 895,Surgical,2025-09-21 17:25:07,PD-679,Dr. Claudia Ncube,STI - Chlamydia,Augmentin,Heart Disease,Pollen,2025-09-21 19:57:07,152,Stable
+17703392Z81,Wellington Sibanda,Female,78,+263 79 951 842,Outpatient,2025-10-03 20:12:36,MT-138,Dr. Matthew Ncube,STI - Gonorrhea,Doxycycline,Heart Disease,None,2025-10-03 23:34:36,202,Stable
+17398994J58,Memory Nyamupaguma,Female,18,+263 77 847 226,Pediatrics,2025-10-05 18:25:47,PD-733,Dr. Matthew Ncube,STI - Trichomoniasis,Naproxen,Asthma,Penicillin,2025-10-05 21:29:47,184,Recovered
+17758861O80,Moreblessing Katsande,Female,74,+263 73 213 838,Outpatient,2025-09-15 13:55:16,MT-452,Dr. Jocelyn Gumbo,Typhoid,Hydrocortisone,None,None,2025-09-15 17:43:16,228,Stable
+17468851V89,Loveness Chirwa,Female,23,+263 79 853 506,Emergency,2025-09-26 17:04:12,PD-357,Dr. Jennifer Ncube,Malnutrition,Azithromycin,Diabetes,Pollen,2025-09-26 19:43:12,159,Stable
+17047827Y68,Nigel Mutambirwa,Male,14,+263 79 221 507,Outpatient,2025-08-16 03:40:58,OP-746,Dr. Jeanette Chirwa,Tuberculosis,Aspirin,Diabetes,None,2025-08-16 06:24:58,164,Admitted
+17942458V16,Tonderai Ndlovu,Female,32,+263 75 906 500,General Ward,2025-10-02 20:01:07,GW-024,Dr. Melissa Dube,Kidney Stones,Prednisone,Asthma,Peanuts,2025-10-02 21:13:07,72,Follow-up in 2 weeks
+17124693S68,Moreblessing Mudzonga,Male,78,+263 74 654 644,Pediatrics,2025-08-14 15:19:54,MT-145,Dr. Jennifer Ncube,Depression,Ciprofloxacin,Diabetes,Penicillin,2025-08-14 17:05:54,106,Stable
+17945515F18,Thabani Madzinga,Female,32,+263 76 920 606,General Ward,2025-09-25 07:55:21,PD-261,Dr. Linda Mutasa,Gout,Vitamin C,Asthma,None,2025-09-25 11:33:21,218,Stable
+17473662E70,Lesley Chasakara,Male,11,+263 72 328 355,Physiotherapy,2025-09-22 10:46:22,PD-810,Dr. Jocelyn Gumbo,Pneumonia,Multivitamins,Asthma,None,2025-09-22 14:41:22,235,Admitted
+17866638Z75,Godknows Moyo,Male,87,+263 78 226 851,Dental,2025-10-08 21:25:22,OP-515,Dr. John Mutasa,Ulcers,Salbutamol,Asthma,Pollen,2025-10-08 21:40:22,15,Admitted
+17558092C40,Simbarashe Mushore,Male,64,+263 73 851 248,Dental,2025-07-18 23:54:02,SG-981,Dr. Jesse Moyo,Kidney Stones,Hydrocortisone,None,Peanuts,2025-07-19 03:44:02,230,Referred to specialist
+17261600C43,Tendai Mugabe,Female,18,+263 77 555 235,Emergency,2025-09-01 00:45:55,SG-089,Dr. Amanda Ncube,Anxiety,Insulin,Asthma,Penicillin,2025-09-01 04:35:55,230,Follow-up in 2 weeks
+17132143S44,Bongani Moyo,Female,55,+263 73 331 964,Surgical,2025-09-25 16:28:00,GW-559,Dr. Jennifer Ncube,Malnutrition,Clotrimazole,Hypertension,Pollen,2025-09-25 19:36:00,188,Referred to specialist
+17758452B59,Rudo Nhema,Male,41,+263 79 511 830,Surgical,2025-10-09 10:10:48,EM-799,Dr. Jesse Moyo,Burns,Ciprofloxacin,None,Penicillin,2025-10-09 10:30:48,20,Follow-up in 2 weeks
+17889531C85,Wellington Katsande,Female,89,+263 73 546 909,Mental Health,2025-10-06 01:00:57,EM-333,Dr. John Mutasa,Heart Disease,Amoxiclav,None,Peanuts,2025-10-06 04:32:57,212,Follow-up in 2 weeks
+17365466L83,Tariro Mawadza,Male,8,+263 74 608 292,Outpatient,2025-09-06 10:56:59,PD-326,Dr. Melissa Dube,Appendicitis,Amoxicillin,Asthma,None,2025-09-06 12:37:59,101,Stable
+17123230I31,Rudo Chirwa,Female,41,+263 78 964 189,Maternity,2025-09-12 05:56:15,OP-515,Dr. Timothy Mutasa,Skin Rash,Losartan,Hypertension,Peanuts,2025-09-12 08:44:15,168,Admitted
+17216498L34,Nigel Makoni,Female,48,+263 74 964 964,Emergency,2025-09-08 11:22:15,SG-334,Dr. Catherine Dube,Hypertension,Cotrimoxazole,Asthma,None,2025-09-08 12:44:15,82,Stable
+17860818B51,Thabani Chinhoyi,Male,68,+263 72 132 279,General Ward,2025-07-21 19:03:09,PD-495,Dr. Linda Mutasa,Ulcers,Salbutamol,Hypertension,None,2025-07-21 19:18:09,15,Follow-up in 2 weeks
+17736887M63,Lerato Makoni,Female,84,+263 78 912 711,General Ward,2025-07-17 06:09:38,MT-046,Dr. Nicholas Ncube,Malaria,Prednisone,Asthma,Penicillin,2025-07-17 09:58:38,229,Stable
+17810333M76,Nigel Muchechetere,Male,15,+263 74 272 185,Maternity,2025-08-31 22:02:38,MT-517,Dr. Melissa Dube,Eczema,Hydrocortisone,Asthma,None,2025-08-31 22:56:38,54,Follow-up in 2 weeks
+17638549H79,Tobias Mupfumi,Female,46,+263 73 928 445,Physiotherapy,2025-09-08 12:18:58,MT-483,Dr. Andrew Dube,Obesity,Salbutamol,None,None,2025-09-08 15:42:58,204,Admitted
+17570844P59,Fortunate Chauke,Female,21,+263 74 998 202,Emergency,2025-09-07 05:07:38,GW-393,Dr. Amanda Ncube,Hepatitis B,Antacid Suspension,Hypertension,None,2025-09-07 06:00:38,53,Stable
+17106096A19,Nkosilathi Mudzonga,Female,70,+263 71 884 321,Mental Health,2025-07-17 10:18:56,GW-818,Dr. Hannah Chirwa,Anxiety,Zinc Tablets,Heart Disease,Penicillin,2025-07-17 13:07:56,169,Referred to specialist
+17855606C76,Tawanda Chikonde,Female,58,+263 73 116 686,Physiotherapy,2025-07-28 04:21:52,GW-770,Dr. Travis Gumbo,Allergic Reaction,Vitamin C,Diabetes,Peanuts,2025-07-28 05:08:52,47,Recovered
+17857888J23,Loveness Chasakara,Female,42,+263 71 278 269,Mental Health,2025-09-07 02:59:57,PD-464,Dr. John Mutasa,Hypertension,Vitamin B Complex,Heart Disease,Pollen,2025-09-07 05:56:57,177,Admitted
+17467555H56,Takudzwa Dube,Female,49,+263 76 774 725,General Ward,2025-10-02 00:39:22,SG-125,Dr. Jocelyn Gumbo,Dental Extraction,Naproxen,None,Penicillin,2025-10-02 01:14:22,35,Recovered
+17768289O51,Tobias Mutambirwa,Female,5,+263 78 576 902,Physiotherapy,2025-07-14 23:25:11,MT-978,Dr. Melissa Dube,Bronchitis,Cough Syrup,Hypertension,Penicillin,2025-07-15 03:12:11,227,Admitted
+17433768J15,Blessing Gwenzi,Female,51,+263 72 865 325,Pediatrics,2025-09-29 13:58:29,SG-248,Dr. Christopher Ncube,Ear Infection,ORS,Asthma,Peanuts,2025-09-29 16:04:29,126,Admitted
+17456152W89,Nigel Madzorera,Female,82,+263 77 491 107,Emergency,2025-08-05 08:36:32,OP-276,Dr. Hannah Chirwa,Ulcers,ORS,Heart Disease,Pollen,2025-08-05 10:02:32,86,Admitted
+17427186E54,Tafadzwa Chikafu,Male,54,+263 71 822 606,General Ward,2025-09-02 12:21:32,EM-754,Dr. Matthew Ncube,Fracture,Diclofenac,Heart Disease,Peanuts,2025-09-02 13:03:32,42,Follow-up in 2 weeks
+17633790Y99,Shamiso Mabaso,Female,36,+263 72 400 868,Dental,2025-08-03 23:25:40,SG-991,Dr. Debra Moyo,COVID-19,Vitamin C,Heart Disease,None,2025-08-04 01:34:40,129,Follow-up in 2 weeks
+17192303Y26,Tariro Gwenzi,Female,74,+263 78 157 583,Emergency,2025-09-22 11:22:16,MT-159,Dr. Timothy Mutasa,Sinusitis,Multivitamins,None,Penicillin,2025-09-22 14:58:16,216,Follow-up in 2 weeks
+17412641F66,Nyasha Mabika,Male,53,+263 73 823 814,Dental,2025-08-20 10:31:33,EM-574,Dr. Debra Moyo,Gastritis,Losartan,Heart Disease,Peanuts,2025-08-20 11:28:33,57,Recovered
+17041568S59,Farai Mapuranga,Female,72,+263 73 453 187,Emergency,2025-07-23 17:07:03,OP-895,Dr. Travis Gumbo,Dental Extraction,Vitamin B Complex,Asthma,Pollen,2025-07-23 18:42:03,95,Admitted
+17652762O76,Admire Chinhoyi,Male,62,+263 77 685 956,Emergency,2025-09-24 05:01:54,OP-282,Dr. Jesse Moyo,Pneumonia,Zinc Tablets,Asthma,Penicillin,2025-09-24 08:33:54,212,Stable
+17181156G62,Ropafadzo Mutambirwa,Male,69,+263 72 787 865,Surgical,2025-08-14 10:03:38,PD-728,Dr. Nicholas Ncube,Burns,Vitamin C,Hypertension,None,2025-08-14 11:36:38,93,Referred to specialist
+17338256E94,Kudzai Makoni,Male,12,+263 74 221 752,Pediatrics,2025-09-12 19:26:13,MT-623,Dr. Nicholas Ncube,Fracture,Efavirenz,Asthma,Penicillin,2025-09-12 22:57:13,211,Stable
+17164423W12,Rumbidzai Mawadza,Male,74,+263 73 951 518,Maternity,2025-09-28 07:43:36,PD-514,Dr. Jocelyn Gumbo,Ear Infection,Lamivudine,None,Peanuts,2025-09-28 11:04:36,201,Admitted
+17831684V40,Nyasha Mapuranga,Female,54,+263 79 519 896,Mental Health,2025-08-20 16:41:32,MT-996,Dr. Travis Gumbo,Dental Extraction,Tenofovir,Heart Disease,None,2025-08-20 17:44:32,63,Referred to specialist
+17591325X51,Nyarai Mudzonga,Female,78,+263 74 623 407,Dental,2025-09-15 13:37:00,EM-469,Dr. Amber Gumbo,Burns,Insulin,None,Peanuts,2025-09-15 16:30:00,173,Referred to specialist
+17509469R15,Patience Mapuranga,Female,22,+263 76 480 795,Maternity,2025-08-09 18:36:05,GW-264,Dr. Jennifer Ncube,Diabetes,Salbutamol,Asthma,Pollen,2025-08-09 19:35:05,59,Follow-up in 2 weeks
+17884646L85,Thabani Matsika,Female,65,+263 72 510 590,Outpatient,2025-09-04 19:58:49,GW-684,Dr. Claudia Ncube,STI - Syphilis,Zinc Tablets,Hypertension,Penicillin,2025-09-04 23:09:49,191,Recovered
+17508024N46,Tariro Nyamazana,Female,3,+263 73 441 429,Outpatient,2025-09-20 11:35:04,GW-346,Dr. Claudia Ncube,Obesity,Folic Acid,Hypertension,Peanuts,2025-09-20 14:58:04,203,Stable
+17983522L60,Sipho Mawadza,Female,35,+263 71 621 827,General Ward,2025-09-17 07:43:12,PD-886,Dr. Travis Gumbo,Chest Pain,Metronidazole,Hypertension,Penicillin,2025-09-17 10:42:12,179,Referred to specialist
+17998681H73,Thabani Mutenha,Female,79,+263 72 715 594,Dental,2025-10-07 22:40:45,OP-068,Dr. Christopher Ncube,Gastritis,Efavirenz,None,Penicillin,2025-10-08 00:08:45,88,Referred to specialist
+17961758K76,Godknows Mpofu,Male,22,+263 78 918 447,General Ward,2025-08-16 19:45:45,OP-841,Dr. Jesse Moyo,Eye Infection,Vitamin B Complex,None,Peanuts,2025-08-16 21:35:45,110,Follow-up in 2 weeks
+17438734Y85,Godknows Chirume,Male,11,+263 79 199 767,Maternity,2025-08-11 21:22:28,EM-510,Dr. Christopher Ncube,COVID-19,Azithromycin,None,Penicillin,2025-08-11 22:58:28,96,Stable
+17331136O56,Lesley Matsika,Male,80,+263 74 205 554,Pediatrics,2025-08-20 04:20:14,OP-324,Dr. Catherine Dube,Asthma,ORS,None,Peanuts,2025-08-20 04:55:14,35,Recovered
+17751220R62,Loveness Chirume,Male,25,+263 71 825 990,Physiotherapy,2025-09-13 22:41:44,MT-668,Dr. Melissa Dube,Appendicitis,Efavirenz,Diabetes,Peanuts,2025-09-14 00:48:44,127,Recovered
+17108426Z85,Nothando Chikafu,Male,38,+263 74 224 168,Emergency,2025-10-03 20:06:41,OP-368,Dr. Jeanette Chirwa,Hepatitis C,Hydrocortisone,Asthma,Peanuts,2025-10-03 22:15:41,129,Stable
+17280868O81,Lesley Ndlovu,Female,9,+263 79 324 249,Dental,2025-07-25 07:58:54,EM-528,Dr. Melissa Dube,Pregnancy Checkup,Vitamin C,Asthma,None,2025-07-25 08:27:54,29,Recovered
+17516168R40,Tonderai Muropa,Female,85,+263 75 967 399,Outpatient,2025-08-01 07:20:09,OP-264,Dr. Jesse Moyo,Kidney Stones,Naproxen,None,Peanuts,2025-08-01 11:12:09,232,Referred to specialist
+17061705T31,Farai Mawere,Male,23,+263 78 329 743,Surgical,2025-07-29 13:28:19,MT-782,Dr. John Mutasa,Migraine,Fluconazole,None,Penicillin,2025-07-29 17:25:19,237,Referred to specialist
+17355920K46,Rumbidzai Chiweshe,Female,65,+263 76 899 209,Physiotherapy,2025-08-31 15:12:28,OP-317,Dr. Travis Gumbo,STI - Chlamydia,Omeprazole,Hypertension,Pollen,2025-08-31 16:15:28,63,Admitted
+17625569G92,Shamiso Mutambirwa,Female,5,+263 71 351 466,General Ward,2025-10-01 14:41:29,EM-337,Dr. Travis Gumbo,Injury,Metronidazole,Hypertension,None,2025-10-01 16:53:29,132,Stable
+17976170O86,Tafadzwa Gwenzi,Female,52,+263 79 818 279,Mental Health,2025-09-02 08:46:14,SG-057,Dr. Jennifer Ncube,Skin Rash,Panado,Hypertension,None,2025-09-02 09:01:14,15,Follow-up in 2 weeks
+17336749D63,Rudo Marecha,Male,88,+263 71 475 829,Emergency,2025-08-24 12:02:57,PD-632,Dr. Matthew Ncube,COVID-19,Folic Acid,None,Peanuts,2025-08-24 13:23:57,81,Recovered
+17052537B87,Brighton Muropa,Male,33,+263 75 997 397,Outpatient,2025-07-25 01:35:39,OP-681,Dr. Catherine Dube,Tuberculosis,Tenofovir,Diabetes,Penicillin,2025-07-25 05:08:39,213,Admitted
+17188337M11,Admire Mushonga,Male,28,+263 75 588 662,Surgical,2025-09-05 07:58:01,EM-525,Dr. John Mutasa,Sinusitis,Salbutamol,Heart Disease,Peanuts,2025-09-05 11:01:01,183,Admitted
+17123103H97,Shamiso Mudzonga,Male,29,+263 78 198 860,General Ward,2025-08-07 18:41:45,SG-196,Dr. Amanda Ncube,Ear Infection,Folic Acid,Heart Disease,Peanuts,2025-08-07 20:24:45,103,Follow-up in 2 weeks
+17099021H71,Farai Mugabe,Female,42,+263 72 882 635,Surgical,2025-08-18 01:24:23,GW-933,Dr. Catherine Dube,Hypertension,Insulin,Heart Disease,Penicillin,2025-08-18 03:53:23,149,Admitted
+17168104M21,Admire Muchechetere,Female,87,+263 71 979 329,Surgical,2025-07-19 21:26:20,SG-838,Dr. Matthew Ncube,Heart Disease,Metronidazole,None,Pollen,2025-07-19 23:32:20,126,Admitted
+17146540L48,Wellington Mushonga,Female,30,+263 78 652 813,Dental,2025-07-30 09:45:46,MT-087,Dr. Andrew Dube,Skin Rash,Antacid Suspension,Asthma,Peanuts,2025-07-30 11:48:46,123,Recovered
+17247639O91,Anesu Maringe,Male,13,+263 78 762 547,Surgical,2025-10-01 23:43:35,OP-403,Dr. Matthew Ncube,Burns,Zinc Tablets,None,None,2025-10-02 02:52:35,189,Follow-up in 2 weeks
+17843139Y59,Farai Mawere,Female,52,+263 76 518 886,Physiotherapy,2025-08-06 06:07:27,OP-542,Dr. Jennifer Ncube,Tonsillitis,Amoxicillin,Asthma,None,2025-08-06 06:41:27,34,Admitted
+17654175U64,Lindiwe Mushonga,Female,30,+263 75 379 160,Maternity,2025-08-12 10:10:02,SG-642,Dr. Jennifer Ncube,Ulcers,Insulin,Diabetes,Peanuts,2025-08-12 14:02:02,232,Referred to specialist
+17457179L96,Brian Matanga,Female,5,+263 71 813 186,Outpatient,2025-09-14 16:15:48,PD-344,Dr. Jeanette Chirwa,Ulcers,Fluconazole,Heart Disease,Penicillin,2025-09-14 20:10:48,235,Stable
+17343791T22,Lesley Mutasa,Male,15,+263 75 428 188,Maternity,2025-10-06 05:48:11,SG-472,Dr. Jocelyn Gumbo,Bronchitis,Tenofovir,Heart Disease,Pollen,2025-10-06 07:06:11,78,Follow-up in 2 weeks
+17013741P24,Sipho Moyo,Female,60,+263 72 951 758,Emergency,2025-07-15 01:06:34,SG-319,Dr. Matthew Ncube,STI - Herpes,Paracetamol,Hypertension,Penicillin,2025-07-15 02:23:34,77,Follow-up in 2 weeks
+17185747I53,Fungai Maringe,Male,85,+263 78 771 352,General Ward,2025-09-03 11:53:19,MT-340,Dr. Catherine Dube,Burns,Diclofenac,Heart Disease,Peanuts,2025-09-03 13:38:19,105,Recovered
+17264682Z22,Dumisani Mawere,Male,82,+263 75 611 272,Maternity,2025-08-31 14:06:56,OP-446,Dr. Christopher Ncube,Hepatitis B,Vitamin B Complex,Heart Disease,Penicillin,2025-08-31 15:39:56,93,Referred to specialist
+17037673C56,Chipo Gwenzi,Male,11,+263 72 356 211,Mental Health,2025-09-22 15:57:41,OP-488,Dr. Jeanette Chirwa,Stroke,Zinc Tablets,Diabetes,Peanuts,2025-09-22 18:01:41,124,Referred to specialist
+17610711R51,Memory Munyoro,Female,49,+263 73 428 391,Dental,2025-07-18 22:43:43,EM-362,Dr. John Mutasa,STI - Gonorrhea,Cough Syrup,Hypertension,Penicillin,2025-07-18 23:52:43,69,Recovered
+17206384I10,Faith Mugari,Female,76,+263 73 306 352,General Ward,2025-09-12 22:30:56,MT-110,Dr. John Mutasa,Typhoid,Ciprofloxacin,Diabetes,None,2025-09-12 23:10:56,40,Recovered
+17753029R70,Tanaka Mugabe,Male,19,+263 71 585 921,Mental Health,2025-08-27 03:41:11,SG-911,Dr. Christopher Ncube,Eye Infection,Cough Syrup,Asthma,Pollen,2025-08-27 04:11:11,30,Stable
+17387213V69,Tendai Mutambirwa,Female,9,+263 72 964 892,Pediatrics,2025-08-31 10:41:28,PD-010,Dr. Claudia Ncube,Fracture,Panado,Diabetes,Peanuts,2025-08-31 13:50:28,189,Stable
+17021803P88,Munashe Mhlanga,Male,66,+263 71 475 159,Dental,2025-08-23 21:18:18,OP-111,Dr. Debra Moyo,STI - Trichomoniasis,Salbutamol,None,Pollen,2025-08-23 22:58:18,100,Follow-up in 2 weeks
+17940379M83,Thabani Mabaso,Male,41,+263 74 359 948,General Ward,2025-08-23 02:39:26,PD-422,Dr. Melissa Dube,Labor Pains,Vitamin C,None,None,2025-08-23 03:37:26,58,Stable
+17690024E31,Nomsa Matsika,Male,89,+263 72 355 831,Dental,2025-09-22 07:00:33,SG-872,Dr. Jocelyn Gumbo,Malaria,ORS,Asthma,Pollen,2025-09-22 07:24:33,24,Stable
+17100482F73,Dumisani Nyathi,Female,17,+263 79 488 888,Mental Health,2025-07-31 08:37:11,GW-108,Dr. Amanda Ncube,Injury,Ciprofloxacin,Heart Disease,Pollen,2025-07-31 09:15:11,38,Recovered
+17972266L10,Cynthia Chikonde,Male,76,+263 79 136 164,Outpatient,2025-09-09 02:49:14,MT-835,Dr. Jennifer Ncube,Migraine,Augmentin,Hypertension,None,2025-09-09 04:30:14,101,Admitted
+17525348I86,Loveness Mushore,Male,13,+263 77 622 862,Dental,2025-08-09 03:53:50,OP-822,Dr. Nicholas Ncube,Appendicitis,Augmentin,Diabetes,None,2025-08-09 06:41:50,168,Recovered
+17176175Z56,Brighton Maringe,Female,7,+263 78 991 489,Mental Health,2025-07-29 13:13:16,EM-998,Dr. John Mutasa,Typhoid,Hydrocortisone,Heart Disease,None,2025-07-29 13:48:16,35,Stable
+17077954J45,Tawanda Maringe,Female,78,+263 73 163 802,Physiotherapy,2025-09-28 12:18:35,SG-391,Dr. Sharon Chirwa,Ulcers,Efavirenz,None,Pollen,2025-09-28 15:52:35,214,Recovered
+17502020G77,Shamiso Gumbo,Male,63,+263 72 142 226,Outpatient,2025-09-12 19:32:06,OP-979,Dr. Amber Gumbo,Depression,Amoxiclav,Diabetes,Pollen,2025-09-12 22:25:06,173,Recovered
+17383951D67,Ropafadzo Manyika,Female,52,+263 73 824 537,Outpatient,2025-07-16 21:36:57,OP-509,Dr. Sharon Chirwa,Labor Pains,Azithromycin,Hypertension,Pollen,2025-07-16 22:58:57,82,Stable
+17821542J39,Dumisani Maringe,Male,50,+263 73 494 321,Emergency,2025-07-19 01:52:10,SG-838,Dr. Amanda Ncube,Ulcers,Naproxen,Asthma,Pollen,2025-07-19 04:38:10,166,Recovered
+17314311D24,Bongani Gwenzi,Male,69,+263 78 370 523,Dental,2025-10-08 08:54:48,PD-111,Dr. Jocelyn Gumbo,Dental Extraction,Cotrimoxazole,Asthma,Peanuts,2025-10-08 11:47:48,173,Stable
+17893339R55,Moreblessing Madzinga,Male,17,+263 78 260 821,Pediatrics,2025-07-27 19:29:02,OP-281,Dr. Jennifer Ncube,Allergic Reaction,Diclofenac,Asthma,Pollen,2025-07-27 22:30:02,181,Recovered
+17879074V35,Fungai Mugari,Male,57,+263 79 627 355,Surgical,2025-08-04 12:50:17,EM-648,Dr. Hannah Chirwa,COVID-19,Amoxicillin,None,None,2025-08-04 13:42:17,52,Admitted
+17203807J92,Fungai Nyathi,Male,18,+263 71 675 703,Outpatient,2025-10-07 12:19:41,OP-414,Dr. Melissa Dube,Skin Rash,Amoxiclav,Heart Disease,Pollen,2025-10-07 15:50:41,211,Admitted
+17715454K61,Gerald Mapuranga,Male,87,+263 74 799 544,Dental,2025-07-26 02:10:10,SG-199,Dr. Timothy Mutasa,Heart Disease,Azithromycin,Heart Disease,Pollen,2025-07-26 05:46:10,216,Follow-up in 2 weeks
+17612451S75,Brighton Munyoro,Female,60,+263 72 444 115,Maternity,2025-07-24 19:33:49,PD-738,Dr. John Mutasa,UTI,Tenofovir,Asthma,None,2025-07-24 20:59:49,86,Follow-up in 2 weeks
+17437634Q70,Gerald Mawere,Female,54,+263 77 247 795,Pediatrics,2025-08-09 12:40:40,EM-006,Dr. Jennifer Ncube,COVID-19,Hydrocortisone,Diabetes,Pollen,2025-08-09 13:02:40,22,Follow-up in 2 weeks
+17225329C94,Tanaka Chiweshe,Female,47,+263 76 421 932,Mental Health,2025-09-27 16:34:08,GW-308,Dr. Jennifer Ncube,Injury,Antacid Suspension,Diabetes,Peanuts,2025-09-27 17:07:08,33,Referred to specialist
+17146970X23,Shamiso Mushore,Male,45,+263 73 204 840,Dental,2025-09-17 09:14:11,PD-402,Dr. Jocelyn Gumbo,Asthma,Cotrimoxazole,Heart Disease,Pollen,2025-09-17 10:36:11,82,Referred to specialist
+17454631R70,Nigel Mugari,Female,6,+263 72 705 191,Pediatrics,2025-09-30 20:11:53,SG-553,Dr. Catherine Dube,Malnutrition,Clotrimazole,Asthma,Peanuts,2025-09-30 22:26:53,135,Stable
+17482628F47,Tinashe Chauke,Female,53,+263 72 482 665,Surgical,2025-09-16 21:58:58,OP-994,Dr. Jennifer Ncube,Hepatitis B,Prednisone,Asthma,Pollen,2025-09-17 00:14:58,136,Referred to specialist
+17091482A85,Patience Chinhoyi,Male,61,+263 74 415 783,Maternity,2025-07-15 14:05:19,GW-484,Dr. Nicholas Ncube,Fracture,Antacid Suspension,Diabetes,None,2025-07-15 14:23:19,18,Admitted
+17458166G80,Kundai Mutenha,Male,56,+263 77 199 146,General Ward,2025-08-09 09:06:01,OP-098,Dr. Nicholas Ncube,Typhoid,Zinc Tablets,Hypertension,None,2025-08-09 10:35:01,89,Referred to specialist
+17006213C20,Tobias Madzinga,Female,79,+263 75 820 987,Maternity,2025-10-10 04:02:41,OP-560,Dr. Catherine Dube,Kidney Stones,Ceftriaxone,Hypertension,Peanuts,2025-10-10 06:23:41,141,Admitted
+17861847V77,Tinashe Mutambirwa,Female,83,+263 78 151 258,Dental,2025-08-25 12:59:01,OP-645,Dr. Claudia Ncube,Ear Infection,Panado,None,Pollen,2025-08-25 15:17:01,138,Follow-up in 2 weeks
+17311764B19,Shamiso Madzorera,Male,66,+263 78 721 393,Surgical,2025-07-29 01:45:43,PD-975,Dr. Melissa Dube,Labor Pains,Coartem,None,None,2025-07-29 04:20:43,155,Recovered
+17293885A61,Panashe Mushayi,Female,34,+263 72 998 633,Emergency,2025-08-18 22:52:58,EM-054,Dr. Jesse Moyo,Hepatitis B,Amoxicillin,Hypertension,None,2025-08-19 00:53:58,121,Recovered
+17615483D39,Loveness Gumbo,Male,60,+263 79 288 579,Outpatient,2025-07-13 01:44:51,GW-610,Dr. Matthew Ncube,STI - Chlamydia,Fluconazole,Diabetes,None,2025-07-13 03:52:51,128,Referred to specialist
+17002855H11,Nothando Mushore,Female,70,+263 72 871 951,Outpatient,2025-07-30 00:18:54,OP-498,Dr. Linda Mutasa,Skin Rash,Azithromycin,Hypertension,None,2025-07-30 02:05:54,107,Recovered
+17108981H69,Brighton Mushayi,Female,2,+263 74 450 649,General Ward,2025-09-13 06:10:02,GW-799,Dr. Jeanette Chirwa,HIV/AIDS,Augmentin,Hypertension,Pollen,2025-09-13 09:20:02,190,Stable
+17164646O46,Lerato Chirwa,Female,33,+263 72 754 808,Physiotherapy,2025-08-18 06:24:49,EM-893,Dr. Nicholas Ncube,Heart Disease,Amoxicillin,Asthma,Pollen,2025-08-18 10:22:49,238,Referred to specialist
+17229688K49,Brian Madzinga,Male,25,+263 79 342 173,Maternity,2025-09-02 04:20:58,SG-137,Dr. Catherine Dube,Ulcers,Salbutamol,Hypertension,Penicillin,2025-09-02 07:38:58,198,Stable
+17063846W92,Fungai Madzinga,Male,36,+263 74 757 292,Dental,2025-09-19 20:29:31,SG-589,Dr. John Mutasa,Skin Rash,Vitamin C,Asthma,Penicillin,2025-09-19 21:58:31,89,Referred to specialist
+17075170C63,Ropafadzo Chirwa,Male,16,+263 71 303 290,Outpatient,2025-07-28 23:05:39,PD-974,Dr. Jeanette Chirwa,Diabetes,Folic Acid,Diabetes,Pollen,2025-07-29 00:34:39,89,Recovered
+17399943V91,Ropafadzo Muropa,Female,62,+263 79 647 314,Mental Health,2025-08-06 22:14:44,OP-840,Dr. Linda Mutasa,Tuberculosis,Augmentin,None,Pollen,2025-08-07 01:09:44,175,Follow-up in 2 weeks
+17438536Z32,Shamiso Munyoro,Male,81,+263 72 444 229,Surgical,2025-09-09 01:08:59,OP-679,Dr. Claudia Ncube,Pregnancy Checkup,ORS,Hypertension,None,2025-09-09 03:09:59,121,Recovered
+17282893N67,Admire Makoni,Male,72,+263 78 300 722,Physiotherapy,2025-09-22 13:46:26,MT-177,Dr. Claudia Ncube,Tonsillitis,Amoxicillin,Heart Disease,None,2025-09-22 16:02:26,136,Referred to specialist
+17210400C28,Lesley Ndlovu,Female,13,+263 71 567 253,Pediatrics,2025-10-09 16:12:44,MT-001,Dr. Amber Gumbo,Eye Infection,Cough Syrup,Hypertension,Penicillin,2025-10-09 17:04:44,52,Recovered
+17226858D73,Tanaka Chasakara,Female,43,+263 78 305 752,Outpatient,2025-08-20 11:24:40,PD-620,Dr. Jocelyn Gumbo,Chest Pain,Lamivudine,None,None,2025-08-20 11:40:40,16,Stable
+17449448A16,Admire Mushore,Male,59,+263 78 993 703,Outpatient,2025-07-18 04:55:17,OP-424,Dr. Jennifer Ncube,Kidney Stones,Losartan,Hypertension,Pollen,2025-07-18 08:19:17,204,Recovered
+17336495A39,Bongani Mutambirwa,Female,26,+263 75 392 326,Mental Health,2025-10-03 11:46:09,EM-692,Dr. Sharon Chirwa,Appendicitis,Metformin,None,Peanuts,2025-10-03 12:18:09,32,Referred to specialist
+17087430Z48,Tinashe Gwenzi,Male,42,+263 76 963 856,Surgical,2025-08-21 18:09:01,MT-732,Dr. Timothy Mutasa,Common Cold,Doxycycline,Heart Disease,Pollen,2025-08-21 20:31:01,142,Stable
+17352947L67,Sipho Dube,Female,85,+263 79 742 131,Outpatient,2025-09-11 19:11:54,PD-680,Dr. Amanda Ncube,Pregnancy Checkup,Augmentin,Diabetes,Pollen,2025-09-11 20:19:54,68,Referred to specialist
+17970958H60,Tinashe Makoni,Male,67,+263 78 743 316,Mental Health,2025-09-22 06:36:17,EM-524,Dr. Sharon Chirwa,STI - Gonorrhea,Doxycycline,None,None,2025-09-22 08:28:17,112,Admitted
+17682627I42,Obvious Muropa,Female,34,+263 78 527 712,Outpatient,2025-08-03 16:34:26,OP-704,Dr. John Mutasa,STI - Herpes,Naproxen,Asthma,Peanuts,2025-08-03 19:52:26,198,Recovered
+17140745V46,Patience Mushonga,Male,14,+263 75 707 111,Maternity,2025-09-27 01:05:36,SG-015,Dr. Matthew Ncube,Obesity,Panado,Hypertension,Peanuts,2025-09-27 02:00:36,55,Recovered
+17803662U25,Brian Marecha,Female,29,+263 73 170 368,Outpatient,2025-07-14 19:35:16,PD-288,Dr. Andrew Dube,Gastritis,Vitamin C,Heart Disease,Pollen,2025-07-14 21:40:16,125,Follow-up in 2 weeks
+17616129Z73,Panashe Mudzonga,Male,27,+263 71 567 914,Pediatrics,2025-09-10 15:21:13,PD-547,Dr. Jennifer Ncube,Labor Pains,Ciprofloxacin,Hypertension,None,2025-09-10 18:31:13,190,Stable
+17105551W63,Thabani Nyathi,Male,54,+263 72 463 142,Outpatient,2025-08-18 05:20:25,GW-774,Dr. Linda Mutasa,Chest Pain,Cotrimoxazole,Hypertension,None,2025-08-18 07:19:25,119,Follow-up in 2 weeks
+17956623A87,Brighton Ncube,Female,73,+263 74 304 221,General Ward,2025-09-15 20:55:08,GW-170,Dr. Claudia Ncube,STI - Herpes,Ciprofloxacin,None,Penicillin,2025-09-15 21:56:08,61,Recovered
+17650036H14,Patience Maringe,Female,12,+263 79 931 350,General Ward,2025-10-08 14:58:50,EM-043,Dr. Travis Gumbo,COVID-19,Amoxiclav,None,Penicillin,2025-10-08 17:22:50,144,Admitted
+17609264K54,Tonderai Chikafu,Female,42,+263 75 849 728,Surgical,2025-09-22 04:03:31,EM-077,Dr. Melissa Dube,Kidney Stones,Insulin,Hypertension,Penicillin,2025-09-22 06:28:31,145,Stable
+17588607N18,Faith Ndlovu,Female,7,+263 76 506 656,Surgical,2025-07-23 06:39:54,OP-106,Dr. Jocelyn Gumbo,Typhoid,Ceftriaxone,Heart Disease,None,2025-07-23 10:25:54,226,Admitted
+17886892W28,Admire Maringe,Male,43,+263 71 539 556,Outpatient,2025-09-09 13:39:33,GW-033,Dr. Matthew Ncube,Fracture,Cotrimoxazole,Diabetes,None,2025-09-09 16:06:33,147,Follow-up in 2 weeks
+17921797Q55,Rudo Mushore,Male,49,+263 74 806 156,Physiotherapy,2025-09-16 23:15:45,MT-870,Dr. Travis Gumbo,Bronchitis,Diclofenac,Diabetes,Peanuts,2025-09-17 02:32:45,197,Follow-up in 2 weeks
+17114069K46,Panashe Chikafu,Female,84,+263 78 175 113,Emergency,2025-09-04 02:51:38,SG-374,Dr. Catherine Dube,STI - Chlamydia,Omeprazole,Heart Disease,Pollen,2025-09-04 03:06:38,15,Stable
+17802334P42,Moreblessing Ndlovu,Female,71,+263 79 607 587,Mental Health,2025-08-11 04:10:54,EM-007,Dr. Melissa Dube,Typhoid,Cotrimoxazole,Asthma,Pollen,2025-08-11 06:50:54,160,Referred to specialist
+17463605H64,Thabani Mushonga,Female,32,+263 71 169 260,Dental,2025-10-08 20:35:27,SG-111,Dr. Timothy Mutasa,Injury,Zinc Tablets,Asthma,None,2025-10-08 21:40:27,65,Follow-up in 2 weeks
+17264665F71,Sipho Chirwa,Male,58,+263 71 855 921,Maternity,2025-07-25 00:41:25,OP-055,Dr. Andrew Dube,Typhoid,Metronidazole,Diabetes,Peanuts,2025-07-25 03:07:25,146,Stable
+17142189O38,Wellington Nyamupaguma,Male,50,+263 72 676 102,Dental,2025-09-12 21:02:00,SG-119,Dr. Jesse Moyo,Hepatitis B,Paracetamol,Asthma,Peanuts,2025-09-12 23:06:00,124,Follow-up in 2 weeks
+17873487A87,Blessing Mutambirwa,Female,9,+263 78 990 697,Dental,2025-09-05 00:11:08,EM-176,Dr. Hannah Chirwa,Seizures,Augmentin,Hypertension,Penicillin,2025-09-05 00:51:08,40,Stable
+17201736D80,Lesley Mutasa,Male,9,+263 73 478 424,Physiotherapy,2025-09-25 11:02:07,PD-764,Dr. Linda Mutasa,STI - Chlamydia,Multivitamins,Asthma,Penicillin,2025-09-25 11:23:07,21,Follow-up in 2 weeks
+17153025N29,Godknows Maregere,Female,83,+263 79 840 825,Outpatient,2025-08-25 17:36:25,MT-907,Dr. Jeanette Chirwa,Hepatitis B,Aspirin,Asthma,Pollen,2025-08-25 20:26:25,170,Admitted
+17776781X61,Shamiso Sithole,Male,18,+263 76 326 145,Mental Health,2025-07-14 14:52:07,OP-337,Dr. Melissa Dube,UTI,Azithromycin,Asthma,Pollen,2025-07-14 15:28:07,36,Referred to specialist
+17966230N51,Gerald Nyamazana,Male,18,+263 74 354 821,Pediatrics,2025-08-09 04:23:19,PD-378,Dr. Matthew Ncube,Eye Infection,Multivitamins,Asthma,Pollen,2025-08-09 06:30:19,127,Recovered
+17933039N36,Tinashe Manyika,Female,28,+263 79 975 861,Physiotherapy,2025-10-07 11:47:02,GW-352,Dr. Jeanette Chirwa,Labor Pains,Panado,None,Penicillin,2025-10-07 12:13:02,26,Referred to specialist
+17964962N77,Lindiwe Mawadza,Female,39,+263 78 864 635,General Ward,2025-08-17 01:07:12,EM-163,Dr. Christopher Ncube,UTI,Ceftriaxone,None,Pollen,2025-08-17 03:53:12,166,Recovered
+17943388W92,Panashe Chirwa,Male,65,+263 76 407 464,Outpatient,2025-09-03 19:29:02,GW-515,Dr. Jocelyn Gumbo,Fracture,Metformin,Hypertension,Penicillin,2025-09-03 22:39:02,190,Follow-up in 2 weeks
+17894142S55,Lindiwe Nyamazana,Female,57,+263 71 919 693,Maternity,2025-07-19 21:44:05,SG-924,Dr. Claudia Ncube,Diabetes,Amoxicillin,None,Pollen,2025-07-19 22:02:05,18,Admitted
+17351767V58,Tariro Chiweshe,Male,6,+263 77 470 790,Emergency,2025-08-08 10:44:40,EM-817,Dr. Jeanette Chirwa,Kidney Stones,Panado,None,Peanuts,2025-08-08 11:25:40,41,Stable
+17908621P43,Tariro Moyo,Male,75,+263 79 105 787,Dental,2025-07-16 18:34:56,SG-128,Dr. Amber Gumbo,Asthma,Cough Syrup,Heart Disease,Peanuts,2025-07-16 19:02:56,28,Referred to specialist
+17333721C51,Precious Mhlanga,Female,58,+263 75 841 192,Pediatrics,2025-08-07 16:22:36,GW-076,Dr. Timothy Mutasa,STI - Trichomoniasis,Hydrocortisone,Hypertension,Pollen,2025-08-07 18:37:36,135,Recovered
+17536804V92,Precious Chinhoyi,Female,73,+263 79 983 383,Dental,2025-08-26 05:31:04,PD-995,Dr. Melissa Dube,Migraine,Diclofenac,None,Pollen,2025-08-26 06:03:04,32,Follow-up in 2 weeks
+17349966R10,Tinashe Mhlanga,Male,42,+263 76 566 533,General Ward,2025-09-12 08:28:05,MT-215,Dr. Travis Gumbo,STI - Herpes,Ciprofloxacin,Heart Disease,Pollen,2025-09-12 10:49:05,141,Recovered
+17107048R75,Tafadzwa Mutasa,Male,45,+263 78 644 514,Pediatrics,2025-10-02 22:43:31,MT-493,Dr. Timothy Mutasa,Stroke,Naproxen,None,Penicillin,2025-10-02 23:20:31,37,Recovered
+17147831T58,Memory Gumbo,Female,80,+263 74 807 902,Mental Health,2025-07-25 20:59:44,SG-409,Dr. Jennifer Ncube,Migraine,Diclofenac,None,Pollen,2025-07-25 22:35:44,96,Follow-up in 2 weeks
+17600557T50,Precious Mugari,Male,27,+263 75 761 842,Surgical,2025-08-23 05:36:56,SG-404,Dr. Jennifer Ncube,Tonsillitis,Amoxicillin,None,Peanuts,2025-08-23 08:10:56,154,Referred to specialist
+17126362J75,Nyasha Nyamazana,Male,59,+263 75 808 489,Surgical,2025-07-30 23:14:19,EM-999,Dr. Claudia Ncube,Labor Pains,Salbutamol,Hypertension,Peanuts,2025-07-30 23:38:19,24,Admitted
+17910655D66,Nothando Mugabe,Female,20,+263 74 414 523,Surgical,2025-10-06 01:19:45,MT-954,Dr. Matthew Ncube,Tonsillitis,Diclofenac,Hypertension,Pollen,2025-10-06 04:59:45,220,Referred to specialist
+17747280M94,Memory Mavhunga,Male,30,+263 77 392 955,Dental,2025-08-26 10:11:15,GW-019,Dr. Andrew Dube,Hepatitis C,Panado,Asthma,None,2025-08-26 10:46:15,35,Admitted
+17246144T46,Precious Maringe,Male,54,+263 72 997 273,Maternity,2025-10-07 06:52:08,PD-111,Dr. Christopher Ncube,Migraine,Ibuprofen,None,None,2025-10-07 09:15:08,143,Recovered
+17346175I68,Nyarai Chiweshe,Female,57,+263 75 685 951,General Ward,2025-09-03 17:52:08,SG-383,Dr. Jocelyn Gumbo,Appendicitis,Folic Acid,Heart Disease,Pollen,2025-09-03 19:16:08,84,Admitted
+17281303W14,Chipo Maregere,Female,81,+263 77 348 304,Physiotherapy,2025-09-30 00:13:13,OP-016,Dr. Timothy Mutasa,Bronchitis,Metformin,Hypertension,Penicillin,2025-09-30 03:59:13,226,Recovered
+17369785K41,Kudzai Madzorera,Male,28,+263 74 695 258,Surgical,2025-08-21 18:44:24,SG-467,Dr. Timothy Mutasa,Arthritis,Vitamin B Complex,None,None,2025-08-21 20:51:24,127,Stable
+17402501A57,Moreblessing Mushore,Female,14,+263 77 831 174,Surgical,2025-09-15 08:56:07,PD-263,Dr. Nicholas Ncube,Fracture,Vitamin B Complex,Heart Disease,Peanuts,2025-09-15 11:51:07,175,Follow-up in 2 weeks
+17214263Y94,Panashe Mutenha,Female,35,+263 71 640 996,Mental Health,2025-09-21 06:18:46,GW-187,Dr. Jesse Moyo,Fracture,Azithromycin,Diabetes,Penicillin,2025-09-21 06:51:46,33,Stable
+17250993Y73,Godknows Mugabe,Male,63,+263 72 862 124,Physiotherapy,2025-09-21 18:31:05,EM-648,Dr. Andrew Dube,Arthritis,Efavirenz,None,Peanuts,2025-09-21 21:27:05,176,Follow-up in 2 weeks
+17083123S16,Cynthia Mugari,Male,57,+263 75 370 421,Outpatient,2025-09-29 15:28:08,EM-933,Dr. Sharon Chirwa,Skin Rash,Omeprazole,Hypertension,Pollen,2025-09-29 17:40:08,132,Stable
+17322670D13,Tinashe Nyathi,Male,71,+263 74 155 596,General Ward,2025-08-25 08:15:48,SG-202,Dr. Timothy Mutasa,Stroke,Paracetamol,None,Pollen,2025-08-25 10:35:48,140,Follow-up in 2 weeks
+17376921U19,Fungai Dube,Female,59,+263 74 251 746,Dental,2025-09-07 17:37:03,MT-350,Dr. Debra Moyo,Typhoid,ORS,Asthma,Peanuts,2025-09-07 20:27:03,170,Referred to specialist
+17568031G81,Cynthia Gwenzi,Male,13,+263 72 786 642,Emergency,2025-08-18 14:57:45,GW-526,Dr. Claudia Ncube,Heart Disease,Hydrocortisone,Hypertension,None,2025-08-18 18:54:45,237,Stable
+17020985H94,Lerato Gumbo,Male,43,+263 71 230 345,Emergency,2025-10-03 10:21:12,PD-168,Dr. Jeanette Chirwa,Common Cold,Augmentin,Heart Disease,Penicillin,2025-10-03 13:50:12,209,Follow-up in 2 weeks
+17444244F28,Takudzwa Mabika,Male,87,+263 79 452 736,Maternity,2025-09-01 12:54:48,SG-399,Dr. Claudia Ncube,Malaria,Salbutamol,Asthma,Peanuts,2025-09-01 16:36:48,222,Follow-up in 2 weeks
+17988170O54,Blessing Mapuranga,Female,46,+263 75 252 179,Physiotherapy,2025-07-16 12:39:18,PD-716,Dr. Jennifer Ncube,Depression,Tenofovir,Asthma,Penicillin,2025-07-16 15:29:18,170,Follow-up in 2 weeks
+17655610C59,Ropafadzo Munyoro,Male,44,+263 76 835 131,General Ward,2025-09-10 01:15:41,EM-447,Dr. Sharon Chirwa,Hepatitis B,Coartem,Asthma,None,2025-09-10 03:11:41,116,Follow-up in 2 weeks
+17563863G64,Bongani Mushore,Male,55,+263 76 916 670,Dental,2025-08-15 22:30:09,MT-702,Dr. Matthew Ncube,Typhoid,Aspirin,None,Peanuts,2025-08-16 01:15:09,165,Follow-up in 2 weeks
+17248627H85,Tanaka Nyamupaguma,Male,65,+263 76 220 253,Outpatient,2025-08-10 06:07:11,MT-417,Dr. Amanda Ncube,Common Cold,Vitamin B Complex,Heart Disease,Penicillin,2025-08-10 09:01:11,174,Follow-up in 2 weeks
+17361626C37,Takudzwa Munyoro,Female,11,+263 79 891 565,Mental Health,2025-10-05 10:04:15,SG-926,Dr. Jeanette Chirwa,Stroke,Zinc Tablets,Diabetes,Penicillin,2025-10-05 10:30:15,26,Recovered
+17236132V63,Wellington Mutasa,Male,19,+263 74 804 607,Mental Health,2025-09-25 15:21:01,EM-388,Dr. Sharon Chirwa,Hypertension,Azithromycin,Heart Disease,Peanuts,2025-09-25 19:07:01,226,Referred to specialist
+17754804A93,Rudo Nhema,Female,15,+263 77 737 682,Mental Health,2025-08-28 17:49:27,PD-471,Dr. Travis Gumbo,Injury,Tenofovir,Diabetes,Pollen,2025-08-28 21:33:27,224,Referred to specialist
+17791820F94,Anesu Mutambirwa,Female,80,+263 76 669 801,Physiotherapy,2025-09-03 20:48:20,PD-586,Dr. Jeanette Chirwa,Obesity,Augmentin,Heart Disease,Penicillin,2025-09-04 00:42:20,234,Stable
+17707989P31,Faith Matsika,Female,31,+263 76 952 515,Outpatient,2025-09-21 07:03:57,OP-694,Dr. Jennifer Ncube,Migraine,Metronidazole,Diabetes,Penicillin,2025-09-21 08:31:57,88,Stable
+17745208C13,Gerald Nyamazana,Male,73,+263 76 118 960,Pediatrics,2025-09-28 09:06:58,EM-137,Dr. Jesse Moyo,Arthritis,Aspirin,Hypertension,Peanuts,2025-09-28 12:14:58,188,Recovered
+17913691C76,Fungai Ncube,Female,53,+263 72 319 858,Maternity,2025-07-23 12:16:52,OP-772,Dr. Matthew Ncube,STI - Trichomoniasis,Omeprazole,None,None,2025-07-23 13:10:52,54,Admitted
+17269456S15,Fortunate Ncube,Male,60,+263 79 582 441,Outpatient,2025-08-18 07:51:22,EM-904,Dr. Nicholas Ncube,Gout,Multivitamins,Heart Disease,Penicillin,2025-08-18 08:33:22,42,Stable
+17177169B37,Clever Mabika,Male,88,+263 79 401 966,Maternity,2025-07-23 07:35:07,GW-846,Dr. Claudia Ncube,Appendicitis,Augmentin,None,Penicillin,2025-07-23 07:52:07,17,Stable
+17381374H64,Sipho Moyo,Male,41,+263 72 988 926,Pediatrics,2025-08-17 09:21:00,EM-903,Dr. Timothy Mutasa,Diabetes,Ciprofloxacin,Heart Disease,Peanuts,2025-08-17 09:44:00,23,Stable
+17827168N95,Tawanda Mabaso,Male,1,+263 74 721 119,Maternity,2025-07-29 12:29:10,PD-576,Dr. Jeanette Chirwa,Kidney Stones,Cough Syrup,Hypertension,Pollen,2025-07-29 14:05:10,96,Recovered
+17418730A82,Chipo Mavhunga,Female,56,+263 75 401 358,Mental Health,2025-08-14 09:38:22,SG-071,Dr. Amber Gumbo,Tuberculosis,Lamivudine,Heart Disease,Pollen,2025-08-14 11:32:22,114,Stable
+17475315T22,Kundai Mushore,Female,75,+263 79 495 369,Physiotherapy,2025-09-21 12:41:49,PD-542,Dr. Matthew Ncube,Sinusitis,Ibuprofen,Asthma,Peanuts,2025-09-21 15:52:49,191,Follow-up in 2 weeks
+17630379R71,Brian Maregere,Female,77,+263 72 997 746,General Ward,2025-09-14 17:16:22,OP-917,Dr. Hannah Chirwa,Pregnancy Checkup,Antacid Suspension,Diabetes,Penicillin,2025-09-14 20:53:22,217,Follow-up in 2 weeks
+17000262F66,Tafadzwa Sithole,Male,49,+263 79 233 297,General Ward,2025-08-21 07:41:33,PD-568,Dr. Christopher Ncube,Diabetes,Clotrimazole,Diabetes,Penicillin,2025-08-21 10:59:33,198,Follow-up in 2 weeks
+17811036W74,Patience Chasakara,Male,6,+263 79 653 871,Surgical,2025-09-29 18:20:03,PD-312,Dr. Travis Gumbo,Fracture,Ceftriaxone,Hypertension,Pollen,2025-09-29 20:54:03,154,Admitted
+17800572H37,Bongani Mavhunga,Female,59,+263 77 128 876,Emergency,2025-07-15 17:47:46,MT-523,Dr. John Mutasa,Sinusitis,Coartem,None,Peanuts,2025-07-15 18:59:46,72,Follow-up in 2 weeks
+17557605T10,Takudzwa Mhlanga,Female,4,+263 72 106 799,Pediatrics,2025-09-10 07:44:44,OP-461,Dr. Jocelyn Gumbo,UTI,Omeprazole,None,None,2025-09-10 11:16:44,212,Referred to specialist
+17954730O26,Brighton Mpofu,Female,90,+263 79 963 443,Outpatient,2025-07-15 15:14:04,GW-026,Dr. Timothy Mutasa,Eye Infection,Ceftriaxone,Asthma,Pollen,2025-07-15 18:52:04,218,Follow-up in 2 weeks
+17967738Q82,Brighton Mavhunga,Female,29,+263 74 623 392,Mental Health,2025-10-06 21:58:02,OP-839,Dr. Linda Mutasa,Appendicitis,Multivitamins,Hypertension,None,2025-10-07 00:49:02,171,Stable
+17171706T20,Chipo Matanga,Male,43,+263 71 192 590,Mental Health,2025-07-16 00:41:40,PD-819,Dr. Claudia Ncube,Tuberculosis,Naproxen,None,Penicillin,2025-07-16 01:16:40,35,Follow-up in 2 weeks
+17885739P64,Tafadzwa Mawadza,Female,23,+263 72 398 204,Outpatient,2025-08-01 17:56:21,GW-233,Dr. Timothy Mutasa,STI - Trichomoniasis,Metronidazole,Hypertension,None,2025-08-01 20:09:21,133,Admitted
+17695925D45,Kudzai Chauke,Male,45,+263 75 782 481,General Ward,2025-09-01 23:46:34,EM-049,Dr. Amber Gumbo,UTI,Doxycycline,Diabetes,Peanuts,2025-09-02 01:59:34,133,Recovered
+17715726D70,Brighton Mugabe,Male,6,+263 73 558 529,Mental Health,2025-09-29 23:01:02,SG-741,Dr. John Mutasa,Hepatitis C,Aspirin,Heart Disease,None,2025-09-29 23:20:02,19,Referred to specialist
+17305713Z92,Lesley Nyamupaguma,Male,27,+263 71 722 541,Pediatrics,2025-09-11 09:29:46,EM-794,Dr. John Mutasa,Depression,Augmentin,Heart Disease,Penicillin,2025-09-11 11:42:46,133,Follow-up in 2 weeks
+17168994R54,Tariro Mutenha,Male,83,+263 75 141 761,Outpatient,2025-08-04 21:18:06,EM-811,Dr. Christopher Ncube,Gout,Tenofovir,Diabetes,Pollen,2025-08-04 23:04:06,106,Stable
+17076766N37,Shamiso Muropa,Male,65,+263 75 745 763,Mental Health,2025-09-18 07:30:42,SG-949,Dr. Sharon Chirwa,HIV/AIDS,Ceftriaxone,Asthma,Peanuts,2025-09-18 10:36:42,186,Referred to specialist
+17110030Z51,Rudo Mutasa,Male,66,+263 72 840 265,Maternity,2025-08-08 05:47:45,GW-128,Dr. Linda Mutasa,Bronchitis,Losartan,Asthma,Penicillin,2025-08-08 08:11:45,144,Admitted
+17162462A59,Loveness Muchechetere,Female,12,+263 78 588 933,Mental Health,2025-08-21 12:23:29,MT-309,Dr. Debra Moyo,Gastritis,Metformin,Hypertension,None,2025-08-21 15:50:29,207,Referred to specialist
+17943489H96,Tendai Matanga,Male,3,+263 76 554 574,Physiotherapy,2025-09-04 12:22:55,GW-923,Dr. Timothy Mutasa,Chest Pain,Folic Acid,Hypertension,None,2025-09-04 15:24:55,182,Follow-up in 2 weeks
+17589241W16,Sipho Chirume,Male,50,+263 71 409 746,Dental,2025-08-16 19:38:15,EM-255,Dr. Travis Gumbo,Common Cold,Omeprazole,None,None,2025-08-16 21:20:15,102,Stable
+17051313Q42,Tinashe Muropa,Male,4,+263 77 560 312,Dental,2025-08-15 14:56:02,EM-563,Dr. Timothy Mutasa,Eye Infection,Ceftriaxone,Asthma,Penicillin,2025-08-15 15:51:02,55,Follow-up in 2 weeks
+17511979N51,Simbarashe Ndlovu,Male,11,+263 73 447 267,General Ward,2025-09-10 21:32:32,SG-980,Dr. Sharon Chirwa,Hypertension,Hydrocortisone,Diabetes,Pollen,2025-09-10 21:54:32,22,Follow-up in 2 weeks
+17970146R88,Tendai Marecha,Female,42,+263 77 959 274,Dental,2025-09-03 18:34:37,PD-427,Dr. Jocelyn Gumbo,Ear Infection,Ibuprofen,None,None,2025-09-03 20:49:37,135,Recovered
+17436605N39,Loveness Mupfumi,Male,58,+263 74 484 400,Outpatient,2025-09-17 20:37:15,GW-729,Dr. Debra Moyo,HIV/AIDS,Azithromycin,Diabetes,Penicillin,2025-09-17 21:31:15,54,Recovered
+17033465Z27,Loveness Nyathi,Male,54,+263 72 963 966,Maternity,2025-07-14 08:10:39,SG-532,Dr. Nicholas Ncube,Obesity,Tenofovir,Asthma,Pollen,2025-07-14 09:47:39,97,Stable
+17003577T41,Simbarashe Matsika,Female,2,+263 74 199 896,Maternity,2025-09-26 19:27:57,SG-012,Dr. Christopher Ncube,Appendicitis,Amoxicillin,Hypertension,Peanuts,2025-09-26 20:28:57,61,Recovered
+17189910O44,Rumbidzai Gwenzi,Female,53,+263 72 659 748,Surgical,2025-08-07 10:13:52,OP-755,Dr. Jesse Moyo,Pregnancy Checkup,Zinc Tablets,Heart Disease,Pollen,2025-08-07 12:48:52,155,Stable
+17198329N76,Faith Chikafu,Female,90,+263 77 960 704,Physiotherapy,2025-09-03 17:12:43,OP-863,Dr. Jennifer Ncube,UTI,Insulin,Heart Disease,Pollen,2025-09-03 18:16:43,64,Follow-up in 2 weeks
+17422615D30,Panashe Madzorera,Female,54,+263 74 537 436,Surgical,2025-09-12 05:53:44,OP-761,Dr. Christopher Ncube,Hepatitis C,Cough Syrup,Diabetes,Penicillin,2025-09-12 06:56:44,63,Follow-up in 2 weeks
+17567419H97,Nigel Mushore,Male,84,+263 75 554 688,Dental,2025-08-27 09:29:54,SG-003,Dr. Linda Mutasa,Hepatitis B,Amoxicillin,Hypertension,None,2025-08-27 10:54:54,85,Referred to specialist
+17297074V20,Ropafadzo Muropa,Male,84,+263 72 392 651,Physiotherapy,2025-08-04 10:24:39,MT-727,Dr. Andrew Dube,Obesity,Metformin,None,None,2025-08-04 14:04:39,220,Recovered
+17202900U76,Takudzwa Mavhunga,Male,76,+263 78 268 559,Emergency,2025-08-28 19:06:50,GW-942,Dr. Andrew Dube,Asthma,Diclofenac,Asthma,Pollen,2025-08-28 21:02:50,116,Referred to specialist
+17121884A39,Patience Muropa,Female,77,+263 71 824 634,General Ward,2025-07-31 22:24:43,MT-992,Dr. Nicholas Ncube,Seizures,Prednisone,Hypertension,Peanuts,2025-07-31 23:36:43,72,Stable
+17756621Q76,Patience Mushayi,Female,44,+263 74 808 398,Surgical,2025-10-03 14:55:32,PD-597,Dr. Matthew Ncube,Injury,Ibuprofen,Heart Disease,None,2025-10-03 17:36:32,161,Referred to specialist
+17856055U20,Simbarashe Nyathi,Male,25,+263 73 395 628,Surgical,2025-08-08 12:50:46,OP-589,Dr. Linda Mutasa,Labor Pains,Ciprofloxacin,None,None,2025-08-08 14:00:46,70,Admitted
+17654449L35,Tobias Nyathi,Female,59,+263 76 643 512,Emergency,2025-10-08 14:38:58,PD-901,Dr. Amanda Ncube,Arthritis,Paracetamol,Asthma,Penicillin,2025-10-08 15:20:58,42,Admitted
+17872539D96,Faith Chiweshe,Male,27,+263 78 775 948,Pediatrics,2025-08-18 16:03:56,PD-716,Dr. John Mutasa,Kidney Stones,Vitamin B Complex,Heart Disease,Pollen,2025-08-18 17:02:56,59,Recovered
+17335933U82,Blessing Mushayi,Male,78,+263 74 341 915,General Ward,2025-09-13 14:35:58,EM-292,Dr. Jesse Moyo,Appendicitis,Clotrimazole,None,Peanuts,2025-09-13 16:31:58,116,Referred to specialist
+17252203E45,Munashe Dube,Female,45,+263 73 560 199,Dental,2025-09-16 18:26:44,GW-416,Dr. Jennifer Ncube,STI - Syphilis,Cotrimoxazole,None,Penicillin,2025-09-16 22:17:44,231,Admitted
+17470177C58,Tafadzwa Matanga,Female,79,+263 71 905 369,General Ward,2025-09-08 01:06:25,EM-910,Dr. Timothy Mutasa,Gout,Diclofenac,Diabetes,Penicillin,2025-09-08 02:03:25,57,Follow-up in 2 weeks
+17897659M16,Nomsa Munyoro,Male,27,+263 75 411 942,Outpatient,2025-08-24 02:37:19,EM-569,Dr. Linda Mutasa,Tuberculosis,Aspirin,Asthma,Penicillin,2025-08-24 05:02:19,145,Referred to specialist
+17175308O46,Nigel Chikonde,Male,75,+263 79 443 609,Emergency,2025-10-10 00:52:27,OP-935,Dr. Linda Mutasa,Allergic Reaction,Zinc Tablets,None,Pollen,2025-10-10 03:34:27,162,Admitted
+17804217U31,Lerato Mabaso,Female,65,+263 71 652 985,Outpatient,2025-08-11 21:53:26,MT-006,Dr. Matthew Ncube,Skin Rash,Panado,None,Peanuts,2025-08-11 22:42:26,49,Stable
+17565664I87,Nokuthula Maregere,Male,77,+263 75 473 896,Maternity,2025-08-18 10:55:32,GW-338,Dr. Debra Moyo,Tonsillitis,Amoxiclav,Heart Disease,Penicillin,2025-08-18 13:06:32,131,Follow-up in 2 weeks
+17047539W10,Kundai Chinhoyi,Male,64,+263 73 442 305,Physiotherapy,2025-09-30 15:20:37,EM-668,Dr. Jesse Moyo,Hypertension,Ciprofloxacin,Heart Disease,Penicillin,2025-09-30 16:16:37,56,Stable
+17836052N54,Lerato Ncube,Female,18,+263 78 661 493,Maternity,2025-07-29 23:00:55,OP-275,Dr. Jennifer Ncube,Allergic Reaction,Multivitamins,Asthma,None,2025-07-29 23:44:55,44,Recovered
+17413015I83,Fortunate Chauke,Male,74,+263 79 291 656,General Ward,2025-09-13 03:56:36,MT-980,Dr. Jeanette Chirwa,COVID-19,Fluconazole,Heart Disease,Peanuts,2025-09-13 07:26:36,210,Admitted
+17231399L64,Tendai Madzorera,Female,57,+263 75 750 610,General Ward,2025-07-19 05:13:48,PD-484,Dr. Jennifer Ncube,Common Cold,Aspirin,Hypertension,Pollen,2025-07-19 05:42:48,29,Admitted
+17659447B87,Munashe Mudzonga,Female,1,+263 74 757 481,Maternity,2025-08-06 16:52:53,MT-420,Dr. Linda Mutasa,STI - Syphilis,Naproxen,None,Pollen,2025-08-06 19:44:53,172,Recovered
+17173689Z34,Fortunate Muropa,Male,15,+263 75 621 416,Emergency,2025-09-20 12:20:46,MT-624,Dr. Jeanette Chirwa,Hypertension,Folic Acid,Hypertension,None,2025-09-20 13:09:46,49,Stable
+17442284H52,Anesu Mapuranga,Female,47,+263 72 659 415,Outpatient,2025-09-12 02:10:29,OP-775,Dr. Matthew Ncube,COVID-19,Amoxicillin,Heart Disease,None,2025-09-12 03:44:29,94,Follow-up in 2 weeks
+17004565P30,Loveness Mavhunga,Male,87,+263 71 417 536,Maternity,2025-08-17 05:46:27,EM-210,Dr. Claudia Ncube,Ulcers,Cotrimoxazole,None,Penicillin,2025-08-17 09:16:27,210,Stable
+17440212V85,Nokuthula Mushayi,Male,1,+263 72 662 279,Emergency,2025-09-16 11:40:58,PD-231,Dr. Hannah Chirwa,Anxiety,Antacid Suspension,Hypertension,Penicillin,2025-09-16 13:22:58,102,Admitted
+17777857Y43,Gerald Mushayi,Female,60,+263 73 154 978,Pediatrics,2025-08-19 18:21:45,GW-982,Dr. John Mutasa,Seizures,Prednisone,Hypertension,Peanuts,2025-08-19 19:44:45,83,Stable
+17215132F78,Moreblessing Mabika,Male,60,+263 77 967 706,Mental Health,2025-09-13 16:49:55,PD-692,Dr. Sharon Chirwa,Bronchitis,Hydrocortisone,None,None,2025-09-13 17:43:55,54,Admitted
+17187190Z86,Munashe Matanga,Female,70,+263 75 912 327,Mental Health,2025-07-27 06:39:17,OP-811,Dr. Jeanette Chirwa,HIV/AIDS,Losartan,None,Peanuts,2025-07-27 08:30:17,111,Stable
+17327156A15,Patience Makoni,Female,73,+263 76 218 145,General Ward,2025-09-11 17:25:39,SG-337,Dr. John Mutasa,Kidney Stones,Hydrocortisone,Heart Disease,Peanuts,2025-09-11 20:05:39,160,Referred to specialist
+17136269F35,Precious Mabaso,Female,50,+263 76 434 987,Mental Health,2025-07-25 07:01:53,MT-067,Dr. Claudia Ncube,Eye Infection,Multivitamins,Hypertension,Peanuts,2025-07-25 09:50:53,169,Referred to specialist
+17738718C72,Precious Chauke,Male,87,+263 77 702 897,Pediatrics,2025-08-27 04:19:51,SG-666,Dr. Melissa Dube,Typhoid,Augmentin,None,Peanuts,2025-08-27 06:46:51,147,Stable
+17613562O42,Lerato Nyathi,Female,82,+263 73 144 963,Emergency,2025-07-31 23:54:21,OP-745,Dr. Timothy Mutasa,Seizures,Antacid Suspension,Asthma,Pollen,2025-08-01 03:01:21,187,Follow-up in 2 weeks
+17318317H29,Nyasha Mutasa,Female,6,+263 76 471 885,Surgical,2025-10-10 14:57:06,OP-295,Dr. Debra Moyo,Asthma,Ciprofloxacin,Diabetes,Pollen,2025-10-10 18:05:06,188,Referred to specialist
+17254279W26,Nigel Mugabe,Female,5,+263 76 108 254,Surgical,2025-10-10 06:20:39,OP-530,Dr. Jennifer Ncube,Depression,Amoxiclav,Asthma,Peanuts,2025-10-10 08:57:39,157,Admitted
+17946548K62,Kudzai Chinhoyi,Male,52,+263 72 587 426,Mental Health,2025-08-04 19:52:03,OP-263,Dr. Amber Gumbo,Hypertension,Ciprofloxacin,Diabetes,Peanuts,2025-08-04 20:35:03,43,Stable
+17078170D83,Godknows Matanga,Female,40,+263 78 916 815,Physiotherapy,2025-08-17 01:54:19,EM-386,Dr. Amber Gumbo,Anxiety,Lamivudine,Asthma,Penicillin,2025-08-17 03:53:19,119,Admitted
+17953784N11,Simbarashe Katsande,Male,58,+263 73 918 628,Emergency,2025-10-06 14:38:45,SG-076,Dr. Debra Moyo,Ulcers,Coartem,Asthma,Pollen,2025-10-06 18:36:45,238,Admitted
+17698196O17,Godknows Chasakara,Female,14,+263 74 681 544,Maternity,2025-10-03 19:28:22,GW-404,Dr. Catherine Dube,Malnutrition,Prednisone,Diabetes,None,2025-10-03 19:50:22,22,Follow-up in 2 weeks
+17719272T93,Chipo Muchechetere,Female,20,+263 74 991 836,Surgical,2025-09-05 14:09:02,GW-062,Dr. John Mutasa,Burns,Amoxicillin,Heart Disease,Pollen,2025-09-05 16:22:02,133,Recovered
+17611352X74,Tendai Matsika,Female,45,+263 79 402 147,Surgical,2025-09-06 00:15:40,GW-122,Dr. John Mutasa,Eczema,Metronidazole,Hypertension,Peanuts,2025-09-06 01:50:40,95,Admitted
+17034470X41,Fortunate Katsande,Male,11,+263 74 644 968,Pediatrics,2025-09-11 08:02:04,PD-979,Dr. Jennifer Ncube,Labor Pains,Amoxicillin,Asthma,None,2025-09-11 11:57:04,235,Referred to specialist
+17824646I79,Wellington Katsande,Female,63,+263 72 915 250,Pediatrics,2025-08-22 20:58:24,MT-033,Dr. Jocelyn Gumbo,Arthritis,Doxycycline,None,Penicillin,2025-08-22 21:28:24,30,Recovered
+17096728B75,Blessing Gwenzi,Male,68,+263 75 476 768,Surgical,2025-09-12 18:19:05,MT-376,Dr. Timothy Mutasa,Kidney Stones,Coartem,Heart Disease,Pollen,2025-09-12 19:14:05,55,Stable
+17765913I97,Tariro Nyathi,Female,42,+263 78 310 491,General Ward,2025-08-21 02:34:56,SG-851,Dr. Sharon Chirwa,Stroke,Losartan,Diabetes,Peanuts,2025-08-21 04:16:56,102,Follow-up in 2 weeks
+17778671X25,Tobias Maringe,Male,71,+263 79 646 141,Surgical,2025-09-27 03:11:13,PD-654,Dr. Jesse Moyo,Migraine,Ceftriaxone,Diabetes,Peanuts,2025-09-27 05:00:13,109,Stable
+17511113Z50,Precious Mushayi,Male,15,+263 71 952 276,Physiotherapy,2025-09-03 15:58:43,GW-941,Dr. Amanda Ncube,Hypertension,Panado,None,Peanuts,2025-09-03 17:02:43,64,Stable
+17763137T62,Takudzwa Mugari,Male,71,+263 78 329 850,General Ward,2025-09-20 05:11:02,SG-615,Dr. Jennifer Ncube,UTI,Amoxicillin,None,Pollen,2025-09-20 05:42:02,31,Referred to specialist
+17507846B33,Chipo Madzinga,Female,23,+263 77 486 334,Dental,2025-07-20 06:48:47,SG-211,Dr. Jeanette Chirwa,Heart Disease,Zinc Tablets,None,None,2025-07-20 10:17:47,209,Follow-up in 2 weeks
+17082045J74,Nyasha Muropa,Male,30,+263 78 637 919,Surgical,2025-07-28 05:24:48,MT-085,Dr. Melissa Dube,HIV/AIDS,Diclofenac,None,Peanuts,2025-07-28 07:35:48,131,Referred to specialist
+17814455E27,Gerald Marecha,Male,9,+263 78 975 167,Pediatrics,2025-10-07 10:07:28,GW-532,Dr. Amber Gumbo,Labor Pains,Cough Syrup,Diabetes,None,2025-10-07 11:18:28,71,Referred to specialist
+17620221B23,Panashe Maregere,Female,10,+263 76 964 804,Physiotherapy,2025-08-10 06:58:21,EM-909,Dr. Amanda Ncube,Gout,Zinc Tablets,Diabetes,Peanuts,2025-08-10 09:44:21,166,Admitted
+17243020I31,Munashe Mawere,Female,81,+263 75 547 703,Pediatrics,2025-08-20 02:40:40,MT-178,Dr. Nicholas Ncube,Labor Pains,Folic Acid,Heart Disease,Penicillin,2025-08-20 05:21:40,161,Referred to specialist
+17570453E84,Thabani Mutambirwa,Male,9,+263 79 775 204,Mental Health,2025-09-08 06:25:28,SG-288,Dr. Debra Moyo,Ear Infection,Vitamin B Complex,Diabetes,Penicillin,2025-09-08 08:16:28,111,Admitted
+17138717P65,Patience Gwenzi,Female,13,+263 75 386 550,Pediatrics,2025-09-02 08:39:22,EM-350,Dr. Sharon Chirwa,Skin Rash,Ciprofloxacin,Diabetes,None,2025-09-02 09:52:22,73,Recovered
+17771417D14,Brighton Ncube,Male,65,+263 73 991 503,Pediatrics,2025-08-09 16:26:31,SG-951,Dr. Jeanette Chirwa,Hepatitis C,Vitamin B Complex,Asthma,Peanuts,2025-08-09 17:36:31,70,Referred to specialist
+17749092E43,Fortunate Moyo,Female,19,+263 75 702 686,Mental Health,2025-09-30 22:33:57,PD-450,Dr. Debra Moyo,Typhoid,Panado,None,Peanuts,2025-09-30 23:10:57,37,Follow-up in 2 weeks
+17821137N93,Panashe Mhlanga,Female,33,+263 74 790 832,Surgical,2025-09-19 07:16:28,GW-132,Dr. Melissa Dube,HIV/AIDS,Ciprofloxacin,None,Penicillin,2025-09-19 08:57:28,101,Referred to specialist
+17421347I15,Nyasha Moyo,Female,34,+263 79 945 809,Mental Health,2025-09-03 00:39:34,GW-318,Dr. Melissa Dube,HIV/AIDS,Metformin,Hypertension,Peanuts,2025-09-03 02:57:34,138,Follow-up in 2 weeks
+17366482C53,Nyarai Mupfumi,Male,74,+263 72 613 728,Surgical,2025-07-16 16:35:27,OP-071,Dr. Claudia Ncube,Eye Infection,Antacid Suspension,Asthma,Peanuts,2025-07-16 18:48:27,133,Stable
+17881046A36,Anesu Mabika,Female,14,+263 73 554 629,Physiotherapy,2025-08-14 04:39:09,OP-245,Dr. Debra Moyo,Obesity,Amoxicillin,None,None,2025-08-14 05:24:09,45,Stable
+17384945K46,Simbarashe Matanga,Male,71,+263 71 955 448,Emergency,2025-07-22 16:36:16,MT-126,Dr. Jesse Moyo,STI - Trichomoniasis,Metronidazole,Hypertension,Pollen,2025-07-22 18:33:16,117,Admitted
+17745153I81,Gerald Chiweshe,Female,47,+263 73 701 185,Mental Health,2025-07-26 03:58:27,PD-082,Dr. Claudia Ncube,Malaria,Panado,Heart Disease,Peanuts,2025-07-26 04:23:27,25,Stable
+17923145Z54,Tendai Mabaso,Female,47,+263 77 566 268,Maternity,2025-09-05 07:41:18,SG-494,Dr. Jeanette Chirwa,Appendicitis,Salbutamol,None,Peanuts,2025-09-05 09:12:18,91,Follow-up in 2 weeks
+17608556X95,Gerald Mutambirwa,Male,41,+263 75 608 812,Outpatient,2025-09-08 04:02:53,MT-935,Dr. Christopher Ncube,Obesity,Omeprazole,Hypertension,Penicillin,2025-09-08 06:14:53,132,Referred to specialist
+17989076Z94,Rudo Madzorera,Female,79,+263 79 515 792,Pediatrics,2025-07-19 17:25:17,SG-658,Dr. Christopher Ncube,Appendicitis,Lamivudine,None,Penicillin,2025-07-19 18:39:17,74,Recovered
+17931413V29,Fungai Matsika,Male,20,+263 77 754 717,Physiotherapy,2025-07-23 01:52:05,EM-664,Dr. Amber Gumbo,Burns,Augmentin,Asthma,Pollen,2025-07-23 05:01:05,189,Recovered
+17475878G83,Tonderai Mutenha,Male,36,+263 75 467 140,Dental,2025-08-20 17:35:18,PD-805,Dr. Amanda Ncube,Anxiety,Aspirin,None,Penicillin,2025-08-20 20:26:18,171,Recovered
+17476929G37,Nothando Chirume,Female,62,+263 77 936 227,Outpatient,2025-09-08 22:08:16,MT-823,Dr. Linda Mutasa,Migraine,Amoxiclav,None,Peanuts,2025-09-09 01:33:16,205,Stable
+17881432K73,Dumisani Maregere,Male,25,+263 75 766 717,Outpatient,2025-07-28 07:17:28,SG-582,Dr. Linda Mutasa,Allergic Reaction,Salbutamol,Diabetes,None,2025-07-28 08:49:28,92,Follow-up in 2 weeks
+17720184O12,Wellington Katsande,Female,54,+263 72 454 793,Maternity,2025-09-04 16:49:50,SG-280,Dr. Jeanette Chirwa,Malaria,Clotrimazole,Heart Disease,Pollen,2025-09-04 19:05:50,136,Follow-up in 2 weeks
+17998159F74,Gerald Mutenha,Female,29,+263 79 126 417,General Ward,2025-07-21 03:21:21,OP-176,Dr. Jesse Moyo,Kidney Stones,Insulin,Diabetes,None,2025-07-21 04:11:21,50,Follow-up in 2 weeks
+17786806L79,Rumbidzai Maringe,Female,85,+263 77 243 324,Emergency,2025-10-08 22:15:12,SG-355,Dr. Nicholas Ncube,Eye Infection,ORS,Heart Disease,Penicillin,2025-10-08 23:13:12,58,Admitted
+17365671E49,Fortunate Muropa,Female,84,+263 78 886 437,Emergency,2025-08-02 02:34:42,EM-903,Dr. Jocelyn Gumbo,Pneumonia,Ibuprofen,Asthma,Penicillin,2025-08-02 04:14:42,100,Stable
+17264666F93,Sipho Mushayi,Male,85,+263 77 866 521,Physiotherapy,2025-09-10 18:09:05,OP-717,Dr. Jesse Moyo,Appendicitis,Naproxen,Asthma,Peanuts,2025-09-10 20:29:05,140,Stable
+17432201F48,Lindiwe Mushayi,Male,40,+263 72 797 964,Outpatient,2025-07-14 14:30:29,PD-775,Dr. Debra Moyo,Chest Pain,Augmentin,Asthma,None,2025-07-14 17:58:29,208,Referred to specialist
+17733802D84,Admire Dube,Female,81,+263 73 715 161,Dental,2025-09-14 23:08:24,GW-831,Dr. Matthew Ncube,Pregnancy Checkup,Aspirin,None,None,2025-09-15 02:26:24,198,Referred to specialist
+17145825H96,Tafadzwa Madzorera,Female,29,+263 75 110 197,Mental Health,2025-07-16 10:18:02,EM-499,Dr. Christopher Ncube,Chest Pain,Metformin,None,Penicillin,2025-07-16 13:44:02,206,Follow-up in 2 weeks
+17949223Z83,Tanaka Mushayi,Male,49,+263 79 298 748,Mental Health,2025-09-25 12:39:48,GW-402,Dr. Linda Mutasa,STI - Syphilis,Coartem,Diabetes,None,2025-09-25 14:59:48,140,Admitted
+17409049W72,Precious Mawadza,Male,71,+263 78 831 419,Outpatient,2025-08-17 03:36:56,EM-314,Dr. Matthew Ncube,Hepatitis C,Amoxiclav,Diabetes,Penicillin,2025-08-17 05:06:56,90,Admitted
+17532098I65,Nomsa Mhlanga,Female,38,+263 79 927 420,Emergency,2025-10-02 22:45:37,GW-378,Dr. Timothy Mutasa,Migraine,Tenofovir,Asthma,None,2025-10-03 00:16:37,91,Admitted
+17543318J26,Tanaka Dube,Female,66,+263 77 734 249,General Ward,2025-09-15 04:26:36,GW-507,Dr. Amanda Ncube,Pneumonia,Cough Syrup,Asthma,Peanuts,2025-09-15 06:32:36,126,Follow-up in 2 weeks
+17367296C35,Precious Moyo,Female,65,+263 78 886 892,Maternity,2025-07-30 09:11:02,MT-036,Dr. Amber Gumbo,Ulcers,Folic Acid,Diabetes,Pollen,2025-07-30 09:56:02,45,Admitted
+17217827P29,Simbarashe Mawadza,Female,4,+263 76 257 861,Outpatient,2025-09-11 09:30:05,OP-211,Dr. Amanda Ncube,Burns,Ceftriaxone,None,Penicillin,2025-09-11 12:08:05,158,Recovered
+17782787W62,Rudo Chikafu,Male,58,+263 78 151 538,Surgical,2025-09-23 00:16:37,MT-502,Dr. Jeanette Chirwa,Ulcers,Vitamin C,Asthma,Pollen,2025-09-23 01:40:37,84,Admitted
+17547661H64,Panashe Chasakara,Female,83,+263 78 764 478,Outpatient,2025-07-13 23:01:04,PD-019,Dr. Christopher Ncube,Asthma,Hydrocortisone,Asthma,Pollen,2025-07-14 00:56:04,115,Stable
+17281140B31,Dumisani Chauke,Female,89,+263 79 311 113,Mental Health,2025-08-26 11:30:57,MT-980,Dr. John Mutasa,Pneumonia,Paracetamol,Heart Disease,None,2025-08-26 12:50:57,80,Follow-up in 2 weeks
+17236754B23,Simbarashe Nyathi,Female,63,+263 77 381 557,Mental Health,2025-10-08 12:03:53,SG-293,Dr. Claudia Ncube,Hepatitis C,Omeprazole,Hypertension,Pollen,2025-10-08 14:35:53,152,Admitted
+17603644U24,Loveness Madzinga,Female,43,+263 71 191 322,Emergency,2025-08-09 09:35:40,PD-302,Dr. Catherine Dube,Typhoid,Tenofovir,None,Peanuts,2025-08-09 11:20:40,105,Recovered
+17134441P89,Faith Katsande,Male,73,+263 76 337 733,Mental Health,2025-09-29 23:37:25,GW-385,Dr. Melissa Dube,STI - Syphilis,Losartan,Asthma,Penicillin,2025-09-30 01:26:25,109,Referred to specialist
+17519330M79,Nomsa Maregere,Female,70,+263 77 617 892,Outpatient,2025-10-02 04:52:36,MT-085,Dr. Melissa Dube,Arthritis,Clotrimazole,Hypertension,Penicillin,2025-10-02 05:46:36,54,Admitted
+17084561C91,Fortunate Muropa,Female,84,+263 72 284 124,Physiotherapy,2025-09-21 17:21:41,EM-855,Dr. Jennifer Ncube,Fracture,Panado,Heart Disease,Pollen,2025-09-21 18:22:41,61,Stable
+17996525Z39,Nyarai Sibanda,Male,2,+263 71 927 102,Outpatient,2025-09-04 16:03:18,SG-041,Dr. John Mutasa,Skin Rash,Amoxiclav,Heart Disease,Peanuts,2025-09-04 17:51:18,108,Recovered
+17302336M23,Munashe Mugari,Male,41,+263 73 306 831,Mental Health,2025-10-08 16:54:36,SG-164,Dr. Amanda Ncube,Tuberculosis,Metformin,Diabetes,Peanuts,2025-10-08 19:55:36,181,Recovered
+17591502H70,Lesley Mhlanga,Male,32,+263 79 904 873,Maternity,2025-09-04 17:59:16,SG-566,Dr. Matthew Ncube,Diabetes,Amoxicillin,Diabetes,Pollen,2025-09-04 20:36:16,157,Admitted
+17957121G46,Fortunate Mushore,Female,14,+263 76 170 372,Mental Health,2025-07-27 20:59:56,MT-712,Dr. Sharon Chirwa,Malaria,Diclofenac,Heart Disease,Penicillin,2025-07-27 21:40:56,41,Admitted
+17339234S43,Tinashe Nyamupaguma,Male,45,+263 76 862 537,Maternity,2025-07-16 06:00:36,PD-412,Dr. Debra Moyo,HIV/AIDS,Folic Acid,Asthma,Peanuts,2025-07-16 07:34:36,94,Admitted
+17251610W13,Nkosilathi Chinhoyi,Male,89,+263 71 577 427,Pediatrics,2025-10-06 10:33:51,SG-385,Dr. Amanda Ncube,Burns,Panado,Heart Disease,Penicillin,2025-10-06 10:50:51,17,Referred to specialist
+17260510B66,Tinashe Maregere,Female,39,+263 79 548 146,Emergency,2025-08-13 06:40:20,EM-195,Dr. Linda Mutasa,Seizures,Amoxicillin,Hypertension,Penicillin,2025-08-13 07:02:20,22,Recovered
+17398800B68,Blessing Chinhoyi,Female,57,+263 74 166 811,Emergency,2025-07-19 14:32:19,OP-456,Dr. Amber Gumbo,Common Cold,Fluconazole,Heart Disease,None,2025-07-19 18:25:19,233,Recovered
+17090133I93,Anesu Muchechetere,Male,79,+263 77 881 113,Mental Health,2025-08-06 09:29:10,SG-018,Dr. John Mutasa,STI - Chlamydia,Losartan,Heart Disease,Pollen,2025-08-06 09:56:10,27,Referred to specialist
+17296195C26,Panashe Ncube,Male,43,+263 74 949 482,Mental Health,2025-08-31 16:08:28,MT-064,Dr. Linda Mutasa,Injury,Aspirin,Asthma,None,2025-08-31 16:40:28,32,Follow-up in 2 weeks
+17184330V60,Nokuthula Mawere,Male,83,+263 73 652 356,Maternity,2025-07-26 13:54:44,MT-232,Dr. Nicholas Ncube,Eye Infection,Salbutamol,Heart Disease,Peanuts,2025-07-26 14:22:44,28,Admitted
+17176867C58,Patience Marecha,Female,3,+263 73 674 214,Maternity,2025-08-03 02:10:51,SG-665,Dr. Sharon Chirwa,Heart Disease,Lamivudine,Asthma,Penicillin,2025-08-03 03:21:51,71,Referred to specialist
+17013035V58,Tariro Moyo,Male,2,+263 71 719 672,Maternity,2025-08-04 08:56:42,GW-411,Dr. Jeanette Chirwa,Appendicitis,Metronidazole,None,Pollen,2025-08-04 11:16:42,140,Stable
+17964719H56,Simbarashe Ndlovu,Female,8,+263 74 648 812,Maternity,2025-09-21 07:05:10,PD-457,Dr. Jennifer Ncube,Diabetes,Tenofovir,Hypertension,Pollen,2025-09-21 08:46:10,101,Referred to specialist
+17396909N11,Brian Mavhunga,Male,67,+263 73 555 353,Mental Health,2025-07-21 07:16:18,MT-948,Dr. Debra Moyo,Stroke,Cough Syrup,Hypertension,None,2025-07-21 09:42:18,146,Stable
+17933544N41,Tafadzwa Chinhoyi,Male,32,+263 75 776 986,General Ward,2025-08-07 09:11:26,EM-525,Dr. Melissa Dube,Malnutrition,Salbutamol,None,Pollen,2025-08-07 13:04:26,233,Stable
+17455567F69,Bongani Nhema,Male,11,+263 78 830 430,Outpatient,2025-10-08 01:24:06,PD-993,Dr. Sharon Chirwa,Diabetes,Ceftriaxone,None,Peanuts,2025-10-08 03:01:06,97,Referred to specialist
+17576298B54,Takudzwa Mpofu,Male,30,+263 76 212 337,General Ward,2025-08-01 19:01:59,OP-732,Dr. Andrew Dube,Hepatitis C,Metronidazole,None,Peanuts,2025-08-01 22:02:59,181,Referred to specialist
+17904971R84,Tendai Mawere,Female,68,+263 73 482 721,Emergency,2025-07-18 01:34:28,GW-280,Dr. Jennifer Ncube,Pneumonia,Multivitamins,Diabetes,Pollen,2025-07-18 02:36:28,62,Admitted
+17738003T71,Brian Mawadza,Male,73,+263 73 888 554,Emergency,2025-09-21 22:53:03,PD-155,Dr. Travis Gumbo,STI - Herpes,Vitamin B Complex,Asthma,Penicillin,2025-09-21 23:13:03,20,Follow-up in 2 weeks
+17102351J73,Kudzai Mupfumi,Female,73,+263 71 991 836,Physiotherapy,2025-10-01 08:14:03,EM-421,Dr. Matthew Ncube,STI - Trichomoniasis,Omeprazole,Asthma,Penicillin,2025-10-01 08:59:03,45,Follow-up in 2 weeks
+17363547A56,Patience Nhema,Male,90,+263 71 692 141,General Ward,2025-09-25 19:44:03,EM-157,Dr. Amanda Ncube,Hypertension,Diclofenac,None,Pollen,2025-09-25 21:48:03,124,Stable
+17514032D88,Tariro Chasakara,Female,8,+263 76 392 548,Maternity,2025-09-04 19:07:20,SG-787,Dr. Nicholas Ncube,Hepatitis C,Panado,None,Pollen,2025-09-04 21:11:20,124,Follow-up in 2 weeks
+17714714U43,Admire Katsande,Male,84,+263 73 698 845,Dental,2025-08-27 23:31:59,PD-740,Dr. Christopher Ncube,Chest Pain,Tenofovir,Hypertension,Pollen,2025-08-28 03:01:59,210,Stable
+17670928V12,Fortunate Mabaso,Male,45,+263 76 763 499,General Ward,2025-09-07 08:44:53,PD-499,Dr. Catherine Dube,Skin Rash,Diclofenac,Heart Disease,Penicillin,2025-09-07 10:51:53,127,Follow-up in 2 weeks
+17197852H84,Nkosilathi Chasakara,Female,15,+263 74 259 892,Outpatient,2025-09-21 12:19:45,OP-264,Dr. Melissa Dube,Dental Extraction,Fluconazole,Heart Disease,Penicillin,2025-09-21 12:35:45,16,Admitted
+17218064E89,Tendai Chikafu,Female,45,+263 79 432 286,Dental,2025-08-13 10:55:57,GW-307,Dr. Jeanette Chirwa,Migraine,Omeprazole,Diabetes,Penicillin,2025-08-13 12:12:57,77,Follow-up in 2 weeks
+17992264S38,Anesu Mhlanga,Male,84,+263 74 325 898,Physiotherapy,2025-08-11 21:01:03,MT-384,Dr. Amber Gumbo,Ear Infection,Panado,Asthma,None,2025-08-11 22:23:03,82,Stable
+17221611Q79,Munashe Mutambirwa,Female,44,+263 75 696 774,Maternity,2025-09-30 00:55:27,GW-309,Dr. Nicholas Ncube,Eczema,Hydrocortisone,None,None,2025-09-30 01:49:27,54,Recovered
+17830735Y19,Munashe Gwenzi,Female,58,+263 76 918 519,Dental,2025-09-27 00:49:09,SG-345,Dr. Jennifer Ncube,Migraine,Ibuprofen,Asthma,Peanuts,2025-09-27 04:22:09,213,Admitted
+17003486L36,Patience Mutasa,Male,34,+263 77 407 174,Dental,2025-09-28 13:31:07,SG-291,Dr. Amanda Ncube,Hepatitis B,Ibuprofen,Heart Disease,Peanuts,2025-09-28 17:22:07,231,Stable
+17533780N80,Wellington Mupfumi,Male,46,+263 77 177 784,General Ward,2025-08-28 04:28:47,EM-172,Dr. Melissa Dube,Eczema,Lamivudine,Heart Disease,Pollen,2025-08-28 08:28:47,240,Follow-up in 2 weeks
+17526509P54,Ropafadzo Maringe,Female,3,+263 71 575 711,Emergency,2025-07-25 08:34:00,PD-075,Dr. Hannah Chirwa,Kidney Stones,Metformin,Hypertension,Pollen,2025-07-25 11:19:00,165,Follow-up in 2 weeks
+17992649W74,Ropafadzo Mutambirwa,Female,2,+263 77 150 859,Maternity,2025-10-03 11:48:47,GW-385,Dr. Travis Gumbo,STI - Chlamydia,Naproxen,None,None,2025-10-03 13:06:47,78,Follow-up in 2 weeks
+17536858K76,Tanaka Nhema,Female,70,+263 76 630 331,Mental Health,2025-07-29 07:32:51,EM-119,Dr. Nicholas Ncube,Arthritis,Fluconazole,None,Peanuts,2025-07-29 09:46:51,134,Stable
+17526070M60,Memory Madzorera,Male,23,+263 71 807 191,Maternity,2025-09-21 00:49:16,PD-155,Dr. Andrew Dube,Dental Extraction,Clotrimazole,Diabetes,Peanuts,2025-09-21 03:20:16,151,Stable
+17011723U36,Obvious Mutambirwa,Female,14,+263 72 170 816,Dental,2025-08-25 17:22:12,OP-805,Dr. Nicholas Ncube,Ear Infection,Losartan,Diabetes,Peanuts,2025-08-25 18:43:12,81,Referred to specialist
+17664647H86,Nokuthula Chinhoyi,Male,87,+263 76 645 905,Emergency,2025-08-11 08:01:15,OP-556,Dr. Debra Moyo,Gout,Aspirin,Diabetes,Penicillin,2025-08-11 08:28:15,27,Stable
+17514989Y25,Tinashe Mabaso,Male,39,+263 77 436 934,Maternity,2025-09-14 04:21:24,PD-068,Dr. Catherine Dube,STI - Trichomoniasis,Ceftriaxone,Asthma,Peanuts,2025-09-14 07:59:24,218,Stable
+17553172Q67,Rumbidzai Mavhunga,Female,20,+263 78 175 611,Dental,2025-09-06 17:59:33,EM-143,Dr. John Mutasa,STI - Syphilis,Losartan,Heart Disease,None,2025-09-06 19:54:33,115,Follow-up in 2 weeks
+17634418M68,Shamiso Chikonde,Male,43,+263 71 243 348,Mental Health,2025-09-08 22:03:00,GW-328,Dr. Sharon Chirwa,Eczema,Lamivudine,None,Peanuts,2025-09-08 23:25:00,82,Admitted
+17895682E95,Tobias Manyika,Female,10,+263 76 370 742,Pediatrics,2025-10-06 08:31:24,EM-902,Dr. Christopher Ncube,Malnutrition,Cotrimoxazole,Asthma,None,2025-10-06 10:34:24,123,Admitted
+17553912V49,Tobias Chirwa,Female,7,+263 72 316 134,Outpatient,2025-08-18 18:09:55,MT-132,Dr. Jocelyn Gumbo,STI - Trichomoniasis,Augmentin,Heart Disease,Pollen,2025-08-18 18:24:55,15,Referred to specialist
+17105480G29,Thabani Munyoro,Male,33,+263 74 102 463,Surgical,2025-07-26 01:06:21,OP-003,Dr. Amber Gumbo,Migraine,Ibuprofen,None,Penicillin,2025-07-26 02:08:21,62,Stable
+17023474H31,Munashe Nyamazana,Male,22,+263 73 667 477,General Ward,2025-08-14 19:52:41,OP-224,Dr. Debra Moyo,Stroke,Clotrimazole,Diabetes,None,2025-08-14 20:42:41,50,Follow-up in 2 weeks
+17734347U74,Tanaka Makoni,Male,27,+263 74 964 239,Maternity,2025-10-08 21:16:40,GW-085,Dr. Andrew Dube,Dental Extraction,Hydrocortisone,Heart Disease,Peanuts,2025-10-08 22:35:40,79,Stable
+17691022O58,Nkosilathi Mutenha,Female,23,+263 78 347 821,Outpatient,2025-08-25 14:47:14,PD-561,Dr. Jennifer Ncube,Anxiety,Panado,Asthma,Penicillin,2025-08-25 15:52:14,65,Admitted
+17698338U76,Dumisani Matsika,Female,76,+263 77 468 178,Emergency,2025-07-25 00:57:10,SG-309,Dr. Matthew Ncube,Typhoid,Folic Acid,Asthma,Penicillin,2025-07-25 04:21:10,204,Admitted
+17883018V10,Clever Chiweshe,Male,36,+263 74 405 245,Mental Health,2025-07-29 05:47:11,EM-107,Dr. Amber Gumbo,Allergic Reaction,Cough Syrup,Asthma,Penicillin,2025-07-29 07:04:11,77,Admitted
+17178222R97,Wellington Matanga,Female,67,+263 78 575 176,Mental Health,2025-09-26 00:03:37,GW-118,Dr. Jeanette Chirwa,Eczema,Ciprofloxacin,Diabetes,Penicillin,2025-09-26 03:21:37,198,Stable
+17795653W32,Tawanda Sibanda,Male,44,+263 77 646 475,Emergency,2025-08-05 22:20:24,SG-823,Dr. Jesse Moyo,Arthritis,Metformin,Asthma,Pollen,2025-08-05 23:24:24,64,Follow-up in 2 weeks
+17281979C21,Panashe Mugari,Male,40,+263 75 823 656,Maternity,2025-07-18 02:03:05,SG-673,Dr. John Mutasa,Pregnancy Checkup,Paracetamol,None,Peanuts,2025-07-18 04:24:05,141,Recovered
+17555525O45,Clever Chikonde,Male,38,+263 78 613 628,General Ward,2025-09-02 04:50:43,OP-223,Dr. Melissa Dube,Hepatitis C,Efavirenz,Asthma,Peanuts,2025-09-02 06:23:43,93,Stable
+17254657X67,Lesley Mupfumi,Female,49,+263 78 445 164,Physiotherapy,2025-07-15 07:33:23,OP-865,Dr. John Mutasa,Tonsillitis,Ciprofloxacin,Diabetes,Penicillin,2025-07-15 08:45:23,72,Follow-up in 2 weeks
+17784840S52,Dumisani Maregere,Female,64,+263 74 422 390,Maternity,2025-08-25 23:39:37,MT-497,Dr. Timothy Mutasa,Skin Rash,Fluconazole,Asthma,None,2025-08-26 03:21:37,222,Admitted
+17525186V46,Precious Chikafu,Female,1,+263 78 697 849,Maternity,2025-09-06 23:22:49,SG-002,Dr. Linda Mutasa,Pregnancy Checkup,ORS,Diabetes,Penicillin,2025-09-07 00:55:49,93,Follow-up in 2 weeks
+17931286D26,Thabani Chasakara,Female,90,+263 79 954 434,Pediatrics,2025-07-25 13:01:21,EM-807,Dr. Debra Moyo,COVID-19,Ciprofloxacin,Heart Disease,Pollen,2025-07-25 16:43:21,222,Stable
+17351056W76,Panashe Mutisi,Male,61,+263 76 206 284,Dental,2025-09-04 10:39:18,GW-335,Dr. Jesse Moyo,Allergic Reaction,Naproxen,Heart Disease,Pollen,2025-09-04 11:18:18,39,Follow-up in 2 weeks
+17319850L75,Patience Nhema,Female,88,+263 71 601 988,Dental,2025-07-12 23:17:08,SG-850,Dr. Nicholas Ncube,Appendicitis,Clotrimazole,None,Penicillin,2025-07-13 01:47:08,150,Admitted
+17410082C10,Tanaka Chikonde,Female,30,+263 78 841 668,Physiotherapy,2025-07-13 00:32:59,PD-204,Dr. Claudia Ncube,Anxiety,Amoxicillin,None,Pollen,2025-07-13 02:12:59,100,Recovered
+17484167L70,Bongani Chikonde,Female,48,+263 79 397 109,Physiotherapy,2025-07-18 00:41:58,PD-294,Dr. Christopher Ncube,COVID-19,Vitamin B Complex,Asthma,Peanuts,2025-07-18 01:52:58,71,Stable
+17006986P94,Lindiwe Mapuranga,Male,17,+263 76 559 559,Emergency,2025-09-08 08:14:51,PD-356,Dr. Debra Moyo,Heart Disease,Vitamin C,Asthma,None,2025-09-08 10:14:51,120,Stable
+17844435G29,Tafadzwa Chirume,Male,88,+263 79 102 224,General Ward,2025-09-13 05:56:41,OP-365,Dr. Travis Gumbo,Asthma,Coartem,Diabetes,Pollen,2025-09-13 07:10:41,74,Recovered
+17742659E67,Tendai Ncube,Female,51,+263 79 646 542,Outpatient,2025-10-04 11:51:33,GW-857,Dr. Jeanette Chirwa,Heart Disease,ORS,None,Penicillin,2025-10-04 13:35:33,104,Recovered
+17802805Q10,Kundai Chiweshe,Female,19,+263 71 732 772,Outpatient,2025-07-27 17:21:46,MT-641,Dr. Debra Moyo,STI - Gonorrhea,Coartem,Asthma,Peanuts,2025-07-27 20:08:46,167,Stable
+17927063H47,Blessing Dube,Male,33,+263 77 612 863,Maternity,2025-08-21 06:16:32,MT-840,Dr. Travis Gumbo,Typhoid,Paracetamol,Asthma,None,2025-08-21 06:36:32,20,Referred to specialist
+17220738X49,Faith Mabaso,Female,33,+263 73 672 170,General Ward,2025-07-20 20:32:08,PD-189,Dr. Sharon Chirwa,STI - Chlamydia,Clotrimazole,Heart Disease,Peanuts,2025-07-20 21:01:08,29,Follow-up in 2 weeks
+17928049X56,Kudzai Chasakara,Female,19,+263 78 348 226,General Ward,2025-09-01 22:40:35,PD-074,Dr. Jennifer Ncube,Ear Infection,Lamivudine,Asthma,Peanuts,2025-09-02 02:28:35,228,Referred to specialist
+17856628W45,Brian Chirume,Female,87,+263 78 818 875,Emergency,2025-10-08 00:21:13,EM-837,Dr. Travis Gumbo,Fracture,Coartem,Asthma,Penicillin,2025-10-08 03:23:13,182,Admitted
+17278716E49,Simbarashe Munyoro,Male,72,+263 73 135 134,Dental,2025-08-13 20:51:59,EM-722,Dr. Jesse Moyo,COVID-19,Azithromycin,Diabetes,Penicillin,2025-08-13 22:17:59,86,Stable
+17247331H53,Wellington Gwenzi,Female,61,+263 78 539 810,Physiotherapy,2025-09-16 06:54:00,GW-066,Dr. Melissa Dube,Ulcers,Naproxen,None,None,2025-09-16 09:06:00,132,Follow-up in 2 weeks
+17437442Z17,Tobias Gwenzi,Female,75,+263 73 995 983,Dental,2025-09-09 03:24:11,SG-418,Dr. Jeanette Chirwa,Gastritis,Losartan,Asthma,Penicillin,2025-09-09 04:55:11,91,Admitted
+17610915Q85,Fungai Nyamupaguma,Male,73,+263 72 892 725,Mental Health,2025-07-23 18:01:12,EM-614,Dr. Timothy Mutasa,STI - Syphilis,Augmentin,Diabetes,Penicillin,2025-07-23 21:59:12,238,Admitted
+17700166I58,Nokuthula Chiweshe,Female,24,+263 71 496 852,Pediatrics,2025-09-27 16:31:13,PD-754,Dr. Jesse Moyo,STI - Gonorrhea,Amoxiclav,None,Penicillin,2025-09-27 18:52:13,141,Follow-up in 2 weeks
+17722198A75,Nkosilathi Chirume,Male,15,+263 73 759 182,Pediatrics,2025-07-31 06:10:47,MT-206,Dr. Amber Gumbo,Stroke,Zinc Tablets,Heart Disease,None,2025-07-31 09:29:47,199,Stable
+17235240H68,Kudzai Mhlanga,Female,7,+263 75 152 333,Outpatient,2025-07-17 01:52:29,MT-855,Dr. Linda Mutasa,STI - Gonorrhea,Panado,Diabetes,Pollen,2025-07-17 05:24:29,212,Recovered
+17396255N61,Bongani Matanga,Male,25,+263 76 944 865,General Ward,2025-10-02 10:36:55,GW-388,Dr. Sharon Chirwa,Chest Pain,Vitamin C,Asthma,Penicillin,2025-10-02 12:37:55,121,Follow-up in 2 weeks
+17459909U35,Ropafadzo Gumbo,Female,64,+263 71 614 421,Pediatrics,2025-08-13 10:01:42,MT-342,Dr. Andrew Dube,Migraine,Zinc Tablets,Hypertension,Penicillin,2025-08-13 10:54:42,53,Admitted
+17940125G79,Nomsa Sibanda,Male,58,+263 74 852 434,Outpatient,2025-09-01 02:07:37,MT-526,Dr. Jeanette Chirwa,STI - Herpes,Salbutamol,Heart Disease,Pollen,2025-09-01 04:58:37,171,Recovered
+17219056Z97,Moreblessing Matsika,Male,21,+263 71 256 417,Maternity,2025-08-16 08:52:59,SG-222,Dr. Melissa Dube,Diabetes,Prednisone,Heart Disease,Penicillin,2025-08-16 11:41:59,169,Follow-up in 2 weeks
+17984544V33,Panashe Ncube,Male,40,+263 78 668 302,General Ward,2025-08-17 04:13:19,EM-708,Dr. Linda Mutasa,Hepatitis C,Tenofovir,Asthma,Peanuts,2025-08-17 06:06:19,113,Recovered
+17807789D17,Nkosilathi Mupfumi,Male,82,+263 77 222 505,Maternity,2025-09-26 16:10:42,EM-052,Dr. Catherine Dube,Ulcers,Efavirenz,None,Penicillin,2025-09-26 16:40:42,30,Referred to specialist
+17694649Z46,Clever Ndlovu,Female,26,+263 78 470 171,Dental,2025-08-07 03:27:22,MT-644,Dr. Nicholas Ncube,Malaria,Prednisone,Diabetes,Penicillin,2025-08-07 04:47:22,80,Recovered
+17296589Y35,Blessing Mushore,Male,35,+263 74 132 524,Pediatrics,2025-08-04 10:43:07,OP-041,Dr. Timothy Mutasa,Allergic Reaction,Panado,Asthma,Peanuts,2025-08-04 12:17:07,94,Stable
+17231528X64,Nomsa Mabaso,Male,81,+263 79 620 928,General Ward,2025-08-06 17:38:50,PD-730,Dr. Matthew Ncube,Obesity,Metformin,Hypertension,Peanuts,2025-08-06 20:45:50,187,Stable
+17088352E64,Patience Chasakara,Female,61,+263 75 340 667,Physiotherapy,2025-10-03 15:01:41,GW-772,Dr. Debra Moyo,Burns,Cotrimoxazole,Diabetes,Penicillin,2025-10-03 18:50:41,229,Stable
+17335213A48,Obvious Makoni,Male,70,+263 76 754 297,Surgical,2025-09-20 01:40:59,PD-734,Dr. Melissa Dube,Tonsillitis,Paracetamol,None,Penicillin,2025-09-20 04:42:59,182,Referred to specialist
+17531896H86,Simbarashe Chikafu,Male,36,+263 72 623 426,Mental Health,2025-09-23 20:39:48,SG-021,Dr. Christopher Ncube,Dental Extraction,Folic Acid,None,Penicillin,2025-09-23 22:58:48,139,Admitted
+17838425F30,Nkosilathi Maregere,Female,36,+263 76 846 138,Outpatient,2025-10-04 22:21:35,EM-427,Dr. John Mutasa,Tonsillitis,Efavirenz,Hypertension,Peanuts,2025-10-05 00:07:35,106,Admitted
+17984172D66,Admire Chirwa,Male,81,+263 75 384 498,Outpatient,2025-10-09 16:34:30,MT-491,Dr. John Mutasa,Depression,Panado,Asthma,Peanuts,2025-10-09 19:53:30,199,Referred to specialist
+17326188Z52,Kudzai Madzorera,Male,13,+263 73 458 340,Physiotherapy,2025-08-10 20:51:35,MT-437,Dr. Jennifer Ncube,Ulcers,Amoxiclav,None,Pollen,2025-08-10 21:59:35,68,Admitted
+17591402Z58,Farai Mawadza,Male,35,+263 71 435 148,Mental Health,2025-10-08 02:29:37,PD-092,Dr. Jocelyn Gumbo,Hepatitis B,Tenofovir,Asthma,None,2025-10-08 06:20:37,231,Admitted
+17892086E93,Precious Muchechetere,Female,13,+263 75 589 888,Physiotherapy,2025-08-30 08:45:59,SG-142,Dr. Melissa Dube,STI - Trichomoniasis,Metronidazole,Hypertension,Pollen,2025-08-30 11:46:59,181,Admitted
+17726592I75,Nomsa Mutasa,Male,9,+263 73 478 712,Surgical,2025-08-07 02:11:17,SG-626,Dr. Catherine Dube,Dental Extraction,Diclofenac,None,None,2025-08-07 04:59:17,168,Follow-up in 2 weeks
+17517442S91,Cynthia Nyathi,Female,71,+263 75 962 104,Emergency,2025-09-23 14:27:43,PD-974,Dr. Timothy Mutasa,Malaria,Multivitamins,Diabetes,None,2025-09-23 16:56:43,149,Stable
+17429809F64,Tobias Mugari,Female,82,+263 76 612 382,Emergency,2025-08-15 04:33:39,SG-451,Dr. John Mutasa,Hypertension,Ciprofloxacin,Heart Disease,Pollen,2025-08-15 06:08:39,95,Recovered
+17361698R89,Chipo Mushore,Male,24,+263 77 560 505,Emergency,2025-09-30 14:42:01,PD-496,Dr. Timothy Mutasa,Common Cold,Zinc Tablets,None,None,2025-09-30 15:58:01,76,Follow-up in 2 weeks
+17807163M19,Shamiso Maringe,Female,4,+263 78 698 175,Outpatient,2025-10-03 16:45:14,PD-298,Dr. Linda Mutasa,Anxiety,Azithromycin,Heart Disease,None,2025-10-03 19:24:14,159,Follow-up in 2 weeks
+17177358K67,Chipo Chikonde,Male,76,+263 79 758 197,Surgical,2025-08-12 04:46:37,EM-003,Dr. Andrew Dube,Obesity,Lamivudine,Hypertension,Peanuts,2025-08-12 08:11:37,205,Stable
+17705326U91,Tonderai Mugabe,Male,2,+263 78 619 428,Emergency,2025-10-09 10:37:12,OP-674,Dr. Jesse Moyo,COVID-19,Azithromycin,Diabetes,Penicillin,2025-10-09 14:05:12,208,Stable
+17597771L60,Moreblessing Gumbo,Female,30,+263 72 256 899,Maternity,2025-09-10 22:32:04,MT-373,Dr. Travis Gumbo,STI - Trichomoniasis,Losartan,Hypertension,Penicillin,2025-09-11 00:30:04,118,Follow-up in 2 weeks
+17911791G75,Nokuthula Chiweshe,Male,75,+263 73 276 386,Outpatient,2025-08-10 22:19:10,PD-286,Dr. Amanda Ncube,Migraine,Panado,None,Penicillin,2025-08-10 23:29:10,70,Stable
+17668692S86,Brighton Chikonde,Male,63,+263 75 319 644,General Ward,2025-09-22 14:21:24,PD-647,Dr. Melissa Dube,Diabetes,Antacid Suspension,Diabetes,Penicillin,2025-09-22 15:28:24,67,Recovered
+17842961J48,Clever Maregere,Male,54,+263 78 455 754,General Ward,2025-08-11 08:39:37,GW-308,Dr. Catherine Dube,HIV/AIDS,Folic Acid,None,Peanuts,2025-08-11 09:45:37,66,Recovered
+17266602B38,Rudo Maregere,Male,53,+263 79 525 440,Outpatient,2025-08-31 02:59:26,EM-047,Dr. Claudia Ncube,STI - Herpes,Azithromycin,Asthma,Penicillin,2025-08-31 03:46:26,47,Recovered
+17004516F59,Nokuthula Mushayi,Male,39,+263 79 831 726,Outpatient,2025-08-19 17:27:46,GW-890,Dr. Amber Gumbo,Burns,Metformin,Heart Disease,None,2025-08-19 21:14:46,227,Recovered
+17246331Y85,Obvious Ncube,Male,71,+263 78 756 795,Outpatient,2025-09-14 13:32:32,EM-451,Dr. Melissa Dube,Typhoid,Ciprofloxacin,Diabetes,Peanuts,2025-09-14 16:55:32,203,Follow-up in 2 weeks
+17412119W32,Lerato Chikafu,Female,64,+263 75 967 572,Outpatient,2025-09-22 11:35:23,GW-325,Dr. Amanda Ncube,Eczema,Lamivudine,Asthma,None,2025-09-22 14:07:23,152,Recovered
+17006499D92,Tobias Chiweshe,Male,59,+263 78 105 971,Surgical,2025-08-14 04:25:26,EM-546,Dr. Jeanette Chirwa,Seizures,Salbutamol,Hypertension,Pollen,2025-08-14 08:16:26,231,Stable
+17722937E45,Bongani Mutasa,Female,3,+263 74 159 563,Surgical,2025-09-30 23:48:21,MT-540,Dr. Jesse Moyo,Appendicitis,Omeprazole,None,None,2025-10-01 02:30:21,162,Stable
+17178173L35,Memory Mutasa,Female,69,+263 73 858 791,Maternity,2025-08-18 13:07:50,PD-739,Dr. Andrew Dube,STI - Syphilis,Folic Acid,Hypertension,Pollen,2025-08-18 15:44:50,157,Recovered
+17312424S73,Nothando Chirwa,Female,39,+263 77 711 556,General Ward,2025-08-10 06:45:37,EM-750,Dr. Sharon Chirwa,Gastritis,Diclofenac,Asthma,Penicillin,2025-08-10 07:06:37,21,Follow-up in 2 weeks
+17530458F13,Nokuthula Chauke,Female,30,+263 71 371 693,Surgical,2025-09-27 00:34:09,SG-534,Dr. Claudia Ncube,STI - Trichomoniasis,Ciprofloxacin,None,Peanuts,2025-09-27 02:52:09,138,Follow-up in 2 weeks
+17334838O36,Precious Ncube,Female,60,+263 74 326 462,Pediatrics,2025-08-02 23:41:39,OP-448,Dr. Timothy Mutasa,Eye Infection,Augmentin,Asthma,None,2025-08-03 00:55:39,74,Referred to specialist
+17376093A65,Brighton Maringe,Male,27,+263 77 772 365,Outpatient,2025-09-08 00:50:51,SG-065,Dr. Timothy Mutasa,Diabetes,Insulin,None,Penicillin,2025-09-08 04:20:51,210,Recovered
+17659089M78,Rudo Matsika,Female,48,+263 78 268 656,Pediatrics,2025-09-20 19:43:42,EM-617,Dr. Christopher Ncube,Stroke,Salbutamol,None,Peanuts,2025-09-20 22:44:42,181,Stable
+17248110J25,Shamiso Mushore,Male,2,+263 77 783 297,Emergency,2025-08-22 17:31:30,GW-123,Dr. Claudia Ncube,Malnutrition,Fluconazole,Diabetes,Pollen,2025-08-22 21:23:30,232,Recovered
+17731928R24,Dumisani Nyathi,Female,35,+263 79 471 973,Surgical,2025-08-19 09:40:46,OP-219,Dr. Andrew Dube,Pregnancy Checkup,Naproxen,Diabetes,Pollen,2025-08-19 13:18:46,218,Admitted
+17081613O38,Cynthia Mabika,Female,46,+263 71 177 669,Surgical,2025-07-14 07:01:28,OP-339,Dr. Melissa Dube,Pregnancy Checkup,Prednisone,Diabetes,None,2025-07-14 07:46:28,45,Admitted
+17400780I10,Lesley Chirwa,Male,10,+263 79 402 248,Mental Health,2025-09-17 23:11:23,OP-647,Dr. Sharon Chirwa,Kidney Stones,Fluconazole,Diabetes,None,2025-09-18 00:10:23,59,Recovered
+17381186I23,Nyarai Mavhunga,Male,33,+263 76 990 845,Surgical,2025-09-22 22:01:30,MT-855,Dr. Matthew Ncube,UTI,Augmentin,Hypertension,Penicillin,2025-09-22 23:37:30,96,Follow-up in 2 weeks
+17799960F31,Brighton Chiweshe,Female,7,+263 75 110 715,Maternity,2025-08-19 15:14:28,MT-691,Dr. Sharon Chirwa,UTI,Losartan,Heart Disease,Peanuts,2025-08-19 17:20:28,126,Recovered
+17232828Z25,Cynthia Nyamazana,Female,6,+263 75 722 164,Pediatrics,2025-10-03 17:36:01,OP-137,Dr. Timothy Mutasa,Malaria,Aspirin,Asthma,Peanuts,2025-10-03 20:35:01,179,Admitted
+17605113T74,Sipho Mushayi,Male,50,+263 72 173 175,Surgical,2025-07-29 15:54:56,GW-966,Dr. Sharon Chirwa,Diabetes,Prednisone,Diabetes,Peanuts,2025-07-29 16:42:56,48,Stable
+17187001A45,Nothando Mugabe,Female,12,+263 71 575 739,Mental Health,2025-09-19 07:40:06,GW-182,Dr. Travis Gumbo,Labor Pains,Aspirin,None,None,2025-09-19 11:12:06,212,Follow-up in 2 weeks
+17586190Y76,Nigel Nyamupaguma,Male,45,+263 77 256 113,Pediatrics,2025-08-26 06:04:57,MT-117,Dr. Nicholas Ncube,UTI,Metformin,Asthma,Penicillin,2025-08-26 06:46:57,42,Referred to specialist
+17787157U24,Sipho Mudzonga,Male,40,+263 73 567 956,Surgical,2025-08-16 11:36:35,GW-384,Dr. Linda Mutasa,Allergic Reaction,Ceftriaxone,Diabetes,Peanuts,2025-08-16 13:08:35,92,Referred to specialist
+17170268O45,Kundai Chasakara,Male,58,+263 71 228 151,Mental Health,2025-08-14 20:47:50,PD-664,Dr. Melissa Dube,Obesity,Panado,Diabetes,Penicillin,2025-08-15 00:18:50,211,Referred to specialist
+17058728R27,Tanaka Mhlanga,Male,16,+263 78 146 500,Dental,2025-09-02 06:59:01,OP-703,Dr. Hannah Chirwa,Depression,Tenofovir,None,None,2025-09-02 07:58:01,59,Recovered
+17335397D20,Nigel Moyo,Male,21,+263 77 159 628,Physiotherapy,2025-07-30 13:02:52,GW-442,Dr. Jesse Moyo,Fracture,Panado,Diabetes,Pollen,2025-07-30 16:28:52,206,Follow-up in 2 weeks
+17980044S82,Loveness Makoni,Female,45,+263 79 928 226,Pediatrics,2025-10-04 21:18:52,MT-733,Dr. Nicholas Ncube,Anxiety,Panado,Hypertension,Penicillin,2025-10-04 23:50:52,152,Referred to specialist
+17048829Q41,Loveness Mushore,Female,79,+263 79 781 961,Dental,2025-08-29 00:04:31,SG-003,Dr. Christopher Ncube,Appendicitis,Doxycycline,Asthma,None,2025-08-29 02:01:31,117,Stable
+17128813S31,Tinashe Nyathi,Male,65,+263 72 398 506,Dental,2025-07-16 00:58:18,GW-205,Dr. Hannah Chirwa,Labor Pains,Multivitamins,None,Peanuts,2025-07-16 02:59:18,121,Follow-up in 2 weeks
+17444416X76,Blessing Mugabe,Male,4,+263 77 461 886,Physiotherapy,2025-07-23 13:59:15,GW-526,Dr. Timothy Mutasa,Skin Rash,Naproxen,Hypertension,Pollen,2025-07-23 16:37:15,158,Stable
+17738998G55,Obvious Nyathi,Male,23,+263 72 446 974,General Ward,2025-08-07 12:52:27,EM-377,Dr. Andrew Dube,Typhoid,Ceftriaxone,Asthma,Peanuts,2025-08-07 15:52:27,180,Stable
+17010305X58,Tobias Ndlovu,Female,45,+263 72 146 222,Mental Health,2025-07-24 03:03:26,EM-302,Dr. Sharon Chirwa,Typhoid,Folic Acid,Asthma,Pollen,2025-07-24 05:28:26,145,Referred to specialist
+17577722C29,Simbarashe Mupfumi,Male,2,+263 78 719 154,Pediatrics,2025-09-21 03:27:48,SG-772,Dr. Jesse Moyo,Obesity,Efavirenz,Diabetes,None,2025-09-21 06:35:48,188,Admitted
+17810233K19,Simbarashe Muchechetere,Female,39,+263 74 646 568,Pediatrics,2025-09-08 21:16:59,MT-912,Dr. Linda Mutasa,STI - Gonorrhea,Lamivudine,Asthma,Pollen,2025-09-09 00:55:59,219,Recovered
+17025470R98,Tanaka Mudzonga,Male,66,+263 73 411 447,Pediatrics,2025-09-24 08:22:48,MT-740,Dr. Debra Moyo,HIV/AIDS,Losartan,Hypertension,Peanuts,2025-09-24 08:46:48,24,Stable
+17568748C82,Memory Mutisi,Male,1,+263 73 576 251,Surgical,2025-07-29 14:35:58,SG-205,Dr. Debra Moyo,STI - Trichomoniasis,Tenofovir,None,Peanuts,2025-07-29 16:12:58,97,Admitted
+17529616I86,Tafadzwa Mugari,Male,28,+263 78 200 893,Emergency,2025-07-17 21:41:42,OP-103,Dr. Jeanette Chirwa,STI - Syphilis,Azithromycin,None,Peanuts,2025-07-17 22:04:42,23,Admitted
+17891127H72,Wellington Mutisi,Female,22,+263 71 576 936,Maternity,2025-08-29 04:03:43,GW-077,Dr. John Mutasa,Burns,Cotrimoxazole,Asthma,Peanuts,2025-08-29 04:45:43,42,Stable
+17424245R62,Thabani Mugabe,Male,35,+263 71 188 331,General Ward,2025-08-30 04:03:25,PD-649,Dr. Jennifer Ncube,STI - Gonorrhea,Amoxicillin,None,Pollen,2025-08-30 05:47:25,104,Follow-up in 2 weeks
+17321636P56,Gerald Ncube,Male,67,+263 78 401 814,Outpatient,2025-09-04 21:30:09,EM-040,Dr. Sharon Chirwa,Tuberculosis,Vitamin B Complex,None,Pollen,2025-09-04 21:57:09,27,Follow-up in 2 weeks
+17694814B78,Kudzai Ndlovu,Male,67,+263 71 495 379,Maternity,2025-07-18 06:02:17,SG-542,Dr. Linda Mutasa,Asthma,Salbutamol,Heart Disease,Pollen,2025-07-18 08:12:17,130,Follow-up in 2 weeks
+17359441H71,Lindiwe Mugari,Male,14,+263 76 598 438,Physiotherapy,2025-09-25 16:00:34,MT-394,Dr. Travis Gumbo,Fracture,Aspirin,None,Peanuts,2025-09-25 17:07:34,67,Referred to specialist
+17215068D33,Lesley Chiweshe,Female,65,+263 72 156 818,Surgical,2025-07-13 22:08:46,OP-845,Dr. Linda Mutasa,Depression,Zinc Tablets,None,Peanuts,2025-07-13 23:56:46,108,Follow-up in 2 weeks
+17002936M91,Nkosilathi Chirwa,Male,79,+263 79 866 122,Mental Health,2025-10-05 10:25:38,GW-474,Dr. Catherine Dube,Bronchitis,Panado,Hypertension,None,2025-10-05 12:16:38,111,Admitted
+17514906V97,Tanaka Nhema,Female,21,+263 76 331 840,Outpatient,2025-08-09 22:00:06,MT-371,Dr. Christopher Ncube,Ulcers,Metronidazole,Hypertension,Peanuts,2025-08-09 23:51:06,111,Stable
+17360927N81,Rudo Chinhoyi,Male,14,+263 77 244 276,Physiotherapy,2025-07-19 21:06:06,EM-822,Dr. Travis Gumbo,Seizures,Augmentin,Asthma,Penicillin,2025-07-19 22:23:06,77,Follow-up in 2 weeks
+17831052V81,Panashe Munyoro,Female,21,+263 74 530 721,Dental,2025-08-03 15:38:32,MT-065,Dr. John Mutasa,Gastritis,Azithromycin,Hypertension,Peanuts,2025-08-03 19:04:32,206,Referred to specialist
+17087357S13,Tinashe Moyo,Male,47,+263 76 272 414,Outpatient,2025-10-09 21:46:25,MT-552,Dr. Melissa Dube,Obesity,Coartem,Diabetes,None,2025-10-09 23:56:25,130,Admitted
+17024941A19,Shamiso Nyamupaguma,Male,88,+263 79 518 267,General Ward,2025-08-15 05:43:35,PD-996,Dr. Jennifer Ncube,Gout,Augmentin,Heart Disease,Peanuts,2025-08-15 06:13:35,30,Admitted
+17139272O17,Nigel Chikonde,Female,80,+263 77 980 971,Maternity,2025-08-13 11:50:56,PD-638,Dr. Andrew Dube,STI - Gonorrhea,Salbutamol,Asthma,Pollen,2025-08-13 13:39:56,109,Admitted
+17114581A64,Nyasha Nyathi,Female,29,+263 78 843 667,Outpatient,2025-08-12 18:04:21,OP-306,Dr. John Mutasa,STI - Gonorrhea,Clotrimazole,None,Peanuts,2025-08-12 19:02:21,58,Recovered
+17064474S89,Anesu Katsande,Male,68,+263 75 820 759,Physiotherapy,2025-07-29 01:57:38,GW-626,Dr. Christopher Ncube,STI - Herpes,Losartan,Heart Disease,None,2025-07-29 04:05:38,128,Stable
+17962575W57,Loveness Katsande,Female,37,+263 72 794 179,Maternity,2025-08-30 22:06:18,SG-516,Dr. Melissa Dube,Gout,Salbutamol,None,Peanuts,2025-08-30 23:47:18,101,Stable
+17938917J74,Brighton Mawadza,Male,26,+263 77 256 533,Pediatrics,2025-09-01 01:30:04,EM-560,Dr. Nicholas Ncube,STI - Syphilis,Metronidazole,Heart Disease,Pollen,2025-09-01 02:43:04,73,Referred to specialist
+17862983Z17,Moreblessing Chauke,Male,40,+263 77 671 948,Mental Health,2025-09-20 09:56:53,OP-931,Dr. Jocelyn Gumbo,Hepatitis B,Doxycycline,Heart Disease,Peanuts,2025-09-20 13:39:53,223,Recovered
+17608887P86,Ropafadzo Ncube,Male,54,+263 74 153 889,Outpatient,2025-09-16 19:35:53,MT-242,Dr. John Mutasa,STI - Syphilis,Amoxicillin,Diabetes,None,2025-09-16 21:23:53,108,Referred to specialist
+17746836Y73,Blessing Chasakara,Female,5,+263 73 326 757,Physiotherapy,2025-09-10 03:15:44,EM-812,Dr. Jennifer Ncube,Labor Pains,Ceftriaxone,Asthma,Penicillin,2025-09-10 06:10:44,175,Referred to specialist
+17425183Z24,Simbarashe Mutenha,Male,33,+263 75 258 350,Dental,2025-08-09 10:11:52,SG-533,Dr. Jennifer Ncube,Depression,Amoxiclav,Asthma,Pollen,2025-08-09 11:45:52,94,Recovered
+17188288T70,Brighton Munyoro,Male,41,+263 78 229 959,Maternity,2025-08-10 07:16:04,MT-713,Dr. Amber Gumbo,Pneumonia,Folic Acid,Asthma,Pollen,2025-08-10 08:20:04,64,Stable
+17604578A67,Wellington Matsika,Male,35,+263 77 591 688,General Ward,2025-07-20 09:53:34,MT-656,Dr. Melissa Dube,Skin Rash,Prednisone,None,Pollen,2025-07-20 11:23:34,90,Follow-up in 2 weeks
+17277851O35,Tafadzwa Chauke,Female,63,+263 71 259 234,Dental,2025-09-25 13:52:30,EM-649,Dr. Jennifer Ncube,Hypertension,ORS,Heart Disease,Pollen,2025-09-25 14:35:30,43,Referred to specialist
+17752013K41,Kudzai Chinhoyi,Female,84,+263 76 999 552,Maternity,2025-09-01 19:00:42,PD-334,Dr. Nicholas Ncube,Allergic Reaction,Vitamin C,None,None,2025-09-01 19:28:42,28,Referred to specialist
+17870360O95,Takudzwa Mawadza,Female,82,+263 79 221 332,Pediatrics,2025-09-22 19:57:29,OP-161,Dr. Jennifer Ncube,Dental Extraction,Cough Syrup,Asthma,Pollen,2025-09-22 22:13:29,136,Stable
+17570416N11,Memory Nhema,Male,31,+263 75 533 628,General Ward,2025-07-30 20:14:48,MT-044,Dr. Matthew Ncube,Obesity,Amoxicillin,Asthma,Penicillin,2025-07-30 20:31:48,17,Stable
+17195083V72,Faith Matsika,Female,59,+263 72 770 718,Maternity,2025-08-27 14:33:21,GW-381,Dr. Andrew Dube,STI - Herpes,Vitamin C,None,None,2025-08-27 15:11:21,38,Recovered
+17507614O31,Admire Maringe,Female,49,+263 75 935 390,Mental Health,2025-08-04 09:18:31,PD-642,Dr. Claudia Ncube,Asthma,Naproxen,Heart Disease,Peanuts,2025-08-04 11:45:31,147,Admitted
+17253578R55,Ropafadzo Mugabe,Male,23,+263 75 440 911,Pediatrics,2025-09-03 06:02:01,MT-668,Dr. Amber Gumbo,Obesity,Cough Syrup,Heart Disease,Pollen,2025-09-03 09:05:01,183,Recovered
+17211192V92,Shamiso Chauke,Male,53,+263 75 662 214,Emergency,2025-08-29 04:55:50,PD-046,Dr. Amber Gumbo,Typhoid,Doxycycline,Hypertension,Penicillin,2025-08-29 08:45:50,230,Stable
+17172508F62,Tawanda Mutambirwa,Male,85,+263 74 527 308,Outpatient,2025-08-19 09:38:48,SG-976,Dr. Matthew Ncube,Skin Rash,Metformin,Asthma,Penicillin,2025-08-19 10:35:48,57,Admitted
+17247028B28,Farai Mpofu,Female,34,+263 79 870 987,Dental,2025-09-05 16:51:52,PD-295,Dr. John Mutasa,Diabetes,Folic Acid,Asthma,Peanuts,2025-09-05 20:04:52,193,Admitted
+17405541X25,Tawanda Maringe,Male,65,+263 76 111 930,Surgical,2025-09-11 17:18:03,GW-164,Dr. Jeanette Chirwa,Anxiety,Ciprofloxacin,Heart Disease,None,2025-09-11 20:12:03,174,Referred to specialist
+17950668T59,Farai Mugabe,Male,80,+263 76 484 770,Physiotherapy,2025-08-28 17:29:56,GW-832,Dr. John Mutasa,Injury,Antacid Suspension,Heart Disease,None,2025-08-28 18:39:56,70,Stable
+17707565H23,Admire Mhlanga,Female,90,+263 76 539 403,Surgical,2025-07-25 08:36:23,EM-307,Dr. Amanda Ncube,Labor Pains,Vitamin C,None,Penicillin,2025-07-25 09:47:23,71,Recovered
+17737663M35,Anesu Chiweshe,Male,64,+263 73 544 364,Surgical,2025-09-20 08:28:36,OP-027,Dr. Matthew Ncube,Skin Rash,Vitamin B Complex,None,Pollen,2025-09-20 09:39:36,71,Referred to specialist
+17505376Q34,Blessing Mhlanga,Male,14,+263 78 915 908,General Ward,2025-09-08 05:20:54,MT-572,Dr. Matthew Ncube,STI - Herpes,Omeprazole,Heart Disease,Penicillin,2025-09-08 07:52:54,152,Recovered
+17994169U41,Tawanda Mushayi,Male,31,+263 77 889 623,Pediatrics,2025-09-22 23:56:37,GW-159,Dr. Sharon Chirwa,HIV/AIDS,Hydrocortisone,None,None,2025-09-23 00:44:37,48,Recovered
+17173930U83,Dumisani Ndlovu,Male,36,+263 76 389 900,Pediatrics,2025-08-19 10:37:12,GW-217,Dr. Christopher Ncube,Stroke,Vitamin C,Heart Disease,None,2025-08-19 12:39:12,122,Referred to specialist
+17434636K79,Nyasha Madzorera,Male,68,+263 75 114 231,Surgical,2025-07-26 17:27:22,MT-269,Dr. Andrew Dube,Fracture,Tenofovir,Hypertension,Peanuts,2025-07-26 21:18:22,231,Recovered
+17052581P70,Tafadzwa Gwenzi,Male,53,+263 71 599 380,Dental,2025-08-04 09:26:08,EM-409,Dr. Linda Mutasa,Hypertension,Naproxen,Heart Disease,Pollen,2025-08-04 10:16:08,50,Follow-up in 2 weeks
+17049781S79,Kundai Maringe,Male,67,+263 73 136 442,Emergency,2025-08-28 05:40:47,SG-093,Dr. Andrew Dube,Stroke,Diclofenac,Diabetes,None,2025-08-28 09:23:47,223,Referred to specialist
+17670690G29,Shamiso Katsande,Male,78,+263 75 600 970,Dental,2025-07-18 20:13:37,OP-439,Dr. Jeanette Chirwa,STI - Gonorrhea,Vitamin B Complex,Asthma,Peanuts,2025-07-18 22:40:37,147,Stable
+17997966F28,Gerald Sibanda,Female,10,+263 71 520 540,Physiotherapy,2025-08-21 13:57:44,SG-851,Dr. Jennifer Ncube,Hepatitis B,Panado,Diabetes,None,2025-08-21 16:42:44,165,Referred to specialist
+17854955L74,Blessing Nyamupaguma,Female,28,+263 75 769 704,Emergency,2025-09-05 16:57:31,PD-967,Dr. Matthew Ncube,Injury,Antacid Suspension,None,Peanuts,2025-09-05 19:27:31,150,Follow-up in 2 weeks
+17039674A20,Lindiwe Sithole,Female,36,+263 76 945 376,Surgical,2025-09-08 00:05:39,PD-139,Dr. Andrew Dube,Asthma,Omeprazole,Asthma,Penicillin,2025-09-08 02:01:39,116,Referred to specialist
+17697414E59,Godknows Chauke,Male,69,+263 73 462 339,Mental Health,2025-09-20 18:37:56,GW-867,Dr. Matthew Ncube,Labor Pains,Prednisone,Hypertension,Pollen,2025-09-20 21:03:56,146,Follow-up in 2 weeks
+17423114T39,Precious Marecha,Female,44,+263 72 584 272,Pediatrics,2025-09-06 17:19:32,MT-502,Dr. Jennifer Ncube,Anxiety,Vitamin C,Diabetes,Peanuts,2025-09-06 19:32:32,133,Admitted
+17414619T75,Ropafadzo Chikonde,Male,15,+263 71 953 900,Surgical,2025-09-17 12:19:20,EM-692,Dr. Jocelyn Gumbo,Anxiety,Aspirin,Heart Disease,Pollen,2025-09-17 14:49:20,150,Referred to specialist
+17624802X14,Lindiwe Mutasa,Male,90,+263 75 131 568,Emergency,2025-08-22 14:23:02,PD-782,Dr. John Mutasa,Asthma,Losartan,Diabetes,None,2025-08-22 16:41:02,138,Stable
+17369009N76,Tafadzwa Manyika,Male,73,+263 72 396 935,Outpatient,2025-08-18 17:41:58,GW-631,Dr. Linda Mutasa,Seizures,Zinc Tablets,Diabetes,Penicillin,2025-08-18 18:10:58,29,Follow-up in 2 weeks
+17855578J57,Ropafadzo Madzinga,Female,81,+263 78 791 998,Maternity,2025-10-09 20:17:20,OP-790,Dr. Timothy Mutasa,Migraine,Amoxiclav,Asthma,Pollen,2025-10-09 21:55:20,98,Stable
+17133043K35,Nkosilathi Mutambirwa,Female,57,+263 71 514 684,Emergency,2025-08-02 07:25:12,EM-442,Dr. Debra Moyo,Depression,Paracetamol,None,None,2025-08-02 10:15:12,170,Follow-up in 2 weeks
+17908692I86,Shamiso Mhlanga,Male,58,+263 78 690 287,Outpatient,2025-10-06 05:16:46,GW-187,Dr. Jeanette Chirwa,Tonsillitis,Cough Syrup,Asthma,Pollen,2025-10-06 06:17:46,61,Follow-up in 2 weeks
+17951550F75,Memory Maregere,Female,48,+263 77 289 507,Dental,2025-09-28 16:21:18,EM-025,Dr. Hannah Chirwa,Allergic Reaction,Naproxen,Heart Disease,None,2025-09-28 18:55:18,154,Recovered
+17420490Z13,Nyarai Chauke,Female,90,+263 75 539 592,Mental Health,2025-08-27 19:50:31,OP-990,Dr. Travis Gumbo,STI - Herpes,Lamivudine,Asthma,Pollen,2025-08-27 20:47:31,57,Recovered
+17939915V71,Lindiwe Mudzonga,Male,9,+263 73 974 126,Mental Health,2025-07-14 04:45:03,GW-680,Dr. Jeanette Chirwa,Malnutrition,Prednisone,None,Pollen,2025-07-14 05:30:03,45,Referred to specialist
+17114600Z33,Takudzwa Mushonga,Female,33,+263 79 423 396,Physiotherapy,2025-08-31 23:23:51,OP-857,Dr. Linda Mutasa,Gastritis,Doxycycline,None,None,2025-09-01 02:57:51,214,Recovered
+17834451Q38,Shamiso Ndlovu,Male,13,+263 78 931 632,Pediatrics,2025-07-13 17:21:41,SG-697,Dr. Hannah Chirwa,Hypertension,Salbutamol,Asthma,Penicillin,2025-07-13 19:26:41,125,Follow-up in 2 weeks
+17545725T23,Takudzwa Mutenha,Male,84,+263 78 618 247,Outpatient,2025-09-20 05:55:58,PD-289,Dr. Claudia Ncube,Stroke,Lamivudine,Hypertension,Peanuts,2025-09-20 06:46:58,51,Stable
+17191922B43,Nyarai Muchechetere,Female,64,+263 71 265 237,Surgical,2025-09-26 01:12:31,SG-753,Dr. Jennifer Ncube,COVID-19,Augmentin,Hypertension,None,2025-09-26 04:33:31,201,Referred to specialist
+17913738X84,Moreblessing Mpofu,Female,8,+263 79 327 432,Mental Health,2025-07-24 12:56:10,PD-521,Dr. John Mutasa,Tonsillitis,Amoxiclav,Asthma,Pollen,2025-07-24 16:24:10,208,Admitted
+17808682N34,Tanaka Chinhoyi,Male,13,+263 75 141 417,Pediatrics,2025-07-17 00:07:38,OP-684,Dr. Jennifer Ncube,Anxiety,Clotrimazole,Hypertension,Pollen,2025-07-17 02:29:38,142,Referred to specialist
+17385085Y73,Nokuthula Matsika,Male,43,+263 75 677 235,Mental Health,2025-09-04 01:19:45,MT-364,Dr. Timothy Mutasa,UTI,Diclofenac,None,Peanuts,2025-09-04 02:31:45,72,Admitted
+17196233M42,Lesley Mutasa,Male,24,+263 72 149 373,Maternity,2025-09-23 09:01:49,MT-627,Dr. Jeanette Chirwa,Obesity,Paracetamol,None,None,2025-09-23 11:47:49,166,Admitted
+17261436O65,Tafadzwa Madzorera,Male,13,+263 76 199 100,General Ward,2025-09-19 10:08:18,PD-756,Dr. Travis Gumbo,STI - Syphilis,Coartem,None,Penicillin,2025-09-19 13:12:18,184,Admitted
+17149077V93,Dumisani Munyoro,Male,2,+263 74 850 980,General Ward,2025-07-28 04:52:14,SG-233,Dr. Jesse Moyo,Obesity,Efavirenz,Heart Disease,Penicillin,2025-07-28 06:09:14,77,Stable
+17506278R11,Admire Katsande,Male,40,+263 74 112 735,Emergency,2025-08-27 16:12:02,PD-069,Dr. Timothy Mutasa,Sinusitis,Omeprazole,Asthma,Penicillin,2025-08-27 18:12:02,120,Stable
+17293739Q63,Tariro Chinhoyi,Male,85,+263 79 472 187,Maternity,2025-07-18 04:02:29,SG-466,Dr. Andrew Dube,Malnutrition,Clotrimazole,Asthma,Penicillin,2025-07-18 07:55:29,233,Admitted
+17017854P17,Nokuthula Mutisi,Male,35,+263 75 898 704,Mental Health,2025-10-05 04:17:34,OP-220,Dr. Claudia Ncube,Asthma,Losartan,Diabetes,Peanuts,2025-10-05 07:47:34,210,Referred to specialist
+17642499F87,Anesu Chauke,Male,70,+263 79 153 305,Outpatient,2025-08-27 18:46:28,MT-412,Dr. Linda Mutasa,Fracture,Aspirin,Diabetes,None,2025-08-27 19:39:28,53,Stable
+17835403K51,Takudzwa Ndlovu,Male,12,+263 77 746 917,General Ward,2025-08-07 00:12:03,OP-264,Dr. John Mutasa,Tonsillitis,Cough Syrup,Hypertension,Penicillin,2025-08-07 02:33:03,141,Stable
+17118115U66,Sipho Chasakara,Male,53,+263 72 253 274,General Ward,2025-09-12 14:08:40,MT-543,Dr. Matthew Ncube,Skin Rash,Salbutamol,Heart Disease,None,2025-09-12 18:05:40,237,Stable
+17901302A13,Memory Mawadza,Male,14,+263 75 333 505,Surgical,2025-09-16 07:16:12,OP-910,Dr. Debra Moyo,Ear Infection,Tenofovir,None,Peanuts,2025-09-16 08:55:12,99,Referred to specialist
+17329641M79,Gerald Mabaso,Male,57,+263 73 407 994,Pediatrics,2025-08-01 08:22:23,MT-474,Dr. Andrew Dube,Malaria,Naproxen,Asthma,Peanuts,2025-08-01 10:21:23,119,Follow-up in 2 weeks
+17951639D65,Nkosilathi Mutenha,Female,51,+263 77 245 939,Maternity,2025-07-19 04:06:40,GW-102,Dr. Sharon Chirwa,UTI,Ciprofloxacin,Asthma,Pollen,2025-07-19 06:20:40,134,Follow-up in 2 weeks
+17165953C55,Wellington Chauke,Female,70,+263 79 428 690,Mental Health,2025-08-01 19:02:51,SG-860,Dr. Christopher Ncube,Asthma,Fluconazole,Diabetes,Pollen,2025-08-01 22:19:51,197,Recovered
+17311372J44,Gerald Nyathi,Male,18,+263 74 619 231,Emergency,2025-08-06 23:46:36,PD-061,Dr. Catherine Dube,Allergic Reaction,Metronidazole,None,Penicillin,2025-08-07 03:15:36,209,Recovered
+17104386Q65,Nigel Mutenha,Female,1,+263 75 920 652,Emergency,2025-10-08 18:57:54,PD-281,Dr. Amber Gumbo,Chest Pain,Insulin,Heart Disease,None,2025-10-08 20:29:54,92,Admitted
+17349285I70,Lesley Nyamazana,Male,29,+263 75 980 506,Outpatient,2025-07-26 13:44:59,PD-311,Dr. Jeanette Chirwa,Ear Infection,Aspirin,Hypertension,None,2025-07-26 14:26:59,42,Admitted
+17326008Y77,Lesley Mabaso,Female,81,+263 72 847 422,General Ward,2025-09-25 12:06:36,EM-390,Dr. Travis Gumbo,HIV/AIDS,Naproxen,Heart Disease,None,2025-09-25 15:59:36,233,Admitted
+17385465V31,Kudzai Sithole,Male,81,+263 76 708 429,Dental,2025-09-21 07:48:56,SG-461,Dr. Matthew Ncube,STI - Herpes,Coartem,Diabetes,None,2025-09-21 09:02:56,74,Follow-up in 2 weeks
+17977192Z53,Godknows Chiweshe,Female,63,+263 72 585 617,Outpatient,2025-07-17 19:33:31,OP-025,Dr. Travis Gumbo,Tonsillitis,Coartem,None,None,2025-07-17 22:24:31,171,Follow-up in 2 weeks
+17197927J45,Kudzai Chasakara,Male,50,+263 78 235 974,Pediatrics,2025-09-21 17:06:52,EM-771,Dr. Debra Moyo,COVID-19,Cotrimoxazole,Hypertension,Penicillin,2025-09-21 18:16:52,70,Follow-up in 2 weeks
+17341730Y16,Ropafadzo Moyo,Female,14,+263 76 581 446,Emergency,2025-08-20 02:40:22,MT-170,Dr. Matthew Ncube,Skin Rash,Ibuprofen,None,None,2025-08-20 06:17:22,217,Stable
+17195234I15,Nomsa Mutasa,Female,83,+263 75 393 845,Dental,2025-10-01 14:57:41,OP-772,Dr. Claudia Ncube,UTI,Zinc Tablets,Diabetes,Pollen,2025-10-01 15:40:41,43,Follow-up in 2 weeks
+17870709X94,Tanaka Chikonde,Female,13,+263 75 704 458,Emergency,2025-08-13 12:43:47,SG-991,Dr. Jesse Moyo,STI - Trichomoniasis,Losartan,Heart Disease,Pollen,2025-08-13 13:14:47,31,Recovered
+17120141J81,Clever Gwenzi,Male,14,+263 75 859 659,Physiotherapy,2025-09-25 08:12:24,SG-422,Dr. Melissa Dube,Labor Pains,Vitamin C,None,Pollen,2025-09-25 12:07:24,235,Admitted
+17825558O45,Tendai Sithole,Female,23,+263 72 874 529,Physiotherapy,2025-07-26 12:26:14,OP-006,Dr. Travis Gumbo,Diabetes,Metformin,Heart Disease,Penicillin,2025-07-26 12:59:14,33,Follow-up in 2 weeks
+17258698Z86,Tinashe Mhlanga,Female,74,+263 74 134 563,Maternity,2025-07-20 09:52:55,PD-495,Dr. Melissa Dube,Gastritis,Coartem,Hypertension,Penicillin,2025-07-20 11:01:55,69,Referred to specialist
+17647412A75,Tendai Mabika,Male,82,+263 79 127 502,Dental,2025-08-09 06:04:39,MT-474,Dr. Jennifer Ncube,Malnutrition,Augmentin,Hypertension,Penicillin,2025-08-09 09:27:39,203,Recovered
+17752306K11,Lesley Mushore,Female,8,+263 72 295 921,Dental,2025-09-04 02:34:36,MT-559,Dr. Claudia Ncube,Pneumonia,Lamivudine,None,Penicillin,2025-09-04 05:41:36,187,Follow-up in 2 weeks
+17554088L71,Sipho Mutasa,Female,81,+263 79 769 188,Outpatient,2025-10-06 01:24:58,SG-355,Dr. Linda Mutasa,Eczema,Ceftriaxone,Hypertension,Peanuts,2025-10-06 02:50:58,86,Stable
+17907499K20,Lerato Gwenzi,Female,1,+263 79 220 739,Mental Health,2025-08-06 18:44:16,MT-093,Dr. Jesse Moyo,Common Cold,Metformin,None,Pollen,2025-08-06 22:38:16,234,Referred to specialist
+17558018P57,Loveness Dube,Female,60,+263 76 867 875,Surgical,2025-07-30 00:29:35,OP-959,Dr. Jesse Moyo,Tonsillitis,Paracetamol,None,Peanuts,2025-07-30 03:24:35,175,Stable
+17167336V70,Simbarashe Mavhunga,Male,77,+263 79 919 960,Dental,2025-10-03 15:51:48,EM-434,Dr. Nicholas Ncube,Gout,Vitamin B Complex,Heart Disease,Penicillin,2025-10-03 16:54:48,63,Admitted
+17118408Q47,Obvious Mudzonga,Male,19,+263 77 569 374,Outpatient,2025-07-27 05:53:25,OP-346,Dr. Amber Gumbo,Typhoid,Salbutamol,Asthma,Penicillin,2025-07-27 07:31:25,98,Stable
+17676034C30,Cynthia Maregere,Female,40,+263 79 139 915,Emergency,2025-10-06 11:45:50,SG-095,Dr. Amber Gumbo,STI - Syphilis,Diclofenac,Diabetes,Penicillin,2025-10-06 14:52:50,187,Stable
+17410838A10,Moreblessing Chirwa,Male,10,+263 71 716 500,Outpatient,2025-10-09 03:56:24,MT-317,Dr. Jennifer Ncube,Gout,Panado,None,Pollen,2025-10-09 04:52:24,56,Stable
+17925353U70,Lerato Mutisi,Female,67,+263 78 332 942,Surgical,2025-08-21 18:00:40,GW-130,Dr. Jennifer Ncube,Pneumonia,Cotrimoxazole,None,Penicillin,2025-08-21 20:36:40,156,Admitted
+17549804M52,Chipo Nyamupaguma,Female,60,+263 78 434 569,Outpatient,2025-09-05 10:42:37,SG-255,Dr. Nicholas Ncube,Tonsillitis,Insulin,Heart Disease,None,2025-09-05 14:12:37,210,Recovered
+17520899X52,Clever Moyo,Female,43,+263 71 169 933,Outpatient,2025-09-03 16:30:18,MT-159,Dr. Debra Moyo,Appendicitis,Zinc Tablets,None,Penicillin,2025-09-03 18:44:18,134,Admitted
+17165263V51,Lindiwe Madzorera,Male,87,+263 72 622 496,Physiotherapy,2025-08-10 18:47:30,SG-415,Dr. Debra Moyo,UTI,Amoxiclav,None,Penicillin,2025-08-10 19:58:30,71,Recovered
+17898086X54,Kundai Sithole,Male,56,+263 74 623 131,Mental Health,2025-08-10 15:21:54,SG-443,Dr. Linda Mutasa,Stroke,Augmentin,Asthma,Peanuts,2025-08-10 17:11:54,110,Stable
+17972560V61,Tendai Chiweshe,Male,12,+263 74 631 456,Physiotherapy,2025-07-17 04:08:15,PD-387,Dr. Claudia Ncube,Labor Pains,Antacid Suspension,Hypertension,Peanuts,2025-07-17 06:52:15,164,Follow-up in 2 weeks
+17651295H87,Obvious Ndlovu,Male,29,+263 76 795 443,Mental Health,2025-10-01 18:15:41,GW-649,Dr. Linda Mutasa,Allergic Reaction,Vitamin C,Heart Disease,Pollen,2025-10-01 20:47:41,152,Referred to specialist
+17146196I99,Faith Mpofu,Female,16,+263 77 106 718,Emergency,2025-09-11 04:43:48,PD-147,Dr. Melissa Dube,Common Cold,Folic Acid,Diabetes,Peanuts,2025-09-11 05:29:48,46,Referred to specialist
+17056301Q62,Rudo Sibanda,Male,62,+263 76 482 207,Maternity,2025-08-13 07:08:08,MT-698,Dr. Catherine Dube,COVID-19,Fluconazole,None,Peanuts,2025-08-13 09:23:08,135,Stable
+17907885Y33,Memory Nyamazana,Female,76,+263 74 661 235,Outpatient,2025-08-21 07:16:24,OP-866,Dr. Claudia Ncube,Pneumonia,Efavirenz,Asthma,Penicillin,2025-08-21 09:11:24,115,Follow-up in 2 weeks
+17182443U36,Simbarashe Muropa,Male,72,+263 73 243 333,Physiotherapy,2025-08-19 12:38:49,SG-306,Dr. Jennifer Ncube,STI - Chlamydia,Cough Syrup,Heart Disease,Pollen,2025-08-19 16:04:49,206,Follow-up in 2 weeks
+17782003S72,Tawanda Mapuranga,Female,2,+263 73 731 863,Dental,2025-09-11 22:38:49,MT-828,Dr. Jesse Moyo,Hypertension,Doxycycline,None,None,2025-09-12 00:45:49,127,Admitted
+17882828T20,Tawanda Chirume,Male,53,+263 74 493 634,Physiotherapy,2025-07-26 08:42:35,OP-122,Dr. Travis Gumbo,Hepatitis B,Salbutamol,Diabetes,Pollen,2025-07-26 11:50:35,188,Stable
+17759654K72,Panashe Moyo,Female,66,+263 79 794 725,General Ward,2025-08-01 23:30:03,OP-477,Dr. John Mutasa,Allergic Reaction,Zinc Tablets,Diabetes,None,2025-08-02 02:36:03,186,Stable
+17551101P42,Nyasha Mutasa,Female,47,+263 73 387 286,Pediatrics,2025-10-01 02:49:38,MT-874,Dr. Catherine Dube,Sinusitis,Prednisone,Asthma,Pollen,2025-10-01 04:31:38,102,Admitted
+17829656D42,Tanaka Chirwa,Male,80,+263 78 411 531,Emergency,2025-08-08 00:54:23,OP-644,Dr. Nicholas Ncube,Bronchitis,Fluconazole,Diabetes,Peanuts,2025-08-08 04:35:23,221,Admitted
+17047297Y31,Nyarai Chirwa,Female,53,+263 74 864 273,Dental,2025-09-03 03:04:54,MT-974,Dr. Sharon Chirwa,Kidney Stones,Omeprazole,Hypertension,Penicillin,2025-09-03 05:41:54,157,Stable
+17044427Y14,Nothando Makoni,Male,1,+263 73 209 199,Surgical,2025-09-28 08:00:02,SG-373,Dr. Nicholas Ncube,STI - Herpes,Paracetamol,Diabetes,None,2025-09-28 11:14:02,194,Stable
+17175510E98,Tobias Chikafu,Female,6,+263 75 679 338,Pediatrics,2025-08-04 00:41:57,MT-040,Dr. Hannah Chirwa,Appendicitis,Amoxiclav,Diabetes,Penicillin,2025-08-04 01:54:57,73,Recovered
+17362075C27,Moreblessing Katsande,Male,87,+263 78 986 404,Surgical,2025-09-16 22:25:13,OP-576,Dr. Melissa Dube,Stroke,Clotrimazole,Hypertension,Peanuts,2025-09-16 22:49:13,24,Admitted
+17353919U48,Moreblessing Mapuranga,Female,87,+263 73 299 463,Outpatient,2025-08-28 17:45:02,MT-524,Dr. Jeanette Chirwa,Obesity,Panado,Asthma,Pollen,2025-08-28 20:50:02,185,Admitted
+17624168O72,Tinashe Mpofu,Female,67,+263 77 563 619,Emergency,2025-08-14 09:24:52,PD-781,Dr. Andrew Dube,Burns,Metformin,None,Penicillin,2025-08-14 11:18:52,114,Follow-up in 2 weeks
+17057086I34,Sipho Mushayi,Female,77,+263 73 144 948,Mental Health,2025-08-08 03:34:24,SG-239,Dr. Christopher Ncube,Dental Extraction,Coartem,None,Penicillin,2025-08-08 07:08:24,214,Follow-up in 2 weeks
+17070065L94,Cynthia Nhema,Male,30,+263 74 678 461,Surgical,2025-09-11 07:47:18,SG-885,Dr. Amanda Ncube,Gout,Azithromycin,None,Penicillin,2025-09-11 10:31:18,164,Referred to specialist
+17388851X54,Nyarai Dube,Male,14,+263 76 100 683,Dental,2025-09-25 10:35:05,EM-765,Dr. Jocelyn Gumbo,Hepatitis B,Ibuprofen,Asthma,None,2025-09-25 14:16:05,221,Recovered
+17166622Z19,Tariro Mutasa,Female,19,+263 77 132 917,Mental Health,2025-10-08 19:50:05,MT-001,Dr. Matthew Ncube,Chest Pain,Multivitamins,Heart Disease,Penicillin,2025-10-08 22:42:05,172,Stable
+17752326J93,Simbarashe Nhema,Female,74,+263 78 589 218,Dental,2025-10-03 04:23:21,EM-787,Dr. Christopher Ncube,Migraine,Paracetamol,None,Pollen,2025-10-03 06:54:21,151,Recovered
+17359161K91,Tobias Mpofu,Female,44,+263 73 734 818,General Ward,2025-09-08 09:22:42,GW-507,Dr. Sharon Chirwa,Diabetes,Omeprazole,Diabetes,Peanuts,2025-09-08 13:18:42,236,Referred to specialist
+17336484E36,Munashe Mapuranga,Female,89,+263 71 559 148,Maternity,2025-07-24 11:11:57,MT-072,Dr. John Mutasa,Depression,Naproxen,None,Penicillin,2025-07-24 11:42:57,31,Recovered
+17126433V11,Patience Mutasa,Male,26,+263 72 763 599,Surgical,2025-07-15 09:02:47,SG-702,Dr. Jennifer Ncube,Anxiety,Amoxicillin,Hypertension,None,2025-07-15 09:59:47,57,Admitted
+17402927I98,Rudo Chikafu,Male,84,+263 77 717 669,Mental Health,2025-09-18 19:12:36,MT-033,Dr. Linda Mutasa,Migraine,Metronidazole,Diabetes,Peanuts,2025-09-18 21:06:36,114,Recovered
+17654545J48,Farai Mutasa,Female,76,+263 78 689 773,Physiotherapy,2025-09-27 10:12:50,EM-641,Dr. Catherine Dube,STI - Syphilis,Azithromycin,Heart Disease,Peanuts,2025-09-27 12:24:50,132,Admitted
+17869590V31,Tafadzwa Chauke,Female,42,+263 75 769 868,Dental,2025-09-06 05:56:43,MT-963,Dr. Sharon Chirwa,Migraine,Naproxen,None,Peanuts,2025-09-06 07:05:43,69,Referred to specialist
+17096785G18,Tariro Mushonga,Male,13,+263 79 238 629,Mental Health,2025-09-02 19:36:33,GW-827,Dr. Claudia Ncube,Obesity,Zinc Tablets,Asthma,Penicillin,2025-09-02 22:31:33,175,Admitted
+17759318D63,Nokuthula Mavhunga,Female,24,+263 76 645 393,Emergency,2025-08-14 08:43:05,OP-084,Dr. Jeanette Chirwa,Pneumonia,Amoxiclav,Asthma,Pollen,2025-08-14 12:00:05,197,Referred to specialist
+17676485X27,Nigel Mushore,Female,49,+263 71 978 805,Maternity,2025-09-17 07:47:13,OP-230,Dr. Catherine Dube,Tuberculosis,Vitamin C,Diabetes,Penicillin,2025-09-17 09:24:13,97,Stable
+17587934K45,Gerald Mushore,Male,5,+263 71 214 522,Maternity,2025-09-14 00:50:14,GW-395,Dr. Christopher Ncube,Tuberculosis,Augmentin,Hypertension,Pollen,2025-09-14 03:00:14,130,Recovered
+17168807N39,Patience Chinhoyi,Female,6,+263 71 514 657,Outpatient,2025-09-03 01:46:56,EM-700,Dr. Andrew Dube,Hypertension,Coartem,None,None,2025-09-03 04:48:56,182,Stable
+17961350X95,Tonderai Nhema,Female,36,+263 72 408 721,General Ward,2025-07-25 03:03:31,GW-129,Dr. Jocelyn Gumbo,Gastritis,Amoxiclav,Heart Disease,Peanuts,2025-07-25 05:52:31,169,Stable
+17654197O53,Admire Mawere,Female,37,+263 78 565 580,Physiotherapy,2025-08-24 03:16:42,EM-100,Dr. Travis Gumbo,Malnutrition,Antacid Suspension,Hypertension,Penicillin,2025-08-24 06:27:42,191,Recovered
+17845929T73,Shamiso Mugabe,Female,68,+263 72 230 348,Maternity,2025-10-01 17:24:50,SG-518,Dr. Travis Gumbo,Tonsillitis,Vitamin B Complex,Diabetes,Peanuts,2025-10-01 19:44:50,140,Referred to specialist
+17493116T92,Precious Madzinga,Female,86,+263 72 145 470,Surgical,2025-08-01 13:57:47,SG-066,Dr. Melissa Dube,Pneumonia,Panado,None,None,2025-08-01 16:52:47,175,Referred to specialist
+17643231J94,Obvious Chikonde,Female,87,+263 73 458 582,Outpatient,2025-08-01 04:27:34,OP-406,Dr. Claudia Ncube,COVID-19,Clotrimazole,Asthma,Penicillin,2025-08-01 05:38:34,71,Stable
+17827610J38,Lesley Matsika,Female,38,+263 74 575 422,Mental Health,2025-07-27 23:48:34,MT-470,Dr. Jocelyn Gumbo,COVID-19,Vitamin B Complex,Heart Disease,Peanuts,2025-07-28 02:42:34,174,Follow-up in 2 weeks
+17113148T27,Nomsa Mushore,Male,78,+263 72 901 885,Outpatient,2025-10-04 18:49:41,EM-559,Dr. Christopher Ncube,Arthritis,Efavirenz,Asthma,None,2025-10-04 22:06:41,197,Referred to specialist
+17303450R97,Admire Mavhunga,Male,43,+263 77 802 355,Surgical,2025-08-09 01:58:44,EM-800,Dr. Christopher Ncube,STI - Chlamydia,Folic Acid,Hypertension,Pollen,2025-08-09 03:50:44,112,Admitted
+17178400Q10,Sipho Madzorera,Female,69,+263 77 207 981,Maternity,2025-07-24 13:06:08,OP-725,Dr. Nicholas Ncube,Allergic Reaction,Naproxen,Asthma,Penicillin,2025-07-24 16:18:08,192,Recovered
+17368576Q84,Wellington Mavhunga,Male,22,+263 75 226 178,Mental Health,2025-09-22 21:14:37,EM-159,Dr. Andrew Dube,Malnutrition,Multivitamins,None,None,2025-09-22 22:17:37,63,Admitted
+17669982P83,Obvious Maregere,Male,68,+263 76 776 620,Maternity,2025-09-24 15:20:14,OP-292,Dr. Andrew Dube,STI - Syphilis,Cough Syrup,None,None,2025-09-24 15:51:14,31,Stable
+17499091X61,Nyasha Chikonde,Female,71,+263 71 782 948,Outpatient,2025-09-05 08:01:56,SG-013,Dr. Melissa Dube,COVID-19,Insulin,Diabetes,Peanuts,2025-09-05 11:04:56,183,Follow-up in 2 weeks
+17390880C36,Brian Maringe,Male,15,+263 79 306 595,Surgical,2025-09-02 05:12:13,EM-826,Dr. Linda Mutasa,Asthma,Panado,Asthma,None,2025-09-02 06:08:13,56,Admitted
+17809125L45,Fortunate Manyika,Male,50,+263 71 304 669,Mental Health,2025-09-20 00:51:34,MT-993,Dr. Catherine Dube,Pneumonia,Clotrimazole,Asthma,Peanuts,2025-09-20 02:05:34,74,Referred to specialist
+17557108E98,Nomsa Nyathi,Male,87,+263 71 201 639,Emergency,2025-08-27 00:41:37,MT-564,Dr. Melissa Dube,Gastritis,Metronidazole,Asthma,Peanuts,2025-08-27 02:14:37,93,Recovered
+17174899N96,Lerato Mabika,Male,71,+263 79 468 286,Surgical,2025-07-26 14:31:15,SG-084,Dr. Linda Mutasa,Asthma,Coartem,Diabetes,Peanuts,2025-07-26 16:13:15,102,Referred to specialist
+17501986F26,Wellington Munyoro,Female,84,+263 73 716 685,Physiotherapy,2025-08-02 10:05:34,PD-901,Dr. Melissa Dube,Pregnancy Checkup,Metformin,None,Peanuts,2025-08-02 13:00:34,175,Referred to specialist
+17937701S87,Nomsa Mpofu,Female,13,+263 78 322 752,Surgical,2025-08-07 12:08:18,OP-174,Dr. Jocelyn Gumbo,Hepatitis B,Amoxiclav,None,Penicillin,2025-08-07 15:26:18,198,Recovered
+17036170B48,Patience Matanga,Male,18,+263 77 998 523,General Ward,2025-09-01 18:24:13,MT-919,Dr. Sharon Chirwa,Burns,Panado,Diabetes,Peanuts,2025-09-01 19:14:13,50,Admitted
+17190994J50,Sipho Nyamupaguma,Male,85,+263 77 433 467,Emergency,2025-08-19 04:10:02,GW-477,Dr. Andrew Dube,Stroke,Amoxiclav,None,Pollen,2025-08-19 07:22:02,192,Stable
+17191289Y10,Kundai Chasakara,Male,29,+263 72 953 775,Maternity,2025-07-23 20:29:12,GW-697,Dr. Jeanette Chirwa,STI - Syphilis,Tenofovir,Heart Disease,Pollen,2025-07-23 22:41:12,132,Referred to specialist
+17566624L51,Tonderai Munyoro,Female,51,+263 77 296 651,Physiotherapy,2025-08-13 02:20:34,GW-320,Dr. Nicholas Ncube,Typhoid,Coartem,None,Pollen,2025-08-13 06:06:34,226,Admitted
+17131262J63,Sipho Munyoro,Female,65,+263 78 467 273,Surgical,2025-07-22 12:32:11,OP-999,Dr. Timothy Mutasa,Depression,Multivitamins,Asthma,Pollen,2025-07-22 15:04:11,152,Referred to specialist
+17759246N71,Tariro Chirwa,Female,78,+263 77 925 481,Pediatrics,2025-10-05 11:37:16,OP-920,Dr. Christopher Ncube,Migraine,Cough Syrup,None,Pollen,2025-10-05 14:49:16,192,Recovered
+17333503Z43,Nokuthula Mushonga,Male,20,+263 73 148 412,Surgical,2025-08-24 17:44:16,MT-611,Dr. Travis Gumbo,Hepatitis C,Antacid Suspension,Diabetes,Pollen,2025-08-24 20:12:16,148,Admitted
+17685796X78,Fortunate Muchechetere,Male,69,+263 71 755 223,Dental,2025-08-09 02:08:07,GW-853,Dr. Jennifer Ncube,Migraine,Azithromycin,Hypertension,None,2025-08-09 03:51:07,103,Referred to specialist
+17073924T47,Nothando Dube,Female,37,+263 76 830 869,Outpatient,2025-09-16 21:39:07,EM-408,Dr. Claudia Ncube,Tuberculosis,Prednisone,None,Pollen,2025-09-16 23:25:07,106,Referred to specialist
+17279930Q53,Brian Chikonde,Male,61,+263 72 256 438,Mental Health,2025-09-04 05:05:14,EM-087,Dr. Sharon Chirwa,Appendicitis,Insulin,Heart Disease,None,2025-09-04 08:00:14,175,Admitted
+17916546C35,Chipo Muchechetere,Male,34,+263 75 597 454,Outpatient,2025-09-15 22:15:46,PD-708,Dr. Melissa Dube,Sinusitis,Metronidazole,Diabetes,Pollen,2025-09-16 00:17:46,122,Recovered
+17106969F99,Rumbidzai Matsika,Male,6,+263 74 919 986,Physiotherapy,2025-09-20 05:49:36,EM-533,Dr. Nicholas Ncube,HIV/AIDS,Metformin,None,Pollen,2025-09-20 08:41:36,172,Follow-up in 2 weeks
+17090021J92,Tinashe Chikonde,Female,10,+263 77 918 161,Mental Health,2025-10-02 04:47:16,EM-390,Dr. Amber Gumbo,Ulcers,Zinc Tablets,Diabetes,None,2025-10-02 07:02:16,135,Admitted
+17385022T75,Tariro Madzinga,Female,4,+263 74 963 192,Dental,2025-07-18 11:42:48,GW-515,Dr. Amanda Ncube,Seizures,Ceftriaxone,None,Penicillin,2025-07-18 12:03:48,21,Recovered
+17631573S93,Rumbidzai Madzorera,Female,15,+263 75 407 581,Surgical,2025-09-22 05:42:06,OP-217,Dr. Christopher Ncube,Arthritis,Aspirin,Asthma,Pollen,2025-09-22 08:28:06,166,Admitted
+17898223I66,Cynthia Mabaso,Female,40,+263 74 692 378,Mental Health,2025-09-30 13:40:18,GW-830,Dr. John Mutasa,Injury,Efavirenz,Diabetes,Pollen,2025-09-30 15:48:18,128,Follow-up in 2 weeks
+17150181Y14,Farai Mpofu,Male,66,+263 71 611 276,Mental Health,2025-10-06 03:05:43,EM-984,Dr. Amber Gumbo,Eczema,Aspirin,Diabetes,Pollen,2025-10-06 04:48:43,103,Recovered
+17967466T50,Panashe Mawadza,Female,52,+263 74 502 858,Emergency,2025-07-31 09:09:35,SG-712,Dr. Linda Mutasa,Chest Pain,Metronidazole,Hypertension,Peanuts,2025-07-31 11:05:35,116,Recovered
+17820967J40,Brighton Mugari,Male,20,+263 72 519 245,Maternity,2025-08-28 09:25:11,MT-168,Dr. Catherine Dube,Pregnancy Checkup,Coartem,None,Penicillin,2025-08-28 10:56:11,91,Stable
+17958665H60,Bongani Sithole,Female,21,+263 78 300 738,Mental Health,2025-09-22 05:37:12,SG-878,Dr. Amanda Ncube,Malnutrition,Amoxicillin,Diabetes,Peanuts,2025-09-22 08:13:12,156,Recovered
+17003384M76,Shamiso Mapuranga,Female,67,+263 77 760 441,Physiotherapy,2025-09-19 23:10:51,GW-711,Dr. Claudia Ncube,Dental Extraction,Multivitamins,Asthma,None,2025-09-20 00:48:51,98,Referred to specialist
+17257696W77,Bongani Chauke,Male,12,+263 74 398 941,General Ward,2025-10-04 17:50:16,EM-680,Dr. Jennifer Ncube,UTI,Omeprazole,Heart Disease,Pollen,2025-10-04 18:29:16,39,Recovered
+17465465W92,Precious Gumbo,Male,89,+263 71 593 655,General Ward,2025-09-27 04:57:00,PD-787,Dr. Jennifer Ncube,Pneumonia,Augmentin,Hypertension,Pollen,2025-09-27 06:27:00,90,Admitted
+17162863W38,Faith Sithole,Male,88,+263 74 877 827,Emergency,2025-08-03 04:54:14,MT-359,Dr. Matthew Ncube,UTI,ORS,Hypertension,Penicillin,2025-08-03 05:20:14,26,Stable
+17353455G29,Fortunate Ncube,Female,90,+263 75 928 963,Surgical,2025-10-08 11:28:44,OP-284,Dr. Travis Gumbo,Injury,Efavirenz,None,Penicillin,2025-10-08 12:56:44,88,Stable
+17346168L14,Brighton Matanga,Female,27,+263 77 906 781,Pediatrics,2025-10-04 04:26:49,SG-937,Dr. Jeanette Chirwa,Hepatitis B,Azithromycin,Asthma,Pollen,2025-10-04 04:47:49,21,Admitted
+17568310P69,Wellington Chiweshe,Female,3,+263 74 563 547,Surgical,2025-09-01 00:27:00,PD-972,Dr. Sharon Chirwa,Typhoid,Prednisone,Hypertension,Pollen,2025-09-01 01:24:00,57,Admitted
+17074337E85,Brighton Madzinga,Female,74,+263 74 223 726,Mental Health,2025-09-22 10:30:09,OP-369,Dr. Linda Mutasa,Kidney Stones,Folic Acid,Hypertension,None,2025-09-22 13:22:09,172,Referred to specialist
+17606531N78,Rudo Munyoro,Male,7,+263 75 637 568,General Ward,2025-07-27 23:01:00,GW-857,Dr. Andrew Dube,Gout,Fluconazole,Heart Disease,Penicillin,2025-07-28 01:29:00,148,Admitted
+17214188C65,Nyarai Chasakara,Female,68,+263 72 484 267,General Ward,2025-08-04 16:21:06,GW-849,Dr. John Mutasa,Eye Infection,Vitamin C,Diabetes,Penicillin,2025-08-04 17:34:06,73,Referred to specialist
+17377796N43,Sipho Chirume,Female,30,+263 71 175 886,Pediatrics,2025-08-01 08:06:25,MT-922,Dr. Travis Gumbo,Burns,Lamivudine,Diabetes,Penicillin,2025-08-01 11:35:25,209,Stable
+17031447O24,Fortunate Mugabe,Female,11,+263 77 465 513,Mental Health,2025-09-17 01:31:38,GW-805,Dr. Andrew Dube,Chest Pain,Diclofenac,None,None,2025-09-17 02:27:38,56,Recovered
+17080720Z73,Tafadzwa Mabika,Female,73,+263 76 418 321,Pediatrics,2025-08-15 01:21:42,EM-130,Dr. Debra Moyo,Eye Infection,Azithromycin,None,Pollen,2025-08-15 03:33:42,132,Stable
+17715743X20,Fungai Mutambirwa,Female,75,+263 79 531 199,General Ward,2025-09-20 20:34:09,EM-201,Dr. Jeanette Chirwa,Anxiety,Amoxiclav,Heart Disease,Pollen,2025-09-20 22:02:09,88,Admitted
+17973593M41,Cynthia Mushayi,Male,83,+263 72 902 315,Surgical,2025-07-25 19:41:02,PD-799,Dr. Amber Gumbo,Fracture,Doxycycline,Hypertension,Penicillin,2025-07-25 21:37:02,116,Follow-up in 2 weeks
+17809047Z71,Dumisani Chirume,Female,79,+263 74 654 642,Outpatient,2025-08-05 16:19:02,SG-789,Dr. Debra Moyo,Bronchitis,Efavirenz,None,Peanuts,2025-08-05 18:25:02,126,Recovered
+17123648Y83,Tinashe Mabika,Female,29,+263 79 610 191,Surgical,2025-09-25 12:17:48,EM-096,Dr. Hannah Chirwa,Gastritis,Metformin,Asthma,Pollen,2025-09-25 13:56:48,99,Follow-up in 2 weeks
+17052398I51,Panashe Mpofu,Male,64,+263 76 662 443,Emergency,2025-07-19 16:46:12,MT-259,Dr. Claudia Ncube,Kidney Stones,Ciprofloxacin,Diabetes,None,2025-07-19 20:22:12,216,Admitted
+17933325P60,Rumbidzai Chikonde,Female,7,+263 77 584 998,Surgical,2025-07-17 16:16:22,PD-619,Dr. Debra Moyo,Hypertension,Diclofenac,Diabetes,Pollen,2025-07-17 18:58:22,162,Admitted
+17768588F42,Blessing Mupfumi,Female,9,+263 75 823 101,Outpatient,2025-10-01 03:35:15,PD-096,Dr. Timothy Mutasa,Dental Extraction,Paracetamol,Hypertension,Penicillin,2025-10-01 07:29:15,234,Referred to specialist
+17565924G62,Obvious Matanga,Female,14,+263 77 957 809,Mental Health,2025-08-29 00:29:42,EM-793,Dr. Jennifer Ncube,Gastritis,Insulin,Heart Disease,None,2025-08-29 01:58:42,89,Stable
+17075049L30,Tanaka Mutasa,Male,11,+263 74 100 454,General Ward,2025-09-30 11:08:21,EM-143,Dr. Jocelyn Gumbo,Tuberculosis,Naproxen,Hypertension,None,2025-09-30 13:54:21,166,Follow-up in 2 weeks
+17463047P94,Lesley Chauke,Female,39,+263 74 707 723,Dental,2025-07-23 02:34:51,MT-770,Dr. Jeanette Chirwa,Gastritis,Aspirin,Heart Disease,None,2025-07-23 06:06:51,212,Follow-up in 2 weeks
+17756197Q52,Dumisani Manyika,Female,38,+263 79 813 580,Emergency,2025-09-03 21:50:05,MT-970,Dr. Debra Moyo,HIV/AIDS,Hydrocortisone,Asthma,None,2025-09-03 23:14:05,84,Follow-up in 2 weeks
+17020216L98,Fortunate Muchechetere,Female,86,+263 79 322 746,Outpatient,2025-07-15 22:58:59,GW-955,Dr. Melissa Dube,Hepatitis B,Aspirin,None,Pollen,2025-07-16 00:05:59,67,Admitted
+17806761O26,Bongani Mhlanga,Male,57,+263 77 958 623,Surgical,2025-08-04 00:29:10,SG-658,Dr. Christopher Ncube,Tonsillitis,Clotrimazole,Asthma,Pollen,2025-08-04 01:16:10,47,Admitted
+17577925I12,Cynthia Mupfumi,Male,57,+263 76 549 508,Dental,2025-08-12 11:46:47,GW-697,Dr. Jeanette Chirwa,Typhoid,Coartem,None,None,2025-08-12 13:03:47,77,Recovered
+17133286H33,Kudzai Mushore,Female,59,+263 76 872 439,Mental Health,2025-09-11 13:28:25,SG-246,Dr. Matthew Ncube,Skin Rash,Losartan,None,None,2025-09-11 16:05:25,157,Referred to specialist
+17754786X36,Nkosilathi Mutambirwa,Male,30,+263 77 150 847,Dental,2025-09-02 10:34:48,OP-927,Dr. Matthew Ncube,UTI,Doxycycline,Hypertension,Pollen,2025-09-02 14:02:48,208,Recovered
+17389550V95,Moreblessing Mpofu,Female,89,+263 74 505 442,Mental Health,2025-08-24 07:27:33,OP-462,Dr. Travis Gumbo,Heart Disease,Vitamin C,Heart Disease,Peanuts,2025-08-24 10:38:33,191,Referred to specialist
+17902992N90,Tariro Mushore,Female,43,+263 76 925 158,General Ward,2025-08-31 06:11:29,PD-039,Dr. John Mutasa,Eczema,Diclofenac,Diabetes,None,2025-08-31 09:22:29,191,Recovered
+17001315W92,Nyasha Mpofu,Female,3,+263 72 820 506,General Ward,2025-10-05 01:24:40,OP-005,Dr. Jeanette Chirwa,Ear Infection,Efavirenz,Asthma,None,2025-10-05 03:21:40,117,Referred to specialist
+17725603F10,Thabani Chikafu,Male,85,+263 77 378 750,Physiotherapy,2025-09-30 06:19:42,SG-760,Dr. Travis Gumbo,Seizures,Insulin,Diabetes,Penicillin,2025-09-30 08:05:42,106,Recovered
+17811174H32,Brian Manyika,Male,57,+263 75 941 183,Emergency,2025-09-23 14:20:29,MT-915,Dr. Amber Gumbo,Allergic Reaction,Panado,Hypertension,Penicillin,2025-09-23 14:37:29,17,Recovered
+17826187T83,Farai Nyathi,Female,12,+263 74 353 522,Physiotherapy,2025-09-09 00:31:00,OP-470,Dr. Matthew Ncube,Ear Infection,Tenofovir,Diabetes,Peanuts,2025-09-09 03:08:00,157,Stable
+17757649J69,Fortunate Mupfumi,Male,32,+263 73 789 300,Pediatrics,2025-09-27 14:03:29,PD-248,Dr. Amber Gumbo,STI - Syphilis,Aspirin,Asthma,Pollen,2025-09-27 16:53:29,170,Follow-up in 2 weeks
+17655949L97,Nothando Mudzonga,Female,88,+263 75 691 505,Emergency,2025-07-30 01:00:47,OP-169,Dr. Hannah Chirwa,STI - Herpes,Ceftriaxone,Diabetes,Penicillin,2025-07-30 01:20:47,20,Stable
+17197516Y40,Brighton Nyathi,Male,86,+263 75 372 805,Emergency,2025-08-05 22:58:55,SG-468,Dr. Hannah Chirwa,Hepatitis C,Salbutamol,Diabetes,None,2025-08-06 00:41:55,103,Admitted
+17243128U73,Tinashe Chauke,Male,56,+263 72 250 399,Pediatrics,2025-07-30 00:41:42,PD-010,Dr. Melissa Dube,Skin Rash,Paracetamol,None,None,2025-07-30 02:37:42,116,Admitted
+17641608C79,Precious Mhlanga,Female,21,+263 75 585 359,Physiotherapy,2025-09-26 05:31:26,GW-127,Dr. Nicholas Ncube,Common Cold,Fluconazole,Hypertension,Peanuts,2025-09-26 09:00:26,209,Follow-up in 2 weeks
+17640969S27,Nkosilathi Moyo,Female,33,+263 79 679 506,Maternity,2025-07-13 07:24:07,MT-687,Dr. Jeanette Chirwa,COVID-19,Vitamin B Complex,Hypertension,Pollen,2025-07-13 08:44:07,80,Referred to specialist
+17496838Q15,Admire Mushayi,Female,22,+263 79 710 383,Emergency,2025-09-15 04:01:41,OP-957,Dr. Nicholas Ncube,Typhoid,Vitamin B Complex,Hypertension,None,2025-09-15 05:19:41,78,Stable
+17565906I82,Fortunate Chirume,Female,1,+263 72 881 526,Surgical,2025-07-18 05:01:41,GW-816,Dr. Hannah Chirwa,Seizures,Insulin,Asthma,Pollen,2025-07-18 07:40:41,159,Referred to specialist
+17317881O73,Kudzai Mupfumi,Male,85,+263 75 687 609,Dental,2025-09-26 17:24:56,GW-538,Dr. Timothy Mutasa,Labor Pains,Cough Syrup,None,Peanuts,2025-09-26 18:10:56,46,Admitted
+17025529J62,Gerald Mhlanga,Female,41,+263 71 680 560,Maternity,2025-10-07 06:16:55,OP-959,Dr. Timothy Mutasa,Asthma,Losartan,Heart Disease,Peanuts,2025-10-07 06:31:55,15,Follow-up in 2 weeks
+17554153Z37,Tafadzwa Maringe,Male,34,+263 75 207 625,Surgical,2025-07-21 16:51:51,MT-872,Dr. John Mutasa,Stroke,Diclofenac,Diabetes,None,2025-07-21 17:45:51,54,Stable
+17971031B47,Moreblessing Sibanda,Female,69,+263 78 115 899,Mental Health,2025-08-24 22:53:14,MT-170,Dr. Timothy Mutasa,Malaria,Ciprofloxacin,Asthma,Pollen,2025-08-24 23:41:14,48,Follow-up in 2 weeks
+17790647A90,Shamiso Gwenzi,Male,46,+263 74 243 222,Pediatrics,2025-07-15 18:33:58,PD-486,Dr. Timothy Mutasa,Obesity,Zinc Tablets,Diabetes,None,2025-07-15 21:36:58,183,Admitted
+17942924X69,Takudzwa Ncube,Male,38,+263 71 816 332,Outpatient,2025-08-19 16:49:26,SG-795,Dr. Claudia Ncube,STI - Herpes,Prednisone,None,None,2025-08-19 20:37:26,228,Stable
+17339230P93,Gerald Mawadza,Female,45,+263 73 453 200,Physiotherapy,2025-07-20 15:26:09,MT-315,Dr. Debra Moyo,Typhoid,Fluconazole,None,Pollen,2025-07-20 18:18:09,172,Recovered
+17169967D84,Rumbidzai Chasakara,Male,23,+263 74 904 634,Surgical,2025-08-10 01:16:10,EM-974,Dr. Jennifer Ncube,Hepatitis C,Folic Acid,Asthma,Peanuts,2025-08-10 05:14:10,238,Referred to specialist
+17325985O70,Nyasha Mushonga,Female,72,+263 76 780 702,Mental Health,2025-08-02 21:55:11,OP-094,Dr. Jesse Moyo,Appendicitis,Omeprazole,Diabetes,None,2025-08-03 01:04:11,189,Follow-up in 2 weeks
+17252873B85,Admire Nhema,Female,73,+263 73 939 844,Mental Health,2025-08-17 00:14:10,PD-660,Dr. Jeanette Chirwa,Anxiety,Hydrocortisone,Diabetes,None,2025-08-17 03:33:10,199,Follow-up in 2 weeks
+17349959P50,Shamiso Mawere,Female,79,+263 72 107 264,Maternity,2025-09-23 10:20:04,GW-830,Dr. Timothy Mutasa,STI - Herpes,Ceftriaxone,Diabetes,Peanuts,2025-09-23 13:40:04,200,Referred to specialist
+17351909A45,Bongani Chasakara,Female,75,+263 79 372 768,Dental,2025-07-23 00:17:02,MT-551,Dr. Jesse Moyo,Malnutrition,Panado,Heart Disease,None,2025-07-23 02:16:02,119,Recovered
+17715767C83,Admire Chinhoyi,Female,45,+263 72 958 815,Pediatrics,2025-08-09 11:05:34,MT-652,Dr. Matthew Ncube,Eczema,Omeprazole,Diabetes,Peanuts,2025-08-09 11:58:34,53,Referred to specialist
+17847862A69,Ropafadzo Mugari,Female,33,+263 73 804 651,Physiotherapy,2025-10-01 17:05:51,EM-698,Dr. Hannah Chirwa,Gout,Vitamin B Complex,Heart Disease,Pollen,2025-10-01 18:31:51,86,Follow-up in 2 weeks
+17098704P20,Tafadzwa Makoni,Female,30,+263 79 200 882,Emergency,2025-07-15 02:32:38,GW-770,Dr. Melissa Dube,Ulcers,Prednisone,Heart Disease,Pollen,2025-07-15 06:11:38,219,Referred to specialist
+17694957O26,Farai Mutenha,Female,23,+263 72 789 356,Dental,2025-09-02 06:44:48,EM-720,Dr. Timothy Mutasa,Appendicitis,Hydrocortisone,Heart Disease,Pollen,2025-09-02 08:29:48,105,Recovered
+17192077K74,Farai Mutisi,Male,7,+263 76 412 510,Mental Health,2025-09-13 16:59:24,GW-453,Dr. Debra Moyo,Hepatitis C,Panado,Asthma,Pollen,2025-09-13 19:48:24,169,Follow-up in 2 weeks
+17910875W87,Kudzai Matsika,Female,59,+263 72 912 911,Mental Health,2025-07-26 15:33:10,SG-619,Dr. Matthew Ncube,Bronchitis,Multivitamins,Heart Disease,None,2025-07-26 18:46:10,193,Stable
+17539749D67,Rudo Mabaso,Female,35,+263 75 899 314,Pediatrics,2025-07-18 21:42:28,SG-707,Dr. Jeanette Chirwa,Depression,Vitamin B Complex,None,None,2025-07-18 22:03:28,21,Stable
+17583443O54,Nyarai Katsande,Female,23,+263 76 512 586,Emergency,2025-08-07 12:56:37,PD-654,Dr. Sharon Chirwa,Chest Pain,Aspirin,None,None,2025-08-07 15:11:37,135,Admitted
+17128321X88,Wellington Nyathi,Male,71,+263 78 222 100,Pediatrics,2025-09-10 12:32:33,PD-995,Dr. Jennifer Ncube,STI - Syphilis,Losartan,Hypertension,Pollen,2025-09-10 16:25:33,233,Recovered
+17160384D45,Rumbidzai Mutasa,Female,12,+263 71 558 861,Mental Health,2025-09-24 10:33:27,SG-061,Dr. Jesse Moyo,Seizures,Azithromycin,Hypertension,Penicillin,2025-09-24 12:40:27,127,Follow-up in 2 weeks
+17038632L46,Tawanda Matsika,Female,45,+263 75 933 947,Outpatient,2025-08-28 03:28:39,MT-898,Dr. Catherine Dube,Depression,Lamivudine,None,Pollen,2025-08-28 04:38:39,70,Follow-up in 2 weeks
+17663260T88,Kudzai Chauke,Male,63,+263 72 518 931,Emergency,2025-10-06 17:54:05,SG-347,Dr. Nicholas Ncube,Bronchitis,Lamivudine,Asthma,None,2025-10-06 20:56:05,182,Admitted
+17350543U58,Takudzwa Moyo,Female,73,+263 74 781 398,Physiotherapy,2025-08-31 16:13:59,EM-803,Dr. Travis Gumbo,Labor Pains,Metformin,Asthma,Peanuts,2025-08-31 18:03:59,110,Recovered
+17385317V50,Admire Chikonde,Female,14,+263 72 363 230,Emergency,2025-08-23 16:47:04,GW-341,Dr. Travis Gumbo,Gastritis,Lamivudine,Diabetes,Pollen,2025-08-23 18:20:04,93,Referred to specialist
+17735231W58,Tonderai Mawadza,Male,26,+263 71 173 944,Emergency,2025-10-07 15:13:46,PD-125,Dr. Jesse Moyo,Anxiety,Paracetamol,Diabetes,Peanuts,2025-10-07 17:09:46,116,Stable
+17776654M88,Gerald Chasakara,Male,13,+263 74 805 412,Physiotherapy,2025-08-21 18:53:13,GW-188,Dr. Debra Moyo,Sinusitis,Cotrimoxazole,Heart Disease,Penicillin,2025-08-21 22:05:13,192,Stable
+17181401R68,Patience Gwenzi,Female,61,+263 78 594 590,Dental,2025-10-05 23:41:47,MT-737,Dr. Christopher Ncube,Eye Infection,Tenofovir,Hypertension,Penicillin,2025-10-06 01:38:47,117,Follow-up in 2 weeks
+17042360J38,Ropafadzo Dube,Male,4,+263 76 175 370,Mental Health,2025-07-21 00:51:12,SG-675,Dr. Sharon Chirwa,Pregnancy Checkup,Antacid Suspension,Heart Disease,Penicillin,2025-07-21 04:35:12,224,Stable
+17324693A33,Nothando Ndlovu,Female,61,+263 79 726 194,Emergency,2025-07-15 03:55:51,SG-797,Dr. Travis Gumbo,HIV/AIDS,Folic Acid,Asthma,Pollen,2025-07-15 05:36:51,101,Recovered
+17015067F68,Shamiso Ncube,Female,11,+263 73 152 850,Maternity,2025-07-28 23:55:34,GW-858,Dr. Jennifer Ncube,Anxiety,Azithromycin,Asthma,Pollen,2025-07-29 00:17:34,22,Stable
+17928010V93,Nokuthula Madzorera,Male,77,+263 72 681 103,Outpatient,2025-08-24 22:43:28,OP-063,Dr. Claudia Ncube,STI - Chlamydia,Aspirin,None,None,2025-08-24 23:15:28,32,Referred to specialist
+17751410Z89,Rudo Maregere,Male,6,+263 79 758 613,Physiotherapy,2025-08-09 18:18:10,GW-069,Dr. Amber Gumbo,Common Cold,Azithromycin,Asthma,None,2025-08-09 18:56:10,38,Recovered
+17550330C76,Rudo Chinhoyi,Male,73,+263 73 686 701,Dental,2025-07-17 05:39:55,MT-547,Dr. Sharon Chirwa,Gastritis,Tenofovir,Diabetes,Penicillin,2025-07-17 07:42:55,123,Stable
+17578072Q18,Nyarai Munyoro,Male,71,+263 77 696 449,Maternity,2025-08-30 22:31:21,PD-468,Dr. Hannah Chirwa,Asthma,Losartan,None,Peanuts,2025-08-31 00:02:21,91,Referred to specialist
+17809893Q29,Tobias Matsika,Male,54,+263 74 467 644,Pediatrics,2025-09-25 15:50:46,PD-566,Dr. Nicholas Ncube,Labor Pains,Ibuprofen,Hypertension,Peanuts,2025-09-25 18:10:46,140,Referred to specialist
+17000436H43,Fortunate Marecha,Male,56,+263 73 453 302,Physiotherapy,2025-09-21 04:37:06,PD-120,Dr. Timothy Mutasa,Gastritis,Cough Syrup,Diabetes,Peanuts,2025-09-21 07:12:06,155,Stable
+17479303G55,Obvious Muropa,Male,51,+263 79 828 118,Pediatrics,2025-08-01 21:22:07,GW-570,Dr. Travis Gumbo,STI - Syphilis,Antacid Suspension,None,Peanuts,2025-08-02 00:17:07,175,Recovered
+17375073O88,Fungai Matanga,Female,85,+263 71 627 659,Emergency,2025-10-07 03:01:21,GW-325,Dr. Catherine Dube,Gout,Naproxen,Heart Disease,None,2025-10-07 04:40:21,99,Recovered
+17548764B28,Gerald Maringe,Female,47,+263 76 586 337,General Ward,2025-09-26 22:54:09,OP-651,Dr. Nicholas Ncube,Pneumonia,Ciprofloxacin,None,Peanuts,2025-09-26 23:48:09,54,Stable
+17609477S89,Rumbidzai Mabaso,Female,57,+263 72 924 317,Mental Health,2025-08-21 04:22:25,GW-645,Dr. Claudia Ncube,Typhoid,Augmentin,Asthma,None,2025-08-21 06:58:25,156,Stable
+17914144W95,Obvious Moyo,Female,85,+263 75 565 830,Surgical,2025-08-19 12:30:14,EM-826,Dr. Andrew Dube,Skin Rash,Fluconazole,Heart Disease,None,2025-08-19 15:56:14,206,Referred to specialist
+17977095C14,Bongani Katsande,Male,18,+263 79 621 815,Emergency,2025-07-19 13:47:04,PD-301,Dr. Jennifer Ncube,Common Cold,Naproxen,Heart Disease,None,2025-07-19 16:42:04,175,Recovered
+17523804Y94,Simbarashe Katsande,Male,34,+263 75 667 952,Mental Health,2025-07-19 13:36:39,SG-293,Dr. Andrew Dube,Seizures,Cough Syrup,None,Pollen,2025-07-19 16:58:39,202,Follow-up in 2 weeks
+17287900T30,Chipo Makoni,Female,47,+263 79 121 682,Emergency,2025-07-22 20:54:19,PD-763,Dr. Catherine Dube,Hypertension,Ceftriaxone,Diabetes,Pollen,2025-07-22 22:37:19,103,Stable
+17343152S64,Nothando Muropa,Male,9,+263 72 688 533,Emergency,2025-10-01 11:55:29,EM-459,Dr. Hannah Chirwa,Allergic Reaction,Multivitamins,Asthma,Pollen,2025-10-01 15:36:29,221,Stable
+17140941T88,Gerald Munyoro,Female,40,+263 72 931 416,Maternity,2025-07-18 00:48:23,EM-696,Dr. Amber Gumbo,Dental Extraction,Losartan,Diabetes,Pollen,2025-07-18 03:46:23,178,Admitted
+17634780Q41,Tawanda Mutambirwa,Male,27,+263 78 596 155,Outpatient,2025-08-07 01:48:00,SG-293,Dr. Matthew Ncube,Malaria,Amoxiclav,Heart Disease,Peanuts,2025-08-07 05:31:00,223,Follow-up in 2 weeks
+17770277Z83,Nyarai Mabika,Female,88,+263 75 982 437,Outpatient,2025-08-30 06:14:58,SG-031,Dr. John Mutasa,Common Cold,Salbutamol,Asthma,Penicillin,2025-08-30 08:12:58,118,Stable
+17604143Y80,Dumisani Dube,Male,16,+263 76 312 663,General Ward,2025-09-04 08:31:16,EM-270,Dr. Melissa Dube,Fracture,Augmentin,None,Pollen,2025-09-04 10:24:16,113,Admitted
+17546240K36,Thabani Mpofu,Female,37,+263 75 814 429,Maternity,2025-07-17 05:35:18,EM-889,Dr. Jesse Moyo,Common Cold,Efavirenz,Asthma,None,2025-07-17 08:10:18,155,Recovered
+17655138Q56,Tonderai Mushonga,Male,41,+263 73 132 180,Emergency,2025-08-10 20:27:40,OP-189,Dr. Matthew Ncube,Arthritis,Doxycycline,Hypertension,None,2025-08-10 23:20:40,173,Stable
+17507459B40,Dumisani Mushayi,Male,8,+263 78 965 887,Outpatient,2025-10-03 05:06:44,GW-702,Dr. Jeanette Chirwa,Kidney Stones,Vitamin B Complex,Hypertension,Penicillin,2025-10-03 07:12:44,126,Recovered
+17066987V36,Memory Chauke,Female,17,+263 76 331 146,Outpatient,2025-07-14 03:29:01,SG-930,Dr. Jennifer Ncube,Labor Pains,Tenofovir,None,None,2025-07-14 05:12:01,103,Recovered
+17166710X16,Blessing Mawere,Male,88,+263 75 148 736,General Ward,2025-07-29 05:08:30,PD-526,Dr. Amber Gumbo,COVID-19,Fluconazole,Diabetes,None,2025-07-29 07:04:30,116,Follow-up in 2 weeks
+17601483P70,Admire Mabaso,Male,57,+263 74 824 180,General Ward,2025-09-21 02:20:02,SG-924,Dr. Nicholas Ncube,Gout,Salbutamol,Diabetes,None,2025-09-21 03:53:02,93,Recovered
+17367168N74,Kudzai Mutambirwa,Male,40,+263 74 451 902,Pediatrics,2025-07-14 10:58:01,MT-934,Dr. Jeanette Chirwa,HIV/AIDS,Tenofovir,Diabetes,None,2025-07-14 12:02:01,64,Stable
+17434565Y91,Admire Muchechetere,Female,56,+263 72 810 659,Dental,2025-09-09 14:03:08,OP-647,Dr. Jocelyn Gumbo,Chest Pain,ORS,None,Pollen,2025-09-09 15:15:08,72,Referred to specialist
+17951453M17,Nomsa Mupfumi,Male,53,+263 79 398 941,Pediatrics,2025-09-20 14:46:15,GW-303,Dr. Amber Gumbo,Hepatitis C,ORS,Asthma,None,2025-09-20 15:29:15,43,Stable
+17069126M23,Nokuthula Mawadza,Male,57,+263 76 965 740,Surgical,2025-10-04 21:30:41,OP-155,Dr. Hannah Chirwa,Depression,Zinc Tablets,None,Penicillin,2025-10-05 01:24:41,234,Admitted
+17263264B84,Fungai Moyo,Female,48,+263 72 684 280,Outpatient,2025-09-02 17:52:18,PD-561,Dr. Matthew Ncube,Anxiety,Folic Acid,Asthma,None,2025-09-02 21:36:18,224,Recovered
+17365301N99,Lindiwe Munyoro,Male,72,+263 73 433 290,Maternity,2025-10-07 05:59:15,PD-521,Dr. Linda Mutasa,UTI,Doxycycline,Hypertension,Pollen,2025-10-07 06:21:15,22,Follow-up in 2 weeks
+17724597O32,Rumbidzai Marecha,Female,27,+263 74 606 653,General Ward,2025-08-10 07:13:42,PD-964,Dr. Jennifer Ncube,HIV/AIDS,Folic Acid,Diabetes,Penicillin,2025-08-10 09:45:42,152,Admitted
+17926275R41,Wellington Mushore,Female,84,+263 72 129 953,Emergency,2025-09-08 17:43:28,OP-939,Dr. Melissa Dube,Dental Extraction,Ibuprofen,None,Pollen,2025-09-08 18:29:28,46,Recovered
+17847289M13,Nyasha Matanga,Female,24,+263 77 533 283,General Ward,2025-08-20 02:48:09,SG-648,Dr. Melissa Dube,Malaria,Ceftriaxone,Hypertension,Penicillin,2025-08-20 05:35:09,167,Stable
+17271453E91,Thabani Munyoro,Female,33,+263 77 176 492,Maternity,2025-07-30 06:40:24,GW-988,Dr. Hannah Chirwa,Hepatitis C,Cotrimoxazole,Diabetes,None,2025-07-30 10:05:24,205,Stable
+17648009R69,Nyasha Mhlanga,Female,36,+263 78 674 208,Dental,2025-07-17 01:20:47,GW-052,Dr. Jeanette Chirwa,STI - Herpes,Paracetamol,Heart Disease,None,2025-07-17 02:54:47,94,Stable
+17827436O56,Rudo Chiweshe,Female,61,+263 76 298 931,Dental,2025-08-01 03:51:58,PD-842,Dr. Jocelyn Gumbo,Ulcers,Cotrimoxazole,None,Pollen,2025-08-01 07:02:58,191,Stable
+17439803C53,Tinashe Moyo,Female,84,+263 75 472 582,Pediatrics,2025-08-26 21:01:16,MT-670,Dr. Christopher Ncube,Bronchitis,Augmentin,Diabetes,Peanuts,2025-08-26 23:30:16,149,Admitted
+17067675S72,Tawanda Mutasa,Male,77,+263 79 380 272,Emergency,2025-09-06 18:57:14,GW-950,Dr. Claudia Ncube,Eczema,Prednisone,Asthma,Pollen,2025-09-06 19:24:14,27,Follow-up in 2 weeks
+17893313K95,Obvious Nyathi,Male,74,+263 78 516 726,General Ward,2025-08-07 15:43:46,SG-788,Dr. Timothy Mutasa,Dental Extraction,Lamivudine,None,None,2025-08-07 18:35:46,172,Admitted
+17311933K24,Tanaka Mapuranga,Female,85,+263 76 364 110,Emergency,2025-08-17 17:35:48,PD-100,Dr. Andrew Dube,Ear Infection,Azithromycin,Asthma,Peanuts,2025-08-17 20:07:48,152,Referred to specialist
+17912594M34,Thabani Dube,Male,77,+263 79 155 603,General Ward,2025-09-07 21:42:33,SG-278,Dr. Jocelyn Gumbo,Pneumonia,Naproxen,None,Pollen,2025-09-07 23:17:33,95,Referred to specialist
+17584958Z61,Munashe Matanga,Male,13,+263 76 980 383,Outpatient,2025-07-21 02:26:08,EM-268,Dr. Timothy Mutasa,STI - Trichomoniasis,Salbutamol,Asthma,Pollen,2025-07-21 05:10:08,164,Referred to specialist
+17167582S25,Munashe Nyathi,Male,31,+263 72 510 814,Surgical,2025-08-21 09:14:24,OP-252,Dr. Debra Moyo,Hepatitis B,Ceftriaxone,Hypertension,Peanuts,2025-08-21 09:57:24,43,Follow-up in 2 weeks
+17053101S27,Fortunate Manyika,Female,84,+263 75 525 741,Surgical,2025-08-10 16:09:13,GW-903,Dr. Catherine Dube,Injury,Metronidazole,Hypertension,None,2025-08-10 17:52:13,103,Stable
+17623558O94,Lesley Chirwa,Male,17,+263 76 263 140,Physiotherapy,2025-09-05 15:46:10,MT-121,Dr. Jennifer Ncube,Hepatitis C,Ciprofloxacin,Asthma,Pollen,2025-09-05 18:17:10,151,Admitted
+17757326O46,Moreblessing Manyika,Male,10,+263 75 787 850,Maternity,2025-08-15 20:39:55,EM-612,Dr. Sharon Chirwa,Depression,Clotrimazole,Asthma,Peanuts,2025-08-16 00:34:55,235,Admitted
+17902972N50,Nyarai Mudzonga,Female,75,+263 77 475 797,Outpatient,2025-09-25 21:28:41,MT-585,Dr. Amanda Ncube,Arthritis,Folic Acid,Hypertension,None,2025-09-25 22:42:41,74,Referred to specialist
+17362883E25,Fortunate Mutisi,Female,60,+263 77 966 272,Maternity,2025-09-27 14:44:08,EM-491,Dr. Catherine Dube,Gastritis,Insulin,None,Peanuts,2025-09-27 17:20:08,156,Stable
+17619873A65,Bongani Mutambirwa,Male,36,+263 79 476 319,Emergency,2025-08-29 02:10:19,OP-984,Dr. Linda Mutasa,Seizures,Vitamin B Complex,None,Penicillin,2025-08-29 04:22:19,132,Admitted
+17939261H53,Rudo Sithole,Female,21,+263 76 683 458,Outpatient,2025-08-08 19:28:55,SG-132,Dr. Timothy Mutasa,Tonsillitis,Fluconazole,Heart Disease,None,2025-08-08 20:34:55,66,Referred to specialist
+17282071F69,Patience Chirume,Male,1,+263 78 487 441,Physiotherapy,2025-09-23 18:38:18,GW-495,Dr. Jennifer Ncube,Hypertension,Ibuprofen,Diabetes,None,2025-09-23 20:35:18,117,Follow-up in 2 weeks
+17056862J83,Tawanda Sithole,Female,17,+263 74 149 851,Emergency,2025-07-21 00:46:33,MT-024,Dr. Timothy Mutasa,Skin Rash,Fluconazole,Asthma,None,2025-07-21 02:28:33,102,Recovered
+17765576S13,Lindiwe Mabika,Male,53,+263 79 782 786,Pediatrics,2025-07-30 03:33:01,EM-075,Dr. Timothy Mutasa,Ulcers,Naproxen,Hypertension,Penicillin,2025-07-30 06:12:01,159,Referred to specialist
+17495893X75,Munashe Gwenzi,Male,40,+263 74 505 746,Mental Health,2025-09-20 19:26:46,PD-097,Dr. Jennifer Ncube,COVID-19,Ibuprofen,Diabetes,None,2025-09-20 19:54:46,28,Follow-up in 2 weeks
+17574024Z79,Blessing Mushonga,Male,78,+263 71 867 333,Emergency,2025-09-26 15:50:21,MT-634,Dr. Timothy Mutasa,Kidney Stones,Ciprofloxacin,Heart Disease,Peanuts,2025-09-26 18:07:21,137,Follow-up in 2 weeks
+17272422W58,Nyarai Maringe,Male,80,+263 73 603 797,Outpatient,2025-07-27 02:00:55,GW-583,Dr. Andrew Dube,Skin Rash,Cough Syrup,Heart Disease,Penicillin,2025-07-27 04:23:55,143,Referred to specialist
+17803817V45,Dumisani Ndlovu,Male,30,+263 72 601 521,General Ward,2025-09-16 08:57:08,PD-678,Dr. Timothy Mutasa,COVID-19,Efavirenz,Heart Disease,Pollen,2025-09-16 11:38:08,161,Stable
+17232471K76,Godknows Marecha,Male,87,+263 75 111 367,Emergency,2025-07-25 01:20:48,MT-541,Dr. Sharon Chirwa,Skin Rash,Vitamin C,Asthma,None,2025-07-25 02:23:48,63,Stable
+17556207D40,Moreblessing Chauke,Male,52,+263 79 782 808,Physiotherapy,2025-07-28 11:13:50,SG-636,Dr. Catherine Dube,Diabetes,Efavirenz,None,Penicillin,2025-07-28 11:43:50,30,Stable
+17831242F83,Loveness Madzorera,Male,1,+263 72 102 426,Emergency,2025-10-09 14:47:37,MT-797,Dr. Catherine Dube,STI - Herpes,Aspirin,Heart Disease,Penicillin,2025-10-09 15:36:37,49,Follow-up in 2 weeks
+17036193S90,Kudzai Matsika,Male,41,+263 79 125 366,Mental Health,2025-09-18 21:24:53,MT-444,Dr. Hannah Chirwa,Gastritis,Lamivudine,Diabetes,Penicillin,2025-09-19 00:56:53,212,Stable
+17318738D14,Takudzwa Nyamupaguma,Female,35,+263 75 731 914,Outpatient,2025-08-05 15:54:57,MT-225,Dr. Amanda Ncube,Gastritis,Diclofenac,Hypertension,Pollen,2025-08-05 17:11:57,77,Referred to specialist
+17514089H35,Nyarai Mugari,Male,35,+263 77 953 320,Pediatrics,2025-08-08 16:14:48,PD-052,Dr. Jennifer Ncube,STI - Syphilis,Folic Acid,Hypertension,Penicillin,2025-08-08 19:27:48,193,Recovered
+17608521Q23,Godknows Chiweshe,Female,76,+263 78 989 772,General Ward,2025-08-14 00:27:00,PD-056,Dr. Amber Gumbo,Burns,Antacid Suspension,Asthma,None,2025-08-14 01:43:00,76,Referred to specialist
+17068458S29,Kundai Chauke,Male,33,+263 75 510 588,Emergency,2025-08-20 23:58:25,EM-568,Dr. Melissa Dube,Fracture,Insulin,Asthma,Pollen,2025-08-21 01:51:25,113,Recovered
+17922423J80,Tobias Mugabe,Male,28,+263 72 986 617,General Ward,2025-10-04 09:36:59,OP-850,Dr. Debra Moyo,Chest Pain,Aspirin,Hypertension,Pollen,2025-10-04 13:23:59,227,Recovered
+17058978A85,Sipho Ndlovu,Female,42,+263 77 910 789,Emergency,2025-08-08 12:43:11,PD-876,Dr. Melissa Dube,Skin Rash,Metronidazole,Diabetes,Peanuts,2025-08-08 14:10:11,87,Referred to specialist
+17314181A83,Chipo Chinhoyi,Female,31,+263 78 798 989,General Ward,2025-09-01 05:25:03,GW-599,Dr. Claudia Ncube,COVID-19,ORS,Heart Disease,Pollen,2025-09-01 06:13:03,48,Follow-up in 2 weeks
+17652537C63,Nyasha Matanga,Female,26,+263 77 365 911,Pediatrics,2025-08-05 22:09:49,EM-142,Dr. Amber Gumbo,Chest Pain,Panado,None,Penicillin,2025-08-06 00:55:49,166,Stable
+17176303S60,Anesu Chikonde,Female,61,+263 72 842 397,Physiotherapy,2025-10-04 17:45:50,GW-374,Dr. Melissa Dube,Allergic Reaction,Antacid Suspension,Hypertension,Pollen,2025-10-04 21:39:50,234,Admitted
+17963256E31,Chipo Chiweshe,Female,10,+263 73 362 371,General Ward,2025-08-17 12:00:36,SG-677,Dr. Jeanette Chirwa,Migraine,Metronidazole,Diabetes,Pollen,2025-08-17 15:21:36,201,Follow-up in 2 weeks
+17837612M45,Faith Chauke,Male,26,+263 71 278 954,Surgical,2025-08-07 17:50:05,PD-814,Dr. Andrew Dube,Hepatitis C,Amoxiclav,Heart Disease,None,2025-08-07 21:48:05,238,Referred to specialist
+17407122R36,Farai Gumbo,Female,60,+263 75 247 759,General Ward,2025-09-23 17:50:07,PD-234,Dr. Timothy Mutasa,Hepatitis B,Clotrimazole,Asthma,Pollen,2025-09-23 20:04:07,134,Follow-up in 2 weeks
+17108686E82,Obvious Mutambirwa,Female,71,+263 76 242 636,Surgical,2025-07-27 11:47:54,MT-887,Dr. Claudia Ncube,Migraine,Amoxicillin,None,Penicillin,2025-07-27 14:49:54,182,Follow-up in 2 weeks
+17001519G68,Nyasha Gumbo,Female,42,+263 77 163 523,Emergency,2025-10-06 22:01:21,OP-643,Dr. Claudia Ncube,Labor Pains,Omeprazole,Diabetes,Peanuts,2025-10-07 01:46:21,225,Admitted
+17856084L68,Lindiwe Matsika,Male,34,+263 76 116 913,Physiotherapy,2025-09-05 05:33:50,MT-063,Dr. Jocelyn Gumbo,Bronchitis,Losartan,Hypertension,Pollen,2025-09-05 08:29:50,176,Recovered
+17959389W16,Tobias Mhlanga,Male,75,+263 75 450 258,Physiotherapy,2025-07-18 14:01:28,OP-964,Dr. Debra Moyo,Migraine,Panado,Diabetes,None,2025-07-18 17:40:28,219,Admitted
+17946658G65,Wellington Chinhoyi,Male,8,+263 76 591 122,Dental,2025-07-29 16:27:42,MT-160,Dr. Matthew Ncube,Hepatitis B,ORS,Asthma,Peanuts,2025-07-29 19:32:42,185,Stable
+17168235R63,Shamiso Chirume,Female,82,+263 71 809 835,General Ward,2025-10-02 14:37:08,OP-415,Dr. Debra Moyo,Pneumonia,Ibuprofen,None,Peanuts,2025-10-02 17:56:08,199,Admitted
+17222460B27,Brighton Mawadza,Male,21,+263 75 758 319,Mental Health,2025-10-08 08:30:13,OP-760,Dr. Matthew Ncube,Skin Rash,Naproxen,Heart Disease,Pollen,2025-10-08 09:13:13,43,Follow-up in 2 weeks
+17412314P49,Tinashe Sibanda,Male,65,+263 72 546 123,Pediatrics,2025-08-23 17:55:20,MT-564,Dr. Claudia Ncube,STI - Chlamydia,Hydrocortisone,Hypertension,None,2025-08-23 18:23:20,28,Referred to specialist
+17053087D82,Memory Mupfumi,Female,60,+263 78 206 609,Surgical,2025-07-25 12:51:32,PD-519,Dr. Jeanette Chirwa,STI - Trichomoniasis,Azithromycin,None,Penicillin,2025-07-25 15:11:32,140,Recovered
+17634565C84,Shamiso Moyo,Female,39,+263 71 675 875,Outpatient,2025-10-08 06:19:06,OP-420,Dr. Jennifer Ncube,Eczema,Vitamin C,Asthma,None,2025-10-08 07:41:06,82,Admitted
+17034673T92,Tobias Chasakara,Male,31,+263 76 528 853,Maternity,2025-09-24 10:52:15,MT-985,Dr. John Mutasa,Gastritis,Doxycycline,Asthma,None,2025-09-24 13:42:15,170,Recovered
+17030988D95,Nomsa Mutasa,Male,63,+263 72 850 437,Mental Health,2025-09-17 04:11:32,GW-090,Dr. Jesse Moyo,Hypertension,Clotrimazole,Heart Disease,None,2025-09-17 06:44:32,153,Stable
+17170398T57,Simbarashe Mushore,Male,61,+263 73 484 583,Physiotherapy,2025-07-29 14:34:03,MT-616,Dr. Andrew Dube,Anxiety,Coartem,None,None,2025-07-29 17:40:03,186,Referred to specialist
+17854081H87,Brighton Mutenha,Male,8,+263 73 533 547,Pediatrics,2025-09-18 16:58:52,EM-547,Dr. Linda Mutasa,Pneumonia,Metronidazole,None,Pollen,2025-09-18 18:06:52,68,Stable
+17744277N44,Nothando Sibanda,Female,82,+263 72 886 128,Dental,2025-08-11 16:35:11,PD-196,Dr. Claudia Ncube,COVID-19,Clotrimazole,Diabetes,Peanuts,2025-08-11 18:02:11,87,Admitted
+17443676M47,Fortunate Katsande,Male,67,+263 74 345 666,Surgical,2025-09-29 21:45:01,PD-139,Dr. Nicholas Ncube,Asthma,ORS,Asthma,Penicillin,2025-09-29 23:09:01,84,Admitted
+17691131F12,Tendai Mapuranga,Male,26,+263 79 576 880,Dental,2025-10-02 05:52:41,PD-003,Dr. Travis Gumbo,Eye Infection,Doxycycline,None,Penicillin,2025-10-02 07:20:41,88,Referred to specialist
+17956260W66,Tonderai Mugabe,Female,50,+263 77 276 396,Dental,2025-10-03 15:43:40,GW-749,Dr. Linda Mutasa,Common Cold,Zinc Tablets,Hypertension,Penicillin,2025-10-03 16:17:40,34,Admitted
+17491533R54,Tendai Mavhunga,Male,55,+263 78 346 115,Physiotherapy,2025-09-10 10:56:08,MT-210,Dr. Linda Mutasa,COVID-19,Vitamin B Complex,Diabetes,Pollen,2025-09-10 14:14:08,198,Recovered
+17577254T41,Nigel Munyoro,Male,71,+263 75 263 898,Physiotherapy,2025-07-18 20:47:29,GW-035,Dr. Amanda Ncube,Tuberculosis,Ceftriaxone,Asthma,None,2025-07-18 23:11:29,144,Referred to specialist
+17614250E99,Nokuthula Muropa,Female,26,+263 78 279 581,Dental,2025-09-11 18:01:53,GW-825,Dr. Claudia Ncube,Tonsillitis,Tenofovir,None,Pollen,2025-09-11 19:22:53,81,Admitted
+17245007B60,Memory Ncube,Male,67,+263 75 480 468,Dental,2025-08-04 19:30:29,OP-641,Dr. Catherine Dube,Hepatitis C,Lamivudine,None,None,2025-08-04 22:22:29,172,Stable
+17999539F72,Anesu Mawere,Male,63,+263 73 116 559,General Ward,2025-09-19 15:23:04,SG-370,Dr. Matthew Ncube,Tonsillitis,Efavirenz,Asthma,Pollen,2025-09-19 18:35:04,192,Admitted
+17088896F92,Nyarai Matsika,Male,64,+263 71 875 424,Emergency,2025-08-11 17:07:09,MT-079,Dr. Melissa Dube,Hepatitis B,Panado,None,Penicillin,2025-08-11 17:44:09,37,Follow-up in 2 weeks
+17945859G93,Kudzai Katsande,Female,74,+263 78 420 710,General Ward,2025-10-03 06:55:15,PD-998,Dr. Matthew Ncube,Allergic Reaction,ORS,Heart Disease,None,2025-10-03 09:56:15,181,Stable
+17294888H35,Nomsa Chiweshe,Male,14,+263 74 800 217,General Ward,2025-10-06 22:04:30,EM-448,Dr. Amber Gumbo,Appendicitis,Insulin,Hypertension,Peanuts,2025-10-06 23:32:30,88,Referred to specialist
+17507907N50,Lesley Madzorera,Female,2,+263 74 313 809,Mental Health,2025-08-15 12:45:00,EM-497,Dr. John Mutasa,Common Cold,Metformin,Diabetes,Peanuts,2025-08-15 13:30:00,45,Follow-up in 2 weeks
+17470171H18,Precious Mpofu,Male,12,+263 74 969 956,Dental,2025-09-20 15:56:47,OP-538,Dr. Linda Mutasa,Eczema,Ibuprofen,Diabetes,Pollen,2025-09-20 16:20:47,24,Recovered
+17046017G89,Tawanda Ndlovu,Male,77,+263 79 374 672,Surgical,2025-08-05 21:01:22,EM-808,Dr. Jeanette Chirwa,STI - Trichomoniasis,Ciprofloxacin,Hypertension,None,2025-08-05 22:03:22,62,Referred to specialist
+17850899M25,Thabani Nyathi,Female,4,+263 76 178 580,Physiotherapy,2025-08-28 22:42:20,OP-478,Dr. John Mutasa,Labor Pains,Folic Acid,Diabetes,Pollen,2025-08-28 23:53:20,71,Admitted
+17892583I65,Wellington Mutambirwa,Male,37,+263 79 382 476,Outpatient,2025-09-22 21:39:45,EM-919,Dr. Nicholas Ncube,STI - Syphilis,Fluconazole,Hypertension,Pollen,2025-09-22 22:38:45,59,Stable
+17405125E43,Godknows Mupfumi,Female,2,+263 73 923 382,Surgical,2025-10-09 06:03:04,GW-994,Dr. Jeanette Chirwa,Allergic Reaction,Losartan,Asthma,Pollen,2025-10-09 06:32:04,29,Referred to specialist
+17188804Y36,Precious Mutisi,Male,2,+263 74 237 358,General Ward,2025-08-27 19:30:38,OP-291,Dr. Timothy Mutasa,STI - Trichomoniasis,Tenofovir,Asthma,Pollen,2025-08-27 21:43:38,133,Recovered
+17414467N37,Munashe Nyamazana,Female,12,+263 71 942 452,Pediatrics,2025-10-03 21:44:43,OP-412,Dr. Catherine Dube,Gout,Cotrimoxazole,Diabetes,Pollen,2025-10-03 23:34:43,110,Referred to specialist
+17872929K39,Dumisani Chirume,Male,49,+263 77 194 521,Maternity,2025-10-07 18:05:43,PD-743,Dr. Christopher Ncube,Burns,Ceftriaxone,Asthma,Penicillin,2025-10-07 19:24:43,79,Admitted
+17039079Q16,Tendai Nyamupaguma,Female,75,+263 76 938 796,Pediatrics,2025-08-26 08:22:02,OP-177,Dr. Jeanette Chirwa,Seizures,Cotrimoxazole,Diabetes,Peanuts,2025-08-26 12:09:02,227,Referred to specialist
+17881628W20,Obvious Maregere,Female,9,+263 73 625 285,Surgical,2025-07-14 06:35:59,PD-070,Dr. Hannah Chirwa,Tuberculosis,Ceftriaxone,Hypertension,None,2025-07-14 10:13:59,218,Recovered
+17431577R41,Tinashe Mushonga,Male,10,+263 74 147 667,Mental Health,2025-08-19 09:30:24,EM-161,Dr. Andrew Dube,Allergic Reaction,Omeprazole,Hypertension,Penicillin,2025-08-19 11:46:24,136,Stable
+17051622P63,Gerald Mutasa,Female,62,+263 72 808 233,Maternity,2025-09-07 03:06:44,PD-087,Dr. Travis Gumbo,Diabetes,Hydrocortisone,Hypertension,None,2025-09-07 06:12:44,186,Follow-up in 2 weeks
+17549815G27,Brian Moyo,Female,58,+263 74 383 699,Physiotherapy,2025-09-02 23:03:34,MT-192,Dr. Jesse Moyo,Gastritis,Efavirenz,Hypertension,Peanuts,2025-09-03 02:36:34,213,Admitted
+17625738Y45,Lindiwe Matanga,Male,53,+263 78 271 421,Emergency,2025-09-07 17:29:59,SG-003,Dr. Matthew Ncube,Dental Extraction,Vitamin B Complex,Heart Disease,None,2025-09-07 21:14:59,225,Stable
+17863239X36,Anesu Sithole,Male,49,+263 75 205 990,Outpatient,2025-10-04 17:17:37,EM-511,Dr. Melissa Dube,Ear Infection,Tenofovir,Heart Disease,Pollen,2025-10-04 17:52:37,35,Follow-up in 2 weeks
+17761011L81,Tariro Mhlanga,Male,1,+263 71 958 978,General Ward,2025-08-17 07:36:51,EM-398,Dr. Jesse Moyo,Pneumonia,Fluconazole,Heart Disease,Pollen,2025-08-17 11:19:51,223,Recovered
+17117791C62,Chipo Mawere,Male,54,+263 74 112 513,Emergency,2025-07-31 00:45:09,GW-371,Dr. Linda Mutasa,Tuberculosis,Metronidazole,Asthma,Peanuts,2025-07-31 01:02:09,17,Referred to specialist
+17814806F42,Kudzai Madzinga,Female,79,+263 78 495 444,General Ward,2025-09-08 01:24:46,GW-696,Dr. Debra Moyo,Eczema,ORS,Heart Disease,Penicillin,2025-09-08 03:19:46,115,Follow-up in 2 weeks
+17541498V21,Tanaka Chauke,Male,79,+263 78 325 574,Surgical,2025-08-23 08:13:34,GW-012,Dr. Christopher Ncube,STI - Trichomoniasis,Coartem,Diabetes,Penicillin,2025-08-23 10:30:34,137,Follow-up in 2 weeks
+17558728R42,Panashe Ncube,Male,58,+263 77 996 617,Emergency,2025-07-14 20:13:02,GW-348,Dr. Linda Mutasa,Labor Pains,Prednisone,Heart Disease,Penicillin,2025-07-14 23:26:02,193,Recovered
+17689879L15,Tobias Matsika,Female,20,+263 75 324 412,General Ward,2025-09-28 00:41:46,PD-917,Dr. Jeanette Chirwa,STI - Gonorrhea,Metformin,Asthma,Peanuts,2025-09-28 02:54:46,133,Stable
+17040545T84,Nigel Madzorera,Female,15,+263 71 443 985,Mental Health,2025-08-09 20:03:09,SG-430,Dr. Jesse Moyo,Seizures,Amoxicillin,None,Pollen,2025-08-09 22:42:09,159,Recovered
+17842517B50,Takudzwa Maregere,Male,43,+263 73 284 253,General Ward,2025-09-25 04:12:45,GW-997,Dr. Travis Gumbo,Migraine,Ceftriaxone,Hypertension,Penicillin,2025-09-25 07:06:45,174,Follow-up in 2 weeks
+17425890Y49,Kudzai Chikonde,Male,54,+263 74 329 970,Dental,2025-07-23 22:36:09,GW-100,Dr. Linda Mutasa,Heart Disease,Multivitamins,Hypertension,Pollen,2025-07-24 02:26:09,230,Recovered
+17749156C13,Anesu Mapuranga,Male,22,+263 72 159 561,General Ward,2025-08-14 16:31:12,SG-175,Dr. Jeanette Chirwa,Allergic Reaction,Cotrimoxazole,Diabetes,Peanuts,2025-08-14 20:18:12,227,Referred to specialist
+17728253O23,Cynthia Mapuranga,Male,16,+263 71 864 814,Emergency,2025-07-29 13:59:28,PD-960,Dr. Catherine Dube,Hepatitis C,Folic Acid,Heart Disease,Penicillin,2025-07-29 14:35:28,36,Recovered
+17904790Q76,Nothando Makoni,Male,58,+263 78 321 949,Maternity,2025-10-08 11:31:57,GW-387,Dr. Linda Mutasa,Injury,Multivitamins,Hypertension,None,2025-10-08 11:50:57,19,Follow-up in 2 weeks
+17590368C56,Brighton Muchechetere,Male,62,+263 78 621 461,Pediatrics,2025-08-03 09:04:07,PD-657,Dr. Jocelyn Gumbo,Seizures,Cough Syrup,Asthma,Peanuts,2025-08-03 12:42:07,218,Stable
+17141702R37,Nigel Mutambirwa,Female,63,+263 76 154 217,Maternity,2025-07-23 12:41:42,EM-608,Dr. Travis Gumbo,Common Cold,Naproxen,Diabetes,Penicillin,2025-07-23 13:17:42,36,Admitted
+17642209I60,Tafadzwa Makoni,Female,81,+263 75 609 498,General Ward,2025-07-15 15:15:41,SG-342,Dr. Nicholas Ncube,Dental Extraction,Amoxiclav,Heart Disease,Peanuts,2025-07-15 18:52:41,217,Admitted
+17296907G29,Admire Gumbo,Male,64,+263 79 572 707,Maternity,2025-08-10 02:46:58,EM-270,Dr. Jesse Moyo,Obesity,Salbutamol,Heart Disease,Peanuts,2025-08-10 05:40:58,174,Stable
+17070770W20,Obvious Muchechetere,Male,19,+263 72 258 177,Maternity,2025-08-17 15:38:59,MT-543,Dr. Jennifer Ncube,Eye Infection,Azithromycin,Hypertension,Peanuts,2025-08-17 19:35:59,237,Recovered
+17205963T86,Tendai Matanga,Female,76,+263 72 845 430,Physiotherapy,2025-09-29 14:09:32,SG-226,Dr. Melissa Dube,Pregnancy Checkup,Multivitamins,None,None,2025-09-29 16:27:32,138,Referred to specialist
+17964933C79,Simbarashe Mawadza,Female,58,+263 77 443 475,Surgical,2025-08-23 20:14:14,OP-605,Dr. Amber Gumbo,Ear Infection,Clotrimazole,Heart Disease,Peanuts,2025-08-23 23:26:14,192,Follow-up in 2 weeks
+17595782G23,Kudzai Chasakara,Male,71,+263 77 255 745,Pediatrics,2025-08-22 08:04:08,OP-830,Dr. Hannah Chirwa,Eye Infection,Clotrimazole,None,Penicillin,2025-08-22 08:42:08,38,Stable
+17626018L89,Memory Muchechetere,Female,71,+263 73 470 860,General Ward,2025-08-21 10:53:22,PD-369,Dr. Catherine Dube,Sinusitis,ORS,Heart Disease,Peanuts,2025-08-21 11:57:22,64,Referred to specialist
+17634428A90,Memory Mudzonga,Male,14,+263 74 358 459,Pediatrics,2025-10-07 07:12:55,OP-411,Dr. Jennifer Ncube,Hepatitis C,Cough Syrup,None,Peanuts,2025-10-07 10:07:55,175,Referred to specialist
+17817548N71,Tendai Moyo,Male,9,+263 74 569 899,General Ward,2025-07-22 15:02:39,GW-479,Dr. Travis Gumbo,Injury,Cough Syrup,Heart Disease,Penicillin,2025-07-22 15:57:39,55,Follow-up in 2 weeks
+17585001T40,Chipo Mugabe,Female,23,+263 72 761 316,Dental,2025-08-05 19:29:42,MT-116,Dr. Linda Mutasa,Hepatitis B,Coartem,Heart Disease,Penicillin,2025-08-05 22:03:42,154,Admitted
+17054890G25,Godknows Manyika,Male,46,+263 79 783 833,Mental Health,2025-10-09 02:52:33,GW-445,Dr. Sharon Chirwa,Pneumonia,Ibuprofen,Hypertension,Penicillin,2025-10-09 04:47:33,115,Stable
+17871008L85,Rudo Nhema,Female,2,+263 79 388 704,Emergency,2025-09-18 20:17:52,SG-832,Dr. Linda Mutasa,Heart Disease,Amoxicillin,Diabetes,Penicillin,2025-09-18 21:24:52,67,Referred to specialist
+17423339K71,Wellington Katsande,Male,17,+263 76 840 646,General Ward,2025-09-22 06:00:18,GW-818,Dr. Christopher Ncube,Diabetes,Naproxen,None,Penicillin,2025-09-22 07:46:18,106,Referred to specialist
+17555065Y54,Dumisani Muchechetere,Male,49,+263 72 384 537,Mental Health,2025-09-04 17:29:55,EM-507,Dr. Timothy Mutasa,Kidney Stones,Metformin,Asthma,Peanuts,2025-09-04 18:55:55,86,Referred to specialist
+17566770T85,Tanaka Gwenzi,Female,49,+263 77 986 954,Outpatient,2025-07-19 13:38:08,MT-269,Dr. Debra Moyo,Malaria,Coartem,Hypertension,Pollen,2025-07-19 14:13:08,35,Stable
+17503047K87,Anesu Chinhoyi,Male,1,+263 79 132 699,Surgical,2025-10-08 04:23:23,MT-082,Dr. Matthew Ncube,STI - Trichomoniasis,Losartan,Hypertension,Peanuts,2025-10-08 07:29:23,186,Recovered
+17208259T91,Nyasha Mushore,Male,87,+263 71 749 529,General Ward,2025-08-22 22:25:38,OP-047,Dr. John Mutasa,Sinusitis,Multivitamins,Hypertension,Peanuts,2025-08-22 22:44:38,19,Recovered
+17418585Q43,Brighton Muropa,Female,89,+263 71 939 225,Emergency,2025-09-16 14:00:58,OP-041,Dr. Catherine Dube,STI - Chlamydia,Diclofenac,Asthma,Penicillin,2025-09-16 16:13:58,133,Stable
+17246624T52,Ropafadzo Mutenha,Male,90,+263 72 504 155,General Ward,2025-09-03 14:58:21,SG-381,Dr. Christopher Ncube,Diabetes,Diclofenac,Heart Disease,Penicillin,2025-09-03 15:55:21,57,Follow-up in 2 weeks
+17818498H94,Patience Marecha,Male,89,+263 79 989 167,Physiotherapy,2025-09-09 03:19:29,PD-628,Dr. Jennifer Ncube,STI - Gonorrhea,Prednisone,Asthma,None,2025-09-09 05:13:29,114,Follow-up in 2 weeks
+17278170C85,Dumisani Ncube,Male,44,+263 77 687 525,Outpatient,2025-07-26 00:25:53,EM-487,Dr. Jesse Moyo,Malnutrition,ORS,Hypertension,None,2025-07-26 01:55:53,90,Referred to specialist
+17040608X83,Takudzwa Gwenzi,Male,41,+263 77 948 781,Outpatient,2025-08-23 04:09:43,SG-285,Dr. Amanda Ncube,Ear Infection,Omeprazole,Hypertension,Peanuts,2025-08-23 04:49:43,40,Recovered
+17986946M20,Nothando Marecha,Male,17,+263 74 605 747,Emergency,2025-09-01 13:04:35,PD-035,Dr. Timothy Mutasa,Depression,Hydrocortisone,None,Peanuts,2025-09-01 16:44:35,220,Recovered
+17443698J29,Nigel Ncube,Female,79,+263 76 131 694,Pediatrics,2025-07-29 23:57:46,OP-891,Dr. Linda Mutasa,STI - Herpes,Salbutamol,Heart Disease,None,2025-07-30 00:56:46,59,Referred to specialist
+17809053C58,Takudzwa Chiweshe,Female,65,+263 74 672 521,Dental,2025-09-08 05:42:21,SG-949,Dr. Timothy Mutasa,Malaria,Amoxicillin,None,Peanuts,2025-09-08 06:33:21,51,Recovered
+17724027P22,Tariro Madzorera,Male,47,+263 71 861 301,General Ward,2025-07-13 14:59:04,MT-082,Dr. Melissa Dube,Bronchitis,Cough Syrup,Heart Disease,Pollen,2025-07-13 17:37:04,158,Recovered
+17112169E43,Panashe Nyamupaguma,Male,59,+263 79 600 472,Mental Health,2025-07-28 13:49:01,GW-115,Dr. Christopher Ncube,Asthma,Paracetamol,Heart Disease,Penicillin,2025-07-28 15:18:01,89,Referred to specialist
+17158474I57,Munashe Chiweshe,Male,72,+263 79 637 446,Surgical,2025-07-13 22:14:00,GW-708,Dr. Amber Gumbo,Migraine,Diclofenac,Asthma,Pollen,2025-07-14 01:21:00,187,Stable
+17039684I92,Kudzai Sithole,Female,19,+263 73 999 787,Emergency,2025-07-31 12:32:43,GW-130,Dr. Andrew Dube,STI - Chlamydia,Ciprofloxacin,None,Pollen,2025-07-31 16:00:43,208,Recovered
+17669317N17,Memory Nyathi,Male,6,+263 77 343 172,Surgical,2025-08-03 05:40:15,MT-723,Dr. John Mutasa,Malaria,Aspirin,Heart Disease,None,2025-08-03 06:18:15,38,Admitted
+17049148M39,Farai Mutisi,Female,89,+263 71 943 369,Emergency,2025-08-09 01:09:01,PD-070,Dr. Hannah Chirwa,Allergic Reaction,Antacid Suspension,Asthma,None,2025-08-09 04:44:01,215,Referred to specialist
+17738813F62,Nyarai Ndlovu,Female,1,+263 79 215 751,Surgical,2025-09-07 05:10:18,GW-358,Dr. Matthew Ncube,Pneumonia,Tenofovir,Hypertension,Peanuts,2025-09-07 06:12:18,62,Stable
+17558184S56,Sipho Mabaso,Female,7,+263 76 901 422,Pediatrics,2025-08-25 07:39:06,PD-053,Dr. Linda Mutasa,Hypertension,Metronidazole,Asthma,Pollen,2025-08-25 08:16:06,37,Recovered
+17919369D18,Sipho Gumbo,Male,3,+263 73 858 766,Surgical,2025-09-15 05:02:21,PD-310,Dr. Sharon Chirwa,Obesity,Azithromycin,Diabetes,None,2025-09-15 05:39:21,37,Stable
+17079890P90,Faith Mupfumi,Female,45,+263 74 629 700,Physiotherapy,2025-08-24 09:15:52,MT-760,Dr. John Mutasa,Pneumonia,Zinc Tablets,Diabetes,Peanuts,2025-08-24 10:55:52,100,Referred to specialist
+17674383T11,Tafadzwa Gumbo,Female,11,+263 78 243 479,Outpatient,2025-09-13 20:31:26,MT-021,Dr. Melissa Dube,STI - Syphilis,Metformin,Diabetes,Pollen,2025-09-13 22:07:26,96,Recovered
+17106185K47,Farai Dube,Female,26,+263 71 721 181,Physiotherapy,2025-07-25 08:36:09,OP-814,Dr. Andrew Dube,Hypertension,Clotrimazole,None,Peanuts,2025-07-25 11:18:09,162,Referred to specialist
+17074346Z23,Tawanda Mabaso,Male,79,+263 74 451 974,Maternity,2025-09-19 20:49:16,PD-174,Dr. Catherine Dube,Obesity,Multivitamins,Asthma,Pollen,2025-09-20 00:14:16,205,Referred to specialist
+17269710X38,Blessing Chiweshe,Female,90,+263 75 101 692,Mental Health,2025-09-04 06:30:09,PD-027,Dr. Jesse Moyo,Hypertension,Fluconazole,Asthma,Peanuts,2025-09-04 07:57:09,87,Recovered
+17056367I42,Gerald Manyika,Male,20,+263 72 135 460,Outpatient,2025-09-10 05:07:13,MT-036,Dr. Hannah Chirwa,Hypertension,Diclofenac,Diabetes,Penicillin,2025-09-10 06:26:13,79,Recovered
+17996837Y82,Fungai Mabaso,Male,28,+263 75 454 376,Pediatrics,2025-08-01 07:35:48,MT-182,Dr. Debra Moyo,STI - Herpes,Cough Syrup,Hypertension,Pollen,2025-08-01 08:50:48,75,Admitted
+17380398I87,Nokuthula Maregere,Male,33,+263 74 939 649,Surgical,2025-08-19 18:22:59,EM-154,Dr. Catherine Dube,Common Cold,Ceftriaxone,Diabetes,Pollen,2025-08-19 19:27:59,65,Stable
+17599280T15,Nkosilathi Mhlanga,Female,64,+263 79 746 829,Emergency,2025-09-29 05:30:46,SG-455,Dr. Timothy Mutasa,STI - Syphilis,Ibuprofen,Asthma,Peanuts,2025-09-29 09:22:46,232,Follow-up in 2 weeks
+17648514F68,Faith Chirume,Female,85,+263 73 178 126,Emergency,2025-09-04 12:29:03,SG-478,Dr. Matthew Ncube,Skin Rash,Folic Acid,None,None,2025-09-04 13:56:03,87,Recovered
+17236795D41,Shamiso Munyoro,Female,21,+263 77 207 342,Pediatrics,2025-08-21 20:32:32,OP-042,Dr. Melissa Dube,Ear Infection,Salbutamol,None,Peanuts,2025-08-21 23:35:32,183,Recovered
+17037632O74,Takudzwa Chinhoyi,Female,19,+263 76 685 943,Physiotherapy,2025-07-17 07:40:42,SG-852,Dr. Sharon Chirwa,Appendicitis,Naproxen,Hypertension,Peanuts,2025-07-17 08:00:42,20,Admitted
+17248760R61,Tafadzwa Ndlovu,Female,83,+263 72 208 269,Dental,2025-07-20 02:59:57,SG-411,Dr. Catherine Dube,Tuberculosis,Salbutamol,Diabetes,Pollen,2025-07-20 05:13:57,134,Admitted
+17798904T18,Blessing Mupfumi,Female,72,+263 75 761 676,Mental Health,2025-10-05 04:22:35,MT-251,Dr. John Mutasa,Burns,Amoxicillin,Hypertension,Peanuts,2025-10-05 08:15:35,233,Referred to specialist
+17845302M34,Tariro Mushore,Male,54,+263 78 675 390,General Ward,2025-07-20 18:18:35,EM-712,Dr. Linda Mutasa,Sinusitis,Folic Acid,None,None,2025-07-20 18:34:35,16,Admitted
+17872866M66,Tawanda Mavhunga,Female,12,+263 76 877 440,Surgical,2025-07-25 23:48:17,EM-589,Dr. Linda Mutasa,Injury,Augmentin,Heart Disease,None,2025-07-26 02:41:17,173,Stable
+17508403L59,Nyarai Makoni,Male,51,+263 77 632 210,Outpatient,2025-10-06 16:55:14,SG-941,Dr. Amanda Ncube,STI - Chlamydia,Doxycycline,Hypertension,Penicillin,2025-10-06 18:38:14,103,Admitted
+17611409T52,Nyarai Chauke,Male,54,+263 72 605 345,Outpatient,2025-10-03 20:09:58,EM-479,Dr. Amber Gumbo,Injury,Panado,Hypertension,None,2025-10-03 20:53:58,44,Referred to specialist
+17670054I70,Lerato Mutisi,Female,13,+263 72 175 996,Mental Health,2025-09-21 11:24:11,GW-784,Dr. Amber Gumbo,Ulcers,Insulin,None,Peanuts,2025-09-21 14:46:11,202,Stable
+17662563K43,Rumbidzai Chauke,Male,40,+263 79 933 156,Physiotherapy,2025-07-27 03:16:39,GW-240,Dr. Jesse Moyo,Gastritis,Fluconazole,None,Penicillin,2025-07-27 06:29:39,193,Recovered
+17893520S75,Anesu Chikafu,Male,65,+263 79 676 508,Mental Health,2025-09-12 10:38:50,OP-022,Dr. Melissa Dube,Hepatitis B,Cough Syrup,None,None,2025-09-12 11:26:50,48,Referred to specialist
+17270215Y34,Loveness Chirwa,Female,16,+263 73 651 103,Outpatient,2025-07-26 13:47:44,EM-291,Dr. Amanda Ncube,Hypertension,Tenofovir,None,None,2025-07-26 14:56:44,69,Referred to specialist
+17559165U27,Clever Chinhoyi,Female,2,+263 76 170 824,Dental,2025-07-14 20:26:10,MT-829,Dr. John Mutasa,Gout,Ciprofloxacin,Heart Disease,Pollen,2025-07-14 20:51:10,25,Recovered
+17947841P36,Brian Nyamupaguma,Female,41,+263 75 130 512,Pediatrics,2025-09-09 12:54:56,PD-172,Dr. Hannah Chirwa,UTI,Doxycycline,Diabetes,None,2025-09-09 14:16:56,82,Recovered
+17976793Z50,Sipho Mutisi,Female,8,+263 72 559 356,Maternity,2025-07-14 13:46:24,GW-119,Dr. Melissa Dube,Pregnancy Checkup,Ciprofloxacin,None,Penicillin,2025-07-14 15:01:24,75,Stable
+17651811N86,Sipho Manyika,Female,26,+263 73 776 190,Physiotherapy,2025-09-13 10:49:48,PD-681,Dr. Linda Mutasa,Allergic Reaction,Lamivudine,None,None,2025-09-13 12:07:48,78,Stable
+17311564B57,Tendai Sithole,Female,8,+263 75 519 173,Physiotherapy,2025-09-12 18:30:29,OP-416,Dr. Jesse Moyo,Arthritis,Ibuprofen,Heart Disease,Peanuts,2025-09-12 19:12:29,42,Referred to specialist
+17923517T92,Gerald Sibanda,Female,12,+263 74 291 193,Outpatient,2025-09-27 05:20:41,MT-633,Dr. Andrew Dube,Diabetes,Amoxicillin,Hypertension,Peanuts,2025-09-27 07:13:41,113,Referred to specialist
+17236126F84,Tonderai Nyamupaguma,Female,6,+263 73 222 323,General Ward,2025-08-31 06:56:56,GW-663,Dr. Amanda Ncube,Obesity,Ibuprofen,Heart Disease,Peanuts,2025-08-31 09:17:56,141,Referred to specialist
+17768352E21,Nomsa Manyika,Female,31,+263 72 404 649,Emergency,2025-09-14 09:26:21,OP-113,Dr. Melissa Dube,Hepatitis C,Azithromycin,None,Peanuts,2025-09-14 10:44:21,78,Recovered
+17600140S99,Shamiso Nyamazana,Male,33,+263 76 901 598,Surgical,2025-09-21 12:58:44,GW-149,Dr. Amanda Ncube,Obesity,Zinc Tablets,Hypertension,Penicillin,2025-09-21 13:17:44,19,Follow-up in 2 weeks
+17171516U86,Nigel Chauke,Female,71,+263 75 765 186,Dental,2025-07-29 04:07:42,MT-627,Dr. Timothy Mutasa,Stroke,Folic Acid,Diabetes,Pollen,2025-07-29 05:49:42,102,Recovered
+17256324P61,Munashe Chirume,Male,21,+263 71 456 245,General Ward,2025-08-16 04:54:39,SG-065,Dr. Jeanette Chirwa,UTI,Augmentin,Asthma,None,2025-08-16 06:01:39,67,Follow-up in 2 weeks
+17624286X20,Fungai Mushore,Male,21,+263 78 405 209,General Ward,2025-08-17 15:15:57,GW-795,Dr. Jocelyn Gumbo,Malaria,Doxycycline,Asthma,None,2025-08-17 17:41:57,146,Admitted
+17630051T97,Tanaka Chiweshe,Male,8,+263 77 517 525,Emergency,2025-08-18 18:11:26,EM-501,Dr. Nicholas Ncube,Ear Infection,Insulin,Heart Disease,None,2025-08-18 20:59:26,168,Recovered
+17052178D90,Farai Chinhoyi,Male,68,+263 78 251 234,Emergency,2025-09-05 05:17:44,EM-835,Dr. Catherine Dube,Migraine,Panado,None,Penicillin,2025-09-05 08:18:44,181,Referred to specialist
+17044934P17,Godknows Ncube,Male,46,+263 79 627 278,Surgical,2025-09-10 15:02:40,EM-364,Dr. Catherine Dube,HIV/AIDS,Vitamin B Complex,Diabetes,Pollen,2025-09-10 17:27:40,145,Stable
+17569147L88,Thabani Nhema,Female,28,+263 77 836 977,Dental,2025-08-31 09:29:28,GW-147,Dr. Melissa Dube,Seizures,Augmentin,Hypertension,Penicillin,2025-08-31 12:35:28,186,Stable
+17450856N28,Nothando Gwenzi,Male,59,+263 75 798 944,Mental Health,2025-08-02 06:36:31,OP-242,Dr. Sharon Chirwa,Eye Infection,Amoxiclav,Heart Disease,Pollen,2025-08-02 10:14:31,218,Admitted
+17414524O67,Fortunate Muropa,Female,67,+263 77 492 543,Outpatient,2025-10-03 06:46:23,OP-973,Dr. Jennifer Ncube,Heart Disease,Ibuprofen,Heart Disease,Pollen,2025-10-03 10:20:23,214,Referred to specialist
+17952244B63,Tinashe Mushore,Male,27,+263 75 165 619,Pediatrics,2025-09-15 04:41:19,SG-848,Dr. Travis Gumbo,Hepatitis B,Losartan,None,None,2025-09-15 07:29:19,168,Stable
+17306345L80,Bongani Mabika,Male,80,+263 73 985 819,Maternity,2025-08-29 10:02:40,OP-331,Dr. Andrew Dube,Ear Infection,Multivitamins,Diabetes,None,2025-08-29 10:30:40,28,Referred to specialist
+17004322T79,Nigel Muropa,Male,84,+263 74 399 524,Maternity,2025-09-14 05:43:11,OP-633,Dr. Jesse Moyo,STI - Trichomoniasis,Coartem,Diabetes,Penicillin,2025-09-14 09:17:11,214,Follow-up in 2 weeks
+17228320D88,Sipho Dube,Male,61,+263 71 416 506,Maternity,2025-09-09 15:41:25,MT-917,Dr. Melissa Dube,Hepatitis C,Vitamin C,Diabetes,Pollen,2025-09-09 19:38:25,237,Recovered
+17232830F71,Precious Mushonga,Male,12,+263 77 113 749,Pediatrics,2025-07-14 00:13:13,GW-348,Dr. Christopher Ncube,Gout,Ibuprofen,Asthma,None,2025-07-14 00:42:13,29,Admitted
+17045570I50,Tinashe Mhlanga,Male,65,+263 76 185 909,Surgical,2025-09-11 20:42:01,SG-028,Dr. Jennifer Ncube,Diabetes,Vitamin B Complex,None,Peanuts,2025-09-11 23:08:01,146,Follow-up in 2 weeks
+17096665F97,Tanaka Mushore,Male,59,+263 75 988 215,Dental,2025-08-01 07:32:13,GW-130,Dr. Debra Moyo,Bronchitis,Clotrimazole,Heart Disease,None,2025-08-01 10:06:13,154,Stable
+17661390Z56,Brighton Matsika,Female,48,+263 73 929 439,Emergency,2025-10-01 19:08:47,GW-189,Dr. Jennifer Ncube,Migraine,Coartem,Diabetes,Penicillin,2025-10-01 20:57:47,109,Follow-up in 2 weeks
+17635613A36,Faith Mutisi,Female,24,+263 77 187 402,Outpatient,2025-09-06 21:38:25,PD-933,Dr. Andrew Dube,Allergic Reaction,Multivitamins,Diabetes,None,2025-09-07 01:16:25,218,Referred to specialist
+17145874P96,Tobias Madzorera,Female,22,+263 77 974 945,General Ward,2025-09-05 11:19:27,OP-137,Dr. Timothy Mutasa,Hepatitis C,Vitamin B Complex,Asthma,Peanuts,2025-09-05 12:24:27,65,Referred to specialist
+17232361L77,Tobias Muchechetere,Female,22,+263 73 232 580,Physiotherapy,2025-08-13 00:52:54,EM-451,Dr. Jesse Moyo,Chest Pain,Omeprazole,Diabetes,Penicillin,2025-08-13 02:31:54,99,Referred to specialist
+17436395Q89,Nomsa Gumbo,Female,16,+263 71 262 454,General Ward,2025-07-14 00:34:28,MT-854,Dr. John Mutasa,Pneumonia,Antacid Suspension,Asthma,Pollen,2025-07-14 01:01:28,27,Follow-up in 2 weeks

@@ -178,12 +178,12 @@ class DemoService {
       estimatedWait: Math.floor(Math.random() * 30) + 5,
       position: Math.floor(Math.random() * 10) + 1,
       services: [
-        { id: 1, name: 'Emergency Care', waitTime: 5, patients: 3 },
-        { id: 2, name: 'General Medicine', waitTime: 12, patients: 4 },
-        { id: 3, name: 'Cardiology', waitTime: 15, patients: 2 },
-        { id: 4, name: 'Laboratory', waitTime: 8, patients: 1 },
-        { id: 5, name: 'Radiology', waitTime: 20, patients: 2 },
-        { id: 6, name: 'Pediatrics', waitTime: 10, patients: 1 }
+        { id: 1, name: 'Emergency Care', waitTime: 5, patients: 3, staffCount: 8, serviceRate: 1.2 },
+        { id: 2, name: 'General Medicine', waitTime: 12, patients: 4, staffCount: 6, serviceRate: 0.9 },
+        { id: 3, name: 'Cardiology', waitTime: 15, patients: 2, staffCount: 5, serviceRate: 1.1 },
+        { id: 4, name: 'Laboratory', waitTime: 8, patients: 1, staffCount: 4, serviceRate: 1.0 },
+        { id: 5, name: 'Radiology', waitTime: 20, patients: 2, staffCount: 3, serviceRate: 0.8 },
+        { id: 6, name: 'Pediatrics', waitTime: 10, patients: 1, staffCount: 4, serviceRate: 1.0 }
       ]
     };
   }
@@ -197,7 +197,9 @@ class DemoService {
         totalPatients: Math.floor(Math.random() * 100) + 50,
         avgWaitTime: Math.floor(Math.random() * 20) + 10,
         efficiencyScore: Math.floor(Math.random() * 20) + 80,
-        patientSatisfaction: Math.floor(Math.random() * 20) + 80
+        patientSatisfaction: Math.floor(Math.random() * 20) + 80,
+        peakHour: '10:00 AM',
+        urgentCases: Math.floor(Math.random() * 5)
       },
       hourlyData: Array.from({ length: 24 }, (_, i) => ({
         hour: i,

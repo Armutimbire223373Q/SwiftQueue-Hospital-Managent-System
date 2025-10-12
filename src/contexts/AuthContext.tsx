@@ -30,46 +30,24 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Check if user is already logged in
+    // Check for stored user data on app initialization
     const initializeAuth = async () => {
-      const token = authService.getToken();
-      const storedUser = authService.getCurrentUserFromStorage();
-      const isGuestSession = localStorage.getItem('isGuestSession') === 'true';
+      try {
+        const storedUser = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
 
-      if (isGuestSession && storedUser) {
-        // Handle guest session
-        setUser(storedUser);
-      } else if (token && storedUser) {
-        try {
-          // Check if token is expired or expiring soon
-          if (authService.isTokenExpired()) {
-            // Try to refresh token
-            try {
-              await authService.refreshToken();
-              const currentUser = await authService.getCurrentUser();
-              setUser(currentUser);
-            } catch (refreshError) {
-              // Refresh failed, logout
-              authService.logout();
-            }
-          } else {
-            // Token is valid, verify with server
-            const currentUser = await authService.getCurrentUser();
-            setUser(currentUser);
-          }
-        } catch (error) {
-          // Token verification failed, try refresh
-          try {
-            await authService.refreshToken();
-            const currentUser = await authService.getCurrentUser();
-            setUser(currentUser);
-          } catch (refreshError) {
-            // Both verification and refresh failed, logout
-            authService.logout();
-          }
+        if (storedUser && token) {
+          const userData = JSON.parse(storedUser);
+          setUser(userData);
         }
+      } catch (error) {
+        console.error('Error initializing auth:', error);
+        // Clear potentially corrupted data
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+      } finally {
+        setIsLoading(false);
       }
-      setIsLoading(false);
     };
 
     initializeAuth();

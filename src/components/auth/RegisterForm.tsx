@@ -14,7 +14,12 @@ export default function RegisterForm() {
     email: '',
     password: '',
     confirmPassword: '',
-    phone: ''
+    phone: '',
+    street_address: '',
+    city: '',
+    state: '',
+    zip_code: '',
+    country: ''
   });
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -162,6 +167,84 @@ export default function RegisterForm() {
                 onChange={handleChange}
                 disabled={isLoading}
               />
+            </div>
+
+            {/* Address Fields */}
+            <div className="space-y-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+              <div className="flex items-center space-x-2">
+                <AlertTriangle className="h-4 w-4 text-blue-600" />
+                <span className="text-sm font-medium text-blue-900">Address Information (Optional)</span>
+              </div>
+              <p className="text-xs text-blue-700">
+                Providing your address helps us provide better emergency services and coordinate care.
+              </p>
+
+              <div className="space-y-2">
+                <Label htmlFor="street_address">Street Address</Label>
+                <Input
+                  id="street_address"
+                  name="street_address"
+                  type="text"
+                  placeholder="123 Main Street"
+                  value={formData.street_address}
+                  onChange={handleChange}
+                  disabled={isLoading}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="city">City</Label>
+                  <Input
+                    id="city"
+                    name="city"
+                    type="text"
+                    placeholder="City"
+                    value={formData.city}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="state">State/Province</Label>
+                  <Input
+                    id="state"
+                    name="state"
+                    type="text"
+                    placeholder="State"
+                    value={formData.state}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="zip_code">ZIP/Postal Code</Label>
+                  <Input
+                    id="zip_code"
+                    name="zip_code"
+                    type="text"
+                    placeholder="12345"
+                    value={formData.zip_code}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="country">Country</Label>
+                  <Input
+                    id="country"
+                    name="country"
+                    type="text"
+                    placeholder="Country"
+                    value={formData.country}
+                    onChange={handleChange}
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
             </div>
 
             <div className="space-y-2">

@@ -10,6 +10,11 @@ class User(Base):
     name = Column(String, index=True)
     email = Column(String, unique=True, index=True)
     phone = Column(String)
+    street_address = Column(String, nullable=True)
+    city = Column(String, nullable=True)
+    state = Column(String, nullable=True)
+    zip_code = Column(String, nullable=True)
+    country = Column(String, nullable=True)
     date_of_birth = Column(DateTime)
     password_hash = Column(String, nullable=False)
     role = Column(Enum("admin", "staff", "patient", name="user_role"), default="patient")
@@ -107,7 +112,7 @@ class ServiceCounter(Base):
     
 class Analytics(Base):
     __tablename__ = "analytics"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     timestamp = Column(DateTime, default=datetime.utcnow)
     service_id = Column(Integer, ForeignKey("services.id"))
@@ -122,3 +127,20 @@ class Analytics(Base):
     patients_served = Column(Integer)
 
     service = relationship("Service")
+
+class EmergencyDispatch(Base):
+    __tablename__ = "emergency_dispatches"
+
+    id = Column(Integer, primary_key=True, index=True)
+    patient_id = Column(Integer, ForeignKey("users.id"))
+    emergency_details = Column(Text, nullable=False)
+    dispatch_address = Column(String, nullable=False)
+    dispatch_status = Column(Enum("pending", "dispatched", "en_route", "arrived", "completed", "cancelled", name="dispatch_status"), default="pending")
+    dispatched_at = Column(DateTime, nullable=True)
+    response_time = Column(Integer, nullable=True)  # in minutes
+    ambulance_id = Column(String, nullable=True)  # simulated ambulance identifier
+    notes = Column(Text, nullable=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    patient = relationship("User")

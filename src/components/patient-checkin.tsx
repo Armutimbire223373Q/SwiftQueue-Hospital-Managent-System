@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { Alert, AlertDescription } from './ui/alert';
 import { toast } from './ui/use-toast';
 import apiClient from '../services/apiClient';
 import { format } from 'date-fns';
-import { CheckCircle, Clock, MapPin } from 'lucide-react';
+import { CheckCircle, Clock, MapPin, AlertTriangle } from 'lucide-react';
 
 interface Appointment {
   id: number;
@@ -31,6 +35,16 @@ const PatientCheckin: React.FC = () => {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [checkinStatuses, setCheckinStatuses] = useState<Record<number, CheckinStatus>>({});
   const [loading, setLoading] = useState<Record<number, boolean>>({});
+  const [showAddressModal, setShowAddressModal] = useState(false);
+  const [selectedAppointmentId, setSelectedAppointmentId] = useState<number | null>(null);
+  const [addressData, setAddressData] = useState({
+    street_address: '',
+    city: '',
+    state: '',
+    zip_code: '',
+    country: ''
+  });
+  const [addressLoading, setAddressLoading] = useState(false);
 
   useEffect(() => {
     fetchAppointments();
@@ -65,6 +79,26 @@ const PatientCheckin: React.FC = () => {
   };
 
   const handleCheckin = async (appointmentId: number) => {
+    // First check if user has address information
+    try {
+      const userResponse = await apiClient.get('/auth/me');
+      const user = userResponse.data;
+
+      // Check if address is missing
+      if (!user.street_address || !user.city || !user.state || !user.zip_code || !user.country) {
+        setSelectedAppointmentId(appointmentId);
+        setShowAddressModal(true);
+        return;
+      }
+    } catch (error) {
+      console.error('Error checking user profile:', error);
+    }
+
+    // Proceed with check-in
+    await performCheckin(appointmentId);
+  };
+
+  const performCheckin = async (appointmentId: number) => {
     setLoading(prev => ({ ...prev, [appointmentId]: true }));
 
     try {
@@ -98,6 +132,51 @@ const PatientCheckin: React.FC = () => {
     } finally {
       setLoading(prev => ({ ...prev, [appointmentId]: false }));
     }
+  };
+
+  const handleAddressSubmit = async () => {
+    if (!selectedAppointmentId) return;
+
+    setAddressLoading(true);
+    try {
+      // Update user profile with address
+      await apiClient.put('/auth/me', addressData);
+
+      toast({
+        title: 'Success',
+        description: 'Address information updated successfully.',
+      });
+
+      setShowAddressModal(false);
+      setAddressData({
+        street_address: '',
+        city: '',
+        state: '',
+        zip_code: '',
+        country: ''
+      });
+
+      // Now proceed with check-in
+      await performCheckin(selectedAppointmentId);
+      setSelectedAppointmentId(null);
+    } catch (error: any) {
+      toast({
+        title: 'Error',
+        description: error.response?.data?.detail || 'Failed to update address',
+        variant: 'destructive',
+      });
+    } finally {
+      setAddressLoading(false);
+    }
+  };
+
+  const handleAddressSkip = async () => {
+    if (!selectedAppointmentId) return;
+
+    setShowAddressModal(false);
+    // Proceed with check-in even without address
+    await performCheckin(selectedAppointmentId);
+    setSelectedAppointmentId(null);
   };
 
   const getAppointmentStatusColor = (status: string) => {
@@ -242,6 +321,108 @@ const PatientCheckin: React.FC = () => {
           </div>
         </CardContent>
       </Card>
+
+      {/* Address Collection Modal */}
+      <Dialog open={showAddressModal} onOpenChange={setShowAddressModal}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center space-x-2">
+              <AlertTriangle className="h-5 w-5 text-amber-500" />
+              <span>Complete Your Address Information</span>
+            </DialogTitle>
+            <DialogDescription>
+              For emergency services and better care coordination, please provide your address information.
+              This helps us respond quickly in case of medical emergencies.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            <Alert>
+              <AlertTriangle className="h-4 w-4" />
+              <AlertDescription className="text-sm">
+                Your address information is securely stored and used only for emergency services and care coordination.
+              </AlertDescription>
+            </Alert>
+
+            <div className="space-y-3">
+              <div>
+                <Label htmlFor="modal-street">Street Address</Label>
+                <Input
+                  id="modal-street"
+                  value={addressData.street_address}
+                  onChange={(e) => setAddressData({...addressData, street_address: e.target.value})}
+                  placeholder="123 Main Street"
+                  disabled={addressLoading}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="modal-city">City</Label>
+                  <Input
+                    id="modal-city"
+                    value={addressData.city}
+                    onChange={(e) => setAddressData({...addressData, city: e.target.value})}
+                    placeholder="City"
+                    disabled={addressLoading}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="modal-state">State</Label>
+                  <Input
+                    id="modal-state"
+                    value={addressData.state}
+                    onChange={(e) => setAddressData({...addressData, state: e.target.value})}
+                    placeholder="State"
+                    disabled={addressLoading}
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label htmlFor="modal-zip">ZIP Code</Label>
+                  <Input
+                    id="modal-zip"
+                    value={addressData.zip_code}
+                    onChange={(e) => setAddressData({...addressData, zip_code: e.target.value})}
+                    placeholder="12345"
+                    disabled={addressLoading}
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="modal-country">Country</Label>
+                  <Input
+                    id="modal-country"
+                    value={addressData.country}
+                    onChange={(e) => setAddressData({...addressData, country: e.target.value})}
+                    placeholder="Country"
+                    disabled={addressLoading}
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex space-x-3 pt-4">
+              <Button
+                variant="outline"
+                onClick={handleAddressSkip}
+                disabled={addressLoading}
+                className="flex-1"
+              >
+                Skip for Now
+              </Button>
+              <Button
+                onClick={handleAddressSubmit}
+                disabled={addressLoading || !addressData.street_address || !addressData.city || !addressData.state || !addressData.zip_code || !addressData.country}
+                className="flex-1"
+              >
+                {addressLoading ? 'Saving...' : 'Save & Check In'}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
