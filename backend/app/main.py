@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from app.routes import queue, users, services, analytics, auth, ai, appointments, notifications, checkin, scheduling, navigation, emergency, patient_history, uploads, payments, staff, admin, staff_communication
+from app.routes import queue, users, services, analytics, auth, ai, appointments, notifications, checkin, scheduling, navigation, emergency, patient_history, uploads, payments, staff, admin
+# Temporarily disabled integration routes that reference missing models
+# from app.routes import hl7_integration, fhir_integration, ehr_integration
 from app.database import create_tables
 from app import ws
 import os
@@ -21,6 +23,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://127.0.0.1:5174",
         "http://127.0.0.1:3000",
+        "*",  # Allow all origins for development
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -45,7 +48,10 @@ app.include_router(navigation.router, prefix="/api/navigation", tags=["navigatio
 app.include_router(emergency.router, prefix="/api/emergency", tags=["emergency"])
 app.include_router(staff.router, prefix="/api/staff", tags=["staff"])
 app.include_router(admin.router, prefix="/api/admin", tags=["admin"])
-app.include_router(staff_communication.router, prefix="/api/staff-communication", tags=["staff-communication"])
+# Temporarily disabled integration routes that reference missing models
+# app.include_router(hl7_integration.router, prefix="/api/hl7", tags=["hl7-integration"])
+# app.include_router(fhir_integration.router, prefix="/api/fhir", tags=["fhir-integration"])
+# app.include_router(ehr_integration.router, prefix="/api/ehr", tags=["ehr-integration"])
 app.include_router(ws.router)  # WebSocket router
 
 # Mount static files for the frontend (after API routes for precedence)

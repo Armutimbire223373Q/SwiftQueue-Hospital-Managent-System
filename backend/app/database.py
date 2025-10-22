@@ -25,4 +25,7 @@ def create_tables():
         import app.models.workflow_models  # noqa: F401
     except Exception:
         pass
-    Base.metadata.create_all(bind=engine)
+    
+    # Use checkfirst=True to avoid recreating existing indexes
+    Base.metadata.create_all(bind=engine, checkfirst=True)
+

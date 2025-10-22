@@ -74,7 +74,7 @@ def init_departments(db):
         db.add(dept)
 
     db.commit()
-    print("✅ Departments initialized")
+    print(">>> Departments initialized")
 
 
 def init_role_permissions(db):
@@ -361,37 +361,37 @@ def init_sample_schedule(db):
 
 def main():
     """Main initialization function."""
-    print("🚀 Initializing Healthcare Queue Management System - Staff Data")
+    print(">>> Initializing Healthcare Queue Management System - Staff Data")
 
     db = SessionLocal()
     try:
-        print("📊 Initializing departments...")
+        print(">>> Initializing departments...")
         init_departments(db)
 
-        print("🔐 Initializing role permissions...")
+        print(">>> Initializing role permissions...")
         init_role_permissions(db)
 
-        print("⚙️ Initializing system settings...")
+        print(">>> Initializing system settings...")
         init_system_settings(db)
 
-        print("👥 Initializing sample staff accounts...")
+        print(">>> Initializing sample staff accounts...")
         init_sample_staff(db)
 
-        print("📅 Initializing sample schedules...")
+        print(">>> Initializing sample schedules...")
         init_sample_schedule(db)
 
-        print("✅ Staff data initialization completed successfully!")
-        print("\n📋 Default Admin Account:")
+        print(">>> Staff data initialization completed successfully!")
+        print("\n>>> Default Admin Account:")
         print("   Email: admin@hospital.com")
         print("   Password: AdminPass123!")
-        print("\n📋 Sample Staff Accounts:")
+        print("\n>>> Sample Staff Accounts:")
         print("   Dr. Sarah Johnson: sarah.johnson@hospital.com")
         print("   Dr. Michael Chen: michael.chen@hospital.com")
         print("   Nurse Emily Davis: emily.davis@hospital.com")
         print("   All passwords: StaffPass123!")
 
     except Exception as e:
-        print(f"❌ Error during initialization: {e}")
+        print(f">>> Error during initialization: {e}")
         db.rollback()
         raise
     finally:

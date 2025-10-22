@@ -90,7 +90,7 @@ def test_service_not_found(client: TestClient):
     response = client.get("/api/services/99999")
     assert response.status_code == 404
 
-def test_create_appointment(client: TestClient):
+def test_create_appointment(auth_client: TestClient):
     """Test creating an appointment."""
     # First create a user and service
     user_data = {
@@ -100,7 +100,7 @@ def test_create_appointment(client: TestClient):
         "role": "patient"
     }
 
-    user_response = client.post("/api/auth/register", json=user_data)
+    user_response = auth_client.post("/api/auth/register", json=user_data)
     user_id = user_response.json()["id"]
 
     service_data = {
@@ -110,7 +110,7 @@ def test_create_appointment(client: TestClient):
         "estimated_wait_time": 30
     }
 
-    service_response = client.post("/api/services/", json=service_data)
+    service_response = auth_client.post("/api/services/", json=service_data)
     service_id = service_response.json()["id"]
 
     appointment_data = {
@@ -120,7 +120,7 @@ def test_create_appointment(client: TestClient):
         "notes": "Regular checkup"
     }
 
-    response = client.post("/api/appointments/", json=appointment_data)
+    response = auth_client.post("/api/appointments/", json=appointment_data)
     assert response.status_code == 200
 
     data = response.json()
@@ -128,15 +128,15 @@ def test_create_appointment(client: TestClient):
     assert data["service_id"] == service_id
     assert "appointment_date" in data
 
-def test_get_appointments(client: TestClient):
+def test_get_appointments(auth_client: TestClient):
     """Test getting appointments."""
-    response = client.get("/api/appointments/")
+    response = auth_client.get("/api/appointments/")
     assert response.status_code == 200
 
     data = response.json()
     assert isinstance(data, list)
 
-def test_update_appointment(client: TestClient):
+def test_update_appointment(auth_client: TestClient):
     """Test updating an appointment."""
     # Create appointment first
     user_data = {
@@ -182,7 +182,7 @@ def test_update_appointment(client: TestClient):
     assert data["status"] == "confirmed"
     assert data["notes"] == "Updated notes"
 
-def test_cancel_appointment(client: TestClient):
+def test_cancel_appointment(auth_client: TestClient):
     """Test canceling an appointment."""
     # Create appointment first
     user_data = {
@@ -218,7 +218,7 @@ def test_cancel_appointment(client: TestClient):
     response = client.delete(f"/api/appointments/{appointment_id}")
     assert response.status_code == 200
 
-def test_create_notification(client: TestClient):
+def test_create_notification(auth_client: TestClient):
     """Test creating a notification."""
     notification_data = {
         "user_id": 1,
@@ -236,7 +236,7 @@ def test_create_notification(client: TestClient):
     assert data["message"] == notification_data["message"]
     assert data["type"] == notification_data["type"]
 
-def test_get_notifications(client: TestClient):
+def test_get_notifications(auth_client: TestClient):
     """Test getting notifications."""
     response = client.get("/api/notifications/")
     assert response.status_code == 200
@@ -244,7 +244,7 @@ def test_get_notifications(client: TestClient):
     data = response.json()
     assert isinstance(data, list)
 
-def test_mark_notification_read(client: TestClient):
+def test_mark_notification_read(auth_client: TestClient):
     """Test marking a notification as read."""
     # Create notification first
     notification_data = {
@@ -265,7 +265,7 @@ def test_mark_notification_read(client: TestClient):
     data = response.json()
     assert data["is_read"] == True
 
-def test_delete_notification(client: TestClient):
+def test_delete_notification(auth_client: TestClient):
     """Test deleting a notification."""
     # Create notification first
     notification_data = {
@@ -283,7 +283,7 @@ def test_delete_notification(client: TestClient):
     response = client.delete(f"/api/notifications/{notification_id}")
     assert response.status_code == 200
 
-def test_navigation_route(client: TestClient):
+def test_navigation_route(auth_client: TestClient):
     """Test getting navigation route."""
     navigation_data = {
         "start_location": "Emergency Entrance",
@@ -301,7 +301,7 @@ def test_navigation_route(client: TestClient):
     assert "instructions" in data
     assert isinstance(data["instructions"], list)
 
-def test_get_available_locations(client: TestClient):
+def test_get_available_locations(auth_client: TestClient):
     """Test getting available navigation locations."""
     response = client.get("/api/navigation/locations")
     assert response.status_code == 200
@@ -310,7 +310,7 @@ def test_get_available_locations(client: TestClient):
     assert isinstance(data, list)
     assert len(data) > 0
 
-def test_request_emergency_assistance(client: TestClient):
+def test_request_emergency_assistance(auth_client: TestClient):
     """Test requesting emergency assistance via navigation."""
     assistance_data = {
         "current_location": "Main Lobby",

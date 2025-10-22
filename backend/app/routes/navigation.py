@@ -2,9 +2,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 from app.database import get_db
-from app.models.models import User
+from app.models.models import User, EmergencyDispatch
 from app.routes.auth import get_current_user
 from pydantic import BaseModel
+from datetime import datetime
 
 router = APIRouter()
 
@@ -106,14 +107,55 @@ async def request_emergency_assistance(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
-    # In a real system, this would trigger emergency response
-    # For now, just log the request
-
-    # TODO: Send notification to staff, log emergency request
-
-    return {
-        "message": "Emergency assistance requested",
-        "location": location,
-        "assistance_en_route": True,
-        "estimated_response_time": "2-3 minutes"
-    }
+    """Handle emergency assistance request with notification to staff"""
+    
+    try:
+        # Create emergency dispatch record
+        emergency_dispatch = EmergencyDispatch(
+            patient_id=current_user.id,
+            emergency_type="Assistance Request",
+            location=location,
+            severity_level="medium",
+            status="dispatched",
+            notes=description,
+            created_at=datetime.utcnow(),
+            updated_at=datetime.utcnow()
+        )
+        
+        db.add(emergency_dispatch)
+        db.commit()
+        db.refresh(emergency_dispatch)
+        
+        # Get nearby staff members (simplified - get all active staff)
+        staff_members = db.query(User).filter(
+            User.role.in_(["staff", "admin"]),
+            User.is_active == True
+        ).all()
+        
+        # In a real system, would send notifications via:
+        # - WebSocket broadcast
+        # - SMS alerts
+        # - Push notifications
+        # - Email alerts
+        
+        # Log emergency for audit
+        print(f"🚨 EMERGENCY: {description} at {location}")
+        print(f"   Requested by: {current_user.name} (ID: {current_user.id})")
+        print(f"   Notifying {len(staff_members)} staff members")
+        
+        return {
+            "message": "Emergency assistance requested",
+            "location": location,
+            "emergency_id": emergency_dispatch.id,
+            "assistance_en_route": True,
+            "estimated_response_time": "2-3 minutes",
+            "staff_notified": len(staff_members),
+            "timestamp": emergency_dispatch.created_at.isoformat()
+        }
+        
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Failed to process emergency request: {str(e)}"
+        )

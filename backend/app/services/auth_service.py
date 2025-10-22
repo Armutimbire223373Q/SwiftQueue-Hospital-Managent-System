@@ -3,8 +3,13 @@ from typing import Optional
 from jose import JWTError, jwt
 from passlib.context import CryptContext
 from sqlalchemy.orm import Session
+from fastapi import Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordBearer
 from app.models.models import User
+from app.database import get_db
 import os
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 # JWT Configuration
 SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-here-change-in-production")
@@ -88,3 +93,31 @@ def decode_token(token: str):
         return email
     except JWTError:
         return None
+
+def get_current_user(token: str, db: Session):
+    """Get current user from JWT token."""
+    email = decode_token(token)
+    if email is None:
+        return None
+    return get_user_by_email(db, email)
+
+async def get_current_active_user(
+    token: str = Depends(oauth2_scheme),
+    db: Session = Depends(get_db)
+) -> User:
+    """Get current active user from JWT token (FastAPI dependency)."""
+    credentials_exception = HTTPException(
+        status_code=status.HTTP_401_UNAUTHORIZED,
+        detail="Could not validate credentials",
+        headers={"WWW-Authenticate": "Bearer"},
+    )
+    
+    user = get_current_user(token, db)
+    if user is None:
+        raise credentials_exception
+    if not user.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Inactive user"
+        )
+    return user

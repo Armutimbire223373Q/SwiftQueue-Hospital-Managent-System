@@ -16,7 +16,7 @@ class User(Base):
     zip_code = Column(String, nullable=True)
     country = Column(String, nullable=True)
     date_of_birth = Column(DateTime)
-    password_hash = Column(String, nullable=False)
+    password_hash = Column(String, nullable=True)  # Nullable to allow users created via queue join
     role = Column(Enum("admin", "staff", "patient", name="user_role"), default="patient")
     is_active = Column(Boolean, default=True)
     created_at = Column(DateTime, default=datetime.utcnow)
@@ -144,3 +144,18 @@ class EmergencyDispatch(Base):
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     patient = relationship("User")
+
+
+class Schedule(Base):
+    __tablename__ = "schedules"
+
+    id = Column(Integer, primary_key=True, index=True)
+    staff_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    day_of_week = Column(Integer, nullable=False)  # 0-6 (Monday-Sunday)
+    start_time = Column(String, nullable=False)  # Store as HH:MM format
+    end_time = Column(String, nullable=False)  # Store as HH:MM format
+    is_available = Column(Boolean, default=True)
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+
+    staff = relationship("User", backref="schedules")

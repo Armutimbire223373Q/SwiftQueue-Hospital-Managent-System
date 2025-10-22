@@ -143,8 +143,8 @@ export default function StaffPortal() {
 
   const loadStaffProfile = async () => {
     try {
-      const response = await apiService.get('/api/staff/profile');
-      setProfile(response.data);
+      const data = await apiService.get<StaffProfile>('/api/staff/profile');
+      setProfile(data);
     } catch (err) {
       console.error("Error loading staff profile:", err);
     }
@@ -156,13 +156,11 @@ export default function StaffPortal() {
       const endDate = new Date();
       endDate.setDate(endDate.getDate() + 30); // Next 30 days
 
-      const response = await apiService.get('/api/staff/schedule/1', {
-        params: {
-          start_date: startDate.toISOString(),
-          end_date: endDate.toISOString()
-        }
-      });
-      setSchedule(response.data);
+      // Note: apiService.get only takes endpoint, query params should be in URL
+      const data = await apiService.get<StaffSchedule[]>(
+        `/api/staff/schedule/1?start_date=${startDate.toISOString()}&end_date=${endDate.toISOString()}`
+      );
+      setSchedule(data);
     } catch (err) {
       console.error("Error loading schedule:", err);
     }
@@ -170,9 +168,9 @@ export default function StaffPortal() {
 
   const loadMessages = async () => {
     try {
-      const response = await apiService.get('/api/staff/messages');
-      setMessages(response.data);
-      setUnreadCount(response.data.filter((msg: StaffMessage) => !msg.is_read).length);
+      const data = await apiService.get<StaffMessage[]>('/api/staff/messages');
+      setMessages(data);
+      setUnreadCount(data.filter((msg) => !msg.is_read).length);
     } catch (err) {
       console.error("Error loading messages:", err);
     }
@@ -180,8 +178,8 @@ export default function StaffPortal() {
 
   const loadTasks = async () => {
     try {
-      const response = await apiService.get('/api/staff/tasks');
-      setTasks(response.data);
+      const data = await apiService.get<StaffTask[]>('/api/staff/tasks');
+      setTasks(data);
     } catch (err) {
       console.error("Error loading tasks:", err);
     }
@@ -189,8 +187,8 @@ export default function StaffPortal() {
 
   const loadStats = async () => {
     try {
-      const response = await apiService.get('/api/staff/stats');
-      setStats(response.data);
+      const data = await apiService.get<StaffStats>('/api/staff/stats');
+      setStats(data);
     } catch (err) {
       console.error("Error loading stats:", err);
     }

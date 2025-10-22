@@ -14,7 +14,7 @@ from app.models.models import User
 from app.models.staff_models import StaffProfile, StaffSchedule, StaffPerformance, StaffCommunication, StaffTask
 
 
-router = APIRouter(prefix="/api/staff", tags=["staff"])
+router = APIRouter()  # Remove prefix - it's added in main.py
 
 
 # Pydantic models for request/response
@@ -179,8 +179,8 @@ class StaffStatsResponse(BaseModel):
 @router.post("/profile", response_model=StaffProfileResponse)
 async def create_staff_profile(
     profile: StaffProfileCreate,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Create a staff profile for the current user."""
     if not staff_service.check_permission(db, current_user.id, "staff_profiles", "create"):
@@ -193,10 +193,153 @@ async def create_staff_profile(
         raise HTTPException(status_code=400, detail=f"Failed to create staff profile: {str(e)}")
 
 
+@router.get("/roles")
+async def get_available_roles(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
+    """Get available staff roles and their permissions."""
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    roles = {
+        "receptionist": {
+            "name": "Receptionist",
+            "description": "Manages patient check-in, queue monitoring, and appointment coordination",
+            "permissions": ["queue.read", "appointments.read", "patients.read", "checkin.create"],
+            "departments": ["all"]
+        },
+        "emergency_staff": {
+            "name": "Emergency Department Staff",
+            "description": "Handles emergency care, triage, and critical patient management",
+            "permissions": ["emergency.read", "emergency.create", "patients.read", "patients.update"],
+            "departments": ["Emergency"]
+        },
+        "cardiology_staff": {
+            "name": "Cardiology Staff",
+            "description": "Specialized care for heart and cardiovascular conditions",
+            "permissions": ["patients.read", "patients.update", "tests.create", "reports.read"],
+            "departments": ["Cardiology"]
+        },
+        "general_medicine_staff": {
+            "name": "General Medicine Staff",
+            "description": "Primary care, consultations, and general medical services",
+            "permissions": ["patients.read", "patients.update", "appointments.create", "prescriptions.create"],
+            "departments": ["General Medicine"]
+        },
+        "laboratory_staff": {
+            "name": "Laboratory Staff",
+            "description": "Blood tests, diagnostics, and laboratory services",
+            "permissions": ["tests.create", "tests.update", "results.create", "equipment.read"],
+            "departments": ["Laboratory"]
+        },
+        "radiology_staff": {
+            "name": "Radiology Staff",
+            "description": "Medical imaging, X-rays, CT scans, and radiology services",
+            "permissions": ["imaging.create", "imaging.update", "equipment.read", "reports.create"],
+            "departments": ["Radiology"]
+        },
+        "pediatrics_staff": {
+            "name": "Pediatrics Staff",
+            "description": "Child and infant care, pediatric consultations",
+            "permissions": ["patients.read", "patients.update", "pediatric_tests.create", "family_counseling.create"],
+            "departments": ["Pediatrics"]
+        },
+        "admin": {
+            "name": "Administrator",
+            "description": "Full system access, user management, and system configuration",
+            "permissions": ["all"],
+            "departments": ["all"]
+        }
+    }
+
+    return roles
+
+
+@router.post("/assign-role")
+async def assign_user_role(
+    user_id: int,
+    role: str,
+    department: str = None,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
+    """Assign a role to a user (Admin only)."""
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    # Update user role
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    user.role = role
+    db.commit()
+
+    # Create or update staff profile with department
+    if department and role != "admin":
+        profile = db.query(StaffProfile).filter(StaffProfile.user_id == user_id).first()
+        if profile:
+            profile.department = department
+        else:
+            # Create basic staff profile
+            new_profile = StaffProfile(
+                user_id=user_id,
+                department=department,
+                employee_id=f"EMP{user_id:04d}",
+                hire_date=datetime.utcnow()
+            )
+            db.add(new_profile)
+        db.commit()
+
+    return {"message": f"Role '{role}' assigned to user successfully", "department": department}
+
+
+@router.get("/permissions/{user_id}")
+async def get_user_permissions(
+    user_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
+    """Get permissions for a specific user."""
+    if current_user.role != "admin" and current_user.id != user_id:
+        raise HTTPException(status_code=403, detail="Access denied")
+
+    user = db.query(User).filter(User.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    # Get staff profile for department info
+    profile = db.query(StaffProfile).filter(StaffProfile.user_id == user_id).first()
+
+    # Define role-based permissions
+    role_permissions = {
+        "receptionist": ["queue.read", "appointments.read", "patients.read", "checkin.create"],
+        "emergency_staff": ["emergency.read", "emergency.create", "patients.read", "patients.update"],
+        "cardiology_staff": ["patients.read", "patients.update", "tests.create", "reports.read"],
+        "general_medicine_staff": ["patients.read", "patients.update", "appointments.create", "prescriptions.create"],
+        "laboratory_staff": ["tests.create", "tests.update", "results.create", "equipment.read"],
+        "radiology_staff": ["imaging.create", "imaging.update", "equipment.read", "reports.create"],
+        "pediatrics_staff": ["patients.read", "patients.update", "pediatric_tests.create", "family_counseling.create"],
+        "admin": ["all"]
+    }
+
+    permissions = role_permissions.get(user.role, [])
+    department = profile.department if profile else None
+
+    return {
+        "user_id": user_id,
+        "role": user.role,
+        "department": department,
+        "permissions": permissions,
+        "is_active": user.is_active
+    }
+
+
 @router.get("/profile", response_model=StaffProfileResponse)
 async def get_my_staff_profile(
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get current user's staff profile."""
     profile = staff_service.get_staff_profile(db, current_user.id)
@@ -209,8 +352,8 @@ async def get_my_staff_profile(
 @router.put("/profile", response_model=StaffProfileResponse)
 async def update_staff_profile(
     updates: Dict[str, Any],
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Update current user's staff profile."""
     if not staff_service.check_permission(db, current_user.id, "staff_profiles", "update"):
@@ -223,11 +366,11 @@ async def update_staff_profile(
     return StaffProfileResponse(**profile.__dict__)
 
 
-@router.get("/department/{department}", response_model=List[Dict[str, Any]])
+@router.get("/department/{department}")
 async def get_staff_by_department(
     department: str,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get all staff in a department."""
     if not staff_service.check_permission(db, current_user.id, "staff", "read"):
@@ -236,11 +379,23 @@ async def get_staff_by_department(
     return staff_service.get_staff_by_department(db, department)
 
 
+@router.get("/permissions/check")
+async def check_permission(
+    resource: str,
+    action: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
+):
+    """Check if current user has permission for an action."""
+    allowed = staff_service.check_permission(db, current_user.id, resource, action)
+    return {"allowed": allowed, "resource": resource, "action": action}
+
+
 @router.post("/schedule", response_model=StaffScheduleResponse)
 async def create_staff_schedule(
     schedule: StaffScheduleCreate,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Create a staff schedule."""
     if not staff_service.check_permission(db, current_user.id, "staff_schedules", "create"):
@@ -253,13 +408,13 @@ async def create_staff_schedule(
         raise HTTPException(status_code=400, detail=f"Failed to create schedule: {str(e)}")
 
 
-@router.get("/schedule/{staff_id}")
+@router.get("/schedule/{staff_id}", response_model=List[StaffScheduleResponse])
 async def get_staff_schedule(
     staff_id: int,
     start_date: datetime,
     end_date: datetime,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get staff schedule for a date range."""
     if not staff_service.check_permission(db, current_user.id, "staff_schedules", "read"):
@@ -269,13 +424,13 @@ async def get_staff_schedule(
     return [StaffScheduleResponse(**schedule.__dict__) for schedule in schedules]
 
 
-@router.get("/performance/{staff_id}")
+@router.get("/performance/{staff_id}", response_model=List[StaffPerformanceResponse])
 async def get_staff_performance(
     staff_id: int,
     start_date: datetime,
     end_date: datetime,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get staff performance metrics."""
     if not staff_service.check_permission(db, current_user.id, "staff_performance", "read"):
@@ -288,8 +443,8 @@ async def get_staff_performance(
 @router.post("/messages", response_model=MessageResponse)
 async def send_staff_message(
     message: MessageCreate,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Send a message to staff member(s)."""
     if not staff_service.check_permission(db, current_user.id, "staff_communication", "create"):
@@ -311,8 +466,8 @@ async def send_staff_message(
 @router.get("/messages", response_model=List[MessageResponse])
 async def get_staff_messages(
     unread_only: bool = False,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get messages for current user."""
     messages = staff_service.get_staff_messages(db, current_user.id, unread_only)
@@ -330,8 +485,8 @@ async def get_staff_messages(
 @router.put("/messages/{message_id}/read")
 async def mark_message_read(
     message_id: int,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Mark a message as read."""
     success = staff_service.mark_message_read(db, message_id, current_user.id)
@@ -344,8 +499,8 @@ async def mark_message_read(
 @router.post("/tasks", response_model=TaskResponse)
 async def create_staff_task(
     task: TaskCreate,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Create a task for staff member."""
     if not staff_service.check_permission(db, current_user.id, "staff_tasks", "create"):
@@ -370,8 +525,8 @@ async def create_staff_task(
 @router.get("/tasks", response_model=List[TaskResponse])
 async def get_my_tasks(
     status_filter: Optional[str] = None,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get tasks assigned to current user."""
     tasks = staff_service.get_staff_tasks(db, current_user.id, status_filter)
@@ -392,8 +547,8 @@ async def get_my_tasks(
 async def update_task_status(
     task_id: int,
     status: str,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Update task status."""
     valid_statuses = ["pending", "in_progress", "completed", "cancelled", "overdue"]
@@ -409,8 +564,8 @@ async def update_task_status(
 
 @router.get("/stats", response_model=StaffStatsResponse)
 async def get_staff_stats(
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get staff statistics."""
     if not staff_service.check_permission(db, current_user.id, "staff", "read"):
@@ -444,23 +599,11 @@ async def get_staff_stats(
     )
 
 
-@router.get("/permissions/check")
-async def check_permission(
-    resource: str,
-    action: str,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
-):
-    """Check if current user has permission for an action."""
-    allowed = staff_service.check_permission(db, current_user.id, resource, action)
-    return {"allowed": allowed, "resource": resource, "action": action}
-
-
 # Admin-only routes
 @router.get("/admin/all-profiles", response_model=List[StaffProfileResponse])
 async def get_all_staff_profiles(
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get all staff profiles (Admin only)."""
     if current_user.role != "admin":
@@ -478,8 +621,8 @@ async def get_audit_logs(
     start_date: Optional[datetime] = None,
     end_date: Optional[datetime] = None,
     limit: int = 100,
-    current_user: User = Depends(get_current_active_user),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_active_user)
 ):
     """Get audit logs (Admin only)."""
     if current_user.role != "admin":

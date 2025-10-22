@@ -195,6 +195,7 @@ class AuditLog(Base):
 class Department(Base):
     """Department management and organization."""
     __tablename__ = "departments"
+    __table_args__ = {'extend_existing': True}
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)

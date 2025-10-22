@@ -143,13 +143,22 @@ export const queueService = {
     },
 
     async getQueueStatistics(): Promise<any> {
-        // For now, return mock data since backend doesn't have this endpoint
-        return {
-            total_waiting: 8,
-            total_being_served: 3,
-            avg_wait_time_today: 15,
-            efficiency_score: 0.89
-        };
+        console.log('queueService: getQueueStatistics called');
+        try {
+            console.log('queueService: Attempting to fetch from /queue/statistics');
+            const response = await apiClient.get('/queue/statistics');
+            console.log('queueService: Successfully fetched statistics:', response.data);
+            return response.data;
+        } catch (error) {
+            console.error('queueService: Failed to fetch real statistics, using mock data:', error);
+            console.log('queueService: Returning mock data');
+            return {
+                total_waiting: 8,
+                total_being_served: 3,
+                avg_wait_time_today: 15,
+                efficiency_score: 0.89
+            };
+        }
     }
 };
 

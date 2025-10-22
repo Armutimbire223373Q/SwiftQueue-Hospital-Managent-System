@@ -440,3 +440,225 @@ async def send_emergency_dispatch_alert(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Unexpected error sending dispatch alerts: {str(e)}"
         )
+
+
+# First Aid Guidance Endpoint
+class FirstAidRequest(BaseModel):
+    emergency_type: str
+    location: Optional[str] = None
+    available_equipment: Optional[List[str]] = None
+    patient_conscious: Optional[bool] = True
+
+@router.post("/first-aid")
+async def get_first_aid_instructions(request: FirstAidRequest):
+    """
+    Provide first aid instructions based on emergency type.
+    
+    Args:
+        request: First aid request with emergency type and context
+        
+    Returns:
+        First aid instructions and steps
+    """
+    emergency_type = request.emergency_type.lower()
+    
+    # First aid instructions database
+    first_aid_guide = {
+        "bleeding": {
+            "priority": "HIGH",
+            "steps": [
+                "Apply direct pressure to the wound with a clean cloth",
+                "Elevate the injured area above heart level if possible",
+                "Maintain pressure for at least 10 minutes",
+                "If bleeding persists, apply additional cloth without removing the first",
+                "Call emergency services if bleeding is severe"
+            ],
+            "warnings": ["Do not remove embedded objects", "Watch for signs of shock"],
+            "equipment": ["Clean cloth", "Bandages", "Gloves"]
+        },
+        "choking": {
+            "priority": "CRITICAL",
+            "steps": [
+                "Ask 'Are you choking?' to confirm",
+                "Encourage coughing if person can still cough",
+                "Perform 5 back blows between shoulder blades",
+                "Perform 5 abdominal thrusts (Heimlich maneuver)",
+                "Alternate between back blows and abdominal thrusts",
+                "Call emergency services immediately if unsuccessful"
+            ],
+            "warnings": ["Do not perform on infants under 1 year", "Do not slap on back if person can cough"],
+            "equipment": []
+        },
+        "burns": {
+            "priority": "MEDIUM",
+            "steps": [
+                "Remove person from heat source",
+                "Cool the burn with cool (not cold) running water for 10-20 minutes",
+                "Remove any clothing or jewelry near the burn (unless stuck)",
+                "Cover with sterile, non-stick dressing",
+                "Do not apply ice, butter, or ointments",
+                "Seek medical attention for severe burns"
+            ],
+            "warnings": ["Do not break blisters", "Do not use ice directly on burns"],
+            "equipment": ["Cool water", "Sterile dressing", "Clean cloth"]
+        },
+        "cardiac_arrest": {
+            "priority": "CRITICAL",
+            "steps": [
+                "Check for responsiveness - tap shoulders and shout",
+                "Call 911 immediately or have someone else call",
+                "Check for breathing - look for chest movement",
+                "Begin CPR immediately if not breathing normally",
+                "Place person on firm, flat surface",
+                "Position hands on center of chest, interlocked",
+                "Compress chest 2 inches deep at 100-120/minute",
+                "Give 30 compressions followed by 2 rescue breaths",
+                "Use AED (Automated External Defibrillator) if available",
+                "Continue CPR until emergency services arrive"
+            ],
+            "warnings": ["Do not delay CPR", "Push hard and fast", "Minimize interruptions"],
+            "equipment": ["AED if available", "CPR barrier mask"]
+        },
+        "cpr": {
+            "priority": "CRITICAL",
+            "steps": [
+                "Check for responsiveness - tap and shout",
+                "Call emergency services immediately",
+                "Place person on firm, flat surface",
+                "Position hands on center of chest",
+                "Perform 30 chest compressions (2 inches deep, 100-120/min)",
+                "Give 2 rescue breaths (if trained)",
+                "Continue cycles of 30 compressions and 2 breaths",
+                "Continue until help arrives or person recovers"
+            ],
+            "warnings": ["Do not stop CPR unless person shows signs of life", "Push hard and fast"],
+            "equipment": ["AED if available", "CPR barrier device"]
+        },
+        "fracture": {
+            "priority": "MEDIUM",
+            "steps": [
+                "Do not move the injured area",
+                "Immobilize the injured limb",
+                "Apply ice packs wrapped in cloth to reduce swelling",
+                "Elevate if possible without causing pain",
+                "Seek medical attention immediately",
+                "Monitor for shock symptoms"
+            ],
+            "warnings": ["Do not try to realign the bone", "Do not apply ice directly to skin"],
+            "equipment": ["Splint materials", "Ice pack", "Cloth"]
+        },
+        "heart_attack": {
+            "priority": "CRITICAL",
+            "steps": [
+                "Call emergency services immediately",
+                "Have person sit or lie down in comfortable position",
+                "Loosen any tight clothing",
+                "Give aspirin if available and person not allergic (chew, don't swallow)",
+                "Stay with person and monitor condition",
+                "Be prepared to perform CPR if person becomes unconscious"
+            ],
+            "warnings": ["Do not leave person alone", "Do not give anything by mouth if unconscious"],
+            "equipment": ["Aspirin", "AED if available"]
+        },
+        "stroke": {
+            "priority": "CRITICAL",
+            "steps": [
+                "Remember F.A.S.T.: Face drooping, Arm weakness, Speech difficulty, Time to call 911",
+                "Call emergency services immediately",
+                "Note the time symptoms started",
+                "Have person lie down with head and shoulders elevated",
+                "Do not give food or drink",
+                "Monitor breathing and consciousness"
+            ],
+            "warnings": ["Time is critical - every minute counts", "Do not give aspirin"],
+            "equipment": []
+        },
+        "shock": {
+            "priority": "HIGH",
+            "steps": [
+                "Call emergency services",
+                "Lay person down and elevate legs 12 inches (unless head, neck, or back injury)",
+                "Keep person warm with blanket",
+                "Do not give food or drink",
+                "Turn head to side if vomiting",
+                "Monitor breathing and pulse"
+            ],
+            "warnings": ["Do not move person if spinal injury suspected", "Do not elevate legs if uncomfortable"],
+            "equipment": ["Blanket", "Pillows for elevation"]
+        },
+        "allergic_reaction": {
+            "priority": "HIGH",
+            "steps": [
+                "Check if person has epinephrine auto-injector (EpiPen)",
+                "Help administer EpiPen if available (inject into outer thigh)",
+                "Call emergency services immediately",
+                "Have person lie down and elevate legs",
+                "Monitor breathing and consciousness",
+                "Be prepared to perform CPR if needed",
+                "Give second dose after 5-15 minutes if no improvement"
+            ],
+            "warnings": ["Anaphylaxis can be life-threatening", "Always call 911 even after EpiPen"],
+            "equipment": ["EpiPen", "Antihistamines"]
+        },
+        "seizure": {
+            "priority": "MEDIUM",
+            "steps": [
+                "Stay calm and time the seizure",
+                "Clear area of dangerous objects",
+                "Cushion head with something soft",
+                "Turn person on their side after seizure",
+                "Do not restrain or hold person down",
+                "Do not put anything in mouth",
+                "Stay with person until fully conscious",
+                "Call 911 if seizure lasts more than 5 minutes"
+            ],
+            "warnings": ["Never put objects in mouth", "Do not give food/drink until fully alert"],
+            "equipment": ["Soft cushion", "Blanket"]
+        }
+    }
+    
+    # Get instructions for the emergency type
+    instructions = first_aid_guide.get(emergency_type)
+    
+    if not instructions:
+        # Return general emergency response for unknown types
+        return {
+            "emergency_type": request.emergency_type,
+            "priority": "UNKNOWN",
+            "message": "Specific instructions not available for this emergency type",
+            "general_advice": [
+                "Call emergency services (911) immediately",
+                "Ensure scene safety",
+                "Do not move injured person unless necessary",
+                "Monitor vital signs",
+                "Provide comfort and reassurance"
+            ],
+            "warning": "When in doubt, always call emergency services"
+        }
+    
+    # Enhance response based on available equipment
+    available_equipment = request.available_equipment or []
+    equipment_status = {}
+    for item in instructions["equipment"]:
+        equipment_status[item] = item.lower() in [e.lower() for e in available_equipment]
+    
+    # Estimate response time based on priority
+    response_time_map = {
+        "CRITICAL": 5,  # 5 minutes
+        "HIGH": 15,     # 15 minutes
+        "MEDIUM": 30,   # 30 minutes
+        "LOW": 60       # 60 minutes
+    }
+    
+    return {
+        "emergency_type": request.emergency_type,
+        "priority_level": instructions["priority"],
+        "recommendations": instructions["steps"],
+        "warnings": instructions["warnings"],
+        "required_equipment": instructions["equipment"],
+        "equipment_availability": equipment_status,
+        "location_context": request.location or "Not specified",
+        "patient_conscious": request.patient_conscious,
+        "estimated_response_time": response_time_map.get(instructions["priority"], 30),
+        "critical_note": "Always call emergency services for serious emergencies" if instructions["priority"] in ["CRITICAL", "HIGH"] else None
+    }

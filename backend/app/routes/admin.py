@@ -17,7 +17,7 @@ from app.models.staff_models import (
 )
 
 
-router = APIRouter(prefix="/api/admin", tags=["admin"])
+router = APIRouter()  # Remove prefix - it's added in main.py
 
 
 # Pydantic models

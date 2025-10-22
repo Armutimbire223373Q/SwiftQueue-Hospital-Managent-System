@@ -18,8 +18,7 @@ from . import (
     payments,
     queue,
     staff,
-    admin,
-    staff_communication
+    admin
 )
 
 __all__ = [
@@ -39,6 +38,5 @@ __all__ = [
     "payments",
     "queue",
     "staff",
-    "admin",
-    "staff_communication"
+    "admin"
 ]

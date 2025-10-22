@@ -109,27 +109,28 @@ class WorkflowStage(Base):
     # Relationships
     visit = relationship("PatientVisit", back_populates="workflow_stages")
 
-class Department(Base):
-    """Enhanced department model with performance metrics"""
-    __tablename__ = "departments"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, unique=True, index=True)
-    description = Column(Text)
-    
-    # Performance Metrics
-    avg_wait_time = Column(Float)
-    avg_total_time = Column(Float)
-    avg_occupancy_rate = Column(Float)
-    typical_tests = Column(Text)  # JSON string of common tests
-    
-    # Resource Allocation
-    providers_count = Column(Integer, default=1)
-    nurses_count = Column(Integer, default=1)
-    rooms_count = Column(Integer, default=1)
-    
-    # Relationships
-    visits = relationship("PatientVisit", primaryjoin="Department.id==PatientVisit.department_id", foreign_keys='PatientVisit.department_id')
+# Removed duplicate Department class - use the one from staff_models instead
+# class Department(Base):
+#     """Enhanced department model with performance metrics"""
+#     __tablename__ = "departments"
+# 
+#     id = Column(Integer, primary_key=True, index=True)
+#     name = Column(String, unique=True, index=True)
+#     description = Column(Text)
+#     
+#     # Performance Metrics
+#     avg_wait_time = Column(Float)
+#     avg_total_time = Column(Float)
+#     avg_occupancy_rate = Column(Float)
+#     typical_tests = Column(Text)  # JSON string of common tests
+#     
+#     # Resource Allocation
+#     providers_count = Column(Integer, default=1)
+#     nurses_count = Column(Integer, default=1)
+#     rooms_count = Column(Integer, default=1)
+#     
+#     # Relationships
+#     # visits = relationship("PatientVisit", primaryjoin="Department.id==PatientVisit.department_id", foreign_keys='PatientVisit.department_id')
 
 class Provider(Base):
     """Provider/Doctor information"""

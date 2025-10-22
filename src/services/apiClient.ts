@@ -1,12 +1,43 @@
 import axios from 'axios';
 import { authService } from './authService';
 
-const API_BASE_URL = 'http://localhost:8001/api';
+// API base URL is configurable via Vite env var VITE_API_URL.
+// Set VITE_API_URL to e.g. "http://localhost:8000" or "http://localhost:8001" in a .env file.
+// The value may include the `/api` suffix; we normalize below to ensure a trailing `/api`.
+const _VITE_API = (import.meta as any).env?.VITE_API_URL as string | undefined;
+const _DEFAULT_API = 'http://localhost:8001';
+const rawBase = (_VITE_API && _VITE_API.length > 0) ? _VITE_API : _DEFAULT_API;
+const API_BASE_URL = rawBase.endsWith('/api') ? rawBase : `${rawBase.replace(/\/+$/, '')}/api`;
 
 // Create axios instance
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 10000, // Add timeout
 });
+
+// Add request logging
+apiClient.interceptors.request.use(
+  (config) => {
+    console.log(`apiClient: Making ${config.method?.toUpperCase()} request to ${config.url}`);
+    return config;
+  },
+  (error) => {
+    console.error('apiClient: Request error:', error);
+    return Promise.reject(error);
+  }
+);
+
+// Add response logging
+apiClient.interceptors.response.use(
+  (response) => {
+    console.log(`apiClient: Response from ${response.config.url}:`, response.status, response.data);
+    return response;
+  },
+  (error) => {
+    console.error(`apiClient: Response error from ${error.config?.url}:`, error.response?.status, error.message);
+    return Promise.reject(error);
+  }
+);
 
 // Request interceptor to add auth token
 apiClient.interceptors.request.use(

@@ -3,7 +3,11 @@
  * Handles all HTTP requests to the backend API
  */
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Read Vite env var VITE_API_URL if provided, and normalize to have no trailing slash
+const _VITE_API = (import.meta as any).env?.VITE_API_URL as string | undefined;
+const _DEFAULT_API = 'http://127.0.0.1:8000';
+// Ensure base does NOT include a trailing slash and does not end with '/api'
+const API_BASE_URL = (_VITE_API && _VITE_API.length > 0 ? _VITE_API : _DEFAULT_API).replace(/\/+$/, '').replace(/\/api$/i, '');
 
 export interface ApiResponse<T> {
   data?: T;
@@ -22,7 +26,13 @@ class ApiService {
     endpoint: string,
     options: RequestInit = {}
   ): Promise<T> {
-    const url = `${this.baseUrl}${endpoint}`;
+  // Build URL safely: if endpoint starts with '/', append directly; otherwise prefix with '/'
+  let url = endpoint.startsWith('/') ? `${this.baseUrl}${endpoint}` : `${this.baseUrl}/${endpoint}`;
+  // Normalize accidental duplicate '/api/api' that can happen if both base and endpoint include '/api'
+  url = url.replace(/\/api\/api\/+/g, '/api/').replace(/\/api\/api$/g, '/api');
+
+  // Debug log to help trace final URL used for requests
+  console.log(`apiService: Fetching ${url}`);
     
     const config: RequestInit = {
       headers: {

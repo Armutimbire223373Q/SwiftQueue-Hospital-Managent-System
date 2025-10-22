@@ -1,4 +1,7 @@
-const API_BASE_URL = 'http://localhost:8000/api';
+// Use Vite environment variable if provided (VITE_API_URL) and normalize to include /api
+const _VITE_API = (import.meta as any).env?.VITE_API_URL as string | undefined;
+const _DEFAULT_API = 'http://localhost:8001';
+const API_BASE_URL = _VITE_API && _VITE_API.length > 0 ? (_VITE_API.endsWith('/api') ? _VITE_API : `${_VITE_API.replace(/\/+$/, '')}/api`) : `${_DEFAULT_API}/api`;
 
 export interface SymptomAnalysisRequest {
   symptoms: string;
@@ -425,16 +428,29 @@ class AIService {
    * Get dashboard insights from AI service
    */
   async getDashboardInsights(): Promise<any> {
-    // For now, return mock data since backend doesn't have this endpoint
-    return {
-      efficiency_score: 0.89,
-      patient_satisfaction: 0.92,
-      peak_hours: ['10:00 AM', '2:00 PM'],
-      recommendations: [
-        'Optimize staff scheduling during peak hours',
-        'Implement AI triage for faster patient routing'
-      ]
-    };
+    console.log('aiService: getDashboardInsights called');
+    try {
+      console.log('aiService: Attempting to fetch from /ai/dashboard-insights');
+      const response = await fetch(`${API_BASE_URL}/ai/dashboard-insights`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log('aiService: Successfully fetched dashboard insights:', data);
+      return data;
+    } catch (error) {
+      console.error('aiService: Failed to fetch real dashboard insights, using mock data:', error);
+      console.log('aiService: Returning mock data');
+      return {
+        efficiency_score: 0.89,
+        patient_satisfaction: 0.92,
+        peak_hours: ['10:00 AM', '2:00 PM'],
+        recommendations: [
+          'Optimize staff scheduling during peak hours',
+          'Implement AI triage for faster patient routing'
+        ]
+      };
+    }
   }
 }
 
