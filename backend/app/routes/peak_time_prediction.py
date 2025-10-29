@@ -128,10 +128,10 @@ class AdvancedPeakTimePredictor:
                 self.holiday_patterns = metadata.get('holiday_patterns', {})
                 self.peak_thresholds = metadata.get('peak_thresholds', {})
             
-            print("✅ Advanced peak time prediction models loaded successfully")
+            print("[SUCCESS] Advanced peak time prediction models loaded successfully")
             
         except Exception as e:
-            print(f"❌ Error loading peak time prediction models: {e}")
+            print(f"[ERROR] Error loading peak time prediction models: {e}")
             self.models = {}
             self.scalers = {}
     

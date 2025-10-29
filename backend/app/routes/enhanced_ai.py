@@ -12,7 +12,8 @@ from app.ai.triage_system import triage_system
 from app.ai.predictions import prediction_service
 from app.ai.openrouter_service import openrouter_service
 from app.services.openrouter_fallback_service import openrouter_fallback_service
-from app.models.workflow_models import PatientVisit, WorkflowStage, Department
+from app.models.workflow_models import PatientVisit, WorkflowStage
+from app.models.staff_models import Department
 from datetime import datetime, timedelta
 import logging
 

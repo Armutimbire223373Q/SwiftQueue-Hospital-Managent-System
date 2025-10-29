@@ -1,0 +1,460 @@
+"""
+Prescription Management API Routes
+Handles prescription creation, medication management, refills, and drug interaction checks
+"""
+from fastapi import APIRouter, Depends, HTTPException, status, Query
+from sqlalchemy.orm import Session
+from typing import List, Optional
+from datetime import datetime, timedelta
+from pydantic import BaseModel
+import secrets
+
+from app.database import get_db
+from app.models.models import (
+    Prescription, PrescriptionMedication, DrugInteraction, 
+    PrescriptionRefill, User
+)
+from app.services.auth_service import get_current_user
+
+router = APIRouter(prefix="/prescriptions", tags=["Prescriptions"])
+
+
+# ==================== Pydantic Models ====================
+
+class MedicationCreate(BaseModel):
+    medication_name: str
+    dosage: str
+    frequency: str
+    duration: str
+    quantity: int
+    instructions: Optional[str] = None
+
+
+class PrescriptionCreate(BaseModel):
+    patient_id: int
+    appointment_id: Optional[int] = None
+    diagnosis: Optional[str] = None
+    notes: Optional[str] = None
+    expiry_days: int = 90
+    refills_allowed: int = 0
+    medications: List[MedicationCreate]
+
+
+class PrescriptionUpdate(BaseModel):
+    status: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class RefillRequest(BaseModel):
+    pharmacy_notes: Optional[str] = None
+
+
+class DrugInteractionCheck(BaseModel):
+    medications: List[str]
+
+
+class PrescriptionResponse(BaseModel):
+    id: int
+    prescription_number: str
+    patient_id: int
+    doctor_id: int
+    diagnosis: Optional[str]
+    status: str
+    issue_date: datetime
+    expiry_date: Optional[datetime]
+    refills_allowed: int
+    refills_remaining: int
+    created_at: datetime
+
+    class Config:
+        from_attributes = True
+
+
+class MedicationResponse(BaseModel):
+    id: int
+    prescription_id: int
+    medication_name: str
+    dosage: str
+    frequency: str
+    duration: str
+    quantity: int
+    instructions: Optional[str]
+
+    class Config:
+        from_attributes = True
+
+
+# ==================== Helper Functions ====================
+
+def generate_prescription_number() -> str:
+    """Generate unique prescription number"""
+    timestamp = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+    random_suffix = secrets.token_hex(4).upper()
+    return f"RX-{timestamp}-{random_suffix}"
+
+
+def check_drug_interactions(db: Session, medication_names: List[str]) -> List[DrugInteraction]:
+    """Check for drug interactions among medications"""
+    interactions = []
+    
+    for i in range(len(medication_names)):
+        for j in range(i + 1, len(medication_names)):
+            drug_a = medication_names[i].lower()
+            drug_b = medication_names[j].lower()
+            
+            # Check both orderings
+            interaction = db.query(DrugInteraction).filter(
+                ((DrugInteraction.drug_a == drug_a) & (DrugInteraction.drug_b == drug_b)) |
+                ((DrugInteraction.drug_a == drug_b) & (DrugInteraction.drug_b == drug_a))
+            ).first()
+            
+            if interaction:
+                interactions.append(interaction)
+    
+    return interactions
+
+
+# ==================== API Endpoints ====================
+
+@router.post("/", response_model=PrescriptionResponse, status_code=status.HTTP_201_CREATED)
+async def create_prescription(
+    prescription_data: PrescriptionCreate,
+    current_user: User = Depends(get_current_user),
+    db = Depends(get_db)
+):
+    """
+    Create a new prescription with medications
+    
+    Requires: doctor or admin role
+    """
+    # Check permissions
+    if current_user.role not in ["doctor", "admin"]:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Only doctors can create prescriptions"
+        )
+    
+    # Verify patient exists
+    patient = db.query(User).filter(User.id == prescription_data.patient_id).first()
+    if not patient:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Patient with ID {prescription_data.patient_id} not found"
+        )
+    
+    # Check for drug interactions
+    medication_names = [med.medication_name for med in prescription_data.medications]
+    interactions = check_drug_interactions(db, medication_names)
+    
+    if interactions:
+        severe_interactions = [i for i in interactions if i.severity in ["major", "severe"]]
+        if severe_interactions:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail={
+                    "message": "Severe drug interactions detected",
+                    "interactions": [
+                        {
+                            "drugs": f"{i.drug_a} + {i.drug_b}",
+                            "severity": i.severity,
+                            "description": i.description
+                        }
+                        for i in severe_interactions
+                    ]
+                }
+            )
+    
+    # Create prescription
+    prescription = Prescription(
+        patient_id=prescription_data.patient_id,
+        doctor_id=current_user.id,
+        appointment_id=prescription_data.appointment_id,
+        prescription_number=generate_prescription_number(),
+        diagnosis=prescription_data.diagnosis,
+        notes=prescription_data.notes,
+        expiry_date=datetime.utcnow() + timedelta(days=prescription_data.expiry_days),
+        refills_allowed=prescription_data.refills_allowed,
+        refills_remaining=prescription_data.refills_allowed
+    )
+    
+    db.add(prescription)
+    db.flush()  # Get prescription ID
+    
+    # Add medications
+    for med_data in prescription_data.medications:
+        medication = PrescriptionMedication(
+            prescription_id=prescription.id,
+            medication_name=med_data.medication_name,
+            dosage=med_data.dosage,
+            frequency=med_data.frequency,
+            duration=med_data.duration,
+            quantity=med_data.quantity,
+            instructions=med_data.instructions
+        )
+        db.add(medication)
+    
+    db.commit()
+    db.refresh(prescription)
+    
+    return prescription
+
+
+@router.get("/", response_model=List[PrescriptionResponse])
+async def list_prescriptions(
+    patient_id: Optional[int] = Query(None),
+    doctor_id: Optional[int] = Query(None),
+    status_filter: Optional[str] = Query(None, alias="status"),
+    skip: int = Query(0, ge=0),
+    limit: int = Query(100, le=100),
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """
+    List prescriptions with optional filters
+    
+    - Patients can only see their own prescriptions
+    - Doctors can see prescriptions they created
+    - Admins can see all prescriptions
+    """
+    query = db.query(Prescription)
+    
+    # Apply role-based filtering
+    if current_user.role == "patient":
+        query = query.filter(Prescription.patient_id == current_user.id)
+    elif current_user.role == "doctor" and not doctor_id:
+        query = query.filter(Prescription.doctor_id == current_user.id)
+    
+    # Apply filters
+    if patient_id:
+        if current_user.role not in ["doctor", "admin"]:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
+        query = query.filter(Prescription.patient_id == patient_id)
+    
+    if doctor_id:
+        query = query.filter(Prescription.doctor_id == doctor_id)
+    
+    if status_filter:
+        query = query.filter(Prescription.status == status_filter)
+    
+    prescriptions = query.offset(skip).limit(limit).all()
+    return prescriptions
+
+
+@router.get("/{prescription_id}", response_model=dict)
+async def get_prescription_details(
+    prescription_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Get detailed prescription information including medications"""
+    prescription = db.query(Prescription).filter(Prescription.id == prescription_id).first()
+    
+    if not prescription:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Prescription not found"
+        )
+    
+    # Check permissions
+    is_authorized = (
+        current_user.role in ["admin"] or
+        current_user.id == prescription.patient_id or
+        current_user.id == prescription.doctor_id
+    )
+    
+    if not is_authorized:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Not authorized to view this prescription"
+        )
+    
+    # Get medications
+    medications = db.query(PrescriptionMedication).filter(
+        PrescriptionMedication.prescription_id == prescription_id
+    ).all()
+    
+    # Get refill history
+    refills = db.query(PrescriptionRefill).filter(
+        PrescriptionRefill.prescription_id == prescription_id
+    ).all()
+    
+    return {
+        "prescription": prescription,
+        "medications": medications,
+        "refills": refills,
+        "patient": db.query(User).filter(User.id == prescription.patient_id).first(),
+        "doctor": db.query(User).filter(User.id == prescription.doctor_id).first()
+    }
+
+
+@router.put("/{prescription_id}", response_model=PrescriptionResponse)
+async def update_prescription(
+    prescription_id: int,
+    update_data: PrescriptionUpdate,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Update prescription status or notes"""
+    prescription = db.query(Prescription).filter(Prescription.id == prescription_id).first()
+    
+    if not prescription:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Prescription not found")
+    
+    # Only the prescribing doctor or admin can update
+    if current_user.id != prescription.doctor_id and current_user.role != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
+    
+    if update_data.status:
+        prescription.status = update_data.status
+    if update_data.notes:
+        prescription.notes = update_data.notes
+    
+    db.commit()
+    db.refresh(prescription)
+    return prescription
+
+
+@router.post("/{prescription_id}/refill", status_code=status.HTTP_201_CREATED)
+async def request_refill(
+    prescription_id: int,
+    refill_data: RefillRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Request a prescription refill"""
+    prescription = db.query(Prescription).filter(Prescription.id == prescription_id).first()
+    
+    if not prescription:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Prescription not found")
+    
+    # Check if patient is authorized
+    if current_user.id != prescription.patient_id and current_user.role not in ["admin", "pharmacist"]:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
+    
+    # Check if prescription is still valid
+    if prescription.status != "active":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Prescription is {prescription.status}, cannot refill"
+        )
+    
+    if prescription.expiry_date and prescription.expiry_date < datetime.utcnow():
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Prescription expired")
+    
+    if prescription.refills_remaining <= 0:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No refills remaining")
+    
+    # Create refill request
+    refill = PrescriptionRefill(
+        prescription_id=prescription_id,
+        pharmacy_notes=refill_data.pharmacy_notes,
+        status="pending"
+    )
+    
+    db.add(refill)
+    db.commit()
+    db.refresh(refill)
+    
+    return {
+        "message": "Refill request created successfully",
+        "refill_id": refill.id,
+        "status": refill.status
+    }
+
+
+@router.put("/refills/{refill_id}/approve")
+async def approve_refill(
+    refill_id: int,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Approve and dispense a refill (pharmacist/doctor only)"""
+    if current_user.role not in ["doctor", "pharmacist", "admin"]:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
+    
+    refill = db.query(PrescriptionRefill).filter(PrescriptionRefill.id == refill_id).first()
+    if not refill:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Refill not found")
+    
+    prescription = db.query(Prescription).filter(Prescription.id == refill.prescription_id).first()
+    
+    # Update refill
+    refill.status = "dispensed"
+    refill.dispensed_by = current_user.id
+    
+    # Decrease refills remaining
+    if prescription.refills_remaining > 0:
+        prescription.refills_remaining -= 1
+    
+    db.commit()
+    
+    return {
+        "message": "Refill approved and dispensed",
+        "refills_remaining": prescription.refills_remaining
+    }
+
+
+@router.post("/drug-interactions/check")
+async def check_interactions(
+    check_data: DrugInteractionCheck,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Check for drug interactions among a list of medications"""
+    interactions = check_drug_interactions(db, check_data.medications)
+    
+    return {
+        "medications_checked": check_data.medications,
+        "interactions_found": len(interactions),
+        "interactions": [
+            {
+                "drug_a": i.drug_a,
+                "drug_b": i.drug_b,
+                "severity": i.severity,
+                "description": i.description,
+                "recommendation": i.recommendation
+            }
+            for i in interactions
+        ]
+    }
+
+
+@router.post("/drug-interactions", status_code=status.HTTP_201_CREATED)
+async def add_drug_interaction(
+    drug_a: str,
+    drug_b: str,
+    severity: str,
+    description: str,
+    recommendation: Optional[str] = None,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    """Add a new drug interaction to the database (admin only)"""
+    if current_user.role != "admin":
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN)
+    
+    # Check if interaction already exists
+    existing = db.query(DrugInteraction).filter(
+        ((DrugInteraction.drug_a == drug_a.lower()) & (DrugInteraction.drug_b == drug_b.lower())) |
+        ((DrugInteraction.drug_a == drug_b.lower()) & (DrugInteraction.drug_b == drug_a.lower()))
+    ).first()
+    
+    if existing:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Interaction already exists"
+        )
+    
+    interaction = DrugInteraction(
+        drug_a=drug_a.lower(),
+        drug_b=drug_b.lower(),
+        severity=severity,
+        description=description,
+        recommendation=recommendation
+    )
+    
+    db.add(interaction)
+    db.commit()
+    db.refresh(interaction)
+    
+    return interaction

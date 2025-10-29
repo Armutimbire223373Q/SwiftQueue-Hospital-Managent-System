@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
-from app.models.models import Checkin, Appointment, User
+from app.models.models import Checkin, Appointment, User, Service
 from app.routes.auth import get_current_user
 from pydantic import BaseModel
 from datetime import datetime
@@ -10,6 +10,9 @@ router = APIRouter()
 
 class CheckinCreate(BaseModel):
     appointment_id: int
+
+class CheckinUpdate(BaseModel):
+    status: str
 
 @router.post("/", response_model=dict)
 async def checkin_patient(
@@ -44,7 +47,18 @@ async def checkin_patient(
 
     db.commit()
     db.refresh(db_checkin)
-    return {"message": "Patient checked in successfully", "checkin_id": db_checkin.id}
+    
+    # Get service info for estimated wait time
+    service = db.query(Service).filter(Service.id == appointment.service_id).first()
+    estimated_wait = service.estimated_time if service else 15
+    
+    return {
+        "checkin_id": db_checkin.id,
+        "queue_number": db_checkin.id,  # Use checkin ID as queue number
+        "estimated_wait_time": estimated_wait,
+        "appointment_id": db_checkin.appointment_id,
+        "status": db_checkin.status
+    }
 
 @router.get("/appointment/{appointment_id}", response_model=dict)
 async def get_checkin_status(
@@ -64,17 +78,20 @@ async def get_checkin_status(
 
     if checkin:
         return {
-            "checked_in": True,
-            "checkin_time": checkin.checkin_time,
-            "status": checkin.status
+            "appointment_id": appointment_id,
+            "status": checkin.status,
+            "checkin_time": checkin.checkin_time
         }
     else:
-        return {"checked_in": False}
+        return {
+            "appointment_id": appointment_id,
+            "status": "not_checked_in"
+        }
 
 @router.put("/{checkin_id}/status", response_model=dict)
 async def update_checkin_status(
     checkin_id: int,
-    status: str,
+    update: CheckinUpdate,
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user)
 ):
@@ -86,9 +103,12 @@ async def update_checkin_status(
     if not db_checkin:
         raise HTTPException(status_code=404, detail="Checkin not found")
 
-    if status not in ["checked_in", "no_show", "cancelled"]:
+    if update.status not in ["checked_in", "no_show", "cancelled"]:
         raise HTTPException(status_code=400, detail="Invalid status")
 
-    db_checkin.status = status
+    db_checkin.status = update.status
     db.commit()
-    return {"message": "Checkin status updated successfully"}
+    db.refresh(db_checkin)
+    return {
+        "status": db_checkin.status
+    }

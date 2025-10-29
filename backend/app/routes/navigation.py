@@ -113,11 +113,10 @@ async def request_emergency_assistance(
         # Create emergency dispatch record
         emergency_dispatch = EmergencyDispatch(
             patient_id=current_user.id,
-            emergency_type="Assistance Request",
-            location=location,
-            severity_level="medium",
-            status="dispatched",
-            notes=description,
+            emergency_details=description,
+            dispatch_address=location,
+            dispatch_status="dispatched",
+            notes=f"Assistance Request: {description}",
             created_at=datetime.utcnow(),
             updated_at=datetime.utcnow()
         )

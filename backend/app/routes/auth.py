@@ -82,6 +82,23 @@ async def get_current_active_user(current_user: User = Depends(get_current_user)
         raise HTTPException(status_code=400, detail="Inactive user")
     return current_user
 
+# WebSocket authentication (no Depends)
+async def get_current_user_ws(token: str, db: Session):
+    """Get current user from token for WebSocket connections"""
+    try:
+        from app.services.auth_service import decode_token
+        email = decode_token(token)
+        if email is None:
+            raise ValueError("Invalid token")
+        
+        user = get_user_by_email(db, email)
+        if user is None or not user.is_active:
+            raise ValueError("User not found or inactive")
+        
+        return user
+    except Exception as e:
+        raise ValueError(f"Authentication failed: {str(e)}")
+
 # Routes
 @router.post("/register", response_model=UserResponse)
 async def register_user(user: UserCreate, db: Session = Depends(get_db)):

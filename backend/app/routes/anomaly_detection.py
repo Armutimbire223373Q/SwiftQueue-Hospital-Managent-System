@@ -100,10 +100,10 @@ class AdvancedAnomalyDetector:
                 self.anomaly_thresholds = metadata.get('anomaly_thresholds', {})
                 self.baseline_metrics = metadata.get('baseline_metrics', {})
             
-            print("✅ Advanced anomaly detection models loaded successfully")
+            print("[SUCCESS] Advanced anomaly detection models loaded successfully")
             
         except Exception as e:
-            print(f"❌ Error loading anomaly detection models: {e}")
+            print(f"[ERROR] Error loading anomaly detection models: {e}")
             self.models = {}
             self.scalers = {}
     

@@ -80,11 +80,11 @@ class PracticalWaitTimePredictor:
                     if os.path.exists(path):
                         self.encoders[name] = joblib.load(path)
                 
-                print("✅ Wait time prediction model loaded successfully")
+                print("[SUCCESS] Wait time prediction model loaded successfully")
             else:
-                print("⚠️ Wait time prediction model not found. Please train the model first.")
+                print("[WARNING] Wait time prediction model not found. Please train the model first.")
         except Exception as e:
-            print(f"❌ Error loading wait time prediction model: {e}")
+            print(f"[ERROR] Error loading wait time prediction model: {e}")
     
     def predict_wait_time(self, request: WaitTimePredictionRequest) -> WaitTimePredictionResponse:
         """Predict wait time for a new patient"""

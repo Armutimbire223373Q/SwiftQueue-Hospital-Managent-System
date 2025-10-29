@@ -1,3 +1,14 @@
+import os
+import sys
+
+# Set UTF-8 encoding for Windows compatibility with emojis in output
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+
+# Disable rate limiting for tests - MUST be set before importing app
+os.environ["RATE_LIMIT_ENABLED"] = "false"
+
 import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -90,32 +101,86 @@ def test_queue_data():
 @pytest.fixture
 def auth_client(client):
     """Create an authenticated test client."""
-    # Register and login a test user
+    import uuid
+    from starlette.testclient import TestClient
+    
+    # Create a new test client with auth headers (don't modify shared client)
+    auth_test_client = TestClient(app)
+    
+    # Register and login a test user with unique email
+    unique_id = str(uuid.uuid4())[:8]
     user_data = {
         "name": "Test Auth User",
-        "email": "auth_test@example.com",
+        "email": f"auth_test_{unique_id}@example.com",
         "password": "testpass123",
         "role": "patient"
     }
     
     # Register user
-    client.post("/api/auth/register", json=user_data)
+    register_response = auth_test_client.post("/api/auth/register", json=user_data)
+    if register_response.status_code != 200:
+        print(f"Registration failed: {register_response.status_code} - {register_response.text}")
     
-    # Login to get token
+    # Login to get token (using form data, not JSON)
     login_data = {
-        "email": user_data["email"],
+        "username": user_data["email"],  # OAuth2 uses 'username' field
         "password": user_data["password"]
     }
-    response = client.post("/api/auth/login", json=login_data)
+    response = auth_test_client.post("/api/auth/login", data=login_data)  # Use data= for form data
+    if response.status_code != 200:
+        print(f"Login failed: {response.status_code} - {response.text}")
+        raise ValueError(f"Auth client login failed: {response.status_code} - {response.text}")
     token = response.json()["access_token"]
     
-    # Add authorization header to client
-    client.headers = {
-        **client.headers,
+    # Set authorization header
+    auth_test_client.headers = {
+        **auth_test_client.headers,
         "Authorization": f"Bearer {token}"
     }
     
-    return client
+    return auth_test_client
+
+@pytest.fixture
+def admin_client(client):
+    """Create an authenticated admin test client."""
+    import uuid
+    from starlette.testclient import TestClient
+    
+    # Create a new test client with admin auth headers (don't modify shared client)
+    admin_test_client = TestClient(app)
+    
+    # Register and login an admin user with unique email
+    unique_id = str(uuid.uuid4())[:8]
+    admin_data = {
+        "name": "Test Admin User",
+        "email": f"admin_auth_test_{unique_id}@example.com",
+        "password": "adminpass123",
+        "role": "admin"
+    }
+    
+    # Register admin
+    register_response = admin_test_client.post("/api/auth/register", json=admin_data)
+    if register_response.status_code != 200:
+        print(f"Registration failed: {register_response.status_code} - {register_response.text}")
+    
+    # Login to get token (using form data, not JSON)
+    login_data = {
+        "username": admin_data["email"],  # OAuth2 uses 'username' field
+        "password": admin_data["password"]
+    }
+    response = admin_test_client.post("/api/auth/login", data=login_data)  # Use data= for form data
+    if response.status_code != 200:
+        print(f"Login failed: {response.status_code} - {response.text}")
+        raise ValueError(f"Admin login failed: {response.status_code} - {response.text}")
+    token = response.json()["access_token"]
+    
+    # Set authorization header
+    admin_test_client.headers = {
+        **admin_test_client.headers,
+        "Authorization": f"Bearer {token}"
+    }
+    
+    return admin_test_client
 
 @pytest.fixture
 def test_admin_token(client):

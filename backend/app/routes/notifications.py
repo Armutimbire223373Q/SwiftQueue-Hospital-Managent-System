@@ -33,7 +33,15 @@ async def create_notification(
     db.add(db_notification)
     db.commit()
     db.refresh(db_notification)
-    return {"message": "Notification created successfully", "notification_id": db_notification.id}
+    return {
+        "id": db_notification.id,
+        "user_id": db_notification.user_id,
+        "title": db_notification.title,
+        "message": db_notification.message,
+        "type": db_notification.type,
+        "is_read": db_notification.is_read,
+        "status": "Notification created successfully"
+    }
 
 @router.get("/", response_model=List[dict])
 async def get_notifications(
@@ -70,7 +78,12 @@ async def mark_notification_read(
 
     db_notification.is_read = True
     db.commit()
-    return {"message": "Notification marked as read"}
+    db.refresh(db_notification)
+    return {
+        "id": db_notification.id,
+        "is_read": db_notification.is_read,
+        "message": "Notification marked as read"
+    }
 
 @router.delete("/{notification_id}", response_model=dict)
 async def delete_notification(
@@ -86,6 +99,10 @@ async def delete_notification(
     if not db_notification:
         raise HTTPException(status_code=404, detail="Notification not found")
 
+    notification_id = db_notification.id
     db.delete(db_notification)
     db.commit()
-    return {"message": "Notification deleted successfully"}
+    return {
+        "id": notification_id,
+        "message": "Notification deleted successfully"
+    }

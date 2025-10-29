@@ -8,11 +8,21 @@ from fastapi.security import OAuth2PasswordBearer
 from app.models.models import User
 from app.database import get_db
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
 # JWT Configuration
-SECRET_KEY = os.getenv("SECRET_KEY", "your-secret-key-here-change-in-production")
+# CRITICAL: SECRET_KEY must be set via environment variable for security
+SECRET_KEY = os.getenv("SECRET_KEY")
+if not SECRET_KEY:
+    raise ValueError(
+        "SECRET_KEY environment variable must be set! "
+        "Generate a secure key with: openssl rand -hex 32"
+    )
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 

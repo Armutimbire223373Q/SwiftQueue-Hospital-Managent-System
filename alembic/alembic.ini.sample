@@ -1,0 +1,38 @@
+# Sample alembic.ini
+# Alembic will prefer the DATABASE_URL or SQLALCHEMY_DATABASE_URL environment variable
+# if present. If you want to hard-code a URL for local testing, edit the sqlalchemy.url value below.
+
+[alembic]
+script_location = alembic
+# sqlalchemy.url is read from this file only if env vars are not set.
+sqlalchemy.url = sqlite:///./queue_management.db
+
+[loggers]
+keys = root,sqlalchemy,alembic
+
+[handlers]
+keys = console
+
+[formatters]
+keys = generic
+
+[logger_root]
+level = WARN
+handlers = console
+
+[logger_sqlalchemy]
+level = WARN
+handlers =
+qualname = sqlalchemy.engine
+
+[logger_alembic]
+level = INFO
+handlers =
+qualname = alembic
+
+[handler_console]
+class = StreamHandler
+args = (sys.stdout,)
+
+[formatter_generic]
+format = %(levelname)-5.5s [%(name)s] %(message)s

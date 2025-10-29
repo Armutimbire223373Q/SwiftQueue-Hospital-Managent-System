@@ -37,7 +37,15 @@ async def create_appointment(
     db.add(db_appointment)
     db.commit()
     db.refresh(db_appointment)
-    return {"message": "Appointment created successfully", "appointment_id": db_appointment.id}
+    return {
+        "id": db_appointment.id,
+        "patient_id": db_appointment.patient_id,
+        "service_id": db_appointment.service_id,
+        "appointment_date": db_appointment.appointment_date.isoformat() if db_appointment.appointment_date else None,
+        "duration": db_appointment.duration,
+        "status": db_appointment.status,
+        "notes": db_appointment.notes
+    }
 
 @router.get("/", response_model=List[dict])
 async def get_appointments(
@@ -89,7 +97,16 @@ async def update_appointment(
         db_appointment.staff_id = appointment_update.staff_id
 
     db.commit()
-    return {"message": "Appointment updated successfully"}
+    db.refresh(db_appointment)
+    return {
+        "id": db_appointment.id,
+        "patient_id": db_appointment.patient_id,
+        "service_id": db_appointment.service_id,
+        "status": db_appointment.status,
+        "notes": db_appointment.notes,
+        "appointment_date": db_appointment.appointment_date.isoformat() if db_appointment.appointment_date else None,
+        "message": "Appointment updated successfully"
+    }
 
 @router.delete("/{appointment_id}", response_model=dict)
 async def cancel_appointment(
@@ -107,4 +124,11 @@ async def cancel_appointment(
 
     db_appointment.status = "cancelled"
     db.commit()
-    return {"message": "Appointment cancelled successfully"}
+    db.refresh(db_appointment)
+    return {
+        "id": db_appointment.id,
+        "patient_id": db_appointment.patient_id,
+        "service_id": db_appointment.service_id,
+        "status": db_appointment.status,
+        "message": "Appointment cancelled successfully"
+    }
